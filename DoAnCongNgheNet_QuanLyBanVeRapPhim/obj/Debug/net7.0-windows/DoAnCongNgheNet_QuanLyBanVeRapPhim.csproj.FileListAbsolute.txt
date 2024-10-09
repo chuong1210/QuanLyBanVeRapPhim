@@ -16,3 +16,4 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DoAnCongNgheNet_Q
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DoAnCongNgheNet_QuanLyBanVeRapPhim\obj\Debug\net7.0-windows\DoAnCongNgheNet_QuanLyBanVeRapPhim.pdb
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DoAnCongNgheNet_QuanLyBanVeRapPhim\obj\Debug\net7.0-windows\DoAnCongNgheNet_QuanLyBanVeRapPhim.genruntimeconfig.cache
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DoAnCongNgheNet_QuanLyBanVeRapPhim\obj\Debug\net7.0-windows\ref\DoAnCongNgheNet_QuanLyBanVeRapPhim.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DoAnCongNgheNet_QuanLyBanVeRapPhim\obj\Debug\net7.0-windows\DoAnCongNgheNet_QuanLyBanVeRapPhim.sourcelink.json

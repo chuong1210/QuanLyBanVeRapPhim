@@ -1,5 +1,4 @@
 ﻿using System.Drawing.Drawing2D;
-
 namespace DoAnCongNgheNet_QuanLyBanVeRapPhim
 {
     public partial class frmLogin : Form
@@ -14,7 +13,6 @@ namespace DoAnCongNgheNet_QuanLyBanVeRapPhim
             txtPassword.Region = new Region(CreateRoundedRectangle(txtPassword.ClientRectangle, 10));
 
 
- 
 
         }
 

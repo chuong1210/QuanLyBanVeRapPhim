@@ -30,7 +30,6 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
-            button1 = new Button();
             label2 = new Label();
             label1 = new Label();
             txtPassword = new TextBox();
@@ -52,7 +51,6 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(128, 128, 255);
-            panel2.Controls.Add(button1);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtPassword);
@@ -64,14 +62,7 @@
             // 
             // button1
             // 
-            button1.BackColor = Color.FromArgb(128, 128, 255);
-            button1.Location = new Point(231, 214);
-            button1.Name = "button1";
-            button1.Size = new Size(135, 41);
-            button1.TabIndex = 4;
-            button1.Text = "Login";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+
             // 
             // label2
             // 
@@ -131,7 +122,6 @@
         private Panel panel1;
         private Panel panel2;
         private TextBox txtUsername;
-        private Button button1;
         private Label label2;
         private Label label1;
         private TextBox txtPassword;

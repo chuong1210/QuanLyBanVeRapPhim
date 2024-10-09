@@ -1,0 +1,159 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\doancongnghenet_quanlybanverapphim\\frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|solutionrelative:doancongnghenet_quanlybanverapphim\\frmlogin.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\doancongnghenet_quanlybanverapphim\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|solutionrelative:doancongnghenet_quanlybanverapphim\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\doancongnghenet_quanlybanverapphim\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|solutionrelative:doancongnghenet_quanlybanverapphim\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\doancongnghenet_quanlybanverapphim\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|solutionrelative:doancongnghenet_quanlybanverapphim\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\doancongnghenet_quanlybanverapphim\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|solutionrelative:doancongnghenet_quanlybanverapphim\\frmhome.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\doancongnghenet_quanlybanverapphim\\dto\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A780490D-A0A6-485F-805E-2F4499AC5F54}|DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim.csproj|solutionrelative:doancongnghenet_quanlybanverapphim\\dto\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:2:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\FrmLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs [Design]",
+              "RelativeToolTip": "GUI\\FrmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-09T16:33:30.077Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{29b59575-67fc-487a-ad50-20c439ec1d21}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmLogin.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.Designer.cs",
+              "RelativeDocumentMoniker": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.Designer.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.Designer.cs",
+              "RelativeToolTip": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T15:19:31.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TaiKhoan.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\TaiKhoan.cs",
+              "RelativeDocumentMoniker": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\TaiKhoan.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\TaiKhoan.cs",
+              "RelativeToolTip": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\TaiKhoan.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T15:02:21.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "frmHome.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs",
+              "RelativeDocumentMoniker": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs",
+              "RelativeToolTip": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T14:19:36.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmHome.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs",
+              "RelativeDocumentMoniker": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs [Design]",
+              "RelativeToolTip": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmHome.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T14:19:31.282Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs",
+              "RelativeDocumentMoniker": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs",
+              "RelativeToolTip": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T14:05:04.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "frmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs",
+              "RelativeDocumentMoniker": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs [Design]",
+              "RelativeToolTip": "DoAnCongNgheNet_QuanLyBanVeRapPhim\\frmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-01T12:46:20.207Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
