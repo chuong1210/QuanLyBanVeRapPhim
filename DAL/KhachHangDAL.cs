@@ -13,12 +13,13 @@ namespace DAL
     public class KhachHangDAL
     {
         // Chuỗi kết nối tới database từ file cấu hình
-        private string connectionString = ConfigurationManager.ConnectionStrings["CinemaDB"].ConnectionString;
+       // private string connectionString = ConfigurationManager.ConnectionStrings["CinemaDB"].ConnectionString;
+        private string connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
 
         // Lấy danh sách tất cả khách hàng
-        public List<KhachHang> GetAllKhachHang()
+        public List<KhachHangDTO> GetAllKhachHang()
         {
-            List<KhachHang> customers = new List<KhachHang>();
+            List<KhachHangDTO> customers = new List<KhachHangDTO>();
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -32,11 +33,11 @@ namespace DAL
 
                     while (reader.Read())
                     {
-                        KhachHang kh = new KhachHang()
+                        KhachHangDTO kh = new KhachHangDTO()
                         {
                             Id = reader["id"].ToString(),
                             HoTen = reader["HoTen"].ToString(),
-                            NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString()),
+                            NgaySinh = (reader["NgaySinh"].ToString()),
                             DiaChi = reader["DiaChi"].ToString(),
                             SDT = reader["SDT"].ToString(),
                             Email = reader["EMAIL"].ToString(),
@@ -55,19 +56,18 @@ namespace DAL
             return customers;
         }
 
-        // Thêm mới khách hàng
-        public bool AddKhachHang(KhachHang kh)
+        public int AddKhachHang(KhachHangDTO kh)
         {
-            bool result = false;
+            int newId = 0; // Khởi tạo biến ID mới
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO KhachHang (id, HoTen, NgaySinh, DiaChi, SDT, EMAIL, GioiTinh, DiemTichLuy) " +
-                               "VALUES (@Id, @HoTen, @NgaySinh, @DiaChi, @SDT, @Email, @GioiTinh, @DiemTichLuy)";
+                string query = "INSERT INTO KhachHang (HoTen, NgaySinh, DiaChi, SDT, EMAIL, GioiTinh, DiemTichLuy) " +
+                               "VALUES (@HoTen, @NgaySinh, @DiaChi, @SDT, @Email, @GioiTinh, @DiemTichLuy); " +
+                               "SELECT SCOPE_IDENTITY();"; // Lấy ID vừa được tạo
 
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", kh.Id);
                 command.Parameters.AddWithValue("@HoTen", kh.HoTen);
-                command.Parameters.AddWithValue("@NgaySinh", kh.NgaySinh);
+                command.Parameters.Add("@NgaySinh", SqlDbType.DateTime).Value = kh.NgaySinh; // Change here
                 command.Parameters.AddWithValue("@DiaChi", kh.DiaChi);
                 command.Parameters.AddWithValue("@SDT", kh.SDT);
                 command.Parameters.AddWithValue("@Email", kh.Email);
@@ -77,8 +77,7 @@ namespace DAL
                 try
                 {
                     connection.Open();
-                    int rowsAffected = command.ExecuteNonQuery();
-                    result = rowsAffected > 0;
+                    newId = Convert.ToInt32(command.ExecuteScalar()); // Lấy ID mới từ cơ sở dữ liệu
                 }
                 catch (Exception ex)
                 {
@@ -86,11 +85,44 @@ namespace DAL
                     Console.WriteLine("Error: " + ex.Message);
                 }
             }
-            return result;
+            return newId; // Trả về ID của khách hàng mới
         }
 
+        // Thêm mới khách hàng
+        //public bool AddKhachHang(KhachHangDTO kh)
+        //{
+        //    bool result = false;
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        string query = "INSERT INTO KhachHang ( HoTen, NgaySinh, DiaChi, SDT, EMAIL, GioiTinh, DiemTichLuy) " +
+        //                       "VALUES ( @HoTen, @NgaySinh, @DiaChi, @SDT, @Email, @GioiTinh, @DiemTichLuy)";
+
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        command.Parameters.AddWithValue("@HoTen", kh.HoTen);
+        //        command.Parameters.AddWithValue("@NgaySinh", kh.NgaySinh);
+        //        command.Parameters.AddWithValue("@DiaChi", kh.DiaChi);
+        //        command.Parameters.AddWithValue("@SDT", kh.SDT);
+        //        command.Parameters.AddWithValue("@Email", kh.Email);
+        //        command.Parameters.AddWithValue("@GioiTinh", kh.GioiTinh);
+        //        command.Parameters.AddWithValue("@DiemTichLuy", kh.DiemTichLuy);
+
+        //        try
+        //        {
+        //            connection.Open();
+        //            int rowsAffected = command.ExecuteNonQuery();
+        //            result = rowsAffected > 0;
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Xử lý ngoại lệ
+        //            Console.WriteLine("Error: " + ex.Message);
+        //        }
+        //    }
+        //    return result;
+        //}
+
         // Cập nhật thông tin khách hàng
-        public bool UpdateKhachHang(KhachHang kh)
+        public bool UpdateKhachHang(KhachHangDTO kh)
         {
             bool result = false;
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -151,9 +183,9 @@ namespace DAL
         }
 
         // Lấy thông tin khách hàng theo ID
-        public KhachHang GetKhachHangById(string id)
+        public KhachHangDTO GetKhachHangById(string id)
         {
-            KhachHang kh = null;
+            KhachHangDTO kh = null;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT * FROM KhachHang WHERE id = @Id";
@@ -167,11 +199,11 @@ namespace DAL
 
                     if (reader.Read())
                     {
-                        kh = new KhachHang()
+                        kh = new KhachHangDTO()
                         {
                             Id = reader["id"].ToString(),
                             HoTen = reader["HoTen"].ToString(),
-                            NgaySinh = DateTime.Parse(reader["NgaySinh"].ToString()),
+                            NgaySinh = (reader["NgaySinh"].ToString()),
                             DiaChi = reader["DiaChi"].ToString(),
                             SDT = reader["SDT"].ToString(),
                             Email = reader["EMAIL"].ToString(),
