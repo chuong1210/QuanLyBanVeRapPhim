@@ -673,19 +673,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\chuon\\.nuget\\packages\\": {}
+    "C:\\Users\\ACER\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\BLL\\BLL.csproj",
+      "projectUniqueName": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\BLL\\BLL.csproj",
       "projectName": "BLL",
-      "projectPath": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\BLL\\BLL.csproj",
-      "packagesPath": "C:\\Users\\chuon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\BLL\\obj\\",
+      "projectPath": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\BLL\\BLL.csproj",
+      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
+      "outputPath": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\BLL\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\chuon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -700,11 +705,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\DAL.csproj": {
-              "projectPath": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\DAL.csproj"
+            "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DAL\\DAL.csproj": {
+              "projectPath": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DAL\\DAL.csproj"
             },
-            "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\DTO.csproj": {
-              "projectPath": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\DTO.csproj"
+            "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DTO\\DTO.csproj": {
+              "projectPath": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DTO\\DTO.csproj"
             }
           }
         }
@@ -739,7 +744,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
