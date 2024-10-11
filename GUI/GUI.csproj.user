@@ -4,7 +4,10 @@
     <Compile Update="frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmClient.cs">
+    <Compile Update="frmSearchMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSideBar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FrmLogin.cs">

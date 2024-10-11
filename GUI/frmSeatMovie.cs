@@ -22,8 +22,8 @@ namespace GUI
             seats = new Button[rows, cols];
             CreateSeats(rows, cols); // Gọi 
 
-            this.WindowState = FormWindowState.Maximized; // Phóng to toàn màn hình
-            this.TopMost = true; // Đưa form lên trên cùng nếu cần
+            //this.WindowState = FormWindowState.Maximized; // Phóng to toàn màn hình
+            //this.TopMost = true; // Đưa form lên trên cùng nếu cần
             AdjustFlowLayoutPanelSize();
             flowLayoutPanelSeats.BackColor = Color.LightGray;
         }
@@ -41,7 +41,7 @@ namespace GUI
                     seatButton.Text = $"{row + 1}-{col + 1}"; // Số hàng và số ghế
                     seatButton.BackColor = Color.Green; // Màu ghế trống
                     seatButton.Margin = new Padding(5);
-
+                    seatButton.Cursor = Cursors.Hand;
                     // Gán sự kiện khi người dùng bấm vào ghế
                     seatButton.Click += SeatButton_Click;
 
@@ -82,7 +82,7 @@ namespace GUI
 
             flowLayoutPanelSeats.Size = new Size(newWidth, newHeight);
             // Căn giữa FlowLayoutPanel trong form
-            flowLayoutPanelSeats.Location = new Point(70,70);
+            flowLayoutPanelSeats.Location = new Point(150,90);
         }
 
         private void btnConfirm_Click_1(object sender, EventArgs e)

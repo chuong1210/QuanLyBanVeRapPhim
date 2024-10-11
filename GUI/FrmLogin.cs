@@ -59,7 +59,7 @@ namespace GUI
                 }
                 else
                 {
-                    frmClient client = new frmClient();
+                    frmSideBar client = new frmSideBar();
                     client.Show();
                 }
 

@@ -30,6 +30,7 @@
         {
             flowLayoutPanelSeats = new FlowLayoutPanel();
             btnConfirm = new Button();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // flowLayoutPanelSeats
@@ -52,21 +53,36 @@
             btnConfirm.UseVisualStyleBackColor = true;
             btnConfirm.Click += btnConfirm_Click_1;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI Symbol", 25.8000011F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            linkLabel1.LinkColor = Color.Fuchsia;
+            linkLabel1.Location = new Point(330, -8);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(327, 60);
+            linkLabel1.TabIndex = 2;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Chọn chỗ ngồi";
+            // 
             // frmSeatMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
+            Controls.Add(linkLabel1);
             Controls.Add(btnConfirm);
             Controls.Add(flowLayoutPanelSeats);
             Name = "frmSeatMovie";
             Text = "frmSeatMovie";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private FlowLayoutPanel flowLayoutPanelSeats;
         private Button btnConfirm;
+        private LinkLabel linkLabel1;
     }
 }
