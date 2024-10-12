@@ -25,7 +25,7 @@ namespace GUI
             this.TopMost = false; // Đưa form lên trên cùng nếu cần
             this.Controls.Add(sidebarPanel);
 
-            string[] buttonLabels = {  "Thể loại", "Quản lý phim", "Quản lý thành viên" };
+            string[] buttonLabels = {  "Lịch chiếu phim", "Đặt vé", "Biểu mẫu hóa đơn" };
 
             foreach (string label in buttonLabels)
             {
@@ -34,6 +34,8 @@ namespace GUI
                 button.Text = label;
                 button.BackColor = Color.LightBlue;
                 button.Dock = DockStyle.Top;
+                button.Width= 100;
+                button.Height = 100;
                 button.Click += Button_Click;
                 sidebarPanel.Controls.Add(button);
                 buttons.Add(button);
@@ -43,7 +45,7 @@ namespace GUI
             panelContent.Dock = DockStyle.Fill;
             this.Controls.Add(panelContent);
 
-            ShowForm(new frmSeatMovie());
+            ShowForm(new frmSearchMovie());
 
 
 
@@ -92,11 +94,11 @@ namespace GUI
             Form newForm = null;
 
             // Tạo form quản lý dựa trên nút được chọn
-            if (clickedButton.Text == "Quản lý phim")
+            if (clickedButton.Text == "Lịch chiếu phim")
             {
-                newForm = new frmRegister(); // Thay MovieManagementForm bằng form của bạn
+                newForm = new frmSearchMovie(); // Thay MovieManagementForm bằng form của bạn
             }
-            else if (clickedButton.Text == "Quản lý thành viên")
+            else if (clickedButton.Text == "Đặt vé")
             {
                 newForm = new frmSeatMovie(); // Thay MemberManagementForm bằng form của bạn
             }

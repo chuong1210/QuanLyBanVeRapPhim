@@ -115,6 +115,7 @@ CREATE TABLE LichChieuPhim
 	ThoiGianChieu DATETIME NOT NULL,
 	idPhong INT NOT NULL,
 	GiaVePhim MONEY NOT NULL,
+	idPhim INT NOT NULL,
 	TrangThaiChieu INT NOT NULL DEFAULT '0', --0: Chưa tạo vé cho lịch chiếu || 1: Đã tạo vé
 	CONSTRAINT PK_LichChieuPhim PRIMARY KEY (id) -- Thêm tên cho khóa chính
 )
@@ -218,6 +219,10 @@ ALTER TABLE LichChieuPhim
 ADD CONSTRAINT FK_LichChieuPhim_PhongChieu FOREIGN KEY (idPhong)
 REFERENCES dbo.PhongChieu(id);
 
+ALTER TABLE LichChieuPhim
+ADD CONSTRAINT FK_LichChieuPhim_Phim FOREIGN KEY (idPhim)
+REFERENCES dbo.Phim(id);
+
 -- Thêm ràng buộc FOREIGN KEY cho bảng VePhim
 ALTER TABLE VePhim
 ADD CONSTRAINT FK_VePhim_LichChieuPhim FOREIGN KEY (idLichChieuPhim)
@@ -257,8 +262,134 @@ VALUES
 ('admin', 'admin123', 1, 1, NULL, 2),
 ('customer1', 'customer123', 2, 1, NULL, 1);
 
+
+INSERT INTO Voucher (MaVoucher, GiaTriGiam, NgayBatDau, NgayKetThuc)
+VALUES
+('AVATAR2024', 5000, '2024-01-01', '2024-02-28');
+
+-- Thêm dữ liệu vào bảng Phim
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX)
+VALUES
+('Avatar', 'Phim hành động khoa học viễn tưởng.', 2.5, '2023-10-27', '2024-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
+('Avengers: Endgame', 'Phim siêu anh hùng.', 3, '2019-04-26', '2019-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
+('Spider-Man: No Way Home', 'Phim siêu anh hùng.', 2.1, '2021-12-17', '2022-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
+('The Batman', 'Phim hành động.', 2.5, '2022-03-03', '2022-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022);
+-- Thêm dữ liệu vào bảng TheLoai
+INSERT INTO TheLoai (TenTheLoai, MoTa) VALUES
+('Hành động', 'Thể loại hành động, phiêu lưu.'),
+('Siêu anh hùng', 'Thể loại siêu anh hùng, phiêu lưu.'),
+('Khoa học viễn tưởng', 'Thể loại khoa học viễn tưởng.'),
+('Hài hước', 'Thể loại hài hước.');
+
+-- Thêm dữ liệu vào bảng ChiTietPhimTL
+INSERT INTO ChiTietPhimTL (idPhim, idTheLoai) VALUES
+(1, 1), -- Avatar - Hành động
+(1, 3), -- Avatar - Khoa học viễn tưởng
+(2, 2), -- Avengers: Endgame - Siêu anh hùng
+(3, 2), -- Spider-Man: No Way Home - Siêu anh hùng
+(4, 1); -- The Batman - Hành động
+
+INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, SoHangGhe, SoGheMotHang)
+VALUES
+('Phong 1', 1, 50, 5, 10),
+('Phong 2', 2, 100, 10, 10);
+
+--Thêm dữ liệu vào bảng LichChieuPhim để test
+INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
+VALUES
+('2024-01-20 14:00:00', 1, 10000, 1), --Avatar chiếu trong ngày 20/01/2024
+('2024-01-20 19:00:00', 1, 15000, 2),-- Avengers chiếu trong ngày 20/01/2024
+('2024-01-20 10:00:00', 2, 12000, 3);--Spider-Man chiếu trong ngày 20/01/2024
+
+
+DROP PROC TimPhimTheoNgayKTVaBatDauTheoTheLoai
+  CREATE PROCEDURE TimPhimTheoNgayKTVaBatDauTheoTheLoai
+    @StartDate DATE,
+    @EndDate DATE,
+	@Genre NVARCHAR(50)
+AS
+BEGIN
+    IF @StartDate IS NULL OR @EndDate IS NULL
+    BEGIN
+        RAISERROR(N'Trường @StartDate và @EndDate phải khác null.', 16, 1)
+        RETURN
+    END
+    IF @StartDate > @EndDate
+    BEGIN
+        RAISERROR(N'Ngày khởi chiếu ko lớn hơn ngày kết thuc', 16, 1)
+        RETURN
+    END
+
+    SELECT
+        p.id,
+        p.TenPhim,
+        p.Poster,
+        p.ThoiLuong,
+        p.DaoDien
+    FROM
+        Phim p
+    JOIN
+        ChiTietPhimTL cpt ON p.id = cpt.idPhim
+    JOIN
+        TheLoai t ON cpt.idTheLoai = t.id
+    WHERE
+        t.TenTheLoai =@Genre  --Filter for Action movies
+        AND p.NgayKhoiChieu BETWEEN @StartDate AND @EndDate
+        AND p.NgayKetThuc BETWEEN @StartDate AND @EndDate; --Adjusted for movies running during that period
+END;
 go
 
+
+EXEC TimPhimTheoNgayKTVaBatDauTheoTheLoai @StartDate = '2023-01-01', @EndDate = '2024-01-31', @Genre= 'Hành động';
+
+
+
+CREATE PROCEDURE TimPhimTheoNgayVaLoai
+    @Date DATE,
+    @Genre NVARCHAR(100)
+AS
+BEGIN
+    -- Check if the provided date is valid.  Important for robustness.
+    IF @Date IS NULL
+    BEGIN
+        RAISERROR('Ngày nhập ko chính xác', 16, 1)
+        RETURN
+    END
+    
+    -- Check if the provided genre is valid.  Important for robustness.
+	IF @Genre IS NULL
+    BEGIN
+        RAISERROR('Thể loại ko tồn tại.', 16, 1)
+        RETURN
+    END
+	
+    SELECT
+        p.id,
+        p.TenPhim,
+        p.Poster,
+        p.ThoiLuong,
+        p.DaoDien,
+		p.MoTa,
+		p.NamSX,
+		p.DienVien,
+		p.NgayKetThuc,
+		p.NgayKetThuc
+    FROM
+        Phim p
+    JOIN
+        ChiTietPhimTL cpt ON p.id = cpt.idPhim
+    JOIN
+        TheLoai t ON cpt.idTheLoai = t.id
+	WHERE
+        t.TenTheLoai = @Genre
+		AND p.NgayKhoiChieu <= @Date
+		AND p.NgayKetThuc >= @Date
+		AND EXISTS (SELECT 1 FROM LichChieuPhim l WHERE l.idPhong = p.id AND l.ThoiGianChieu >= @Date); --If you want a list of movies *actually* playing on the day.
+END;
+
+go
+EXEC TimPhimTheoNgayVaLoai @Date = '2023-10-29', @Genre = 'Hành động';
+go
 CREATE PROC PROC_TinhTongDoanhThuPhim
     @idPhim VARCHAR(10) -- ID của phim cần tính tổng doanh thu
 AS
