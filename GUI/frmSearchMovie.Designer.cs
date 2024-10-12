@@ -33,8 +33,9 @@
             label3 = new Label();
             label2 = new Label();
             dateTimePicker1 = new DateTimePicker();
-            comboBox1 = new ComboBox();
+            cbGenre = new ComboBox();
             label1 = new Label();
+            listItemPhim = new FlowLayoutPanel();
             panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)searchBtn).BeginInit();
             SuspendLayout();
@@ -47,7 +48,7 @@
             panelFilter.Controls.Add(label3);
             panelFilter.Controls.Add(label2);
             panelFilter.Controls.Add(dateTimePicker1);
-            panelFilter.Controls.Add(comboBox1);
+            panelFilter.Controls.Add(cbGenre);
             panelFilter.Controls.Add(label1);
             panelFilter.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panelFilter.Location = new Point(302, 0);
@@ -98,14 +99,14 @@
             dateTimePicker1.Size = new Size(174, 23);
             dateTimePicker1.TabIndex = 2;
             // 
-            // comboBox1
+            // cbGenre
             // 
-            comboBox1.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(236, 144);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(151, 36);
-            comboBox1.TabIndex = 1;
+            cbGenre.Font = new Font("Bahnschrift Condensed", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbGenre.FormattingEnabled = true;
+            cbGenre.Location = new Point(236, 144);
+            cbGenre.Name = "cbGenre";
+            cbGenre.Size = new Size(151, 36);
+            cbGenre.TabIndex = 1;
             // 
             // label1
             // 
@@ -120,14 +121,24 @@
             label1.TabIndex = 0;
             label1.Text = "Chọn phim";
             // 
+            // listItemPhim
+            // 
+            listItemPhim.AutoScroll = true;
+            listItemPhim.Location = new Point(404, 252);
+            listItemPhim.Name = "listItemPhim";
+            listItemPhim.Size = new Size(632, 347);
+            listItemPhim.TabIndex = 1;
+            // 
             // frmSearchMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1181, 817);
+            Controls.Add(listItemPhim);
             Controls.Add(panelFilter);
             Name = "frmSearchMovie";
             Text = "frmSearchMovie";
+            Load += frmSearchMovie_Load;
             panelFilter.ResumeLayout(false);
             panelFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)searchBtn).EndInit();
@@ -141,7 +152,8 @@
         private Label label3;
         private Label label2;
         private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox1;
+        private ComboBox cbGenre;
         private PictureBox searchBtn;
+        private FlowLayoutPanel listItemPhim;
     }
 }

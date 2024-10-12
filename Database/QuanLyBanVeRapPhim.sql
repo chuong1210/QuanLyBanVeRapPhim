@@ -93,7 +93,7 @@ CREATE TABLE Phim
 	DaoDien NVARCHAR(100),
 	DienVien NVARCHAR(100),
 	NamSX INT NOT NULL,
-	Poster IMAGE,
+	PosterPath NVARCHAR(100) NULL,
 	CONSTRAINT PK_Phim PRIMARY KEY (id) 
 )
 GO
@@ -288,7 +288,11 @@ INSERT INTO ChiTietPhimTL (idPhim, idTheLoai) VALUES
 (2, 2), -- Avengers: Endgame - Siêu anh hùng
 (3, 2), -- Spider-Man: No Way Home - Siêu anh hùng
 (4, 1); -- The Batman - Hành động
-
+INSERT INTO LoaiManHinh (TenMH, KichThuoc)
+VALUES
+('Screen 1', 100),
+('Screen 2', 120),
+('Screen 3', 150);
 INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, SoHangGhe, SoGheMotHang)
 VALUES
 ('Phong 1', 1, 50, 5, 10),
@@ -297,7 +301,7 @@ VALUES
 --Thêm dữ liệu vào bảng LichChieuPhim để test
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-20 14:00:00', 1, 10000, 1), --Avatar chiếu trong ngày 20/01/2024
+('2024-01-09 14:00:00', 1, 10000, 1), --Avatar chiếu trong ngày 20/01/2024
 ('2024-01-20 19:00:00', 1, 15000, 2),-- Avengers chiếu trong ngày 20/01/2024
 ('2024-01-20 10:00:00', 2, 12000, 3);--Spider-Man chiếu trong ngày 20/01/2024
 
@@ -342,27 +346,32 @@ go
 
 EXEC TimPhimTheoNgayKTVaBatDauTheoTheLoai @StartDate = '2023-01-01', @EndDate = '2024-01-31', @Genre= 'Hành động';
 
-
+drop proc TimPhimTheoNgayVaLoai
 
 CREATE PROCEDURE TimPhimTheoNgayVaLoai
     @Date DATE,
     @Genre NVARCHAR(100)
 AS
 BEGIN
-    -- Check if the provided date is valid.  Important for robustness.
+    --Kiểm tra nếu ngày không hợp lệ.
     IF @Date IS NULL
     BEGIN
-        RAISERROR('Ngày nhập ko chính xác', 16, 1)
+        RAISERROR('Ngày không hợp lệ.', 16, 1)
         RETURN
     END
-    
-    -- Check if the provided genre is valid.  Important for robustness.
-	IF @Genre IS NULL
+
+    --Kiểm tra nếu thể loại không hợp lệ.
+    IF @Genre IS NULL
     BEGIN
-        RAISERROR('Thể loại ko tồn tại.', 16, 1)
+        RAISERROR('Thể loại không hợp lệ.', 16, 1)
         RETURN
     END
-	
+		IF NOT EXISTS (SELECT 1 FROM Phim p JOIN ChiTietPhimTL cpt ON p.id = cpt.idPhim JOIN TheLoai t ON cpt.idTheLoai = t.id WHERE t.TenTheLoai = @Genre AND p.NgayKhoiChieu <= @Date AND p.NgayKetThuc >= @Date)
+	BEGIN
+		RAISERROR('Không tìm thấy phim nào có thể loại này trong khoảng thời gian này.', 16, 1)
+		RETURN
+	END
+
     SELECT
         p.id,
         p.TenPhim,
@@ -372,7 +381,7 @@ BEGIN
 		p.MoTa,
 		p.NamSX,
 		p.DienVien,
-		p.NgayKetThuc,
+		p.NgayKhoiChieu,
 		p.NgayKetThuc
     FROM
         Phim p
@@ -380,15 +389,19 @@ BEGIN
         ChiTietPhimTL cpt ON p.id = cpt.idPhim
     JOIN
         TheLoai t ON cpt.idTheLoai = t.id
+    JOIN
+        LichChieuPhim lcp ON p.id = lcp.idPhim -- Sửa JOIN với LichChieuPhim
 	WHERE
         t.TenTheLoai = @Genre
 		AND p.NgayKhoiChieu <= @Date
 		AND p.NgayKetThuc >= @Date
-		AND EXISTS (SELECT 1 FROM LichChieuPhim l WHERE l.idPhong = p.id AND l.ThoiGianChieu >= @Date); --If you want a list of movies *actually* playing on the day.
+		AND lcp.ThoiGianChieu >= @Date
+		AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date);  -- Chắc chắn phim đang chiếu vào ngày đó
 END;
 
 go
-EXEC TimPhimTheoNgayVaLoai @Date = '2023-10-29', @Genre = 'Hành động';
+
+EXEC TimPhimTheoNgayVaLoai @Date = '2024-01-09', @Genre = 'Hành động';
 go
 CREATE PROC PROC_TinhTongDoanhThuPhim
     @idPhim VARCHAR(10) -- ID của phim cần tính tổng doanh thu

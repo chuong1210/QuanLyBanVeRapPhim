@@ -14,16 +14,20 @@ namespace DAL
 
         private string _connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
 
-     
-                public List<TheLoaiDTO> GetMovieGenres()
+        public PhimDAL()
+        {
+                
+        }
+        public List<TheLoaiDTO> DanhSachTheLoai()
         {
             List<TheLoaiDTO> genres = new List<TheLoaiDTO>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
+                    
                     connection.Open();
-                    string query = "SELECT TenTheLoai FROM TheLoai"; // Simple query to get genres
+                    string query = "SELECT * FROM TheLoai"; // Simple query to get genres
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -47,7 +51,7 @@ namespace DAL
             }
             return genres;
         }
-        public List<PhimDTO> GetMoviesByGenreAndDate(string genre, DateTime date)
+        public List<PhimDTO> TimPheoTheoNgayVaTheLoai(string genre, DateTime date)
         {
             List<PhimDTO> movies = new List<PhimDTO>();
             try
@@ -55,12 +59,12 @@ namespace DAL
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = @"EXEC TimPhimTheoNgayVaTheLoai @StartDate = '2023-01-01', @EndDate = '2024-01-31', @Genre= 'Hành động';";
+                    string query = @"EXEC TimPhimTheoNgayVaTheLoai @Date = @Date, @Genre= @Genre;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@genre", genre);
-                        command.Parameters.AddWithValue("@date", date);
+                        command.Parameters.AddWithValue("@Genre", genre);
+                        command.Parameters.AddWithValue("@Date", date);
 
 
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -70,7 +74,8 @@ namespace DAL
                                 PhimDTO movie = new PhimDTO();
                                 movie.Id = reader["id"].ToString();
                                 movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
-                                movie.Poster = reader.IsDBNull(reader.GetOrdinal("Poster")) ? null : (byte[])reader[reader.GetOrdinal("Poster")]; //Handle null
+                                movie.Poster = reader.IsDBNull(reader.GetOrdinal("Poster")) ? null : (byte[])reader[reader.GetOrdinal("Poster")];
+
                                 movie.ThoiLuong = reader.GetFloat(reader.GetOrdinal("ThoiLuong"));
                                 movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
                                 movies.Add(movie);

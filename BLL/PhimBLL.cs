@@ -12,11 +12,19 @@ namespace BLL
     {
         private readonly PhimDAL _movieDAL;
 
-       
-
-        public List<PhimDTO> GetMovies(string genre, DateTime date)
+        public PhimBLL()
         {
-            return _movieDAL.GetMoviesByGenreAndDate(genre, date);
+                _movieDAL = new PhimDAL();
         }
-    }
+
+        public List<PhimDTO> TimPhim(string genre, DateTime date)
+        {
+            return _movieDAL.TimPheoTheoNgayVaTheLoai(genre, date);
+        }
+
+        public List<TheLoaiDTO> DanhSachTheLoai()
+        {
+            return _movieDAL.DanhSachTheLoai();
+        }
+        }
 }

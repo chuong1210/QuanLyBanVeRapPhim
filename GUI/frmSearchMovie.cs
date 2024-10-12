@@ -18,6 +18,7 @@ namespace GUI
         public frmSearchMovie()
         {
             InitializeComponent();
+            phimBLL = new PhimBLL();
         }
 
         private void searchPN_Paint(object sender, PaintEventArgs e)
@@ -52,6 +53,13 @@ namespace GUI
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
+        }
+
+        private void frmSearchMovie_Load(object sender, EventArgs e)
+        {
+            cbGenre.DataSource = phimBLL.DanhSachTheLoai();
+            cbGenre.DisplayMember = "TenTheLoai";
+            cbGenre.ValueMember= "TenTheLoai";
         }
     }
 }
