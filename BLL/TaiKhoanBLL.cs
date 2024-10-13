@@ -32,6 +32,15 @@ namespace BLL
             }
             return false;
         }
-    }
+
+        public bool ChangePassword(string userName, string oldPassword, string newPassword)
+        {
+            return taiKhoanDAL.ChangePassword(userName, oldPassword, newPassword);
+        }
+        public bool CheckOldPassword(string userName, string oldPassword)
+        {
+            return taiKhoanDAL.CheckOldPassword(userName, oldPassword);
+        }
+        }
 
 }

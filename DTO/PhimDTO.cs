@@ -18,7 +18,7 @@ namespace DTO
         public string DaoDien { get; set; }
         public string DienVien { get; set; }
         public int NamSX { get; set; }
-        public byte[] Poster { get; set; } // Poster có thể là mảng byte
+        public string  Poster { get; set; } // Poster có thể là mảng byte
     }
 
 }

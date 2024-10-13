@@ -14,19 +14,21 @@ namespace GUI
     {
         private List<Button> buttons = new List<Button>();
         private Form activeForm = null; // Lưu form đang hoạt động
-
+        private string _username = "";
         private Panel panelContent;
 
-        public frmSideBar()
+        public frmSideBar(string username)
         {
 
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized; // Phóng to toàn màn hình
             this.TopMost = false; // Đưa form lên trên cùng nếu cần
+
             this.Controls.Add(sidebarPanel);
-
-            string[] buttonLabels = {  "Lịch chiếu phim", "Đặt vé", "Biểu mẫu hóa đơn" };
-
+            sidebarPanel.Padding = new Padding(0, 170, 0, 0); // Khoảng cách trên cùng là 50px
+            _username=username;
+            string[] buttonLabels = {  "Lịch chiếu phim",  "Đổi mật khẩu", "Biểu mẫu hóa đơn" ,username};
+            buttonLabels = buttonLabels.Reverse().ToArray();
             foreach (string label in buttonLabels)
             {
               
@@ -35,7 +37,8 @@ namespace GUI
                 button.BackColor = Color.LightBlue;
                 button.Dock = DockStyle.Top;
                 button.Width= 100;
-                button.Height = 100;
+                button.Height = 80;
+                button.Margin = new Padding(0, 120, 0, 0);
                 button.Click += Button_Click;
                 sidebarPanel.Controls.Add(button);
                 buttons.Add(button);
@@ -91,36 +94,55 @@ namespace GUI
                 activeForm.Hide();
             }
 
-            Form newForm = null;
 
             // Tạo form quản lý dựa trên nút được chọn
-            if (clickedButton.Text == "Lịch chiếu phim")
+      
+            if (clickedButton.Text != "Đổi mật khẩu")
             {
-                newForm = new frmSearchMovie(); // Thay MovieManagementForm bằng form của bạn
-            }
-            else if (clickedButton.Text == "Đặt vé")
-            {
-                newForm = new frmSeatMovie(); // Thay MemberManagementForm bằng form của bạn
-            }
+                Form newForm = null;
+            
+
+                if (clickedButton.Text == "Lịch chiếu phim")
+                {
+                    newForm = new frmSearchMovie(); // Thay MovieManagementForm bằng form của bạn
+                }
+
+                if (newForm != null)
+                {
+                    //Crucially, use ShowDialog() for modal forms
+                  
+                        //ShowForm(newForm); //Use ShowForm for non-modal forms
+                        newForm.TopLevel = false; // Quan trọng: đặt TopLevel = false
+                        newForm.FormBorderStyle = FormBorderStyle.None; // Remove border
+                        newForm.Dock = DockStyle.Fill; // Nạp form đầy Panel
+                        panelContent.Controls.Clear();
+                        panelContent.Controls.Add(newForm);
+                        newForm.BringToFront();
+                        newForm.Show();
+                        activeForm = newForm;
+
+                        newForm.Activated += (s, args) => {
+
+                            newForm.Focus(); // Cho phép form hoạt động
+                            this.ActiveControl = newForm; // Điều này giúp form hoạt động đúng.
+                        };
+                    
+                }
+
+             
+
             // ... các điều kiện khác
 
-            if (newForm != null)
-            {
-                newForm.TopLevel = false; // Quan trọng: đặt TopLevel = false
-                newForm.FormBorderStyle = FormBorderStyle.None; // Remove border
-                newForm.Dock = DockStyle.Fill; // Nạp form đầy Panel
-                panelContent.Controls.Clear();
-                panelContent.Controls.Add(newForm);
-                newForm.BringToFront();
-                newForm.Show();
-                activeForm = newForm;
-
-                newForm.Activated += (s, args) => {
-
-                    newForm.Focus(); // Cho phép form hoạt động
-                    this.ActiveControl = newForm; // Điều này giúp form hoạt động đúng.
-                };
+         
+           
             }
+            else
+            {
+                frmChangePW pw = new frmChangePW(_username);
+
+                pw.Show();
+            }
+
 
 
         }

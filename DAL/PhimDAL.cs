@@ -18,7 +18,11 @@ namespace DAL
         {
                 
         }
-        public List<TheLoaiDTO> DanhSachTheLoai()
+        public LichChieuPhimDTO PhimChiTiet()
+        {
+            return null;
+        }
+            public List<TheLoaiDTO> DanhSachTheLoai()
         {
             List<TheLoaiDTO> genres = new List<TheLoaiDTO>();
             try
@@ -51,6 +55,7 @@ namespace DAL
             }
             return genres;
         }
+
         public List<PhimDTO> TimPheoTheoNgayVaTheLoai(string genre, DateTime date)
         {
             List<PhimDTO> movies = new List<PhimDTO>();
@@ -59,12 +64,12 @@ namespace DAL
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = @"EXEC TimPhimTheoNgayVaTheLoai @Date = @Date, @Genre= @Genre;";
+                    string query = @"EXEC TimPhimTheoNgayVaLoai @Date = @Date, @Genre= @Genre;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Genre", genre);
-                        command.Parameters.AddWithValue("@Date", date);
+                        command.Parameters.AddWithValue("@Date", date.ToString("dd/MM/yyyy"));
 
 
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -74,9 +79,10 @@ namespace DAL
                                 PhimDTO movie = new PhimDTO();
                                 movie.Id = reader["id"].ToString();
                                 movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
-                                movie.Poster = reader.IsDBNull(reader.GetOrdinal("Poster")) ? null : (byte[])reader[reader.GetOrdinal("Poster")];
+                                movie.Poster = reader["PosterPath"].ToString();
+                                
 
-                                movie.ThoiLuong = reader.GetFloat(reader.GetOrdinal("ThoiLuong"));
+                                movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
                                 movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
                                 movies.Add(movie);
                             }
@@ -90,6 +96,11 @@ namespace DAL
                 Console.WriteLine($"Error retrieving movies: {ex.Message}");
             }
             return movies;
+        }
+
+        public bool DatVeXemPhim(HoaDonDTO hoaDonDTO)
+        {
+            return true;
         }
         //Other methods for other operations, like retrieving genres, etc.
     }
