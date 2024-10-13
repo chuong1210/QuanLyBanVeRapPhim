@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using DTO;
+using GUI.Utils;
 
 namespace GUI
 {
@@ -18,6 +20,14 @@ namespace GUI
         public frmSearchMovie()
         {
             InitializeComponent();
+            Label lblNoMovies = new Label
+            {
+                Text = "Không tìm thấy phim nào.",
+                ForeColor = Color.Red,
+                AutoSize = true,
+                Visible = false // Để ẩn label này ban đầu
+            };
+
             phimBLL = new PhimBLL();
         }
 
@@ -53,6 +63,71 @@ namespace GUI
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
+
+            string selectedGenre = cbGenre.SelectedValue.ToString();
+            DateTime selectedDate = dtpNgayChieu.Value;
+
+            // Lấy danh sách phim theo thể loại và ngày chiếu
+            List<PhimDTO> movies = phimBLL.TimPhim(selectedGenre, selectedDate);
+
+            flowLayoutPanelMovies.Controls.Clear();
+            if (movies.Count > 0)
+            {
+                flowLayoutPanelMovies.Enabled = true;
+                flowLayoutPanelMovies.Visible = true;
+                lbPhim.Visible = true;
+                flowLayoutPanelMovies.Width = 800; // Chiều rộng tổng cho 5 card phim, cộng với khoảng cách giữa chúng
+
+                lbPhim.Text = "Danh sách phim hiện tại";
+
+                foreach (var movie in movies)
+                {
+                    MovieCard movieCard = new MovieCard();
+
+                    movieCard.TenPhim = movie.TenPhim;
+                    movieCard.ThoiLuong = movie.ThoiLuong.ToString() + "h";
+                    movieCard.DaoDien = movie.DaoDien.ToString();
+                    movieCard.IdPhim = movie.Id.ToString();
+                    string imagePath = GetImagePath(movie.Poster);
+                    movieCard.PosterPath = imagePath;
+
+                    // Đăng ký sự kiện DatVeClicked
+                    movieCard.BookTicketClicked += (s, args) =>
+                    {
+                        // Mở form đặt vé và truyền các thông tin cần thiết
+                        frmSeatMovie datVeForm = new frmSeatMovie();
+                        datVeForm.LoadMovie(movieCard.IdPhim, movieCard.TenPhim, movieCard.PosterPath);
+                        datVeForm.ShowDialog(); // Hoặc Show nếu bạn không muốn form là modal
+                    };
+
+                    // Điều chỉnh kích thước của MovieCard nếu cần
+                    //movieCard.Width = 200; // Hoặc bất kỳ kích thước nào bạn muốn
+                    //movieCard.Height = 300;
+                    movieCard.Margin = new Padding(10);
+
+                    // Thêm movieCard vào FlowLayoutPanel
+                    flowLayoutPanelMovies.Controls.Add(movieCard);
+                }
+            }
+
+            else
+            {
+                lbPhim.Text = "Không có phim nào trong ngày đang chọn";
+            }
+        }
+
+        private string GetImagePath(string poster)
+        {
+            if (string.IsNullOrEmpty(poster))
+            {
+                string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
+                return Path.Combine(projectPath, "images", "logo.png");
+            }
+            else
+            {
+                return Path.Combine(Application.StartupPath, "images", poster);
+            }
         }
 
         private void frmSearchMovie_Load(object sender, EventArgs e)

@@ -9,7 +9,7 @@ namespace DAL
 {
   public  class TaiKhoanDAL
     {
-        private string connectionString = "Data Source=LAPTOP-DTCNUEFC\\SQLEXPRESS;Initial Catalog=QLRP;Integrated Security=True;";
+        private string connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;User ID=sa;Password=101204";
 
         public TaiKhoanDTO GetTaiKhoan(string userName, string password)
         {
@@ -54,6 +54,46 @@ namespace DAL
                 connection.Open();
                 int result = command.ExecuteNonQuery();
                 return result > 0; // Trả về true nếu đăng ký thành công
+            }
+        }
+
+
+        public bool ChangePassword(string userName, string oldPassword, string newPassword)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"
+                    UPDATE TaiKhoan
+                    SET PassWord = @NewPassword
+                    WHERE UserName = @UserName AND PassWord = @OldPassword;
+                ";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@NewPassword", newPassword);
+                command.Parameters.AddWithValue("@UserName", userName);
+                command.Parameters.AddWithValue("@OldPassword", oldPassword);
+
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
+                return rowsAffected > 0;
+            }
+        }
+
+
+        // ... in your TaiKhoanBLL class
+        public bool CheckOldPassword(string userName, string oldPassword)
+        {
+   
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = @"SELECT COUNT(*) FROM TaiKhoan WHERE UserName = @UserName AND PassWord = @OldPassword";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@UserName", userName);
+                command.Parameters.AddWithValue("@OldPassword", oldPassword);
+
+                connection.Open();
+                int count = (int)command.ExecuteScalar();
+
+                return count > 0; //Return True if count is greater than 0
             }
         }
     }

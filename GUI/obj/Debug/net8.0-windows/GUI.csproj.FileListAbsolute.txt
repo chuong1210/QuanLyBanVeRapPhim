@@ -163,3 +163,6 @@ E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfi
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmSearchMovie.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmSideBar.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Utils.MovieCard.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmDetailMovie.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmChangePW.resources

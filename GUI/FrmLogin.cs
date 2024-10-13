@@ -55,11 +55,12 @@ namespace GUI
                 if (taiKhoan.IdRole == 1)
                 {
                     frmAdmin amin = new frmAdmin();
+                    frmSideBar client = new frmSideBar(taiKhoan.UserName);
                     amin.Show();
                 }
                 else
                 {
-                    frmSideBar client = new frmSideBar();
+                    frmSideBar client = new frmSideBar(taiKhoan.UserName);
                     client.Show();
                 }
 

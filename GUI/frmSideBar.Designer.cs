@@ -29,31 +29,49 @@
         private void InitializeComponent()
         {
             sidebarPanel = new Panel();
+            pcLogo = new PictureBox();
+            sidebarPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pcLogo).BeginInit();
             SuspendLayout();
             // 
             // sidebarPanel
             // 
             sidebarPanel.BackColor = Color.DarkViolet;
+            sidebarPanel.BorderStyle = BorderStyle.Fixed3D;
+            sidebarPanel.Controls.Add(pcLogo);
             sidebarPanel.Dock = DockStyle.Left;
             sidebarPanel.Location = new Point(0, 0);
             sidebarPanel.Name = "sidebarPanel";
             sidebarPanel.Size = new Size(126, 450);
             sidebarPanel.TabIndex = 1;
             // 
-            // frmClient
+            // pcLogo
+            // 
+            pcLogo.BackgroundImage = Properties.Resources.logo_huit;
+            pcLogo.BackgroundImageLayout = ImageLayout.Zoom;
+            pcLogo.Location = new Point(3, 27);
+            pcLogo.Name = "pcLogo";
+            pcLogo.Size = new Size(114, 99);
+            pcLogo.TabIndex = 0;
+            pcLogo.TabStop = false;
+            // 
+            // frmSideBar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(sidebarPanel);
-            Name = "frmClient";
+            Name = "frmSideBar";
             Text = "frmClient";
             FormClosing += frmClient_FormClosing;
             Load += frmClient_Load;
+            sidebarPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pcLogo).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private Panel sidebarPanel;
+        private PictureBox pcLogo;
     }
 }

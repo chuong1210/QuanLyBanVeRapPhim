@@ -28,84 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            poster = new PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovieCard));
+            pbPoster = new PictureBox();
             lbName = new Label();
             lbDuration = new Label();
             lbDirector = new Label();
-            btnPay = new Button();
-            ((System.ComponentModel.ISupportInitialize)poster).BeginInit();
+            btnBookTicket = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbPoster).BeginInit();
             SuspendLayout();
             // 
-            // poster
+            // pbPoster
             // 
-            poster.BackColor = Color.FromArgb(192, 192, 255);
-            poster.BackgroundImage = Properties.Resources.oip1;
-            poster.BackgroundImageLayout = ImageLayout.Zoom;
-            poster.Location = new Point(0, 3);
-            poster.Name = "poster";
-            poster.Size = new Size(194, 187);
-            poster.TabIndex = 0;
-            poster.TabStop = false;
+            pbPoster.BackColor = Color.FromArgb(192, 192, 255);
+            pbPoster.BackgroundImage = (Image)resources.GetObject("pbPoster.BackgroundImage");
+            pbPoster.BackgroundImageLayout = ImageLayout.Zoom;
+            pbPoster.BorderStyle = BorderStyle.Fixed3D;
+            pbPoster.Location = new Point(0, 0);
+            pbPoster.Name = "pbPoster";
+            pbPoster.Size = new Size(194, 190);
+            pbPoster.TabIndex = 0;
+            pbPoster.TabStop = false;
             // 
             // lbName
             // 
             lbName.AutoSize = true;
-            lbName.Location = new Point(57, 197);
+            lbName.BorderStyle = BorderStyle.Fixed3D;
+            lbName.Font = new Font("Bahnschrift SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lbName.ForeColor = Color.Red;
+            lbName.Location = new Point(68, 193);
             lbName.Name = "lbName";
-            lbName.Size = new Size(91, 20);
+            lbName.Size = new Size(126, 26);
             lbName.TabIndex = 1;
             lbName.Text = "Kí sinh trùng";
+            lbName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbDuration
             // 
             lbDuration.AutoSize = true;
-            lbDuration.Location = new Point(143, 227);
+            lbDuration.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            lbDuration.Location = new Point(157, 222);
             lbDuration.Name = "lbDuration";
-            lbDuration.Size = new Size(28, 20);
+            lbDuration.Size = new Size(27, 18);
             lbDuration.TabIndex = 2;
             lbDuration.Text = "90'";
             // 
             // lbDirector
             // 
             lbDirector.AutoSize = true;
-            lbDirector.Location = new Point(18, 227);
+            lbDirector.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            lbDirector.Location = new Point(15, 222);
             lbDirector.Name = "lbDirector";
-            lbDirector.Size = new Size(74, 20);
+            lbDirector.Size = new Size(96, 18);
             lbDirector.TabIndex = 3;
-            lbDirector.Text = "John cena";
+            lbDirector.Text = "dnaiodhiladia";
             // 
-            // btnPay
+            // btnBookTicket
             // 
-            btnPay.Location = new Point(37, 250);
-            btnPay.Name = "btnPay";
-            btnPay.Size = new Size(134, 29);
-            btnPay.TabIndex = 4;
-            btnPay.Text = "button1";
-            btnPay.UseVisualStyleBackColor = true;
+            btnBookTicket.BackgroundImage = Properties.Resources.th;
+            btnBookTicket.BackgroundImageLayout = ImageLayout.Stretch;
+            btnBookTicket.Cursor = Cursors.Hand;
+            btnBookTicket.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnBookTicket.ForeColor = Color.MediumSlateBlue;
+            btnBookTicket.Location = new Point(37, 250);
+            btnBookTicket.Name = "btnBookTicket";
+            btnBookTicket.Size = new Size(126, 42);
+            btnBookTicket.TabIndex = 4;
+            btnBookTicket.Text = "Đặt vé";
+            btnBookTicket.UseVisualStyleBackColor = true;
             // 
             // MovieCard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 192, 255);
-            Controls.Add(btnPay);
+            Controls.Add(btnBookTicket);
             Controls.Add(lbDirector);
             Controls.Add(lbDuration);
             Controls.Add(lbName);
-            Controls.Add(poster);
+            Controls.Add(pbPoster);
             Name = "MovieCard";
-            Size = new Size(194, 285);
-            ((System.ComponentModel.ISupportInitialize)poster).EndInit();
+            Size = new Size(195, 308);
+            ((System.ComponentModel.ISupportInitialize)pbPoster).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private PictureBox poster;
+        private PictureBox pbPoster;
         private Label lbName;
         private Label lbDuration;
         private Label lbDirector;
-        private Button btnPay;
+        private Button btnBookTicket;
     }
 }
