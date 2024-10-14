@@ -42,7 +42,7 @@
             pbPoster.BackColor = Color.FromArgb(192, 192, 255);
             pbPoster.BackgroundImage = (Image)resources.GetObject("pbPoster.BackgroundImage");
             pbPoster.BackgroundImageLayout = ImageLayout.Zoom;
-            pbPoster.BorderStyle = BorderStyle.Fixed3D;
+            pbPoster.BorderStyle = BorderStyle.FixedSingle;
             pbPoster.Location = new Point(0, 0);
             pbPoster.Name = "pbPoster";
             pbPoster.Size = new Size(194, 190);
@@ -66,7 +66,7 @@
             // 
             lbDuration.AutoSize = true;
             lbDuration.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            lbDuration.Location = new Point(157, 222);
+            lbDuration.Location = new Point(147, 222);
             lbDuration.Name = "lbDuration";
             lbDuration.Size = new Size(27, 18);
             lbDuration.TabIndex = 2;

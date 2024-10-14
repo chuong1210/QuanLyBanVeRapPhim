@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    class DatVeDTO
+  public  class DatVeDTO
     {
+        public int Id { get; set; }
+        public string IdKhachHang { get; set; }
+        public string IdLichChieuPhim { get; set; }
 
+        public DateTime NgayMua { get; set; }
+        public decimal TongTien { get; set; }
+        public decimal GiaVePhim { get; set; }
+
+        
     }
 }

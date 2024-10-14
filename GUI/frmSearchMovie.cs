@@ -17,9 +17,11 @@ namespace GUI
     public partial class frmSearchMovie : Form
     {
         private PhimBLL phimBLL;
-        public frmSearchMovie()
+        private string _idKh;
+        public frmSearchMovie(string idKh)
         {
             InitializeComponent();
+            panelFilter.Width = 1200;
             Label lblNoMovies = new Label
             {
                 Text = "Không tìm thấy phim nào.",
@@ -28,6 +30,7 @@ namespace GUI
                 Visible = false // Để ẩn label này ban đầu
             };
 
+            _idKh=idKh;
             phimBLL = new PhimBLL();
         }
 
@@ -68,7 +71,7 @@ namespace GUI
             DateTime selectedDate = dtpNgayChieu.Value;
 
             // Lấy danh sách phim theo thể loại và ngày chiếu
-            List<PhimDTO> movies = phimBLL.TimPhim(selectedGenre, selectedDate);
+            List<DsPhimDTO> movies = phimBLL.TimPhim(selectedGenre, selectedDate);
 
             flowLayoutPanelMovies.Controls.Clear();
             if (movies.Count > 0)
@@ -84,11 +87,14 @@ namespace GUI
                 {
                     MovieCard movieCard = new MovieCard();
 
-                    movieCard.TenPhim = movie.TenPhim;
-                    movieCard.ThoiLuong = movie.ThoiLuong.ToString() + "h";
-                    movieCard.DaoDien = movie.DaoDien.ToString();
-                    movieCard.IdPhim = movie.Id.ToString();
-                    string imagePath = GetImagePath(movie.Poster);
+                    movieCard.TenPhim = movie.PhimDTO.TenPhim;
+                    movieCard.ThoiLuong = movie.PhimDTO.ThoiLuong.ToString() + "'";
+                    movieCard.DaoDien = movie.PhimDTO.DaoDien.ToString();
+                    movieCard.IdPhim = movie.PhimDTO.Id.ToString();
+                    string imagePath = GetImagePath(movie.PhimDTO.Poster.ToString());
+                    string idLichChieu =movie.idLCP;
+
+
                     movieCard.PosterPath = imagePath;
 
                     // Đăng ký sự kiện DatVeClicked
@@ -96,7 +102,7 @@ namespace GUI
                     {
                         // Mở form đặt vé và truyền các thông tin cần thiết
                         frmSeatMovie datVeForm = new frmSeatMovie();
-                        datVeForm.LoadMovie(movieCard.IdPhim, movieCard.TenPhim, movieCard.PosterPath);
+                        datVeForm.LoadMovie(idLichChieu, movieCard.TenPhim, movieCard.PosterPath,dtpNgayChieu.Value.ToString("dd/MM/yyyy"),_idKh);
                         datVeForm.ShowDialog(); // Hoặc Show nếu bạn không muốn form là modal
                     };
 
@@ -135,6 +141,9 @@ namespace GUI
             cbGenre.DataSource = phimBLL.DanhSachTheLoai();
             cbGenre.DisplayMember = "TenTheLoai";
             cbGenre.ValueMember= "TenTheLoai";
+
+
+            panelLine.Height = 2;
         }
     }
 }

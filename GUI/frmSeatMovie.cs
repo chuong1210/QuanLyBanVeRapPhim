@@ -7,17 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using DTO;
 using GUI.Utils;
 
 namespace GUI
 {
     public partial class frmSeatMovie : Form
     {
-        private int rows = 10;
-        private int cols = 14;
+        PhimBLL phimBll= new PhimBLL();
+        private int rows = 0;
+        private int cols = 0;
         Button[,] seats;
         private int buttonSeatSize = 60;
+        LichChieuPhimDTO lc;
         List<string> selectedSeats = new List<string>();
+        List<string> gheDaDat = new List<string>();
+        private string idLichCP;
+        private string _idKh;
+        Dictionary<string, int> seatMapping = new Dictionary<string, int>();
+
         public frmSeatMovie()
         {
             InitializeComponent();
@@ -28,10 +37,18 @@ namespace GUI
             this.TopMost = false; // Đưa form lên trên cùng nếu cần
         }
 
-        public void LoadMovie (string idPhim, string tenPhim, string posterPath)
+        public void LoadMovie (string idLichChieu, string tenPhim, string posterPath,string ngayChieu,string idKh)
         {
-            lblThongtin.Text = tenPhim; // Gán tên phim cho label
+            lblThongtin.Text = tenPhim;
             //pbPoster.ImageLocation = posterPath;
+            idLichCP= idLichChieu;
+             lc =   phimBll.LayChiTietLichChieuPhim(idLichCP);
+            lblLich.Text = lc.ThoiGianChieu.ToString();
+            gheDaDat = phimBll.LayGheDaDat(idLichCP);
+            (rows, cols) = phimBll.LayThongTinPhongChieu(lc.idPhong);
+            CreateSeats(rows, cols); // Gọi 
+            _idKh=idKh;
+
 
         }
 
@@ -41,7 +58,7 @@ namespace GUI
 
             seats = new Button[rows, cols];
 
-            for (int row = 0; row < rows; row++)
+            for (int row =0; row < rows; row++)
             {
 
               
@@ -51,13 +68,43 @@ namespace GUI
                     seatButton.Width = buttonSeatSize;
                     seatButton.Height = buttonSeatSize;
                     //seatButton.Text = $"{row + 1}-{col + 1}"; // Số hàng và số ghế
-                    seatButton.Text = $"{(char)('A' + row)}{col + 1}";
-                    seatButton.BackColor = Color.Green; // Màu ghế trống
+                    string seatLabel = $"{(char)('A' + row)}{col + 1}";
+                    seatButton.Text = seatLabel;
+
+                    int seatId = row * cols + col+1; // Assuming IDs are numeric and start from 0
+                    seatMapping[seatLabel] = seatId;
+
+                    bool val = false;
+                    foreach (var item in gheDaDat)
+                    {
+                        if (item.Equals(seatId.ToString()))
+                        {
+                            // Vô hiệu hóa ghế đã đặt
+                            val=true; 
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+
+                    if(val)
+                    {
+                        seatButton.BackColor = Color.Red; // Ghế đã được đặt
+                        seatButton.Enabled = false;
+                    }
+                   
+                    else
+                    {
+                        seatButton.BackColor = Color.Green; // Ghế chưa đặt
+                        seatButton.Click += SeatButton_Click;
+                    }
+
                     seatButton.Margin = new Padding(5);
                
                     seatButton.Cursor = Cursors.Hand;
                     // Gán sự kiện khi người dùng bấm vào ghế
-                    seatButton.Click += SeatButton_Click;
                     ApplyRoundedCorners(seatButton); // Call here
 
                     // Thêm ghế vào FlowLayoutPanel (hoặc Panel)
@@ -87,8 +134,8 @@ namespace GUI
 
             if (clickedButton.BackColor == Color.Green)
             {
-                clickedButton.BackColor = Color.Red; // Ghế đã đặt
-                selectedSeats.Add(seatNumber); // Thêm ghế vào danh sách đã đặt
+                clickedButton.BackColor = Color.Yellow; // Ghế đã đặt
+                selectedSeats.Add(seatNumber);  // Thêm ghế vào danh sách đã đặt
             }
             else if (clickedButton.BackColor == Color.Red)
             {
@@ -112,6 +159,8 @@ namespace GUI
             flowLayoutPanelSeats.Height = 700;
             flowLayoutPanelSeats.Location = new Point(150, 80);
             btnConfirm.Location = new Point(291, 716);
+            pcPoster.Location = new Point(50, 80);
+            lblThongtin.Location = new Point(50, 220);
         }
 
     
@@ -119,8 +168,43 @@ namespace GUI
         {
             if (selectedSeats.Count > 0)
             {
+                // Tạo đối tượng DatVeDTO với thông tin cần thiết
+                DatVeDTO datVeDTO = new DatVeDTO
+                {
+                    IdKhachHang =_idKh , // Thay thế bằng ID khách hàng thực tế
+                    IdLichChieuPhim = idLichCP,
+                    GiaVePhim = lc.GiaVePhim,
+                    TongTien=65000,
+
+                };
+
+                List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
+
                 string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
-                MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool result = phimBll.DatVeXemPhim(datVeDTO, seatIds); // Pass the list of IDs
+
+                if (result)
+                {
+                    // Đặt màu xanh cho các ghế đã chọn
+                    foreach (string seat in selectedSeats)
+                    {
+                        // Find the corresponding button for the seat
+                        Button seatButton = flowLayoutPanelSeats.Controls
+                            .OfType<Button>()
+                            .FirstOrDefault(b => b.Text == seat);
+
+                        if (seatButton != null)
+                        {
+                            seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
+                        }
+                    }
+
+                    MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Đặt vé không thành công. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             else
             {
@@ -136,10 +220,6 @@ namespace GUI
         private void frmSeatMovie_Load(object sender, EventArgs e)
         {
             seats = new Button[rows, cols];
-            CreateSeats(rows, cols); // Gọi 
-
-            //this.WindowState = FormWindowState.Maximized; // Phóng to toàn màn hình
-            //this.TopMost = true; // Đưa form lên trên cùng nếu cần
             AdjustFlowLayoutPanelSize();
             flowLayoutPanelSeats.BackColor = Color.LightGray;
         }

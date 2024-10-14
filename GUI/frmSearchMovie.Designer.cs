@@ -37,12 +37,14 @@
             label1 = new Label();
             flowLayoutPanelMovies = new FlowLayoutPanel();
             lbPhim = new Label();
+            panelLine = new Panel();
             panelFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)searchBtn).BeginInit();
             SuspendLayout();
             // 
             // panelFilter
             // 
+            panelFilter.BackColor = Color.White;
             panelFilter.BackgroundImageLayout = ImageLayout.Stretch;
             panelFilter.BorderStyle = BorderStyle.Fixed3D;
             panelFilter.Controls.Add(searchBtn);
@@ -145,12 +147,21 @@
             lbPhim.Text = "Danh sách phim hiện tại";
             lbPhim.Visible = false;
             // 
+            // panelLine
+            // 
+            panelLine.BackColor = Color.Black;
+            panelLine.Location = new Point(283, 384);
+            panelLine.Name = "panelLine";
+            panelLine.Size = new Size(1336, 15);
+            panelLine.TabIndex = 3;
+            // 
             // frmSearchMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.DarkGray;
             ClientSize = new Size(1337, 829);
+            Controls.Add(panelLine);
             Controls.Add(lbPhim);
             Controls.Add(flowLayoutPanelMovies);
             Controls.Add(panelFilter);
@@ -175,5 +186,6 @@
         private PictureBox searchBtn;
         private FlowLayoutPanel flowLayoutPanelMovies;
         private Label lbPhim;
+        private Panel panelLine;
     }
 }

@@ -134,6 +134,9 @@ GO
 
 
 -- Phần khách hàng
+select * from vephim
+
+
 
 -- Tạo bảng VePhim
 CREATE TABLE VePhim
@@ -183,6 +186,7 @@ CREATE TABLE HoaDon
     CONSTRAINT PK_HoaDon PRIMARY KEY (id),  -- Khóa chính
     CONSTRAINT FK_HoaDon_KhachHang FOREIGN KEY (idKhachHang) REFERENCES dbo.KhachHang(id)
 );
+select * from hoadon
 CREATE TABLE ChiTietHoaDon
 (
     idHoaDon INT NOT NULL,  -- ID hóa đơn
@@ -309,6 +313,101 @@ VALUES
 ('Phong 2', 2, 100, 10, 10);
 
 
+-- tự động tạo vé phim khi insert lịch chiếu
+CREATE TRIGGER trg_AutoCreateVePhim
+ON LichChieuPhim
+AFTER INSERT
+AS
+BEGIN
+    DECLARE @idPhong INT, @idLichChieu INT, @SoGhe INT;
+
+    -- Lấy thông tin từ bảng LichChieuPhim vừa được insert
+    SELECT @idPhong = idPhong, @idLichChieu = id 
+    FROM inserted;
+
+    -- Lấy số ghế ngồi từ bảng PhongChieu
+    SELECT @SoGhe = SoGheNgoi
+    FROM PhongChieu
+    WHERE id = @idPhong;
+
+    DECLARE @i INT = 1;
+    DECLARE @MaGhe VARCHAR(50);
+
+    -- Vòng lặp để tạo vé cho từng ghế
+    WHILE @i <= @SoGhe
+    BEGIN
+        SET @MaGhe = 'Ghe_' + CAST(@i AS VARCHAR);  -- Tạo mã ghế
+        
+        -- Thêm vé vào bảng VePhim
+        INSERT INTO VePhim (idLichChieuPhim, MaGheNgoi, idKhachHang, TrangThaiVePhim)
+        VALUES (@idLichChieu, @MaGhe, NULL, 0);  -- idKhachHang là NULL, TrangThaiVePhim là 'Chưa Bán' (0)
+
+        SET @i = @i + 1;  -- Tăng biến đếm
+    END
+
+	UPDATE LichChieuPhim
+    SET TrangThaiChieu = 1
+    WHERE id = @idLichChieu;
+END
+GO
+
+
+go
+-- Trigger để kiểm tra thời gian chiếu phim không trùng lặp trong cùng phòng chiếu
+
+--Nó kiểm tra ba trường hợp xung đột:
+--Phim mới bắt đầu trong khoảng thời gian chiếu của phim hiện tại.
+--Phim mới kết thúc trong khoảng thời gian chiếu của phim hiện tại.
+--Phim hiện tại bắt đầu trong khoảng thời gian chiếu của phim mới.
+CREATE TRIGGER trg_KiemTraTrungLapSuatChieu 
+ON LichChieuPhim
+INSTEAD OF INSERT
+AS
+BEGIN
+    DECLARE @ThoiGianChieu DATETIME;
+    DECLARE @idPhong INT;
+    DECLARE @ThoiLuong INT;
+
+    -- Lấy thông tin từ dòng đang được chèn
+    SELECT 
+        @ThoiGianChieu = ThoiGianChieu,
+        @idPhong = idPhong
+    FROM inserted;
+
+    -- Lấy thời lượng của phim từ bảng Phim
+    SELECT @ThoiLuong = ThoiLuong FROM Phim WHERE id = (SELECT idPhim FROM inserted);
+
+    -- Tính toán thời gian kết thúc của lịch chiếu mới
+    DECLARE @ThoiGianKetThuc DATETIME = DATEADD(MINUTE, @ThoiLuong, @ThoiGianChieu);
+
+    -- Kiểm tra xung đột với các lịch chiếu khác trong cùng phòng chiếu vào cùng ngày
+    IF EXISTS (
+        SELECT 1
+        FROM LichChieuPhim AS lcp
+        JOIN Phim AS p ON lcp.idPhim = p.id
+        WHERE lcp.idPhong = @idPhong
+          AND CONVERT(DATE, lcp.ThoiGianChieu) = CONVERT(DATE, @ThoiGianChieu) -- Cùng ngày
+          AND (
+              -- Thời gian bắt đầu hoặc kết thúc của lịch mới nằm trong khoảng thời gian chiếu của lịch hiện tại
+              (@ThoiGianChieu BETWEEN lcp.ThoiGianChieu AND DATEADD(MINUTE, p.ThoiLuong, lcp.ThoiGianChieu)) OR
+              (@ThoiGianKetThuc BETWEEN lcp.ThoiGianChieu AND DATEADD(MINUTE, p.ThoiLuong, lcp.ThoiGianChieu)) OR
+              -- Lịch hiện tại bắt đầu trong khoảng thời gian của lịch mới
+              (lcp.ThoiGianChieu BETWEEN @ThoiGianChieu AND @ThoiGianKetThuc)
+          )
+    )
+    BEGIN
+        RAISERROR('Thời gian chiếu không hợp lệ. Có sự xung đột với lịch chiếu hiện tại!', 16, 1);
+        ROLLBACK TRANSACTION; -- Hủy bỏ transaction nếu có xung đột
+    END
+    ELSE
+    BEGIN
+	print @ThoiGianKetThuc
+        -- Nếu không có xung đột, cho phép chèn
+        INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim, TrangThaiChieu)
+        SELECT ThoiGianChieu, idPhong, GiaVePhim, idPhim, TrangThaiChieu FROM inserted;
+    END
+END;
+
 --Thêm dữ liệu vào bảng LichChieuPhim để test
 
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
@@ -387,7 +486,7 @@ BEGIN
 	END
 
     SELECT
-        p.id,
+        p.id AS PhimId,
         p.TenPhim,
         p.PosterPath,
         p.ThoiLuong,
@@ -396,7 +495,8 @@ BEGIN
 		p.NamSX,
 		p.DienVien,
 		p.NgayKhoiChieu,
-		p.NgayKetThuc
+		p.NgayKetThuc,
+		lcp.id as LcpId
     FROM
         Phim p
     JOIN
@@ -418,6 +518,114 @@ go
 EXEC TimPhimTheoNgayVaLoai @Date = '2024-01-09', @Genre = 'Hành động';
 go
 
+-- ----------
+
+
+CREATE PROCEDURE TimPhimTheoNgayVaLoai2
+    @Date DATE,
+    @Genre NVARCHAR(100)
+AS
+BEGIN
+    -- Kiểm tra nếu ngày không hợp lệ
+    IF @Date IS NULL
+    BEGIN
+        RAISERROR('Ngày không hợp lệ.', 16, 1)
+        RETURN
+    END
+
+    -- Kiểm tra nếu thể loại không hợp lệ
+    IF @Genre IS NULL
+    BEGIN
+        RAISERROR('Thể loại không hợp lệ.', 16, 1)
+        RETURN
+    END
+
+    -- Kiểm tra nếu không có phim nào phù hợp với thể loại và ngày
+    IF NOT EXISTS (
+        SELECT 1
+        FROM Phim p
+        JOIN ChiTietPhimTL cpt ON p.id = cpt.idPhim
+        JOIN TheLoai t ON cpt.idTheLoai = t.id
+        WHERE t.TenTheLoai = @Genre
+        AND p.NgayKhoiChieu <= @Date
+        AND p.NgayKetThuc >= @Date
+    )
+    BEGIN
+        RAISERROR('Không tìm thấy phim nào có thể loại này trong khoảng thời gian này.', 16, 1)
+        RETURN
+    END
+
+    -- Truy vấn danh sách phim và lịch chiếu chi tiết
+    SELECT
+        p.id AS PhimId,
+        p.TenPhim,
+        p.PosterPath,
+        p.ThoiLuong,
+        p.DaoDien,
+        p.MoTa,
+        p.NamSX,
+        p.DienVien,
+        p.NgayKhoiChieu,
+        p.NgayKetThuc,
+        lcp.ThoiGianChieu,
+        pc.TenPhong,
+        lcp.GiaVePhim,
+        (pc.SoGheNgoi - COUNT(vp.id)) AS SoGheConLai  -- Số ghế còn trống
+    FROM
+        Phim p
+    JOIN
+        ChiTietPhimTL cpt ON p.id = cpt.idPhim
+    JOIN
+        TheLoai t ON cpt.idTheLoai = t.id
+    JOIN
+        LichChieuPhim lcp ON p.id = lcp.idPhim
+    JOIN
+        PhongChieu pc ON lcp.idPhong = pc.id
+    LEFT JOIN
+        VePhim vp ON lcp.id = vp.idLichChieuPhim AND vp.TrangThaiVePhim = 1  -- Chỉ tính vé đã bán
+    WHERE
+        t.TenTheLoai = @Genre
+        AND p.NgayKhoiChieu <= @Date
+        AND p.NgayKetThuc >= @Date
+        AND lcp.ThoiGianChieu >= @Date
+        AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date)  -- Phim chiếu trong ngày đã chọn
+    GROUP BY
+        p.id, p.TenPhim, p.PosterPath, p.ThoiLuong, p.DaoDien, p.MoTa, p.NamSX, p.DienVien,
+        p.NgayKhoiChieu, p.NgayKetThuc, lcp.ThoiGianChieu, pc.TenPhong, lcp.GiaVePhim, pc.SoGheNgoi
+    ORDER BY
+        p.TenPhim, lcp.ThoiGianChieu;
+END;
+
+
+EXEC TimPhimTheoNgayVaLoai2 @Date = '2024-01-09', @Genre = 'Hành động';
+-- -------------------------
+
+drop proc LayThongTinChiTietLichChieu
+CREATE PROCEDURE LayThongTinChiTietLichChieu
+    @idLichChieuPhim INT  -- ID lịch chiếu phim mà người dùng chọn
+AS
+BEGIN
+    -- Lấy thông tin chi tiết lịch chiếu phim
+    SELECT 
+        pc.id as idPhong,  -- Tên phòng chiếu
+        lcp.GiaVePhim,  -- Giá vé
+		lcp.ThoiGianChieu,
+        (pc.SoGheNgoi - COUNT(vp.id)) AS SoGheConLai  -- Số ghế còn lại
+    FROM 
+        LichChieuPhim lcp
+    INNER JOIN 
+        PhongChieu pc ON lcp.idPhong = pc.id
+    LEFT JOIN 
+        VePhim vp ON lcp.id = vp.idLichChieuPhim AND vp.TrangThaiVePhim = 1  -- Chỉ tính những vé đã bán
+    WHERE 
+        lcp.id = @idLichChieuPhim  -- Lọc theo ID lịch chiếu phim
+    GROUP BY 
+        pc.id, lcp.GiaVePhim, lcp.ThoiGianChieu, pc.SoGheNgoi;
+END;
+
+
+
+--- -------------------------------------
 CREATE PROC PROC_TinhTongDoanhThuPhim
     @idPhim VARCHAR(10) -- ID của phim cần tính tổng doanh thu
 AS
@@ -588,73 +796,6 @@ END
 
 
 --------------------------------------------START TRIGGER ------------------------------------------------------------
--- Trigger để kiểm tra thời gian chiếu phim không trùng lặp trong cùng phòng chiếu
-select DATEADD(MINUTE, 120,'2024-01-09 10:50:00.000' )
-SELECT 1
-        FROM LichChieuPhim
-        WHERE idPhong = 1 
-          AND (
-              (DATEADD(MINUTE, 120, ThoiGianChieu) >= '2024-01-09 10:50:00.000' ) OR
-              ( DATEADD(MINUTE, 120,'2024-01-09 10:50:00.000' )<  ThoiGianChieu)
-          )
-select * from lichchieuphim
-select * from PhongChieu
-select * from vephim
-INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
-VALUES
-('2024-01-19 20:30:00', 1, 10000, 3); --Avatar chiếu trong ngày 20/01/2024
---Nó kiểm tra ba trường hợp xung đột:
---Phim mới bắt đầu trong khoảng thời gian chiếu của phim hiện tại.
---Phim mới kết thúc trong khoảng thời gian chiếu của phim hiện tại.
---Phim hiện tại bắt đầu trong khoảng thời gian chiếu của phim mới.
-CREATE TRIGGER trg_KiemTraTrungLapSuatChieu 
-ON LichChieuPhim
-INSTEAD OF INSERT
-AS
-BEGIN
-    DECLARE @ThoiGianChieu DATETIME;
-    DECLARE @idPhong INT;
-    DECLARE @ThoiLuong INT;
-
-    -- Lấy thông tin từ dòng đang được chèn
-    SELECT 
-        @ThoiGianChieu = ThoiGianChieu,
-        @idPhong = idPhong
-    FROM inserted;
-
-    -- Lấy thời lượng của phim từ bảng Phim
-    SELECT @ThoiLuong = ThoiLuong FROM Phim WHERE id = (SELECT idPhim FROM inserted);
-
-    -- Tính toán thời gian kết thúc của lịch chiếu mới
-    DECLARE @ThoiGianKetThuc DATETIME = DATEADD(MINUTE, @ThoiLuong, @ThoiGianChieu);
-
-    -- Kiểm tra xung đột với các lịch chiếu khác trong cùng phòng chiếu vào cùng ngày
-    IF EXISTS (
-        SELECT 1
-        FROM LichChieuPhim AS lcp
-        JOIN Phim AS p ON lcp.idPhim = p.id
-        WHERE lcp.idPhong = @idPhong
-          AND CONVERT(DATE, lcp.ThoiGianChieu) = CONVERT(DATE, @ThoiGianChieu) -- Cùng ngày
-          AND (
-              -- Thời gian bắt đầu hoặc kết thúc của lịch mới nằm trong khoảng thời gian chiếu của lịch hiện tại
-              (@ThoiGianChieu BETWEEN lcp.ThoiGianChieu AND DATEADD(MINUTE, p.ThoiLuong, lcp.ThoiGianChieu)) OR
-              (@ThoiGianKetThuc BETWEEN lcp.ThoiGianChieu AND DATEADD(MINUTE, p.ThoiLuong, lcp.ThoiGianChieu)) OR
-              -- Lịch hiện tại bắt đầu trong khoảng thời gian của lịch mới
-              (lcp.ThoiGianChieu BETWEEN @ThoiGianChieu AND @ThoiGianKetThuc)
-          )
-    )
-    BEGIN
-        RAISERROR('Thời gian chiếu không hợp lệ. Có sự xung đột với lịch chiếu hiện tại!', 16, 1);
-        ROLLBACK TRANSACTION; -- Hủy bỏ transaction nếu có xung đột
-    END
-    ELSE
-    BEGIN
-	print @ThoiGianKetThuc
-        -- Nếu không có xung đột, cho phép chèn
-        INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim, TrangThaiChieu)
-        SELECT ThoiGianChieu, idPhong, GiaVePhim, idPhim, TrangThaiChieu FROM inserted;
-    END
-END;
 
 -- Lịch chiếu không được lớn hơn ngày khởi chiếu của phim.
 CREATE TRIGGER trg_CheckNgayChieu
@@ -689,44 +830,6 @@ BEGIN
 
     CLOSE cur;
     DEALLOCATE cur;
-END
-GO
-
--- tự động tạo vé phim khi insert lịch chiếu
-CREATE TRIGGER trg_AutoCreateVePhim
-ON LichChieuPhim
-AFTER INSERT
-AS
-BEGIN
-    DECLARE @idPhong INT, @idLichChieu INT, @SoGhe INT;
-
-    -- Lấy thông tin từ bảng LichChieuPhim vừa được insert
-    SELECT @idPhong = idPhong, @idLichChieu = id 
-    FROM inserted;
-
-    -- Lấy số ghế ngồi từ bảng PhongChieu
-    SELECT @SoGhe = SoGheNgoi
-    FROM PhongChieu
-    WHERE id = @idPhong;
-
-    DECLARE @i INT = 1;
-    DECLARE @MaGhe VARCHAR(50);
-
-    -- Vòng lặp để tạo vé cho từng ghế
-    WHILE @i <= @SoGhe
-    BEGIN
-        SET @MaGhe = 'Ghe_' + CAST(@i AS VARCHAR);  -- Tạo mã ghế
-        
-        -- Thêm vé vào bảng VePhim
-        INSERT INTO VePhim (idLichChieuPhim, MaGheNgoi, idKhachHang, TrangThaiVePhim)
-        VALUES (@idLichChieu, @MaGhe, NULL, 0);  -- idKhachHang là NULL, TrangThaiVePhim là 'Chưa Bán' (0)
-
-        SET @i = @i + 1;  -- Tăng biến đếm
-    END
-
-	UPDATE LichChieuPhim
-    SET TrangThaiChieu = 1
-    WHERE id = @idLichChieu;
 END
 GO
 

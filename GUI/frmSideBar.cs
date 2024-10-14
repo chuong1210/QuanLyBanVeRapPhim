@@ -14,7 +14,7 @@ namespace GUI
     {
         private List<Button> buttons = new List<Button>();
         private Form activeForm = null; // Lưu form đang hoạt động
-        private string _username = "";
+        private string _username ;
         private Panel panelContent;
 
         public frmSideBar(string username)
@@ -27,7 +27,7 @@ namespace GUI
             this.Controls.Add(sidebarPanel);
             sidebarPanel.Padding = new Padding(0, 170, 0, 0); // Khoảng cách trên cùng là 50px
             _username=username;
-            string[] buttonLabels = {  "Lịch chiếu phim",  "Đổi mật khẩu", "Biểu mẫu hóa đơn" ,username};
+            string[] buttonLabels = {  "Lịch chiếu phim",  "Đổi mật khẩu", "Biểu mẫu hóa đơn" };
             buttonLabels = buttonLabels.Reverse().ToArray();
             foreach (string label in buttonLabels)
             {
@@ -37,6 +37,7 @@ namespace GUI
                 button.BackColor = Color.LightBlue;
                 button.Dock = DockStyle.Top;
                 button.Width= 100;
+                button.Font = new Font("Bahnschrift", 12, FontStyle.Bold);
                 button.Height = 80;
                 button.Margin = new Padding(0, 120, 0, 0);
                 button.Click += Button_Click;
@@ -48,7 +49,7 @@ namespace GUI
             panelContent.Dock = DockStyle.Fill;
             this.Controls.Add(panelContent);
 
-            ShowForm(new frmSearchMovie());
+            ShowForm(new frmSearchMovie(_username));
 
 
 
@@ -95,8 +96,7 @@ namespace GUI
             }
 
 
-            // Tạo form quản lý dựa trên nút được chọn
-      
+         
             if (clickedButton.Text != "Đổi mật khẩu")
             {
                 Form newForm = null;
@@ -104,7 +104,7 @@ namespace GUI
 
                 if (clickedButton.Text == "Lịch chiếu phim")
                 {
-                    newForm = new frmSearchMovie(); // Thay MovieManagementForm bằng form của bạn
+                    newForm = new frmSearchMovie(_username); // Thay MovieManagementForm bằng form của bạn
                 }
 
                 if (newForm != null)

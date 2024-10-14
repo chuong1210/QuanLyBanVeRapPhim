@@ -10,6 +10,7 @@ namespace DTO
     {
         public int Id { get; set; }
         public string IdKhachHang { get; set; }
+
         public DateTime NgayMua { get; set; }
         public decimal TongTien { get; set; }
     }

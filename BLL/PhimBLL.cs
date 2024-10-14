@@ -10,21 +10,38 @@ namespace BLL
 {
     public class PhimBLL
     {
-        private readonly PhimDAL _movieDAL;
+        private readonly PhimDAL _phimDAL;
 
         public PhimBLL()
         {
-                _movieDAL = new PhimDAL();
+            _phimDAL = new PhimDAL();
         }
 
-        public List<PhimDTO> TimPhim(string genre, DateTime date)
+        public List<DsPhimDTO> TimPhim(string genre, DateTime date)
         {
-            return _movieDAL.TimPheoTheoNgayVaTheLoai(genre, date);
+            return _phimDAL.TimPheoTheoNgayVaTheLoai(genre, date);
         }
 
+        public LichChieuPhimDTO LayChiTietLichChieuPhim(string idLichChieuPhim)
+        {
+            // Gọi tới DAL để lấy chi tiết lịch chiếu phim
+            return _phimDAL.LichChieuPhimChiTiet(idLichChieuPhim);
+        }
         public List<TheLoaiDTO> DanhSachTheLoai()
         {
-            return _movieDAL.DanhSachTheLoai();
+            return _phimDAL.DanhSachTheLoai();
+        }
+        public (int SoHangGhe, int SoCotGhe) LayThongTinPhongChieu(string idPhong)
+        {
+            return _phimDAL .LayThongTinPhongChieu(idPhong);
+        }
+        public List<string> LayGheDaDat(string idLichChieuPhim)
+        {
+            return _phimDAL.LayGheDaDat(idLichChieuPhim);
+        }
+        public bool DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        {
+            return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
         }
 }
