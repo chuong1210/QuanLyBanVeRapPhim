@@ -83,9 +83,39 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _8432 {
+            get {
+                object obj = ResourceManager.GetObject("8432", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap employee_office_staff_3d735bc691173bb5_256x256 {
+            get {
+                object obj = ResourceManager.GetObject("employee-office-staff-3d735bc691173bb5-256x256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hide {
             get {
                 object obj = ResourceManager.GetObject("hide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap login_user_profile_account_logout_people_man_human_512 {
+            get {
+                object obj = ResourceManager.GetObject("login_user_profile_account_logout_people_man_human-512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,36 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap oip1 {
             get {
                 object obj = ResourceManager.GetObject("oip1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap openfolder_4896 {
+            get {
+                object obj = ResourceManager.GetObject("openfolder_4896", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap people_2_512 {
+            get {
+                object obj = ResourceManager.GetObject("people-2-512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pie_chart___Copy {
+            get {
+                object obj = ResourceManager.GetObject("pie-chart - Copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +216,26 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap th__2_ {
             get {
                 object obj = ResourceManager.GetObject("th (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Untitled_2_0001_Layer_8 {
+            get {
+                object obj = ResourceManager.GetObject("Untitled-2_0001_Layer-8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_3d_cinema_elements {
+            get {
+                object obj = ResourceManager.GetObject("view-3d-cinema-elements", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

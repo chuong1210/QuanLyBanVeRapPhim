@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI.DataControl.DataAdmin;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,16 @@ namespace GUI
         public frmAdmin()
         {
             InitializeComponent();
+            
+        }
+
+        private void btnData_Click(object sender, EventArgs e)
+        {
+            this.Text = "Dữ Liệu";
+            pnBodyAdmin.Controls.Clear();
+            DataUC dataUc = new DataUC();
+            dataUc.Dock = DockStyle.Fill;
+            pnBodyAdmin.Controls.Add(dataUc);
         }
     }
 }

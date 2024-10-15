@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
+
 namespace DAL
 {
     public class PhimDAL
     {
-        // DAL (Data Access Layer)
+
 
 
         private string _connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
@@ -348,8 +351,61 @@ namespace DAL
         }
 
 
-    }
 
 
+
+        public DataTable GetListMovie()
+        {
+            string query = "SELECT * FROM Phim"; // Truy vấn để lấy danh sách màn hình
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+            return dataTable;
+        }
+        public DataTable GetListMovieById(string movieId = null)
+        {
+            // Khởi tạo chuỗi truy vấn
+            string query = "SELECT * FROM Phim";
+
+            // Nếu movieId không null, thêm điều kiện WHERE vào truy vấn
+            if (!string.IsNullOrEmpty(movieId))
+            {
+                query += " WHERE id = @MovieId"; // Giả định bạn có cột Id trong bảng Phim
+            }
+
+            DataTable dataTable = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số cho truy vấn nếu cần
+                    if (!string.IsNullOrEmpty(movieId))
+                    {
+                        command.Parameters.AddWithValue("@MovieId", movieId);
+                    }
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    {
+                        connection.Open();
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            return dataTable;
+        }
 
 }
+}
+

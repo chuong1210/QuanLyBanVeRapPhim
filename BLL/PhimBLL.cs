@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,5 +45,10 @@ namespace BLL
         {
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
+        public DataTable getListMovie()
+        {
+            return _phimDAL.GetListMovie();
         }
+     
+    }
 }
