@@ -183,14 +183,14 @@ namespace DAL
         }
 
         // Lấy thông tin khách hàng theo ID
-        public KhachHangDTO GetKhachHangById(string id)
+        public string GetIdKhachHangByUserName(string username)
         {
-            KhachHangDTO kh = null;
+            string kh = "";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM KhachHang WHERE id = @Id";
+                string query = "SELECT idKH FROM TaiKhoan WHERE UserName = @name";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@name", username);
 
                 try
                 {
@@ -199,17 +199,7 @@ namespace DAL
 
                     if (reader.Read())
                     {
-                        kh = new KhachHangDTO()
-                        {
-                            Id = reader["id"].ToString(),
-                            HoTen = reader["HoTen"].ToString(),
-                            NgaySinh = (reader["NgaySinh"].ToString()),
-                            DiaChi = reader["DiaChi"].ToString(),
-                            SDT = reader["SDT"].ToString(),
-                            Email = reader["EMAIL"].ToString(),
-                            GioiTinh = reader["GioiTinh"].ToString(),
-                            DiemTichLuy = int.Parse(reader["DiemTichLuy"].ToString())
-                        };
+                      kh=reader["idKH"].ToString();
                     }
                 }
                 catch (Exception ex)

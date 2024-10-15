@@ -276,7 +276,10 @@ VALUES ('Pham Thi D', '1992-07-30', N'321 Đường GHI, Quận 4, TP.HCM', '098
 INSERT INTO TaiKhoan (UserName, PassWord, idRole, GhiNhoTK, idNV, idKH)
 VALUES 
 ('admin', 'admin123', 1, 1, NULL, 2),
-('customer1', 'customer123', 2, 1, NULL, 1);
+('customer1', 'customer123', 2, 1, NULL, 1),
+('customer2', 'customer123', 2, 1, NULL, 2),
+('customer3', 'customer123', 2, 1, NULL, 3);
+
 
 
 GO
@@ -305,9 +308,9 @@ INSERT INTO ChiTietPhimTL (idPhim, idTheLoai) VALUES
 (4, 1); -- The Batman - Hành động
 INSERT INTO LoaiManHinh (TenMH, KichThuoc)
 VALUES
-('Screen 1', 100),
-('Screen 2', 120),
-('Screen 3', 150);
+('2D', 100),
+('3D', 120),
+('4DX', 150);
 INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, SoHangGhe, SoCotGhe)
 VALUES
 (N'Phòng 1', 1, 50, 5, 10),
@@ -538,11 +541,11 @@ BEGIN
 END;
 
 go
-
-EXEC TimPhimTheoNgayVaLoai @Date = '2024-01-09', @Genre = 'Hành động';
+select * from lichchieuphim
+EXEC TimPhimTheoNgayVaLoai @Date = '2024-01-09', @Genre = N'Hành động';
 go
 
--- ----------
+-- ------------------
 
 
 CREATE PROCEDURE TimPhimTheoNgayVaLoai2
@@ -719,6 +722,11 @@ BEGIN
         (pc.SoGheNgoi - COUNT(vp.id)) > 0  -- Phim còn ghế trống
 END
 
+
+    UPDATE VePhim 
+    SET TrangThaiVePhim = 1, idKhachHang = 2 
+    OUTPUT INSERTED.id 
+    WHERE id = 42 AND idLichChieuPhim = 12;
 
 
 CREATE PROCEDURE PROC_DatVe

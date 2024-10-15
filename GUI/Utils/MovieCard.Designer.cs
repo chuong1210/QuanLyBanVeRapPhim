@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MovieCard));
             pbPoster = new PictureBox();
             lbName = new Label();
             lbDuration = new Label();
@@ -40,7 +39,6 @@
             // pbPoster
             // 
             pbPoster.BackColor = Color.FromArgb(192, 192, 255);
-            pbPoster.BackgroundImage = (Image)resources.GetObject("pbPoster.BackgroundImage");
             pbPoster.BackgroundImageLayout = ImageLayout.Zoom;
             pbPoster.BorderStyle = BorderStyle.FixedSingle;
             pbPoster.Location = new Point(0, 0);

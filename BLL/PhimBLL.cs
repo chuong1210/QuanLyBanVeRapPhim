@@ -13,6 +13,7 @@ namespace BLL
     public class PhimBLL
     {
         private readonly PhimDAL _phimDAL;
+        private KhachHangDAL khachHangDAL = new KhachHangDAL();
 
         public PhimBLL()
         {
@@ -41,8 +42,10 @@ namespace BLL
         {
             return _phimDAL.LayGheDaDat(idLichChieuPhim);
         }
-        public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats,string userName)
         {
+          string idKH=  khachHangDAL.GetIdKhachHangByUserName(userName);
+            DatVeDTO.IdKhachHang = idKH;
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
         public DataTable getListMovie()

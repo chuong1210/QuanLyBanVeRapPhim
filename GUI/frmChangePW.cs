@@ -50,6 +50,7 @@ namespace GUI
             if (success)
             {
                 MessageBox.Show("Thay đổi mật khẩu thành công.");
+                this.Close();
             }
             else
             {
