@@ -45,6 +45,7 @@
             button1 = new Button();
             printPreviewDialog1 = new PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
+            lblTongTien = new Label();
             ((System.ComponentModel.ISupportInitialize)pcPoster).BeginInit();
             pnSelect.SuspendLayout();
             SuspendLayout();
@@ -214,11 +215,22 @@
             // 
             printDocument1.PrintPage += printDocument1_PrintPage;
             // 
+            // lblTongTien
+            // 
+            lblTongTien.AutoSize = true;
+            lblTongTien.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lblTongTien.Location = new Point(648, 348);
+            lblTongTien.Name = "lblTongTien";
+            lblTongTien.Size = new Size(53, 24);
+            lblTongTien.TabIndex = 9;
+            lblTongTien.Text = "label1";
+            // 
             // frmSeatMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
+            Controls.Add(lblTongTien);
             Controls.Add(pnSelect);
             Controls.Add(lbPhong);
             Controls.Add(lblLich);
@@ -254,5 +266,6 @@
         private Button button3;
         private PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private Label lblTongTien;
     }
 }

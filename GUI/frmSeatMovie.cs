@@ -32,6 +32,7 @@ namespace GUI
         private string idLichCP;
         private string _userName;
         Dictionary<string, int> seatMapping = new Dictionary<string, int>();
+        private int totalPrice = 0;
 
         public frmSeatMovie()
         {
@@ -148,9 +149,14 @@ namespace GUI
                 clickedButton.BackColor = Color.Green; // Hủy đặt ghế
                 selectedSeats.Remove(seatNumber); // Xóa ghế khỏi danh sách
             }
+            UpdateTotalPrice();
         }
 
-
+        private void UpdateTotalPrice()
+        {
+             totalPrice = selectedSeats.Count * 65000; // 65000 VND cho mỗi ghế
+            lblTongTien.Text = $"Tổng tiền: {totalPrice} VND"; // Cập nhật label hiển thị tổng tiền
+        }
 
 
         private void AdjustFlowLayoutPanelSize()
@@ -169,6 +175,8 @@ namespace GUI
             lblThongtin.Location = new Point(65, 390);
             lblThongtin.TextAlign = ContentAlignment.MiddleCenter;
             pnSelect.Location = new Point(10, 80);
+            lblTongTien.Text = $"Tổng tiền: {totalPrice} VND";
+            lblTongTien.Location = new Point(30, 430);
         }
 
 
@@ -182,7 +190,7 @@ namespace GUI
                     IdKhachHang = _userName, // Thay thế bằng ID khách hàng thực tế
                     IdLichChieuPhim = idLichCP,
                     GiaVePhim = lc.GiaVePhim,
-                    TongTien = 65000,
+                    TongTien = totalPrice,
 
                 };
 
@@ -240,7 +248,7 @@ namespace GUI
             string ngayChieu = lblLich.Text;
             string phongChieu = lbPhong.Text;
             string gheDaChon = string.Join(", ", selectedSeats);
-            decimal tongTien = selectedSeats.Count * lc.GiaVePhim;
+            //decimal tongTien = selectedSeats.Count * lc.GiaVePhim;
 
             // Định dạng font và khoảng cách
             Font font = new Font("Arial", 12);
@@ -259,7 +267,9 @@ namespace GUI
             y += lineHeight;
             e.Graphics.DrawString($"Ghế đã chọn: {gheDaChon}", font, Brushes.Black, x, y);
             y += lineHeight;
-            e.Graphics.DrawString($"Tổng tiền: {tongTien:C}", font, Brushes.Black, x, y);
+            var cultureInfo = new System.Globalization.CultureInfo("vi-VN");
+            e.Graphics.DrawString($"Tổng tiền: {totalPrice.ToString("C", cultureInfo)}", font, Brushes.Black, x, y);
+
         }
 
         private void printPreviewDialog1_Load(object sender, EventArgs e)

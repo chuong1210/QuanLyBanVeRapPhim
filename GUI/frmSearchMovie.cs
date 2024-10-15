@@ -95,7 +95,6 @@ namespace GUI
                     string imagePath = GetImagePath(movie.PhimDTO.Poster.ToString());
                     string idLichChieu =movie.idLCP;
 
-
                     movieCard.PosterPath = imagePath;
 
                     // Đăng ký sự kiện DatVeClicked
@@ -129,7 +128,7 @@ namespace GUI
             {
                 string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
                 projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
-                return Path.Combine(projectPath, "images", "logo.png");
+                return Path.Combine(projectPath, "images", "culao.png");
             }
             else
             {
