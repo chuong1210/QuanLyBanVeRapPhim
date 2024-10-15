@@ -140,13 +140,13 @@ namespace DAL
                     UPDATE VePhim 
                     SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang 
                     OUTPUT INSERTED.id 
-                    WHERE id = @MaVePhim AND idLichChieuPhim = @idLichChieuPhim;";
-
+                    WHERE   MaGheNgoi = @SoGhe AND idLichChieuPhim = @idLichChieuPhim;";
+                            
                             int? idVePhim = null;
 
                             using (SqlCommand command = new SqlCommand(queryVePhim, connection, transaction))
                             {
-                                command.Parameters.AddWithValue("@MaVePhim", seat);
+                                command.Parameters.AddWithValue("@SoGhe","Ghe_"+seat);
                                 command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang);
                                 command.Parameters.AddWithValue("@idLichChieuPhim", DatVeDTO.IdLichChieuPhim);
 
@@ -323,7 +323,7 @@ namespace DAL
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT id FROM VePhim WHERE idLichChieuPhim = @idLichChieuPhim AND TrangThaiVePhim=1";
+                    string query = @"SELECT MaGheNgoi FROM VePhim WHERE idLichChieuPhim = @idLichChieuPhim AND TrangThaiVePhim=1";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -333,7 +333,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                gheDaDat.Add(reader["id"].ToString()); // Đọc vị trí ghế đã đặt
+                                gheDaDat.Add(reader["MaGheNgoi"].ToString()); // Đọc vị trí ghế đã đặt
                             }
                         }
                     }

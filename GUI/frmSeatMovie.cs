@@ -83,7 +83,7 @@ namespace GUI
                     bool val = false;
                     foreach (var item in gheDaDat)
                     {
-                        if (item.Equals(seatId.ToString()))
+                        if (item.Equals("Ghe_"+seatId.ToString()))
                         {
                             // Vô hiệu hóa ghế đã đặt
                             val = true;
