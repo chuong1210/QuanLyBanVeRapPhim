@@ -141,6 +141,8 @@ namespace GUI
                 frmChangePW pw = new frmChangePW(_username);
 
                 pw.Show();
+                frmSearchMovie frmSearch=new frmSearchMovie(_username);
+                ShowForm(frmSearch);
             }
 
 

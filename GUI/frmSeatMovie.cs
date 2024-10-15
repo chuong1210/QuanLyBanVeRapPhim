@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,9 +18,12 @@ namespace GUI
 {
     public partial class frmSeatMovie : Form
     {
-        PhimBLL phimBll= new PhimBLL();
+        PhimBLL phimBll = new PhimBLL();
         private int rows = 0;
         private int cols = 0;
+        private int gaps = 7;
+
+        private string tenPh = "";
         Button[,] seats;
         private int buttonSeatSize = 60;
         LichChieuPhimDTO lc;
@@ -32,22 +38,22 @@ namespace GUI
             InitializeComponent();
             this.Size = new Size(1500, 850); // Thiết lập kích thước cho form
 
-         
 
-            this.TopMost = false; // Đưa form lên trên cùng nếu cần
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
 
-        public void LoadMovie (string idLichChieu, string tenPhim, string posterPath,string ngayChieu,string idKh)
+        public void LoadMovie(string idLichChieu, string tenPhim, string posterPath, string ngayChieu, string idKh)
         {
             lblThongtin.Text = tenPhim;
             //pbPoster.ImageLocation = posterPath;
-            idLichCP= idLichChieu;
-             lc =   phimBll.LayChiTietLichChieuPhim(idLichCP);
+            idLichCP = idLichChieu;
+            lc = phimBll.LayChiTietLichChieuPhim(idLichCP);
             lblLich.Text = lc.ThoiGianChieu.ToString();
             gheDaDat = phimBll.LayGheDaDat(idLichCP);
-            (rows, cols) = phimBll.LayThongTinPhongChieu(lc.idPhong);
+            (rows, cols, tenPh) = phimBll.LayThongTinPhongChieu(lc.idPhong);
             CreateSeats(rows, cols); // Gọi 
-            _idKh=idKh;
+            _idKh = idKh;
+            lbPhong.Text = tenPh;
 
 
         }
@@ -57,11 +63,11 @@ namespace GUI
             flowLayoutPanelSeats.Controls.Clear(); // Clear previous seats
 
             seats = new Button[rows, cols];
-
-            for (int row =0; row < rows; row++)
+            //    flowLayoutPanelSeats.Size = new Size((buttonSeatSize + 20 + gaps) * cols, (buttonSeatSize + gaps) * rows);
+            for (int row = 0; row < rows; row++)
             {
 
-              
+
                 for (int col = 0; col < cols; col++)
                 {
                     Button seatButton = new Button();
@@ -71,7 +77,7 @@ namespace GUI
                     string seatLabel = $"{(char)('A' + row)}{col + 1}";
                     seatButton.Text = seatLabel;
 
-                    int seatId = row * cols + col+1; // Assuming IDs are numeric and start from 0
+                    int seatId = row * cols + col + 1; // Assuming IDs are numeric and start from 0
                     seatMapping[seatLabel] = seatId;
 
                     bool val = false;
@@ -80,7 +86,7 @@ namespace GUI
                         if (item.Equals(seatId.ToString()))
                         {
                             // Vô hiệu hóa ghế đã đặt
-                            val=true; 
+                            val = true;
                             break;
                         }
                         else
@@ -89,12 +95,12 @@ namespace GUI
                         }
                     }
 
-                    if(val)
+                    if (val)
                     {
                         seatButton.BackColor = Color.Red; // Ghế đã được đặt
                         seatButton.Enabled = false;
                     }
-                   
+
                     else
                     {
                         seatButton.BackColor = Color.Green; // Ghế chưa đặt
@@ -102,7 +108,7 @@ namespace GUI
                     }
 
                     seatButton.Margin = new Padding(5);
-               
+
                     seatButton.Cursor = Cursors.Hand;
                     // Gán sự kiện khi người dùng bấm vào ghế
                     ApplyRoundedCorners(seatButton); // Call here
@@ -157,13 +163,15 @@ namespace GUI
             // Căn giữa FlowLayoutPanel trong form
 
             flowLayoutPanelSeats.Height = 700;
-            flowLayoutPanelSeats.Location = new Point(150, 80);
-            btnConfirm.Location = new Point(291, 716);
-            pcPoster.Location = new Point(50, 80);
-            lblThongtin.Location = new Point(50, 220);
+            flowLayoutPanelSeats.Location = new Point(250, 80);
+            btnConfirm.Location = new Point(381, 716);
+            pcPoster.Location = new Point(5, 250);
+            lblThongtin.Location = new Point(65, 390);
+            lblThongtin.TextAlign = ContentAlignment.MiddleCenter;
+            pnSelect.Location = new Point(10, 80);
         }
 
-    
+
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
             if (selectedSeats.Count > 0)
@@ -171,19 +179,19 @@ namespace GUI
                 // Tạo đối tượng DatVeDTO với thông tin cần thiết
                 DatVeDTO datVeDTO = new DatVeDTO
                 {
-                    IdKhachHang =_idKh , // Thay thế bằng ID khách hàng thực tế
+                    IdKhachHang = _idKh, // Thay thế bằng ID khách hàng thực tế
                     IdLichChieuPhim = idLichCP,
                     GiaVePhim = lc.GiaVePhim,
-                    TongTien=65000,
+                    TongTien = 65000,
 
                 };
 
                 List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
 
                 string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
-                bool result = phimBll.DatVeXemPhim(datVeDTO, seatIds); // Pass the list of IDs
+                HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds); // Pass the list of IDs
 
-                if (result)
+                if (result != null)
                 {
                     // Đặt màu xanh cho các ghế đã chọn
                     foreach (string seat in selectedSeats)
@@ -198,8 +206,10 @@ namespace GUI
                             seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
                         }
                     }
+                    printPreviewDialog1.Document = printDocument1;
+                    printPreviewDialog1.ShowDialog();
 
-                    MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //   MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -223,5 +233,41 @@ namespace GUI
             AdjustFlowLayoutPanelSize();
             flowLayoutPanelSeats.BackColor = Color.LightGray;
         }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            string tenPhim = lblThongtin.Text;
+            string ngayChieu = lblLich.Text;
+            string phongChieu = lbPhong.Text;
+            string gheDaChon = string.Join(", ", selectedSeats);
+            decimal tongTien = selectedSeats.Count * lc.GiaVePhim;
+
+            // Định dạng font và khoảng cách
+            Font font = new Font("Arial", 12);
+            int lineHeight = font.Height + 10;
+            int x = 100; // Vị trí X để bắt đầu in
+            int y = 100; // Vị trí Y để bắt đầu in
+
+            // In thông tin hóa đơn
+            e.Graphics.DrawString("HÓA ĐƠN ĐẶT VÉ", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, x, y);
+            y += lineHeight;
+            e.Graphics.DrawString($"Tên phim: {tenPhim}", font, Brushes.Black, x, y);
+            y += lineHeight;
+            e.Graphics.DrawString($"Ngày chiếu: {ngayChieu}", font, Brushes.Black, x, y);
+            y += lineHeight;
+            e.Graphics.DrawString($"Phòng chiếu: {phongChieu}", font, Brushes.Black, x, y);
+            y += lineHeight;
+            e.Graphics.DrawString($"Ghế đã chọn: {gheDaChon}", font, Brushes.Black, x, y);
+            y += lineHeight;
+            e.Graphics.DrawString($"Tổng tiền: {tongTien:C}", font, Brushes.Black, x, y);
+        }
+
+        private void printPreviewDialog1_Load(object sender, EventArgs e)
+        {
+            printPreviewDialog1.WindowState = FormWindowState.Maximized;
+        }
     }
+
+
 }
+

@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeatMovie));
             btnConfirm = new Button();
             linkLabel2 = new LinkLabel();
             flowLayoutPanelSeats = new FlowLayoutPanel();
             lblThongtin = new Label();
             pcPoster = new PictureBox();
             lblLich = new Label();
+            lbPhong = new Label();
+            pnSelect = new Panel();
+            label3 = new Label();
+            button3 = new Button();
+            label2 = new Label();
+            button2 = new Button();
+            label1 = new Label();
+            button1 = new Button();
+            printPreviewDialog1 = new PrintPreviewDialog();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)pcPoster).BeginInit();
+            pnSelect.SuspendLayout();
             SuspendLayout();
             // 
             // btnConfirm
@@ -55,14 +67,15 @@
             // linkLabel2
             // 
             linkLabel2.AutoSize = true;
-            linkLabel2.Font = new Font("Segoe UI Symbol", 25.8000011F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            linkLabel2.LinkColor = Color.Fuchsia;
-            linkLabel2.Location = new Point(162, 9);
+            linkLabel2.Font = new Font("Bahnschrift SemiBold", 24F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            linkLabel2.LinkColor = Color.BlueViolet;
+            linkLabel2.Location = new Point(162, 12);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(327, 60);
+            linkLabel2.Size = new Size(316, 48);
             linkLabel2.TabIndex = 3;
             linkLabel2.TabStop = true;
-            linkLabel2.Text = "Chọn chỗ ngồi";
+            linkLabel2.Text = "CHỌN CHỖ NGỒI";
+            linkLabel2.TextAlign = ContentAlignment.TopCenter;
             // 
             // flowLayoutPanelSeats
             // 
@@ -84,11 +97,12 @@
             // 
             // pcPoster
             // 
+            pcPoster.BackColor = Color.Transparent;
             pcPoster.BackgroundImage = Properties.Resources._0f1a56151393071_630b7f719ad62;
             pcPoster.BackgroundImageLayout = ImageLayout.Zoom;
-            pcPoster.Location = new Point(64, 451);
+            pcPoster.Location = new Point(30, 483);
             pcPoster.Name = "pcPoster";
-            pcPoster.Size = new Size(78, 118);
+            pcPoster.Size = new Size(196, 138);
             pcPoster.TabIndex = 5;
             pcPoster.TabStop = false;
             // 
@@ -102,11 +116,111 @@
             lblLich.TabIndex = 6;
             lblLich.Text = "label1";
             // 
+            // lbPhong
+            // 
+            lbPhong.AutoSize = true;
+            lbPhong.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lbPhong.Location = new Point(683, 9);
+            lbPhong.Name = "lbPhong";
+            lbPhong.Size = new Size(53, 24);
+            lbPhong.TabIndex = 7;
+            lbPhong.Text = "label1";
+            // 
+            // pnSelect
+            // 
+            pnSelect.BorderStyle = BorderStyle.FixedSingle;
+            pnSelect.Controls.Add(label3);
+            pnSelect.Controls.Add(button3);
+            pnSelect.Controls.Add(label2);
+            pnSelect.Controls.Add(button2);
+            pnSelect.Controls.Add(label1);
+            pnSelect.Controls.Add(button1);
+            pnSelect.Location = new Point(413, 451);
+            pnSelect.Name = "pnSelect";
+            pnSelect.Size = new Size(211, 139);
+            pnSelect.TabIndex = 8;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Bahnschrift", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            label3.Location = new Point(64, 90);
+            label3.Name = "label3";
+            label3.Size = new Size(143, 22);
+            label3.TabIndex = 5;
+            label3.Text = "Ghế đã được đặt";
+            // 
+            // button3
+            // 
+            button3.BackColor = Color.Red;
+            button3.ForeColor = Color.Red;
+            button3.Location = new Point(25, 88);
+            button3.Name = "button3";
+            button3.Size = new Size(33, 29);
+            button3.TabIndex = 4;
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Bahnschrift", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            label2.Location = new Point(64, 57);
+            label2.Name = "label2";
+            label2.Size = new Size(91, 22);
+            label2.TabIndex = 3;
+            label2.Text = "Ghế trống";
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.Lime;
+            button2.ForeColor = Color.Lime;
+            button2.Location = new Point(25, 55);
+            button2.Name = "button2";
+            button2.Size = new Size(33, 29);
+            button2.TabIndex = 2;
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            label1.Location = new Point(64, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(131, 22);
+            label1.TabIndex = 1;
+            label1.Text = "Ghế đang chọn";
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.Yellow;
+            button1.Location = new Point(25, 18);
+            button1.Name = "button1";
+            button1.Size = new Size(33, 29);
+            button1.TabIndex = 0;
+            button1.UseVisualStyleBackColor = false;
+            // 
+            // printPreviewDialog1
+            // 
+            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
+            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
+            printPreviewDialog1.ClientSize = new Size(400, 300);
+            printPreviewDialog1.Enabled = true;
+            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
+            printPreviewDialog1.Name = "printPreviewDialog1";
+            printPreviewDialog1.Visible = false;
+            printPreviewDialog1.Load += printPreviewDialog1_Load;
+            // 
+            // printDocument1
+            // 
+            printDocument1.PrintPage += printDocument1_PrintPage;
+            // 
             // frmSeatMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
+            Controls.Add(pnSelect);
+            Controls.Add(lbPhong);
             Controls.Add(lblLich);
             Controls.Add(pcPoster);
             Controls.Add(btnConfirm);
@@ -117,6 +231,8 @@
             Text = "frmSeatMovie";
             Load += frmSeatMovie_Load;
             ((System.ComponentModel.ISupportInitialize)pcPoster).EndInit();
+            pnSelect.ResumeLayout(false);
+            pnSelect.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -128,5 +244,15 @@
         private Label lblThongtin;
         private PictureBox pcPoster;
         private Label lblLich;
+        private Label lbPhong;
+        private Panel pnSelect;
+        private Button button1;
+        private Label label2;
+        private Button button2;
+        private Label label1;
+        private Label label3;
+        private Button button3;
+        private PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

@@ -15,6 +15,7 @@ namespace DTO
         public DateTime NgayMua { get; set; }
         public decimal TongTien { get; set; }
         public decimal GiaVePhim { get; set; }
+        public string TenPhim { get; set; }
 
         
     }

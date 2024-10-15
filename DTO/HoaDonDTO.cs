@@ -9,7 +9,9 @@ namespace DTO
     public class HoaDonDTO
     {
         public int Id { get; set; }
-        public string IdKhachHang { get; set; }
+        public string TenKH { get; set; }
+        public string TenPhim { get; set; }
+
 
         public DateTime NgayMua { get; set; }
         public decimal TongTien { get; set; }

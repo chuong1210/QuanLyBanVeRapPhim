@@ -166,3 +166,4 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Utils.MovieCard.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmDetailMovie.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmChangePW.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmReport.resources

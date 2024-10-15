@@ -101,9 +101,9 @@ namespace DAL
             return movies;
         }
 
-        public bool DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
         {
-            bool success = false;
+            HoaDonDTO hoaDon = null;
 
             try
             {
@@ -116,16 +116,13 @@ namespace DAL
                     {
                         // Tạo hóa đơn
                         string queryHoaDon = @"
-                        DECLARE @idHoaDon INT; 
-                        INSERT INTO HoaDon (idKhachHang, NgayMua, TongTien)
-                        VALUES (@idKhachHang, GETDATE(), @TongTien);
-                        SET @idHoaDon = SCOPE_IDENTITY(); 
-                        SELECT @idHoaDon;";
+                DECLARE @idHoaDon INT; 
+                INSERT INTO HoaDon (idKhachHang, NgayMua, TongTien)
+                VALUES (@idKhachHang, GETDATE(), @TongTien);
+                SET @idHoaDon = SCOPE_IDENTITY(); 
+                SELECT @idHoaDon;";
 
-                        // Tạo bảng tạm để lưu ID hóa đơn
                         int idHoaDon = 0; // Biến lưu ID hóa đơn vừa tạo
-
-                        // Tính tổng tiền vé
                         decimal tongTien = selectedSeats.Count * DatVeDTO.GiaVePhim;
 
                         using (SqlCommand command = new SqlCommand(queryHoaDon, connection, transaction))
@@ -133,21 +130,19 @@ namespace DAL
                             command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang);
                             command.Parameters.AddWithValue("@TongTien", tongTien);
 
-                            // Thực hiện thêm hóa đơn và lấy ID hóa đơn vừa tạo
                             idHoaDon = (int)command.ExecuteScalar();
                         }
 
-                        // Cập nhật trạng thái ghế đã đặt
-                        // Cập nhật trạng thái ghế đã đặt
+                        // Cập nhật trạng thái ghế đã đặt và thêm chi tiết hóa đơn
                         foreach (var seat in selectedSeats)
                         {
                             string queryVePhim = @"
-                            UPDATE VePhim 
-                            SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang 
-                            OUTPUT INSERTED.id 
-                            WHERE id = @MaVePhim AND idLichChieuPhim = @idLichChieuPhim;";
+                    UPDATE VePhim 
+                    SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang 
+                    OUTPUT INSERTED.id 
+                    WHERE id = @MaVePhim AND idLichChieuPhim = @idLichChieuPhim;";
 
-                            int? idVePhim = null; // Sử dụng kiểu nullable để tránh lỗi null reference
+                            int? idVePhim = null;
 
                             using (SqlCommand command = new SqlCommand(queryVePhim, connection, transaction))
                             {
@@ -155,46 +150,48 @@ namespace DAL
                                 command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang);
                                 command.Parameters.AddWithValue("@idLichChieuPhim", DatVeDTO.IdLichChieuPhim);
 
-                                // Thực hiện cập nhật và lấy ID vé
-                                var result = command.ExecuteScalar(); // Lấy ID vé phim vừa cập nhật
+                                var result = command.ExecuteScalar();
                                 if (result != null)
                                 {
-                                    idVePhim = (int)result; 
+                                    idVePhim = (int)result;
                                 }
                             }
 
-                            // Thêm vào bảng chi tiết hóa đơn
-                            string queryChiTietHoaDon = @"
-                            INSERT INTO ChiTietHoaDon (idHoaDon, idVePhim, SoLuong, GiaTien)
-                            VALUES (@idHoaDon, @idVePhim, 1, @GiaVePhim);";
-
-                            using (SqlCommand command = new SqlCommand(queryChiTietHoaDon, connection, transaction))
+                            if (idVePhim.HasValue)
                             {
-                                command.Parameters.AddWithValue("@idHoaDon", idHoaDon);
-                                command.Parameters.AddWithValue("@idVePhim", idVePhim.Value); // Sử dụng ID vé vừa cập nhật
-                                command.Parameters.AddWithValue("@GiaVePhim", DatVeDTO.GiaVePhim);
+                                string queryChiTietHoaDon = @"
+                        INSERT INTO ChiTietHoaDon (idHoaDon, idVePhim, SoLuong, GiaTien)
+                        VALUES (@idHoaDon, @idVePhim, 1, @GiaVePhim);";
 
-                                command.ExecuteNonQuery(); // Thêm chi tiết hóa đơn
+                                using (SqlCommand command = new SqlCommand(queryChiTietHoaDon, connection, transaction))
+                                {
+                                    command.Parameters.AddWithValue("@idHoaDon", idHoaDon);
+                                    command.Parameters.AddWithValue("@idVePhim", idVePhim.Value);
+                                    command.Parameters.AddWithValue("@GiaVePhim", DatVeDTO.GiaVePhim);
+
+                                    command.ExecuteNonQuery();
+                                }
                             }
                         }
 
-
                         transaction.Commit(); // Hoàn tất giao dịch
-                        success = true;
+
+                        // Sau khi hoàn tất giao dịch, tạo hóa đơn (Hóa đơn DTO)
+                        hoaDon = LayThongTinHoaDon(idHoaDon);
                     }
                     catch (Exception ex)
                     {
-                        transaction.Rollback(); // Quay lại giao dịch nếu có lỗi
-                        Console.WriteLine($"Error in DatVeXemPhim: {ex.Message}"); // Log lỗi
+                        transaction.Rollback();
+                        Console.WriteLine($"Error in DatVeXemPhim: {ex.Message}");
                     }
                 }
             }
             catch (SqlException ex)
             {
-                Console.WriteLine($"Database error in DatVeXemPhim: {ex.Message}"); // Log lỗi kết nối cơ sở dữ liệu
+                Console.WriteLine($"Database error in DatVeXemPhim: {ex.Message}");
             }
 
-            return success;
+            return hoaDon; // Trả về hóa đơn sau khi hoàn tất đặt vé
         }
 
 
@@ -236,17 +233,18 @@ namespace DAL
             }
             return lichChieuPhimChiTiet;
         }
-        public (int SoHangGhe, int SoCotGhe) LayThongTinPhongChieu(string idPhong)
+        public (int SoHangGhe, int SoCotGhe, string TenPhong) LayThongTinPhongChieu(string idPhong)
         {
             int soHangGhe = 0;
             int soCotGhe = 0;
+            string tenPhong = "";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT SoHangGhe, SoCotGhe FROM PhongChieu WHERE id = @idPhong";
+                    string query = "SELECT SoHangGhe, SoCotGhe, TenPhong FROM PhongChieu WHERE id = @idPhong";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -258,6 +256,7 @@ namespace DAL
                             {
                                 soHangGhe = reader.GetInt32(reader.GetOrdinal("SoHangGhe"));
                                 soCotGhe = reader.GetInt32(reader.GetOrdinal("SoCotGhe"));
+                                tenPhong = reader["TenPhong"].ToString();
                             }
                         }
                     }
@@ -268,7 +267,52 @@ namespace DAL
                 Console.WriteLine($"Lỗi khi lấy thông tin phòng chiếu: {ex.Message}");
             }
 
-            return (soHangGhe, soCotGhe);
+            return (soHangGhe, soCotGhe,tenPhong);
+        }
+
+        public HoaDonDTO LayThongTinHoaDon(int idHoaDon)
+        {
+            HoaDonDTO hoaDon = new HoaDonDTO();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+            SELECT hd.Id, kh.TenKhachHang, phim.TenPhim, hd.NgayMua, hd.TongTien
+            FROM HoaDon hd
+            JOIN KhachHang kh ON hd.idKhachHang = kh.id
+            JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
+            JOIN VePhim vp ON cthd.idVePhim = vp.id
+            JOIN LichChieuPhim lcp ON vp.idLichChieuPhim = lcp.id
+            JOIN Phim phim ON lcp.idPhim = phim.id
+            WHERE hd.Id = @idHoaDon";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idHoaDon", idHoaDon);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                hoaDon.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                                hoaDon.TenKH = reader["TenKhachHang"].ToString();
+                                hoaDon.TenPhim = reader["TenPhim"].ToString();
+                                hoaDon.NgayMua = reader.GetDateTime(reader.GetOrdinal("NgayMua"));
+                                hoaDon.TongTien = reader.GetDecimal(reader.GetOrdinal("TongTien"));
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error retrieving receipt information: {ex.Message}");
+            }
+
+            return hoaDon;
         }
 
         public List<string> LayGheDaDat(string idLichChieuPhim)

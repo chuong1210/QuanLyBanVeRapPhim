@@ -36,7 +36,9 @@
             // 
             // sidebarPanel
             // 
-            sidebarPanel.BackColor = Color.DarkViolet;
+            sidebarPanel.BackColor = Color.White;
+            sidebarPanel.BackgroundImage = Properties.Resources.wp7124690;
+            sidebarPanel.BackgroundImageLayout = ImageLayout.Stretch;
             sidebarPanel.BorderStyle = BorderStyle.Fixed3D;
             sidebarPanel.Controls.Add(pcLogo);
             sidebarPanel.Dock = DockStyle.Left;
@@ -47,6 +49,7 @@
             // 
             // pcLogo
             // 
+            pcLogo.BackColor = Color.Transparent;
             pcLogo.BackgroundImage = Properties.Resources.logo_huit;
             pcLogo.BackgroundImageLayout = ImageLayout.Zoom;
             pcLogo.Location = new Point(3, 27);

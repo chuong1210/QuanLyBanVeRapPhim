@@ -31,7 +31,7 @@ namespace BLL
         {
             return _phimDAL.DanhSachTheLoai();
         }
-        public (int SoHangGhe, int SoCotGhe) LayThongTinPhongChieu(string idPhong)
+        public (int SoHangGhe, int SoCotGhe, string TenPhong) LayThongTinPhongChieu(string idPhong)
         {
             return _phimDAL .LayThongTinPhongChieu(idPhong);
         }
@@ -39,7 +39,7 @@ namespace BLL
         {
             return _phimDAL.LayGheDaDat(idLichChieuPhim);
         }
-        public bool DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
         {
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }

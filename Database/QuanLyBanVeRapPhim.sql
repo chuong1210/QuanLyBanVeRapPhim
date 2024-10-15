@@ -60,8 +60,8 @@ CREATE TABLE NhanVien
 CREATE TABLE LoaiManHinh
 (
     id INT IDENTITY(1,1) NOT NULL, -- ID tự động tăng
-	TenMH NVARCHAR(100),
-	KichThuoc int DEFAULT 20,
+	TenMH NVARCHAR(100) NOT NULL UNIQUE,
+	KichThuoc INT DEFAULT 20,
 	CONSTRAINT PK_LoaiManHinh PRIMARY KEY (id) -- Thêm tên cho khóa chính
 )
 GO
@@ -70,7 +70,7 @@ GO
 CREATE TABLE PhongChieu
 (
     id INT IDENTITY(1,1) NOT NULL, -- ID tự động tăng
-	TenPhong NVARCHAR(100) NOT NULL,
+	TenPhong NVARCHAR(100) NOT NULL UNIQUE,
 	idManHinh INT,
 	SoGheNgoi INT NOT NULL,
 	TrangThaiChoNgoi INT NOT NULL DEFAULT 1,
@@ -134,7 +134,7 @@ GO
 
 
 -- Phần khách hàng
-select * from vephim
+
 
 
 
@@ -170,12 +170,12 @@ CREATE TABLE KhachHang
 CREATE TABLE Voucher
 (
     id INT IDENTITY(1,1) NOT NULL, -- ID tự động tăng
-    MaVoucher NVARCHAR(50) NOT NULL UNIQUE,  -- Mã voucher
+    TenVoucher NVARCHAR(50) NOT NULL UNIQUE,  -- Mã voucher
     GiaTriGiam MONEY NOT NULL,  -- Giá trị giảm
     NgayBatDau DATETIME NOT NULL,  -- Ngày bắt đầu
     NgayKetThuc DATETIME NOT NULL,  -- Ngày kết thúc
     CONSTRAINT PK_Voucher PRIMARY KEY (id)
-);
+)
 GO
 CREATE TABLE HoaDon
 (
@@ -183,10 +183,10 @@ CREATE TABLE HoaDon
     idKhachHang INT NOT NULL,  -- ID khách hàng
     NgayMua DATETIME NOT NULL,  -- Ngày mua vé
     TongTien MONEY NOT NULL,  -- Tổng tiền
+	idVoucher INT NULL,
     CONSTRAINT PK_HoaDon PRIMARY KEY (id),  -- Khóa chính
     CONSTRAINT FK_HoaDon_KhachHang FOREIGN KEY (idKhachHang) REFERENCES dbo.KhachHang(id)
-);
-select * from hoadon
+)
 CREATE TABLE ChiTietHoaDon
 (
     idHoaDon INT NOT NULL,  -- ID hóa đơn
@@ -196,7 +196,7 @@ CREATE TABLE ChiTietHoaDon
     CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY (idHoaDon, idVePhim),  -- Khóa chính nhiều cột
     CONSTRAINT FK_ChiTietHoaDon_HoaDon FOREIGN KEY (idHoaDon) REFERENCES HoaDon(id),
     CONSTRAINT FK_ChiTietHoaDon_Ve FOREIGN KEY (idVePhim) REFERENCES VePhim(id)
-);
+)
 
 
 -- Thêm ràng buộc FOREIGN KEY cho bảng TaiKhoan
@@ -243,6 +243,8 @@ ALTER TABLE TaiKhoan
 ADD CONSTRAINT FK_TaiKhoan_Role FOREIGN KEY (idRole)
 REFERENCES dbo.Role(id);
 
+ALTER TABLE HoaDon
+ADD CONSTRAINT FK_HoaDon_Voucher FOREIGN KEY (idVoucher) REFERENCES Voucher(id);
 --ALTER TABLE LichChieuPhim
 --ADD CONSTRAINT UK_LichChieu_Phong_ThoiGian
 --UNIQUE (ThoiGianChieu, idPhong);
@@ -259,13 +261,13 @@ INSERT INTO Role (TenRole, MoTa)
 VALUES ('Staff', N'Quản lý hệ thống suất chiếu phim.');
 
 INSERT INTO KhachHang (HoTen, NgaySinh, DiemTichLuy, DiaChi, SDT, EMAIL, GioiTinh)
-VALUES ('Nguyen Van A', '1990-01-01', 0, N'123 Đường ABC, Quận 1, TP.HCM', '0123456789', 'nguyenvana@example.com', N'Nam');
+VALUES (N'Nguyen Van A', '1990-01-01', 0, N'123 Đường ABC, Quận 1, TP.HCM', '0123456789', 'nguyenvana@example.com', N'Nam');
 
 INSERT INTO KhachHang (HoTen, NgaySinh, DiemTichLuy, DiaChi, SDT, EMAIL, GioiTinh)
-VALUES ('Tran Thi B', '1995-05-15', 0, N'456 Đường XYZ, Quận 2, TP.HCM', '0987654321', 'tranthib@example.com', N'Nữ');
+VALUES (N'Tran Thi B', '1995-05-15', 0, N'456 Đường XYZ, Quận 2, TP.HCM', '0987654321', 'tranthib@example.com', N'Nữ');
 
 INSERT INTO NhanVien (HoTen, NgaySinh, DiaChi, SDT, CMND)
-VALUES ('Le Van C', '1985-03-20', N'789 Đường DEF, Quận 3, TP.HCM', '0123456780', 123456789);
+VALUES (N'Le Van C', '1985-03-20', N'789 Đường DEF, Quận 3, TP.HCM', '0123456780', 123456789);
 
 INSERT INTO NhanVien (HoTen, NgaySinh, DiaChi, SDT, CMND)
 VALUES ('Pham Thi D', '1992-07-30', N'321 Đường GHI, Quận 4, TP.HCM', '0987654300', 987654321);
@@ -277,23 +279,22 @@ VALUES
 ('customer1', 'customer123', 2, 1, NULL, 1);
 
 
-INSERT INTO Voucher (MaVoucher, GiaTriGiam, NgayBatDau, NgayKetThuc)
-VALUES
-('AVATAR2024', 5000, '2024-01-01', '2024-02-28');
-
+GO
 -- Thêm dữ liệu vào bảng Phim
 INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX)
 VALUES
-('Avatar', 'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2024-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
-('Avengers: Endgame', 'Phim siêu anh hùng.', 180, '2019-04-26', '2019-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
-('Spider-Man: No Way Home', 'Phim siêu anh hùng.', 130, '2021-12-17', '2022-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
-('The Batman', 'Phim hành động.', 160, '2022-03-03', '2022-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022);
+('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2024-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
+('Avengers: Endgame', N'Phim siêu anh hùng.', 180, '2019-04-26', '2019-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
+('Spider-Man: No Way Home', N'Phim siêu anh hùng.', 130, '2021-12-17', '2022-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
+('The Batman', N'Phim hành động.', 160, '2022-03-03', '2022-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022),
+('Top Gun: Maverick', 'Phim hành động.', 130, '2022-05-27', '2022-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022),
+('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2014-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014);
 -- Thêm dữ liệu vào bảng TheLoai
 INSERT INTO TheLoai (TenTheLoai, MoTa) VALUES
-('Hành động', 'Thể loại hành động, phiêu lưu.'),
-('Siêu anh hùng', 'Thể loại siêu anh hùng, phiêu lưu.'),
-('Khoa học viễn tưởng', 'Thể loại khoa học viễn tưởng.'),
-('Hài hước', 'Thể loại hài hước.');
+(N'Hành động', N'Thể loại hành động, phiêu lưu.'),
+(N'Siêu anh hùng', N'Thể loại siêu anh hùng, phiêu lưu.'),
+(N'Khoa học viễn tưởng', N'Thể loại khoa học viễn tưởng.'),
+(N'Hài hước', N'Thể loại hài hước.');
 
 -- Thêm dữ liệu vào bảng ChiTietPhimTL
 INSERT INTO ChiTietPhimTL (idPhim, idTheLoai) VALUES
@@ -309,10 +310,16 @@ VALUES
 ('Screen 3', 150);
 INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, SoHangGhe, SoCotGhe)
 VALUES
-('Phong 1', 1, 50, 5, 10),
-('Phong 2', 2, 100, 10, 10);
+(N'Phòng 1', 1, 50, 5, 10),
+(N'Phòng 2', 2, 100, 10, 10),
+(N'Phòng 3', 3, 75, 5, 15);
 
-
+go
+INSERT INTO Voucher (TenVoucher, GiaTriGiam, NgayBatDau, NgayKetThuc)
+VALUES
+('AVATAR2024', 5000, '2024-01-01', '2024-02-28'),
+('SUMMERDISCOUNT', 2000, '2024-06-15', '2024-08-31');
+GO
 -- tự động tạo vé phim khi insert lịch chiếu
 CREATE TRIGGER trg_AutoCreateVePhim
 ON LichChieuPhim
@@ -352,7 +359,6 @@ END
 GO
 
 
-go
 -- Trigger để kiểm tra thời gian chiếu phim không trùng lặp trong cùng phòng chiếu
 
 --Nó kiểm tra ba trường hợp xung đột:
@@ -375,8 +381,9 @@ BEGIN
     FROM inserted;
 
     -- Lấy thời lượng của phim từ bảng Phim
-    SELECT @ThoiLuong = ThoiLuong FROM Phim WHERE id = (SELECT idPhim FROM inserted);
-
+    --SELECT @ThoiLuong = ThoiLuong FROM Phim WHERE id = (SELECT idPhim FROM inserted);
+	 SELECT @ThoiLuong = p.ThoiLuong FROM Phim p
+	JOIN inserted i ON p.id = i.idPhim;
     -- Tính toán thời gian kết thúc của lịch chiếu mới
     DECLARE @ThoiGianKetThuc DATETIME = DATEADD(MINUTE, @ThoiLuong, @ThoiGianChieu);
 
@@ -412,14 +419,31 @@ END;
 
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-09 14:00:00', 1, 10000, 1), --Avatar chiếu trong ngày 20/01/2024
-('2024-01-20 19:00:00', 1, 15000, 2),-- Avengers chiếu trong ngày 20/01/2024
+('2024-01-09 14:00:00', 1, 10000, 1); --Avatar chiếu trong ngày 20/01/2024
+INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
+VALUES
+('2024-01-20 19:00:00', 1, 15000, 2);-- Avengers chiếu trong ngày 20/01/2024
+INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
+VALUES
 ('2024-01-20 10:00:00', 2, 12000, 3);--Spider-Man chiếu trong ngày 20/01/2024
 
+INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
+VALUES
+('2024-01-15 10:00:00', 1, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame')),
+('2024-01-15 14:00:00', 1, 18000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame')),
+('2024-01-15 19:00:00', 2, 20000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame')),
+('2024-01-16 10:00:00', 3, 22000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame'));
+
+-- Ví dụ thêm lịch chiếu cho phim 'Spider-Man: No Way Home'
+INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
+VALUES
+('2024-01-16 13:00:00', 1, 12000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man: No Way Home')),
+('2024-01-16 17:00:00', 2, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man: No Way Home')),
+('2024-01-17 10:00:00', 1, 13000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man: No Way Home'));
+
+---- PROC
 
 
-
-DROP PROC TimPhimTheoNgayKTVaBatDauTheoTheLoai
   CREATE PROCEDURE TimPhimTheoNgayKTVaBatDauTheoTheLoai
     @StartDate DATE,
     @EndDate DATE,
