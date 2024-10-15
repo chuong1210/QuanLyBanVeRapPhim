@@ -23,16 +23,20 @@ namespace DAL
                 command.Parameters.AddWithValue("@PassWord", password);
 
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+
+                // Sử dụng 'using' để đảm bảo rằng SqlDataReader được giải phóng sau khi sử dụng
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    taiKhoan = new TaiKhoanDTO
+                    if (reader.Read())
                     {
-                        Id = (int)reader["id"],
-                        UserName = reader["UserName"].ToString(),
-                        PassWord = reader["PassWord"].ToString(),
-                        IdRole = (int)reader["idRole"]
-                    };
+                        taiKhoan = new TaiKhoanDTO
+                        {
+                            Id = (int)reader["id"],
+                            UserName = reader["UserName"].ToString(),
+                            PassWord = reader["PassWord"].ToString(),
+                            IdRole = (int)reader["idRole"]
+                        };
+                    }
                 }
             }
 

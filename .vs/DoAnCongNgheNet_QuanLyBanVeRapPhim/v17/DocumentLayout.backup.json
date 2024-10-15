@@ -3,40 +3,12 @@
   "WorkspaceRootPath": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|e:\\.net\\demo\\quanlybanverapphim\\dal\\taikhoandal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|solutionrelative:dal\\taikhoandal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|e:\\.net\\demo\\quanlybanverapphim\\gui\\datacontrol\\datauser\\genreuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\datacontrol\\datauser\\genreuc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|e:\\.net\\demo\\quanlybanverapphim\\gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|e:\\.net\\demo\\quanlybanverapphim\\dal\\khachhangdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|solutionrelative:dal\\khachhangdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|e:\\.net\\demo\\quanlybanverapphim\\gui\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\gui\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{39325101-7947-4400-A52C-3D54E06F6634}|BLL\\BLL.csproj|e:\\.net\\demo\\quanlybanverapphim\\bll\\taikhoanbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39325101-7947-4400-A52C-3D54E06F6634}|BLL\\BLL.csproj|solutionrelative:bll\\taikhoanbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|e:\\.net\\demo\\quanlybanverapphim\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|e:\\.net\\demo\\quanlybanverapphim\\dto\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|solutionrelative:dto\\taikhoandto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|e:\\.net\\demo\\quanlybanverapphim\\gui\\gui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\gui.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,122 +18,43 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "TaiKhoanDTO.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DTO\\TaiKhoanDTO.cs",
-              "RelativeDocumentMoniker": "DTO\\TaiKhoanDTO.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DTO\\TaiKhoanDTO.cs",
-              "RelativeToolTip": "DTO\\TaiKhoanDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:47:50.488Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\Program.cs",
-              "RelativeDocumentMoniker": "GUI\\Program.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\Program.cs",
-              "RelativeToolTip": "GUI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:37:18.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FrmLogin.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "GUI\\FrmLogin.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
-              "RelativeToolTip": "GUI\\FrmLogin.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAQwF0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:31:05.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmLogin.cs [Design]",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "GUI\\FrmLogin.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs [Design]",
-              "RelativeToolTip": "GUI\\FrmLogin.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:31:02.236Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TaiKhoanBLL.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\BLL\\TaiKhoanBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\TaiKhoanBLL.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\BLL\\TaiKhoanBLL.cs",
-              "RelativeToolTip": "BLL\\TaiKhoanBLL.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwCEAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:22:32.801Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TaiKhoanDAL.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DAL\\TaiKhoanDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\TaiKhoanDAL.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DAL\\TaiKhoanDAL.cs",
-              "RelativeToolTip": "DAL\\TaiKhoanDAL.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBUAAAAyAAAAAAAAAA==",
+              "Title": "GenreUC.cs [Design]",
+              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\DataControl\\DataUser\\GenreUC.cs",
+              "RelativeDocumentMoniker": "GUI\\DataControl\\DataUser\\GenreUC.cs",
+              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\DataControl\\DataUser\\GenreUC.cs [Design]",
+              "RelativeToolTip": "GUI\\DataControl\\DataUser\\GenreUC.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:22:22.416Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-15T09:17:55.09Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "KhachHangDAL.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DAL\\KhachHangDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\KhachHangDAL.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\DAL\\KhachHangDAL.cs",
-              "RelativeToolTip": "DAL\\KhachHangDAL.cs",
-              "ViewState": "AgIAAFEAAAAAAAAAAAAYwEMAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:19:59.708Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmRegister.cs",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\frmRegister.cs",
-              "RelativeDocumentMoniker": "GUI\\frmRegister.cs",
-              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\frmRegister.cs",
-              "RelativeToolTip": "GUI\\frmRegister.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAwwIIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:17:33.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "frmRegister.cs [Design]",
-              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\frmRegister.cs",
-              "RelativeDocumentMoniker": "GUI\\frmRegister.cs",
-              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmRegister.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-10T15:17:08.545Z"
+              "DocumentIndex": 1,
+              "Title": "GUI.csproj",
+              "DocumentMoniker": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\GUI.csproj",
+              "RelativeDocumentMoniker": "GUI\\GUI.csproj",
+              "ToolTip": "E:\\.NET\\Demo\\QuanLyBanVeRapPhim\\GUI\\GUI.csproj",
+              "RelativeToolTip": "GUI\\GUI.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-15T09:17:47.918Z"
             }
           ]
         },
