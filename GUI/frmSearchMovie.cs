@@ -11,14 +11,15 @@ using System.Windows.Forms;
 using BLL;
 using DTO;
 using GUI.Utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace GUI
 {
     public partial class frmSearchMovie : Form
     {
         private PhimBLL phimBLL;
-        private string _idKh;
-        public frmSearchMovie(string idKh)
+        private string _userName;
+        public frmSearchMovie(string userName)
         {
             InitializeComponent();
             panelFilter.Width = 1200;
@@ -30,7 +31,7 @@ namespace GUI
                 Visible = false // Để ẩn label này ban đầu
             };
 
-            _idKh=idKh;
+            _userName = userName;
             phimBLL = new PhimBLL();
         }
 
@@ -102,7 +103,7 @@ namespace GUI
                     {
                         // Mở form đặt vé và truyền các thông tin cần thiết
                         frmSeatMovie datVeForm = new frmSeatMovie();
-                        datVeForm.LoadMovie(idLichChieu, movieCard.TenPhim, movieCard.PosterPath,dtpNgayChieu.Value.ToString("dd/MM/yyyy"),_idKh);
+                        datVeForm.LoadMovie(idLichChieu, movieCard.TenPhim, movieCard.PosterPath,dtpNgayChieu.Value.ToString("dd/MM/yyyy"), _userName);
                         datVeForm.ShowDialog(); // Hoặc Show nếu bạn không muốn form là modal
                     };
 

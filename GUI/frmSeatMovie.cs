@@ -30,7 +30,7 @@ namespace GUI
         List<string> selectedSeats = new List<string>();
         List<string> gheDaDat = new List<string>();
         private string idLichCP;
-        private string _idKh;
+        private string _userName;
         Dictionary<string, int> seatMapping = new Dictionary<string, int>();
 
         public frmSeatMovie()
@@ -42,7 +42,7 @@ namespace GUI
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
 
-        public void LoadMovie(string idLichChieu, string tenPhim, string posterPath, string ngayChieu, string idKh)
+        public void LoadMovie(string idLichChieu, string tenPhim, string posterPath, string ngayChieu, string userName)
         {
             lblThongtin.Text = tenPhim;
             //pbPoster.ImageLocation = posterPath;
@@ -52,7 +52,7 @@ namespace GUI
             gheDaDat = phimBll.LayGheDaDat(idLichCP);
             (rows, cols, tenPh) = phimBll.LayThongTinPhongChieu(lc.idPhong);
             CreateSeats(rows, cols); // Gọi 
-            _idKh = idKh;
+            _userName = userName;
             lbPhong.Text = tenPh;
 
 
@@ -179,7 +179,7 @@ namespace GUI
                 // Tạo đối tượng DatVeDTO với thông tin cần thiết
                 DatVeDTO datVeDTO = new DatVeDTO
                 {
-                    IdKhachHang = _idKh, // Thay thế bằng ID khách hàng thực tế
+                    IdKhachHang = _userName, // Thay thế bằng ID khách hàng thực tế
                     IdLichChieuPhim = idLichCP,
                     GiaVePhim = lc.GiaVePhim,
                     TongTien = 65000,
@@ -189,7 +189,7 @@ namespace GUI
                 List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
 
                 string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
-                HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds); // Pass the list of IDs
+                HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds,_userName); // Pass the list of IDs
 
                 if (result != null)
                 {

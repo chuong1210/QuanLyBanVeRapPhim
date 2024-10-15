@@ -13,7 +13,6 @@ namespace DAL
 
 
         private string _connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
-
         public PhimDAL()
         {
                 
