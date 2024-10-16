@@ -68,7 +68,7 @@ namespace DAL
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Genre", genre);
-                        command.Parameters.AddWithValue("@Date", date.ToString("dd/MM/yyyy"));
+                        command.Parameters.AddWithValue("@Date", date.ToString("yyyy-MMM-dd"));
 
 
                         using (SqlDataReader reader = command.ExecuteReader())
