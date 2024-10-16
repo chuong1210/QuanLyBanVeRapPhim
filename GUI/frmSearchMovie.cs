@@ -118,6 +118,7 @@ namespace GUI
 
             else
             {
+                lbPhim.Visible = true;
                 lbPhim.Text = "Không có phim nào trong ngày đang chọn";
             }
         }

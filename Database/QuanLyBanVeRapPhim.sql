@@ -277,21 +277,19 @@ INSERT INTO TaiKhoan (UserName, PassWord, idRole, GhiNhoTK, idNV, idKH)
 VALUES 
 ('admin', 'admin123', 1, 1, NULL, 2),
 ('customer1', 'customer123', 2, 1, NULL, 1),
-('customer2', 'customer123', 2, 1, NULL, 2),
-('customer3', 'customer123', 2, 1, NULL, 3);
-
+('customer2', 'customer123', 2, 1, NULL, 2);
 
 
 GO
 -- Thêm dữ liệu vào bảng Phim
 INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX)
 VALUES
-('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2024-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
-('Avengers: Endgame', N'Phim siêu anh hùng.', 180, '2019-04-26', '2019-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
-('Spider-Man: No Way Home', N'Phim siêu anh hùng.', 130, '2021-12-17', '2022-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
-('The Batman', N'Phim hành động.', 160, '2022-03-03', '2022-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022),
-('Top Gun: Maverick', 'Phim hành động.', 130, '2022-05-27', '2022-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022),
-('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2014-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014);
+('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2025-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
+('Avengers', N'Phim siêu anh hùng.', 180, '2019-04-26', '2025-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
+('Spider-Man', N'Phim siêu anh hùng.', 130, '2021-12-17', '2025-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
+('The Batman', N'Phim hành động.', 160, '2022-03-03', '2025-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022),
+('Top Gun', 'Phim hành động.', 130, '2022-05-27', '2025-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022),
+('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2025-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014);
 -- Thêm dữ liệu vào bảng TheLoai
 INSERT INTO TheLoai (TenTheLoai, MoTa) VALUES
 (N'Hành động', N'Thể loại hành động, phiêu lưu.'),
@@ -305,12 +303,13 @@ INSERT INTO ChiTietPhimTL (idPhim, idTheLoai) VALUES
 (1, 3), -- Avatar - Khoa học viễn tưởng
 (2, 2), -- Avengers: Endgame - Siêu anh hùng
 (3, 2), -- Spider-Man: No Way Home - Siêu anh hùng
-(4, 1); -- The Batman - Hành động
+(4, 1),
+(5,1);-- The Batman - Hành động
 INSERT INTO LoaiManHinh (TenMH, KichThuoc)
 VALUES
 ('2D', 100),
 ('3D', 120),
-('4DX', 150);
+('IMAX', 150);
 INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, SoHangGhe, SoCotGhe)
 VALUES
 (N'Phòng 1', 1, 50, 5, 10),
@@ -323,6 +322,7 @@ VALUES
 ('AVATAR2024', 5000, '2024-01-01', '2024-02-28'),
 ('SUMMERDISCOUNT', 2000, '2024-06-15', '2024-08-31');
 GO
+
 -- tự động tạo vé phim khi insert lịch chiếu
 CREATE TRIGGER trg_AutoCreateVePhim
 ON LichChieuPhim
@@ -422,27 +422,26 @@ END;
 
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-09 14:00:00', 1, 10000, 1); --Avatar chiếu trong ngày 20/01/2024
+('2024-10-15 14:00:00', 1, 10000, 1); 
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-20 19:00:00', 1, 15000, 2);-- Avengers chiếu trong ngày 20/01/2024
+('2024-15-10 19:00:00', 1, 15000, 2);-- Avengers chiếu trong ngày 20/01/2024
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-20 10:00:00', 2, 12000, 3);--Spider-Man chiếu trong ngày 20/01/2024
-
+('2024-10-17 10:00:00', 2, 12000, 3);--Spider-Man chiếu trong ngày 20/01/2024
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-15 10:00:00', 1, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame')),
-('2024-01-15 14:00:00', 1, 18000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame')),
-('2024-01-15 19:00:00', 2, 20000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame')),
-('2024-01-16 10:00:00', 3, 22000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers: Endgame'));
+('2024-10-18 10:00:00', 1, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
+('2024-10-11 14:00:00', 1, 18000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
+('2024-10-13 19:00:00', 2, 20000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
+('2024-10-14 10:00:00', 3, 22000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers'));
 
 -- Ví dụ thêm lịch chiếu cho phim 'Spider-Man: No Way Home'
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-16 13:00:00', 1, 12000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man: No Way Home')),
-('2024-01-16 17:00:00', 2, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man: No Way Home')),
-('2024-01-17 10:00:00', 1, 13000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man: No Way Home'));
+('2024-01-16 13:00:00', 1, 12000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man')),
+('2024-01-16 17:00:00', 2, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man')),
+('2024-01-17 10:00:00', 1, 13000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man'));
 
 ---- PROC
 
@@ -488,6 +487,7 @@ EXEC TimPhimTheoNgayKTVaBatDauTheoTheLoai @StartDate = '2023-01-01', @EndDate = 
 
 drop proc TimPhimTheoNgayVaLoai
 
+SET DATEFORMAT dmy; 
 CREATE PROCEDURE TimPhimTheoNgayVaLoai
     @Date DATE,
     @Genre NVARCHAR(100)
@@ -531,7 +531,7 @@ BEGIN
     JOIN
         TheLoai t ON cpt.idTheLoai = t.id
     JOIN
-        LichChieuPhim lcp ON p.id = lcp.idPhim -- Sửa JOIN với LichChieuPhim
+        LichChieuPhim lcp ON p.id = lcp.idPhim 
 	WHERE
         t.TenTheLoai = @Genre
 		AND p.NgayKhoiChieu <= @Date
@@ -541,8 +541,8 @@ BEGIN
 END;
 
 go
-select * from lichchieuphim
-EXEC TimPhimTheoNgayVaLoai @Date = '2024-01-09', @Genre = N'Hành động';
+
+EXEC TimPhimTheoNgayVaLoai @Date = '2024-10-17', @Genre = N'Siêu anh hùng';
 go
 
 -- ------------------
@@ -818,7 +818,7 @@ BEGIN
         lc.idPhim = @MovieId AND
         CAST(lc.ThoiGianChieu AS DATE) = @ShowDate
     GROUP BY 
-        lc.ThoiGianChieu, p.TenPhong, lc.GiaVePhim
+        lc.ThoiGianChieu, p.TenPhong, lc.GiaVePhim,, p.SoGheNgoi
 END
 
 
