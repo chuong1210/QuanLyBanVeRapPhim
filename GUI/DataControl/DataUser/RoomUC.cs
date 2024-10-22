@@ -63,7 +63,7 @@ namespace GUI.DataControl.DataUser
             txtRoomSeats.DataBindings.Add("Text", pDT, "SoGheNgoi", true, DataSourceUpdateMode.OnPropertyChanged);
             txtState.DataBindings.Add("Text", pDT, "TrangThaiChoNgoi", true, DataSourceUpdateMode.OnPropertyChanged); // 
             txtNumberOfRows.DataBindings.Add("Text", pDT, "SoHangGhe", true, DataSourceUpdateMode.OnPropertyChanged);
-            txtSeatsPerRow.DataBindings.Add("Text", pDT, "SoGheMotHang", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtSeatsPerRow.DataBindings.Add("Text", pDT, "SoCotGhe", true, DataSourceUpdateMode.OnPropertyChanged);
         }
         private void dtgvRoom_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

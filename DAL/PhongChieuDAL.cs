@@ -11,7 +11,7 @@ namespace DAL
 {
     public class PhongChieuDAL
     {
-        private static string connectionString = "Data Source=LAPTOP-DTCNUEFC\\SQLEXPRESS;Initial Catalog=QLRP;Integrated Security=True;";
+        private static string connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
         public  DataTable GetListCinema()
         {
             string query = "SELECT * FROM PhongChieu"; // Truy vấn SQL
