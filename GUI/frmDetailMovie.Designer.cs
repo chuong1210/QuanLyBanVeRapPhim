@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            pictureBox1 = new PictureBox();
+            pbPoster = new PictureBox();
             lblNameMV = new Label();
             lblTime = new Label();
-            lblMoTa = new Label();
             btnBookTicket = new Button();
-            btnRoom = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            label2 = new Label();
+            txtPhongChieu = new TextBox();
+            cboGioChieu = new ComboBox();
+            lbGheTrong = new Label();
+            ((System.ComponentModel.ISupportInitialize)pbPoster).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -50,40 +52,33 @@
             label1.Text = "Thông tin chi tiết phim";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // pbPoster
             // 
-            pictureBox1.Location = new Point(43, 146);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(177, 214);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            pbPoster.Location = new Point(43, 146);
+            pbPoster.Name = "pbPoster";
+            pbPoster.Size = new Size(177, 214);
+            pbPoster.TabIndex = 1;
+            pbPoster.TabStop = false;
             // 
             // lblNameMV
             // 
             lblNameMV.AutoSize = true;
-            lblNameMV.Location = new Point(43, 372);
+            lblNameMV.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            lblNameMV.Location = new Point(86, 373);
             lblNameMV.Name = "lblNameMV";
-            lblNameMV.Size = new Size(50, 20);
+            lblNameMV.Size = new Size(52, 24);
             lblNameMV.TabIndex = 2;
             lblNameMV.Text = "label2";
             // 
             // lblTime
             // 
             lblTime.AutoSize = true;
-            lblTime.Location = new Point(345, 146);
+            lblTime.Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            lblTime.Location = new Point(344, 181);
             lblTime.Name = "lblTime";
-            lblTime.Size = new Size(50, 20);
+            lblTime.Size = new Size(140, 24);
             lblTime.TabIndex = 4;
-            lblTime.Text = "label4";
-            // 
-            // lblMoTa
-            // 
-            lblMoTa.AutoSize = true;
-            lblMoTa.Location = new Point(345, 238);
-            lblMoTa.Name = "lblMoTa";
-            lblMoTa.Size = new Size(86, 20);
-            lblMoTa.TabIndex = 5;
-            lblMoTa.Text = "Mô tả phim";
+            lblTime.Text = "Chọn giờ chiếu";
             // 
             // btnBookTicket
             // 
@@ -98,36 +93,64 @@
             btnBookTicket.TabIndex = 6;
             btnBookTicket.Text = "Đặt vé";
             btnBookTicket.UseVisualStyleBackColor = true;
+            btnBookTicket.Click += btnBookTicket_Click;
             // 
-            // btnRoom
+            // label2
             // 
-            btnRoom.BackgroundImage = Properties.Resources.th;
-            btnRoom.BackgroundImageLayout = ImageLayout.Stretch;
-            btnRoom.Cursor = Cursors.Hand;
-            btnRoom.Font = new Font("Bahnschrift SemiCondensed", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnRoom.ForeColor = Color.MediumSlateBlue;
-            btnRoom.Location = new Point(504, 133);
-            btnRoom.Name = "btnRoom";
-            btnRoom.Size = new Size(180, 42);
-            btnRoom.TabIndex = 7;
-            btnRoom.Text = "Phòng 02";
-            btnRoom.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            label2.Location = new Point(344, 283);
+            label2.Name = "label2";
+            label2.Size = new Size(119, 24);
+            label2.TabIndex = 7;
+            label2.Text = "Phòng chiếu";
+            // 
+            // txtPhongChieu
+            // 
+            txtPhongChieu.Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            txtPhongChieu.Location = new Point(507, 280);
+            txtPhongChieu.Name = "txtPhongChieu";
+            txtPhongChieu.ReadOnly = true;
+            txtPhongChieu.Size = new Size(151, 32);
+            txtPhongChieu.TabIndex = 8;
+            // 
+            // cboGioChieu
+            // 
+            cboGioChieu.Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cboGioChieu.FormattingEnabled = true;
+            cboGioChieu.Location = new Point(507, 178);
+            cboGioChieu.Name = "cboGioChieu";
+            cboGioChieu.Size = new Size(151, 32);
+            cboGioChieu.TabIndex = 9;
+            // 
+            // lbGheTrong
+            // 
+            lbGheTrong.AutoSize = true;
+            lbGheTrong.Font = new Font("Bahnschrift Condensed", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            lbGheTrong.Location = new Point(468, 100);
+            lbGheTrong.Name = "lbGheTrong";
+            lbGheTrong.Size = new Size(52, 24);
+            lbGheTrong.TabIndex = 10;
+            lbGheTrong.Text = "label2";
             // 
             // frmDetailMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnRoom);
+            Controls.Add(lbGheTrong);
+            Controls.Add(cboGioChieu);
+            Controls.Add(txtPhongChieu);
+            Controls.Add(label2);
             Controls.Add(btnBookTicket);
-            Controls.Add(lblMoTa);
             Controls.Add(lblTime);
             Controls.Add(lblNameMV);
-            Controls.Add(pictureBox1);
+            Controls.Add(pbPoster);
             Controls.Add(label1);
             Name = "frmDetailMovie";
-            Text = "frmDetailMovie";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Text = "Chi tiết lịch chiếu";
+            Load += frmDetailMovie_Load;
+            ((System.ComponentModel.ISupportInitialize)pbPoster).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,11 +158,13 @@
         #endregion
 
         private Label label1;
-        private PictureBox pictureBox1;
+        private PictureBox pbPoster;
         private Label lblNameMV;
         private Label lblTime;
-        private Label lblMoTa;
         private Button btnBookTicket;
-        private Button btnRoom;
+        private Label label2;
+        private TextBox txtPhongChieu;
+        private ComboBox cboGioChieu;
+        private Label lbGheTrong;
     }
 }

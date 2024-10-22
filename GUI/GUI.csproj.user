@@ -48,6 +48,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Update="DataControl\DataAdmin\DataUC.resx">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -58,6 +59,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
+=======
+    <EmbeddedResource Update="FrmLogin.resx">
+>>>>>>> 19ca4ec33a5fb745da85e1cb6a526f99bb14f9a4
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

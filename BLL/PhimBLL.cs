@@ -22,7 +22,14 @@ namespace BLL
 
         public List<DsPhimDTO> TimPhim(string genre, DateTime date)
         {
-            return _phimDAL.TimPheoTheoNgayVaTheLoai(genre, date);
+            if (string.IsNullOrEmpty(genre))
+            {
+                return _phimDAL.TimPheoTheoNgay(date); // Method to get movies for the specific date without filtering by genre
+            }
+            else
+            {
+                return _phimDAL.TimPheoTheoNgayVaTheLoai(genre, date); // Existing method to filter by genre and date
+            }
         }
 
         public LichChieuPhimDTO LayChiTietLichChieuPhim(string idLichChieuPhim)
@@ -44,8 +51,8 @@ namespace BLL
         }
         public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats,string userName)
         {
-          string idKH=  khachHangDAL.GetIdKhachHangByUserName(userName);
-            DatVeDTO.IdKhachHang = idKH;
+          //string idKH=  khachHangDAL.GetIdKhachHangByUserName(userName);
+            //DatVeDTO.IdKhachHang = idKH;
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
         public DataTable getListMovie()

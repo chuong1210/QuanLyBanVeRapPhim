@@ -66,12 +66,12 @@ namespace DAL
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    string query = @"EXEC TimPhimTheoNgayVaLoai @Date = @Date, @Genre= @Genre;";
+                    string query = @"EXEC TimPhimTheoNgayVaLoaiDistinct @Date = @Date, @Genre= @Genre;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@Genre", genre);
-                        command.Parameters.AddWithValue("@Date", date.ToString("yyyy-MMM-dd"));
+                        command.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd"));
 
 
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -88,7 +88,6 @@ namespace DAL
                                 movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
                                 movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
                                 ds.PhimDTO= movie;
-                                ds.idLCP= reader["LcpId"].ToString();
                                 movies.Add(ds);
                             }
                         }
@@ -98,6 +97,64 @@ namespace DAL
             catch (SqlException ex)
             {
                 // Log the error appropriately (e.g., using a logging library)
+                Console.WriteLine($"Error retrieving movies: {ex.Message}");
+            }
+            return movies;
+        }
+        public List<DsPhimDTO> TimPheoTheoNgay(DateTime date)
+        {
+            List<DsPhimDTO> movies = new List<DsPhimDTO>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                                SELECT 
+                                   DISTINCT
+                                   p.id AS PhimId,
+                                    p.TenPhim,
+                                    p.PosterPath,
+                                    p.ThoiLuong,
+                                    p.DaoDien,
+		                            p.MoTa,
+		                            p.NamSX,
+		                            p.DienVien,
+		                            p.NgayKhoiChieu,
+		                            p.NgayKetThuc
+                                FROM 
+                                    Phim p
+                                INNER JOIN 
+                                    LichChieuPhim lc ON p.Id = lc.IdPhim
+                                WHERE 
+                                   CONVERT(VARCHAR(10), lc.ThoiGianChieu, 126) = @Date";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Date", date.ToString("yyyy-MM-dd"));
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                DsPhimDTO ds = new DsPhimDTO();
+                                PhimDTO movie = new PhimDTO();
+                                movie.Id = reader["PhimId"].ToString();
+                                movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
+                                movie.Poster = reader["PosterPath"].ToString();
+
+
+                                movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
+                                movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
+                                ds.PhimDTO = movie;
+                                movies.Add(ds);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
                 Console.WriteLine($"Error retrieving movies: {ex.Message}");
             }
             return movies;
@@ -116,40 +173,59 @@ namespace DAL
 
                     try
                     {
-                        // Tạo hóa đơn
-                        string queryHoaDon = @"
-                DECLARE @idHoaDon INT; 
-                INSERT INTO HoaDon (idKhachHang, NgayMua, TongTien)
-                VALUES (@idKhachHang, GETDATE(), @TongTien);
-                SET @idHoaDon = SCOPE_IDENTITY(); 
-                SELECT @idHoaDon;";
-
-                        int idHoaDon = 0; // Biến lưu ID hóa đơn vừa tạo
+                        string queryHoaDon = "";
+                        int idHoaDon = 0; // Variable to store the ID of the created invoice
                         decimal tongTien = selectedSeats.Count * DatVeDTO.GiaVePhim;
 
+                        // Insert the invoice (HoaDon) depending on whether there is a customer ID
+                        if (!String.IsNullOrEmpty(DatVeDTO.IdKhachHang))
+                        {
+                            // If a customer ID exists, include it in the invoice
+                            queryHoaDon = @"
+                        DECLARE @idHoaDon INT; 
+                        INSERT INTO HoaDon (idKhachHang, NgayMua, TongTien)
+                        VALUES (@idKhachHang, GETDATE(), @TongTien);
+                        SET @idHoaDon = SCOPE_IDENTITY(); 
+                        SELECT @idHoaDon;";
+                        }
+                        else
+                        {
+                            // If no customer ID exists, create the invoice without a customer reference
+                            queryHoaDon = @"
+                        DECLARE @idHoaDon INT; 
+                        INSERT INTO HoaDon (NgayMua, TongTien)
+                        VALUES (GETDATE(), @TongTien);
+                        SET @idHoaDon = SCOPE_IDENTITY(); 
+                        SELECT @idHoaDon;";
+                        }
+
+                        // Execute the query to create the invoice and get the invoice ID
                         using (SqlCommand command = new SqlCommand(queryHoaDon, connection, transaction))
                         {
-                            command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang);
+                            if (!String.IsNullOrEmpty(DatVeDTO.IdKhachHang))
+                            {
+                                command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang);
+                            }
                             command.Parameters.AddWithValue("@TongTien", tongTien);
 
                             idHoaDon = (int)command.ExecuteScalar();
                         }
 
-                        // Cập nhật trạng thái ghế đã đặt và thêm chi tiết hóa đơn
+                        // Update ticket status and insert order details
                         foreach (var seat in selectedSeats)
                         {
                             string queryVePhim = @"
-                    UPDATE VePhim 
-                    SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang 
-                    OUTPUT INSERTED.id 
-                    WHERE   MaGheNgoi = @SoGhe AND idLichChieuPhim = @idLichChieuPhim;";
-                            
+                        UPDATE VePhim 
+                        SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang 
+                        OUTPUT INSERTED.id 
+                        WHERE MaGheNgoi = @SoGhe AND idLichChieuPhim = @idLichChieuPhim;";
+
                             int? idVePhim = null;
 
                             using (SqlCommand command = new SqlCommand(queryVePhim, connection, transaction))
                             {
-                                command.Parameters.AddWithValue("@SoGhe","Ghe_"+seat);
-                                command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang);
+                                command.Parameters.AddWithValue("@SoGhe", "Ghe_" + seat);
+                                command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang ?? (object)DBNull.Value);
                                 command.Parameters.AddWithValue("@idLichChieuPhim", DatVeDTO.IdLichChieuPhim);
 
                                 var result = command.ExecuteScalar();
@@ -162,8 +238,8 @@ namespace DAL
                             if (idVePhim.HasValue)
                             {
                                 string queryChiTietHoaDon = @"
-                        INSERT INTO ChiTietHoaDon (idHoaDon, idVePhim, SoLuong, GiaTien)
-                        VALUES (@idHoaDon, @idVePhim, 1, @GiaVePhim);";
+                            INSERT INTO ChiTietHoaDon (idHoaDon, idVePhim, SoLuong, GiaTien)
+                            VALUES (@idHoaDon, @idVePhim, 1, @GiaVePhim);";
 
                                 using (SqlCommand command = new SqlCommand(queryChiTietHoaDon, connection, transaction))
                                 {
@@ -176,9 +252,9 @@ namespace DAL
                             }
                         }
 
-                        transaction.Commit(); // Hoàn tất giao dịch
+                        transaction.Commit(); // Commit the transaction after everything is successful
 
-                        // Sau khi hoàn tất giao dịch, tạo hóa đơn (Hóa đơn DTO)
+                        // Retrieve the completed invoice details
                         hoaDon = LayThongTinHoaDon(idHoaDon);
                     }
                     catch (Exception ex)
@@ -193,7 +269,7 @@ namespace DAL
                 Console.WriteLine($"Database error in DatVeXemPhim: {ex.Message}");
             }
 
-            return hoaDon; // Trả về hóa đơn sau khi hoàn tất đặt vé
+            return hoaDon; // Return the completed invoice
         }
 
 
