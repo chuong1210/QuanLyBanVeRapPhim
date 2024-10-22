@@ -504,11 +504,7 @@ BEGIN
 		AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date)  -- Chắc chắn phim đang chiếu vào ngày đó
 	ORDER BY p.TenPhim;
 END;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> 19ca4ec33a5fb745da85e1cb6a526f99bb14f9a4
 
 --------------------
 SET DATEFORMAT dmy; 
@@ -577,11 +573,6 @@ go
 
 
 -------------------------------------------------------
-<<<<<<< HEAD
-
-=======
-drop proc LayLichChieuCuaPhimTrongNgay
->>>>>>> 19ca4ec33a5fb745da85e1cb6a526f99bb14f9a4
 
 CREATE PROCEDURE LayLichChieuCuaPhimTrongNgay
     @MovieId INT,
@@ -603,42 +594,28 @@ BEGIN
     END
 
     SELECT
-<<<<<<< HEAD
-        LCP.ThoiGianChieu,
-		LCP.idPhong,
-		PC.TenPhong,
-=======
 		 CONVERT(VARCHAR(5), LCP.ThoiGianChieu, 108) AS GioChieu, 
 		CONVERT(VARCHAR(5), DATEADD(MINUTE, P.ThoiLuong, LCP.ThoiGianChieu), 108) AS GioKetThuc,  
 		LCP.idPhong,
         LCP.id as idLCP,
 		PC.TenPhong,
 		PC.SoGheNgoi,
->>>>>>> 19ca4ec33a5fb745da85e1cb6a526f99bb14f9a4
 		PC.SoGheNgoi - ISNULL((SELECT COUNT(*) FROM VePhim WHERE idLichChieuPhim = LCP.id AND TrangThaiVePhim = 1), 0) AS SoGheConTrong
 
     FROM
         LichChieuPhim LCP
 	JOIN 
 		PhongChieu PC ON PC.id=idPhong
-<<<<<<< HEAD
-=======
 	JOIN
 		Phim P ON P.id = LCP.idPhim 
->>>>>>> 19ca4ec33a5fb745da85e1cb6a526f99bb14f9a4
     WHERE
         idPhim = @MovieId
 		AND ThoiGianChieu >= @Date
 		AND ThoiGianChieu < DATEADD(day, 1, @Date);
 END;
 
-<<<<<<< HEAD
-
-EXEC LayLichChieuCuaPhimTrongNgay @MovieId= '3',  @date= '2024-10-17';
-=======
 select * from LichChieuPhim
 EXEC LayLichChieuCuaPhimTrongNgay @MovieId= '3',  @date= '2024-10-23';
->>>>>>> 19ca4ec33a5fb745da85e1cb6a526f99bb14f9a4
 ----------------------
 
 
