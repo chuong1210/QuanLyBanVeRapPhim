@@ -73,54 +73,7 @@ namespace GUI
 
             // Lấy danh sách phim theo thể loại và ngày chiếu
             List<DsPhimDTO> movies = phimBLL.TimPhim(selectedGenre, selectedDate);
-
-            flowLayoutPanelMovies.Controls.Clear();
-            if (movies.Count > 0)
-            {
-                flowLayoutPanelMovies.Enabled = true;
-                flowLayoutPanelMovies.Visible = true;
-                lbPhim.Visible = true;
-                flowLayoutPanelMovies.Width = 800; // Chiều rộng tổng cho 5 card phim, cộng với khoảng cách giữa chúng
-
-                lbPhim.Text = "Danh sách phim hiện tại";
-
-                foreach (var movie in movies)
-                {
-                    MovieCard movieCard = new MovieCard();
-
-                    movieCard.TenPhim = movie.PhimDTO.TenPhim;
-                    movieCard.ThoiLuong = movie.PhimDTO.ThoiLuong.ToString() + "'";
-                    movieCard.DaoDien = movie.PhimDTO.DaoDien.ToString();
-                    movieCard.IdPhim = movie.PhimDTO.Id.ToString();
-                    string imagePath = GetImagePath(movie.PhimDTO.Poster.ToString());
-                    string idLichChieu =movie.idLCP;
-
-                    movieCard.PosterPath = imagePath;
-
-                    // Đăng ký sự kiện DatVeClicked
-                    movieCard.BookTicketClicked += (s, args) =>
-                    {
-                        // Mở form đặt vé và truyền các thông tin cần thiết
-                        frmSeatMovie datVeForm = new frmSeatMovie();
-                        datVeForm.LoadMovie(idLichChieu, movieCard.TenPhim, movieCard.PosterPath,dtpNgayChieu.Value.ToString("dd/MM/yyyy"), _userName);
-                        datVeForm.ShowDialog(); // Hoặc Show nếu bạn không muốn form là modal
-                    };
-
-                    // Điều chỉnh kích thước của MovieCard nếu cần
-                    //movieCard.Width = 200; // Hoặc bất kỳ kích thước nào bạn muốn
-                    //movieCard.Height = 300;
-                    movieCard.Margin = new Padding(10);
-
-                    // Thêm movieCard vào FlowLayoutPanel
-                    flowLayoutPanelMovies.Controls.Add(movieCard);
-                }
-            }
-
-            else
-            {
-                lbPhim.Visible = true;
-                lbPhim.Text = "Không có phim nào trong ngày đang chọn";
-            }
+            DisplayMovies(movies); // Display movies in the UI
         }
 
         private string GetImagePath(string poster)
@@ -136,6 +89,49 @@ namespace GUI
                 return Path.Combine(Application.StartupPath, "images", poster);
             }
         }
+        private void DisplayMovies(List<DsPhimDTO> movies)
+        {
+            flowLayoutPanelMovies.Controls.Clear(); // Clear previous controls
+
+            if (movies.Count > 0)
+            {
+                flowLayoutPanelMovies.Enabled = true;
+                flowLayoutPanelMovies.Visible = true;
+                lbPhim.Visible = true;
+                flowLayoutPanelMovies.Width = 800; // Width for displaying the movie cards
+
+                lbPhim.Text = "Danh sách phim hiện tại"; // Set label text
+
+                foreach (var movie in movies)
+                {
+                    MovieCard movieCard = new MovieCard
+                    {
+                        TenPhim = movie.PhimDTO.TenPhim,
+                        ThoiLuong = movie.PhimDTO.ThoiLuong.ToString() + "'",
+                        DaoDien = movie.PhimDTO.DaoDien.ToString(),
+                        IdPhim = movie.PhimDTO.Id.ToString(),
+                        PosterPath = GetImagePath(movie.PhimDTO.Poster.ToString())
+                    };
+
+                    // Register the click event
+                    movieCard.BookTicketClicked += (s, args) =>
+                    {
+                        frmDetailMovie movieDetail = new frmDetailMovie();
+                        movieDetail.LoadMovie(movie.PhimDTO.Id.ToString(), movieCard.TenPhim, movieCard.PosterPath, dtpNgayChieu.Value.ToString(), _userName);
+                        movieDetail.ShowDialog(); // Show movie details
+                    };
+
+                    movieCard.Margin = new Padding(10); // Set margin for the movie card
+
+                    flowLayoutPanelMovies.Controls.Add(movieCard); // Add movie card to the flow layout panel
+                }
+            }
+            else
+            {
+                lbPhim.Visible = true;
+                lbPhim.Text = "Không có phim nào trong ngày hôm nay"; // No movies found
+            }
+        }
 
         private void frmSearchMovie_Load(object sender, EventArgs e)
         {
@@ -143,8 +139,15 @@ namespace GUI
             cbGenre.DisplayMember = "TenTheLoai";
             cbGenre.ValueMember= "TenTheLoai";
 
+            DateTime today = DateTime.Today; // Get today's date
+            List<DsPhimDTO> movies = phimBLL.TimPhim(null, dtpNgayChieu.Value); // You may need to adjust the method signature to accept null for genre
+
+            DisplayMovies(movies); 
 
             panelLine.Height = 2;
         }
+
+
+
     }
 }

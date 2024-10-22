@@ -428,20 +428,22 @@ END;
 
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-10-15 14:00:00', 1, 10000, 1); 
+('2024-10-23 14:00:00', 1, 10000, 1); 
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-15-10 19:00:00', 1, 15000, 2);-- Avengers chiếu trong ngày 20/01/2024
+('2024-10-23 19:00:00', 1, 15000, 2);
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-10-17 10:00:00', 2, 12000, 3);--Spider-Man chiếu trong ngày 20/01/2024
+('2024-10-23 10:00:00', 2, 12000, 3);
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-10-18 10:00:00', 1, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
-('2024-10-11 14:00:00', 1, 18000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
-('2024-10-13 19:00:00', 2, 20000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
-('2024-10-14 10:00:00', 3, 22000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers'));
-
+('2024-10-24 18:00:00', 1, 12000, 3);
+INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
+VALUES
+('2024-10-24 10:00:00', 1, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
+('2024-10-24 14:00:00', 1, 18000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
+('2024-10-25 19:00:00', 2, 20000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers')),
+('2024-10-25 10:00:00', 3, 22000, (SELECT id FROM Phim WHERE TenPhim = 'Avengers'));
 -- Ví dụ thêm lịch chiếu cho phim 'Spider-Man: No Way Home'
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
@@ -502,7 +504,7 @@ BEGIN
 		AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date)  -- Chắc chắn phim đang chiếu vào ngày đó
 	ORDER BY p.TenPhim;
 END;
-
+    
 
 --------------------
 SET DATEFORMAT dmy; 
@@ -571,7 +573,7 @@ go
 
 
 -------------------------------------------------------
-
+drop proc LayLichChieuCuaPhimTrongNgay
 
 CREATE PROCEDURE LayLichChieuCuaPhimTrongNgay
     @MovieId INT,
@@ -593,23 +595,28 @@ BEGIN
     END
 
     SELECT
-        LCP.ThoiGianChieu,
+		 CONVERT(VARCHAR(5), LCP.ThoiGianChieu, 108) AS GioChieu, 
+		CONVERT(VARCHAR(5), DATEADD(MINUTE, P.ThoiLuong, LCP.ThoiGianChieu), 108) AS GioKetThuc,  
 		LCP.idPhong,
+        LCP.id as idLCP,
 		PC.TenPhong,
+		PC.SoGheNgoi,
 		PC.SoGheNgoi - ISNULL((SELECT COUNT(*) FROM VePhim WHERE idLichChieuPhim = LCP.id AND TrangThaiVePhim = 1), 0) AS SoGheConTrong
 
     FROM
         LichChieuPhim LCP
 	JOIN 
 		PhongChieu PC ON PC.id=idPhong
+	JOIN
+		Phim P ON P.id = LCP.idPhim 
     WHERE
         idPhim = @MovieId
 		AND ThoiGianChieu >= @Date
 		AND ThoiGianChieu < DATEADD(day, 1, @Date);
 END;
 
-
-EXEC LayLichChieuCuaPhimTrongNgay @MovieId= '3',  @date= '2024-10-17';
+select * from LichChieuPhim
+EXEC LayLichChieuCuaPhimTrongNgay @MovieId= '3',  @date= '2024-10-23';
 ----------------------
 
 

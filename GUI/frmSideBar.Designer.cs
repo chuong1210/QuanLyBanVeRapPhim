@@ -44,7 +44,7 @@
             sidebarPanel.Dock = DockStyle.Left;
             sidebarPanel.Location = new Point(0, 0);
             sidebarPanel.Name = "sidebarPanel";
-            sidebarPanel.Size = new Size(126, 450);
+            sidebarPanel.Size = new Size(132, 450);
             sidebarPanel.TabIndex = 1;
             // 
             // pcLogo
@@ -67,7 +67,6 @@
             Name = "frmSideBar";
             Text = "frmClient";
             FormClosing += frmClient_FormClosing;
-            Load += frmClient_Load;
             sidebarPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pcLogo).EndInit();
             ResumeLayout(false);

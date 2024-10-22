@@ -46,6 +46,8 @@
             printPreviewDialog1 = new PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             lblTongTien = new Label();
+            cboIdKH = new ComboBox();
+            lbIhKH = new Label();
             ((System.ComponentModel.ISupportInitialize)pcPoster).BeginInit();
             pnSelect.SuspendLayout();
             SuspendLayout();
@@ -225,11 +227,32 @@
             lblTongTien.TabIndex = 9;
             lblTongTien.Text = "label1";
             // 
+            // cboIdKH
+            // 
+            cboIdKH.Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            cboIdKH.FormattingEnabled = true;
+            cboIdKH.Location = new Point(599, 344);
+            cboIdKH.Name = "cboIdKH";
+            cboIdKH.Size = new Size(151, 32);
+            cboIdKH.TabIndex = 10;
+            // 
+            // lbIhKH
+            // 
+            lbIhKH.AutoSize = true;
+            lbIhKH.Font = new Font("Bahnschrift SemiBold SemiConden", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            lbIhKH.Location = new Point(656, 356);
+            lbIhKH.Name = "lbIhKH";
+            lbIhKH.Size = new Size(53, 24);
+            lbIhKH.TabIndex = 11;
+            lbIhKH.Text = "label1";
+            // 
             // frmSeatMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
+            Controls.Add(lbIhKH);
+            Controls.Add(cboIdKH);
             Controls.Add(lblTongTien);
             Controls.Add(pnSelect);
             Controls.Add(lbPhong);
@@ -267,5 +290,7 @@
         private PrintPreviewDialog printPreviewDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private Label lblTongTien;
+        private ComboBox cboIdKH;
+        private Label lbIhKH;
     }
 }

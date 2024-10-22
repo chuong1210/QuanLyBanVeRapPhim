@@ -182,34 +182,32 @@ namespace DAL
             return result;
         }
 
-        // Lấy thông tin khách hàng theo ID
-        public string GetIdKhachHangByUserName(string username)
-        {
-            string kh = "";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT idKH FROM TaiKhoan WHERE UserName = @name";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@name", username);
+        //public string GetIdKhachHangByUserName(string username)
+        //{
+        //    string kh = "";
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
+        //    {
+        //        string query = "SELECT idKH FROM TaiKhoan WHERE UserName = @name";
+        //        SqlCommand command = new SqlCommand(query, connection);
+        //        command.Parameters.AddWithValue("@name", username);
 
-                try
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
+        //        try
+        //        {
+        //            connection.Open();
+        //            SqlDataReader reader = command.ExecuteReader();
 
-                    if (reader.Read())
-                    {
-                      kh=reader["idKH"].ToString();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Xử lý ngoại lệ
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-            }
-            return kh;
+        //            if (reader.Read())
+        //            {
+        //              kh=reader["idKH"].ToString();
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            // Xử lý ngoại lệ
+        //            Console.WriteLine("Error: " + ex.Message);
+        //        }
+        //    }
+        //    return kh;
         }
     }
 
-}
