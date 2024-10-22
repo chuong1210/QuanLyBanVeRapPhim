@@ -25,8 +25,7 @@ CREATE TABLE TaiKhoan
 	PassWord VARCHAR(1000) NOT NULL,
 	idRole INT NOT NULL DEFAULT 2,  
 	GhiNhoTK INT NOT NULL DEFAULT 1,
-	idNV INT NULL,  -- NULL nếu là khách hàng
-	idKH INT NULL,  -- NULL nếu là nhân viên
+	idNV INT NOT NULL,  
 
 	CONSTRAINT PK_TaiKhoan PRIMARY KEY (id) 
 
@@ -51,6 +50,7 @@ CREATE TABLE NhanVien
 	HoTen NVARCHAR(255) NOT NULL,
 	NgaySinh DATE NOT NULL,
 	DiaChi NVARCHAR(255),
+	idQuanLy INT,
 	SDT VARCHAR(255),
 	CMND INT NOT NULL UNIQUE,
 	CONSTRAINT PK_NhanVien PRIMARY KEY (id)
@@ -180,7 +180,7 @@ GO
 CREATE TABLE HoaDon
 (
     id INT IDENTITY(1,1) NOT NULL,  -- ID tự động tăng
-    idKhachHang INT NOT NULL,  -- ID khách hàng
+    idKhachHang INT  NULL,  -- ID khách hàng
     NgayMua DATETIME NOT NULL,  -- Ngày mua vé
     TongTien MONEY NOT NULL,  -- Tổng tiền
 	idVoucher INT NULL,
@@ -204,9 +204,7 @@ ALTER TABLE TaiKhoan
 ADD CONSTRAINT FK_TaiKhoan_NhanVien FOREIGN KEY (idNV)
 REFERENCES dbo.NhanVien(id);
 
-ALTER TABLE TaiKhoan
-ADD CONSTRAINT FK_TaiKhoan_KhachHang FOREIGN KEY (idKH)
-REFERENCES dbo.KhachHang(id);
+
 -- Thêm ràng buộc FOREIGN KEY cho bảng PhongChieu
 ALTER TABLE PhongChieu
 ADD CONSTRAINT FK_PhongChieu_LoaiManHinh FOREIGN KEY (idManHinh)
@@ -249,8 +247,13 @@ ADD CONSTRAINT FK_HoaDon_Voucher FOREIGN KEY (idVoucher) REFERENCES Voucher(id);
 --ADD CONSTRAINT UK_LichChieu_Phong_ThoiGian
 --UNIQUE (ThoiGianChieu, idPhong);
 
+ALTER TABLE NhanVien
+ADD CONSTRAINT FK_NhanVien_QuanLy FOREIGN KEY (idQuanLy) REFERENCES NhanVien(id);
+
+
 ALTER TABLE VePhim
 ADD CONSTRAINT UQ_VePhim UNIQUE (idLichChieuPhim, MaGheNgoi);
+
 go
 
 INSERT INTO Role (TenRole, MoTa)
@@ -272,12 +275,15 @@ VALUES (N'Le Van C', '1985-03-20', N'789 Đường DEF, Quận 3, TP.HCM', '0123
 INSERT INTO NhanVien (HoTen, NgaySinh, DiaChi, SDT, CMND)
 VALUES ('Pham Thi D', '1992-07-30', N'321 Đường GHI, Quận 4, TP.HCM', '0987654300', 987654321);
 
+INSERT INTO NhanVien (HoTen, NgaySinh, DiaChi, SDT, CMND)
+VALUES ('Vo Ngoc E', '1994-02-26', N'30 Đường Thới an, Quận 12, TP.HCM', '0772837620', 424162626);
 
-INSERT INTO TaiKhoan (UserName, PassWord, idRole, GhiNhoTK, idNV, idKH)
+GO
+INSERT INTO TaiKhoan (UserName, PassWord, idRole, GhiNhoTK, idNV)
 VALUES 
-('admin', 'admin123', 1, 1, NULL, 2),
-('customer1', 'customer123', 2, 1, NULL, 1),
-('customer2', 'customer123', 2, 1, NULL, 2);
+('admin', 'admin123', 1, 1,1),
+('staff', 'staff123', 2, 1, 2),
+('staff2', 'staff123', 2, 1, 3);
 
 
 GO
@@ -439,54 +445,66 @@ VALUES
 -- Ví dụ thêm lịch chiếu cho phim 'Spider-Man: No Way Home'
 INSERT INTO LichChieuPhim (ThoiGianChieu, idPhong, GiaVePhim, idPhim)
 VALUES
-('2024-01-16 13:00:00', 1, 12000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man')),
-('2024-01-16 17:00:00', 2, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man')),
-('2024-01-17 10:00:00', 1, 13000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man'));
+('2024-11-16 13:00:00', 1, 12000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man')),
+('2024-11-16 17:00:00', 2, 15000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man')),
+('2024-11-17 10:00:00', 1, 13000, (SELECT id FROM Phim WHERE TenPhim = 'Spider-Man'));
 
 ---- PROC
-
-
-  CREATE PROCEDURE TimPhimTheoNgayKTVaBatDauTheoTheLoai
-    @StartDate DATE,
-    @EndDate DATE,
-	@Genre NVARCHAR(50)
+CREATE PROCEDURE TimPhimTheoNgayVaLoaiDistinct
+    @Date DATE,
+    @Genre NVARCHAR(100)
 AS
 BEGIN
-    IF @StartDate IS NULL OR @EndDate IS NULL
+    --Kiểm tra nếu ngày không hợp lệ.
+    IF @Date IS NULL
     BEGIN
-        RAISERROR(N'Trường @StartDate và @EndDate phải khác null.', 16, 1)
-        RETURN
-    END
-    IF @StartDate > @EndDate
-    BEGIN
-        RAISERROR(N'Ngày khởi chiếu ko lớn hơn ngày kết thuc', 16, 1)
+        RAISERROR('Ngày không hợp lệ.', 16, 1)
         RETURN
     END
 
+    --Kiểm tra nếu thể loại không hợp lệ.
+    IF @Genre IS NULL
+    BEGIN
+        RAISERROR('Thể loại không hợp lệ.', 16, 1)
+        RETURN
+    END
+		IF NOT EXISTS (SELECT 1 FROM Phim p JOIN ChiTietPhimTL cpt ON p.id = cpt.idPhim JOIN TheLoai t ON cpt.idTheLoai = t.id WHERE t.TenTheLoai = @Genre AND p.NgayKhoiChieu <= @Date AND p.NgayKetThuc >= @Date)
+	BEGIN
+		RAISERROR('Không tìm thấy phim nào có thể loại này trong khoảng thời gian này.', 16, 1)
+		RETURN
+	END
+
     SELECT
-        p.id,
+	DISTINCT
+        p.id AS PhimId,
         p.TenPhim,
-        p.Poster,
+        p.PosterPath,
         p.ThoiLuong,
-        p.DaoDien
+        p.DaoDien,
+		p.MoTa,
+		p.NamSX,
+		p.DienVien,
+		p.NgayKhoiChieu,
+		p.NgayKetThuc
     FROM
         Phim p
     JOIN
         ChiTietPhimTL cpt ON p.id = cpt.idPhim
     JOIN
         TheLoai t ON cpt.idTheLoai = t.id
-    WHERE
-        t.TenTheLoai =@Genre  --Filter for Action movies
-        AND p.NgayKhoiChieu BETWEEN @StartDate AND @EndDate
-        AND p.NgayKetThuc BETWEEN @StartDate AND @EndDate; --Adjusted for movies running during that period
+    JOIN
+        LichChieuPhim lcp ON p.id = lcp.idPhim 
+	WHERE
+        t.TenTheLoai = @Genre
+		AND p.NgayKhoiChieu <= @Date
+		AND p.NgayKetThuc >= @Date
+		AND lcp.ThoiGianChieu >= @Date
+		AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date)  -- Chắc chắn phim đang chiếu vào ngày đó
+	ORDER BY p.TenPhim;
 END;
-go
 
 
-EXEC TimPhimTheoNgayKTVaBatDauTheoTheLoai @StartDate = '2023-01-01', @EndDate = '2024-01-31', @Genre= 'Hành động';
-
-drop proc TimPhimTheoNgayVaLoai
-
+--------------------
 SET DATEFORMAT dmy; 
 CREATE PROCEDURE TimPhimTheoNgayVaLoai
     @Date DATE,
@@ -513,6 +531,7 @@ BEGIN
 	END
 
     SELECT
+	DISTINCT
         p.id AS PhimId,
         p.TenPhim,
         p.PosterPath,
@@ -537,15 +556,61 @@ BEGIN
 		AND p.NgayKhoiChieu <= @Date
 		AND p.NgayKetThuc >= @Date
 		AND lcp.ThoiGianChieu >= @Date
-		AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date);  -- Chắc chắn phim đang chiếu vào ngày đó
+		AND lcp.ThoiGianChieu < DATEADD(day, 1, @Date)  -- Chắc chắn phim đang chiếu vào ngày đó
+	ORDER BY p.TenPhim;
 END;
 
 go
 
-EXEC TimPhimTheoNgayVaLoai @Date = '2024-10-17', @Genre = N'Siêu anh hùng';
+EXEC TimPhimTheoNgayVaLoaiDistinct @date= '2024-10-17', @Genre = N'Siêu anh hùng';
+select * from phim
+select* from theloai
+select * from LichChieuPhim
 go
 
--- ------------------
+
+
+-------------------------------------------------------
+
+
+CREATE PROCEDURE LayLichChieuCuaPhimTrongNgay
+    @MovieId INT,
+    @Date DATE
+AS
+BEGIN
+    -- Kiểm tra nếu ngày không hợp lệ
+    IF @Date IS NULL
+    BEGIN
+        RAISERROR('Ngày không hợp lệ.', 16, 1);
+        RETURN;
+    END
+
+    -- Kiểm tra nếu ID phim không hợp lệ
+	IF NOT EXISTS (SELECT 1 FROM Phim WHERE id = @MovieId)
+    BEGIN
+        RAISERROR('ID phim không hợp lệ.', 16, 1);
+        RETURN;
+    END
+
+    SELECT
+        LCP.ThoiGianChieu,
+		LCP.idPhong,
+		PC.TenPhong,
+		PC.SoGheNgoi - ISNULL((SELECT COUNT(*) FROM VePhim WHERE idLichChieuPhim = LCP.id AND TrangThaiVePhim = 1), 0) AS SoGheConTrong
+
+    FROM
+        LichChieuPhim LCP
+	JOIN 
+		PhongChieu PC ON PC.id=idPhong
+    WHERE
+        idPhim = @MovieId
+		AND ThoiGianChieu >= @Date
+		AND ThoiGianChieu < DATEADD(day, 1, @Date);
+END;
+
+
+EXEC LayLichChieuCuaPhimTrongNgay @MovieId= '3',  @date= '2024-10-17';
+----------------------
 
 
 CREATE PROCEDURE TimPhimTheoNgayVaLoai2
@@ -729,97 +794,7 @@ END
     WHERE id = 42 AND idLichChieuPhim = 12;
 
 
-CREATE PROCEDURE PROC_DatVe
-    @idKhachHang INT,              -- ID khách hàng
-    @idLichChieuPhim INT,         -- ID lịch chiếu phim
-    @SoLuong INT,                  -- Số lượng vé cần đặt
-    @LoaiVePhim INT                -- Loại vé (0: vé người lớn, 1: vé học sinh - sinh viên, 2: vé trẻ em)
-AS
-BEGIN
-    SET NOCOUNT ON;
 
-    DECLARE @SoGheConLai INT;      -- Số ghế còn lại
-    DECLARE @GiaVeMoney MONEY;      -- Giá vé
-    DECLARE @TongTien MONEY;        -- Tổng tiền vé
-    DECLARE @idVePhim INT;          -- ID vé phim tạm thời
-    DECLARE @MaGhe VARCHAR(50);     -- Mã ghế tạm thời
-    DECLARE @i INT = 1;             -- Biến đếm
-
-    -- Kiểm tra số ghế còn lại
-    SELECT @SoGheConLai = (SELECT pc.SoGheNgoi - COUNT(vp.id)
-                           FROM PhongChieu pc
-                           INNER JOIN LichChieuPhim lc ON pc.id = lc.idPhong
-                           LEFT JOIN VePhim vp ON lc.id = vp.idLichChieuPhim AND vp.TrangThaiVePhim = 1
-                           WHERE lc.id = @idLichChieuPhim
-                           GROUP BY pc.SoGheNgoi)
-    WHERE @SoGheConLai > 0;
-
-    -- Kiểm tra xem còn ghế hay không
-    IF @SoGheConLai < @SoLuong
-    BEGIN
-        RAISERROR('Không đủ ghế trống cho số lượng vé yêu cầu.', 16, 1);
-        RETURN;
-    END
-
-    -- Lấy giá vé cho lịch chiếu phim
-    SELECT @GiaVeMoney = GiaVePhim FROM LichChieuPhim WHERE id = @idLichChieuPhim;
-
-    -- Tính tổng tiền vé
-    SET @TongTien = @SoLuong * @GiaVeMoney;
-
-    -- Tạo hóa đơn
-    DECLARE @idHoaDon INT;
-    INSERT INTO HoaDon (idKhachHang, NgayMua, TongTien)
-    VALUES (@idKhachHang, GETDATE(), @TongTien);
-    SET @idHoaDon = SCOPE_IDENTITY();  -- Lấy ID hóa đơn vừa tạo
-
-    -- Cập nhật trạng thái vé
-    WHILE @i <= @SoLuong
-    BEGIN
-        -- Lấy mã ghế cho vé
-        SELECT TOP 1 @MaGhe = MaGheNgoi
-        FROM VePhim
-        WHERE idLichChieuPhim = @idLichChieuPhim AND TrangThaiVePhim = 0;  -- Chỉ lấy vé chưa bán
-
-        -- Cập nhật vé đã bán
-        UPDATE VePhim
-        SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang
-        WHERE MaGheNgoi = @MaGhe;
-
-        -- Thêm vào bảng chi tiết hóa đơn
-        INSERT INTO ChiTietHoaDon (idHoaDon, idVePhim, SoLuong, GiaTien)
-        VALUES (@idHoaDon, (SELECT id FROM VePhim WHERE MaGheNgoi = @MaGhe), 1, @GiaVeMoney);
-
-        SET @i = @i + 1;  -- Tăng biến đếm
-    END
-
-    PRINT 'Đặt vé thành công!';
-END
-GO
--- PROC LẤY THÔNG TIN LỊCH CHIẾU CỦA PHIM
-CREATE PROCEDURE LayThongTinLichChieu
-    @MovieId INT,
-    @ShowDate DATE
-AS
-BEGIN
-    SELECT 
-        lc.ThoiGianChieu,
-        p.TenPhong,
-        lc.GiaVePhim,
-        COUNT(CASE WHEN v.TrangThaiVePhim = 1 THEN v.MaGheNgoi END) AS SoGheDaDat, -- Đếm số ghế đã đặt với trạng thái đã bán
-        (p.SoGheNgoi - COUNT(CASE WHEN v.TrangThaiVePhim = 1 THEN v.MaGheNgoi END)) AS SoGheConLai -- Số ghế còn lại
-    FROM 
-        LichChieuPhim lc
-    INNER JOIN 
-        PhongChieu p ON lc.idPhong = p.id
-    LEFT JOIN 
-        VePhim v ON lc.id = v.idLichChieuPhim
-    WHERE 
-        lc.idPhim = @MovieId AND
-        CAST(lc.ThoiGianChieu AS DATE) = @ShowDate
-    GROUP BY 
-        lc.ThoiGianChieu, p.TenPhong, lc.GiaVePhim,, p.SoGheNgoi
-END
 
 
 -------------------------------------------- END PROC -----------------------------------------------------
@@ -864,4 +839,3 @@ BEGIN
     DEALLOCATE cur;
 END
 GO
-
