@@ -19,6 +19,7 @@ namespace GUI
     public partial class frmSeatMovie : Form
     {
         PhimBLL phimBll = new PhimBLL();
+        KhachHangBLL khachHangBLL = new KhachHangBLL();
         private int rows = 0;
         private int cols = 0;
         private int gaps = 7;
@@ -33,6 +34,8 @@ namespace GUI
         private string _userName;
         Dictionary<string, int> seatMapping = new Dictionary<string, int>();
         private int totalPrice = 0;
+        private string _idKH = "";
+
 
         public frmSeatMovie()
         {
@@ -177,6 +180,9 @@ namespace GUI
             pnSelect.Location = new Point(10, 80);
             lblTongTien.Text = $"Tổng tiền: {totalPrice} VND";
             lblTongTien.Location = new Point(30, 430);
+            lbIhKH.Location = new Point(30, 500);
+            lbIhKH.Text = "Chọn Id Khách Hàng";
+            cboIdKH.Location = new Point(30, 550);
         }
 
 
@@ -184,15 +190,32 @@ namespace GUI
         {
             if (selectedSeats.Count > 0)
             {
+                DatVeDTO datVeDTO;
                 // Tạo đối tượng DatVeDTO với thông tin cần thiết
-                DatVeDTO datVeDTO = new DatVeDTO
+                if (cboIdKH.SelectedIndex > 0)
                 {
-                    IdKhachHang = _userName, // Thay thế bằng ID khách hàng thực tế
-                    IdLichChieuPhim = idLichCP,
-                    GiaVePhim = lc.GiaVePhim,
-                    TongTien = totalPrice,
+                    _idKH = cboIdKH.SelectedValue.ToString();
+                    datVeDTO = new DatVeDTO
+                    {
+                        //IdKhachHang = _userName, 
+                        IdLichChieuPhim = idLichCP,
+                        GiaVePhim = lc.GiaVePhim,
+                        TongTien = totalPrice,
+                        IdKhachHang = cboIdKH.SelectedValue.ToString()
 
-                };
+                    };
+                }
+                else
+                {
+                    datVeDTO = new DatVeDTO
+                    {
+                        //IdKhachHang = _userName, 
+                        IdLichChieuPhim = idLichCP,
+                        GiaVePhim = lc.GiaVePhim,
+                        TongTien = totalPrice,
+
+                    };
+                }
 
                 List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
 
@@ -214,6 +237,7 @@ namespace GUI
                             seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
                         }
                     }
+                    this.Close();
                     printPreviewDialog1.Document = printDocument1;
                     printPreviewDialog1.ShowDialog();
 
@@ -240,6 +264,11 @@ namespace GUI
             seats = new Button[rows, cols];
             AdjustFlowLayoutPanelSize();
             flowLayoutPanelSeats.BackColor = Color.LightGray;
+            List<KhachHangDTO> khs= khachHangBLL.GetAllKhachHang();
+            cboIdKH.DataSource= khs;
+            cboIdKH.ValueMember = "Id";
+            cboIdKH.DisplayMember = "Id";
+            cboIdKH.SelectedIndex = -1;
         }
 
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
@@ -251,7 +280,7 @@ namespace GUI
             //decimal tongTien = selectedSeats.Count * lc.GiaVePhim;
 
             // Định dạng font và khoảng cách
-            Font font = new Font("Arial", 12);
+            Font font = new Font("Arial", 28);
             int lineHeight = font.Height + 10;
             int x = 100; // Vị trí X để bắt đầu in
             int y = 100; // Vị trí Y để bắt đầu in
@@ -261,6 +290,13 @@ namespace GUI
             y += lineHeight;
             e.Graphics.DrawString($"Tên phim: {tenPhim}", font, Brushes.Black, x, y);
             y += lineHeight;
+
+            if (!string.IsNullOrEmpty(_idKH))
+            {
+                e.Graphics.DrawString($"ID khách hàng: {_idKH}", font, Brushes.Black, x, y);
+                y += lineHeight;
+
+            }
             e.Graphics.DrawString($"Ngày chiếu: {ngayChieu}", font, Brushes.Black, x, y);
             y += lineHeight;
             e.Graphics.DrawString($"Phòng chiếu: {phongChieu}", font, Brushes.Black, x, y);

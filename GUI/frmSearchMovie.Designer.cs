@@ -102,7 +102,7 @@
             dtpNgayChieu.Name = "dtpNgayChieu";
             dtpNgayChieu.Size = new Size(174, 23);
             dtpNgayChieu.TabIndex = 2;
-            dtpNgayChieu.Value = new DateTime(2024, 10, 17, 0, 0, 0, 0);
+            dtpNgayChieu.Value = new DateTime(2024, 10, 23, 0, 0, 0, 0);
             // 
             // cbGenre
             // 

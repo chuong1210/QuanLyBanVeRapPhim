@@ -14,9 +14,11 @@ namespace GUI
     {
         private List<Button> buttons = new List<Button>();
         private Form activeForm = null; // Lưu form đang hoạt động
-        private string _username ;
+        private string _username;
         private Panel panelContent;
 
+        private Button btnToggle;
+        private bool isSidebarExpanded = true; // Track the state of the sidebar
         public frmSideBar(string username)
         {
 
@@ -26,17 +28,29 @@ namespace GUI
 
             this.Controls.Add(sidebarPanel);
             sidebarPanel.Padding = new Padding(0, 170, 0, 0); // Khoảng cách trên cùng là 50px
-            _username=username;
-            string[] buttonLabels = {  "Lịch chiếu phim",  "Đổi mật khẩu", "Biểu mẫu hóa đơn" };
+            _username = username;
+
+            // Create the toggle button
+            btnToggle = new Button();
+            btnToggle.Text = "➖"; // Initial text for collapse (arrow pointing right)
+            btnToggle.Dock = DockStyle.Top;
+            btnToggle.Height = 40; // Height of the button
+            btnToggle.BackColor = Color.LightBlue;
+            btnToggle.FlatStyle = FlatStyle.Flat;
+            btnToggle.Font = new Font("Bahnschrift", 16, FontStyle.Bold);
+            btnToggle.Click += BtnToggle_Click; 
+            sidebarPanel.Controls.Add(btnToggle); // Add to sidebar
+
+            string[] buttonLabels = { "Lịch chiếu phim", "Đổi mật khẩu", "Biểu mẫu hóa đơn" };
             buttonLabels = buttonLabels.Reverse().ToArray();
             foreach (string label in buttonLabels)
             {
-              
+
                 Button button = new Button();
                 button.Text = label;
                 button.BackColor = Color.LightBlue;
                 button.Dock = DockStyle.Top;
-                button.Width= 100;
+                button.Width = 100;
                 button.Font = new Font("Bahnschrift", 12, FontStyle.Bold);
                 button.Height = 80;
                 button.Margin = new Padding(0, 120, 0, 0);
@@ -96,11 +110,11 @@ namespace GUI
             }
 
 
-         
+
             if (clickedButton.Text != "Đổi mật khẩu")
             {
                 Form newForm = null;
-            
+
 
                 if (clickedButton.Text == "Lịch chiếu phim")
                 {
@@ -110,38 +124,39 @@ namespace GUI
                 if (newForm != null)
                 {
                     //Crucially, use ShowDialog() for modal forms
-                  
-                        //ShowForm(newForm); //Use ShowForm for non-modal forms
-                        newForm.TopLevel = false; // Quan trọng: đặt TopLevel = false
-                        newForm.FormBorderStyle = FormBorderStyle.None; // Remove border
-                        newForm.Dock = DockStyle.Fill; // Nạp form đầy Panel
-                        panelContent.Controls.Clear();
-                        panelContent.Controls.Add(newForm);
-                        newForm.BringToFront();
-                        newForm.Show();
-                        activeForm = newForm;
 
-                        newForm.Activated += (s, args) => {
+                    //ShowForm(newForm); //Use ShowForm for non-modal forms
+                    newForm.TopLevel = false; // Quan trọng: đặt TopLevel = false
+                    newForm.FormBorderStyle = FormBorderStyle.None; // Remove border
+                    newForm.Dock = DockStyle.Fill; // Nạp form đầy Panel
+                    panelContent.Controls.Clear();
+                    panelContent.Controls.Add(newForm);
+                    newForm.BringToFront();
+                    newForm.Show();
+                    activeForm = newForm;
 
-                            newForm.Focus(); // Cho phép form hoạt động
-                            this.ActiveControl = newForm; // Điều này giúp form hoạt động đúng.
-                        };
-                    
+                    newForm.Activated += (s, args) =>
+                    {
+
+                        newForm.Focus(); // Cho phép form hoạt động
+                        this.ActiveControl = newForm; // Điều này giúp form hoạt động đúng.
+                    };
+
                 }
 
-             
 
-            // ... các điều kiện khác
 
-         
-           
+                // ... các điều kiện khác
+
+
+
             }
             else
             {
                 frmChangePW pw = new frmChangePW(_username);
 
                 pw.Show();
-                frmSearchMovie frmSearch=new frmSearchMovie(_username);
+                frmSearchMovie frmSearch = new frmSearchMovie(_username);
                 ShowForm(frmSearch);
             }
 
@@ -149,16 +164,28 @@ namespace GUI
 
         }
 
-        private void frmClient_Load(object sender, EventArgs e)
-        {
-
-            // Thêm panel vào
-
-        }
 
         private void frmClient_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.Dispose();
+        }
+
+        private void BtnToggle_Click(object sender, EventArgs e)
+        {
+            if (isSidebarExpanded)
+            {
+                sidebarPanel.Width = 50; 
+                btnToggle.Text = "➕";
+                pcLogo.Visible = false;
+            }
+            else
+            {
+                sidebarPanel.Width = 150; // Expand the sidebar back (set to the original width)
+                btnToggle.Text = "➖"; // Change to arrow pointing right
+                pcLogo.Visible = true;
+
+            }
+            isSidebarExpanded = !isSidebarExpanded; // Toggle the state
         }
     }
 }
