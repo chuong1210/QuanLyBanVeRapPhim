@@ -237,6 +237,7 @@ namespace GUI
                             seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
                         }
                     }
+                    this.Close();
                     printPreviewDialog1.Document = printDocument1;
                     printPreviewDialog1.ShowDialog();
 
