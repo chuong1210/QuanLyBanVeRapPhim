@@ -17,6 +17,13 @@
     <Compile Update="DataControl\DataUser\ScreenTypeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
+ 
+    <Compile Update="frmConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmNavBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -47,5 +54,16 @@
     <Compile Update="Utils\MovieCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="DataControl\DataAdmin\DataUC.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FrmLogin.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
