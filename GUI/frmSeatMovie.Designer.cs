@@ -54,10 +54,10 @@
             // 
             // btnConfirm
             // 
-            btnConfirm.BackgroundImage = Properties.Resources.th;
+            btnConfirm.BackgroundImage = Properties.Resources.wp7124745;
             btnConfirm.Cursor = Cursors.Hand;
             btnConfirm.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnConfirm.ForeColor = Color.FromArgb(128, 128, 255);
+            btnConfirm.ForeColor = Color.LightGray;
             btnConfirm.ImageAlign = ContentAlignment.TopCenter;
             btnConfirm.Location = new Point(251, 667);
             btnConfirm.Name = "btnConfirm";

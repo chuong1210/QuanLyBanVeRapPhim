@@ -54,7 +54,7 @@
             panelFilter.Controls.Add(cbGenre);
             panelFilter.Controls.Add(label1);
             panelFilter.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelFilter.Location = new Point(283, 114);
+            panelFilter.Location = new Point(241, 247);
             panelFilter.Name = "panelFilter";
             panelFilter.Size = new Size(879, 229);
             panelFilter.TabIndex = 0;
@@ -130,7 +130,7 @@
             // 
             flowLayoutPanelMovies.AutoScroll = true;
             flowLayoutPanelMovies.Enabled = false;
-            flowLayoutPanelMovies.Location = new Point(310, 463);
+            flowLayoutPanelMovies.Location = new Point(268, 596);
             flowLayoutPanelMovies.Name = "flowLayoutPanelMovies";
             flowLayoutPanelMovies.Size = new Size(781, 423);
             flowLayoutPanelMovies.TabIndex = 1;
@@ -140,7 +140,7 @@
             // 
             lbPhim.AutoSize = true;
             lbPhim.Font = new Font("Bahnschrift SemiBold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbPhim.Location = new Point(678, 402);
+            lbPhim.Location = new Point(636, 535);
             lbPhim.Name = "lbPhim";
             lbPhim.Size = new Size(340, 36);
             lbPhim.TabIndex = 2;
@@ -150,7 +150,7 @@
             // panelLine
             // 
             panelLine.BackColor = Color.Black;
-            panelLine.Location = new Point(283, 384);
+            panelLine.Location = new Point(241, 517);
             panelLine.Name = "panelLine";
             panelLine.Size = new Size(1336, 15);
             panelLine.TabIndex = 3;

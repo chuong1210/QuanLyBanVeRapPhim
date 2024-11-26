@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             sidebarPanel = new Panel();
+            panelLine = new Panel();
             pcLogo = new PictureBox();
             sidebarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcLogo).BeginInit();
@@ -40,12 +41,21 @@
             sidebarPanel.BackgroundImage = Properties.Resources.wp7124690;
             sidebarPanel.BackgroundImageLayout = ImageLayout.Stretch;
             sidebarPanel.BorderStyle = BorderStyle.Fixed3D;
+            sidebarPanel.Controls.Add(panelLine);
             sidebarPanel.Controls.Add(pcLogo);
             sidebarPanel.Dock = DockStyle.Left;
             sidebarPanel.Location = new Point(0, 0);
             sidebarPanel.Name = "sidebarPanel";
             sidebarPanel.Size = new Size(132, 450);
             sidebarPanel.TabIndex = 1;
+            // 
+            // panelLine
+            // 
+            panelLine.BackColor = Color.MediumSlateBlue;
+            panelLine.Location = new Point(-1, 362);
+            panelLine.Name = "panelLine";
+            panelLine.Size = new Size(129, 5);
+            panelLine.TabIndex = 1;
             // 
             // pcLogo
             // 
@@ -75,5 +85,6 @@
         #endregion
         private Panel sidebarPanel;
         private PictureBox pcLogo;
+        private Panel panelLine;
     }
 }

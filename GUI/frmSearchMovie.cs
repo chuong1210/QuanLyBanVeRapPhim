@@ -12,16 +12,18 @@ using BLL;
 using DTO;
 using GUI.Utils;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.IO;
 
 namespace GUI
 {
-    public partial class frmSearchMovie : Form
+    public partial class frmSearchMovie : frmNavBar
     {
         private PhimBLL phimBLL;
         private string _userName;
         public frmSearchMovie(string userName)
         {
             InitializeComponent();
+
             panelFilter.Width = 1200;
             Label lblNoMovies = new Label
             {

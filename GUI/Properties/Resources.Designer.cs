@@ -163,6 +163,16 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap th__2_1 {
+            get {
+                object obj = ResourceManager.GetObject("th (2)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wallpapersden_com_gradient_landscape_4k_illustration_3840x2160 {
             get {
                 object obj = ResourceManager.GetObject("wallpapersden.com_gradient-landscape-4k-illustration_3840x2160", resourceCulture);

@@ -14,23 +14,32 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		EasyTest|Any CPU = EasyTest|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}.EasyTest|Any CPU.Build.0 = Release|Any CPU
 		{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}.EasyTest|Any CPU.Build.0 = Release|Any CPU
 		{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39325101-7947-4400-A52C-3D54E06F6634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39325101-7947-4400-A52C-3D54E06F6634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39325101-7947-4400-A52C-3D54E06F6634}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{39325101-7947-4400-A52C-3D54E06F6634}.EasyTest|Any CPU.Build.0 = Release|Any CPU
 		{39325101-7947-4400-A52C-3D54E06F6634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39325101-7947-4400-A52C-3D54E06F6634}.Release|Any CPU.Build.0 = Release|Any CPU
 		{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}.EasyTest|Any CPU.ActiveCfg = Release|Any CPU
+		{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}.EasyTest|Any CPU.Build.0 = Release|Any CPU
 		{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
