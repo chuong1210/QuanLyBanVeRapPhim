@@ -53,5 +53,11 @@ namespace BLL
             //DatVeDTO.IdKhachHang = idKH;
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
+
+        public bool HuyGheDat(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        {
+            return _phimDAL.HuyGheDat(DatVeDTO, selectedSeats);
+
         }
+    }
 }

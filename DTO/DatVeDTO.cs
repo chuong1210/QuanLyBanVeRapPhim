@@ -9,6 +9,8 @@ namespace DTO
   public  class DatVeDTO
     {
         public int Id { get; set; }
+        public int loaiVP { get; set; }
+
         public string IdKhachHang { get; set; }
         public string IdLichChieuPhim { get; set; }
 

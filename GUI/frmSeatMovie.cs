@@ -35,6 +35,13 @@ namespace GUI
         Dictionary<string, int> seatMapping = new Dictionary<string, int>();
         private int totalPrice = 0;
         private string _idKH = "";
+        private Dictionary<string, int> ticketPrices = new Dictionary<string, int>
+{
+    { "Trẻ em", 45000 },
+    { "Sinh viên", 65000 },
+    { "Người lớn", 80000 }
+};
+        private string selectedTicketType = "Người lớn"; // Loại vé mặc định
 
 
         public frmSeatMovie()
@@ -43,7 +50,7 @@ namespace GUI
             this.Size = new Size(1500, 850); // Thiết lập kích thước cho form
 
 
-            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            //printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
 
         public void LoadMovie(string idLichChieu, string tenPhim, string posterPath, string ngayChieu, string userName)
@@ -157,8 +164,10 @@ namespace GUI
 
         private void UpdateTotalPrice()
         {
-             totalPrice = selectedSeats.Count * 65000; // 65000 VND cho mỗi ghế
-            lblTongTien.Text = $"Tổng tiền: {totalPrice} VND"; // Cập nhật label hiển thị tổng tiền
+            int ticketPrice = ticketPrices[selectedTicketType]; // Lấy giá vé từ Dictionary
+
+            totalPrice = selectedSeats.Count * ticketPrice; // Tính tổng tiền
+            lblTongTien.Text = $"Tổng tiền: {totalPrice:N0} VND"; // Cập nhật label hiển thị tổng tiền
         }
 
 
@@ -183,13 +192,60 @@ namespace GUI
             lbIhKH.Location = new Point(30, 500);
             lbIhKH.Text = "Chọn Id Khách Hàng";
             cboIdKH.Location = new Point(30, 550);
+
+
+            // RadioButtons cho các loại vé
+            rbtnChild.Location = new Point(30, 600);
+
+          rbtnStudent.Location = new Point(30, 630);
+            rbtnAdult.Location = new Point(30, 660);
+
+            // Thêm sự kiện CheckedChanged để cập nhật loại vé
+            rbtnChild.CheckedChanged += (s, e) =>
+            {
+                if (rbtnChild.Checked)
+                    selectedTicketType = "Trẻ em";
+                UpdateTotalPrice();
+            };
+
+            rbtnStudent.CheckedChanged += (s, e) =>
+            {
+                if (rbtnStudent.Checked)
+                    selectedTicketType = "Sinh viên";
+                UpdateTotalPrice();
+            };
+
+            rbtnAdult.CheckedChanged += (s, e) =>
+            {
+                if (rbtnAdult.Checked)
+                    selectedTicketType = "Người lớn";
+                UpdateTotalPrice();
+            };
+
+        
+
+
         }
 
-
+        private int GetTicketType()
+        {
+            switch (selectedTicketType)
+            {
+                case "Trẻ em":
+                    return 1;  // Loại vé Trẻ em
+                case "Sinh viên":
+                    return 2;  // Loại vé Sinh viên
+                case "Người lớn":
+                    return 3;  // Loại vé Người lớn
+                default:
+                    return 3;  // Mặc định là Người lớn
+            }
+        }
         private void btnConfirm_Click_1(object sender, EventArgs e)
         {
             if (selectedSeats.Count > 0)
             {
+                frmConfirm cf= new frmConfirm();
                 DatVeDTO datVeDTO;
                 // Tạo đối tượng DatVeDTO với thông tin cần thiết
                 if (cboIdKH.SelectedIndex > 0)
@@ -201,9 +257,16 @@ namespace GUI
                         IdLichChieuPhim = idLichCP,
                         GiaVePhim = lc.GiaVePhim,
                         TongTien = totalPrice,
-                        IdKhachHang = cboIdKH.SelectedValue.ToString()
+                        IdKhachHang = cboIdKH.SelectedValue.ToString(),
+                        loaiVP = GetTicketType()
+
 
                     };
+
+                    cf.dt = datVeDTO;
+
+
+
                 }
                 else
                 {
@@ -213,40 +276,47 @@ namespace GUI
                         IdLichChieuPhim = idLichCP,
                         GiaVePhim = lc.GiaVePhim,
                         TongTien = totalPrice,
+                        loaiVP = GetTicketType()
+
 
                     };
+                    cf.dt = datVeDTO;
+
                 }
 
                 List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
+                cf.seats = seatIds;
+                this.Hide();
+                cf.ShowDialog();
 
-                string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
-                HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds,_userName); // Pass the list of IDs
+                //string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
+                //HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds,_userName); // Pass the list of IDs
 
-                if (result != null)
-                {
-                    // Đặt màu xanh cho các ghế đã chọn
-                    foreach (string seat in selectedSeats)
-                    {
-                        // Find the corresponding button for the seat
-                        Button seatButton = flowLayoutPanelSeats.Controls
-                            .OfType<Button>()
-                            .FirstOrDefault(b => b.Text == seat);
+                //if (result != null)
+                //{
+                //    // Đặt màu xanh cho các ghế đã chọn
+                //    foreach (string seat in selectedSeats)
+                //    {
+                //        // Find the corresponding button for the seat
+                //        Button seatButton = flowLayoutPanelSeats.Controls
+                //            .OfType<Button>()
+                //            .FirstOrDefault(b => b.Text == seat);
 
-                        if (seatButton != null)
-                        {
-                            seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
-                        }
-                    }
-                    this.Close();
-                    printPreviewDialog1.Document = printDocument1;
-                    printPreviewDialog1.ShowDialog();
+                //        if (seatButton != null)
+                //        {
+                //            seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
+                //        }
+                //    }
+                //    this.Close();
+                //    printPreviewDialog1.Document = printDocument1;
+                //    printPreviewDialog1.ShowDialog();
 
-                    //   MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Đặt vé không thành công. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                //    //   MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Đặt vé không thành công. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
             }
             else
             {
@@ -271,47 +341,6 @@ namespace GUI
             cboIdKH.SelectedIndex = -1;
         }
 
-        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            string tenPhim = lblThongtin.Text;
-            string ngayChieu = lblLich.Text;
-            string phongChieu = lbPhong.Text;
-            string gheDaChon = string.Join(", ", selectedSeats);
-            //decimal tongTien = selectedSeats.Count * lc.GiaVePhim;
-
-            // Định dạng font và khoảng cách
-            Font font = new Font("Arial", 28);
-            int lineHeight = font.Height + 10;
-            int x = 100; // Vị trí X để bắt đầu in
-            int y = 100; // Vị trí Y để bắt đầu in
-
-            // In thông tin hóa đơn
-            e.Graphics.DrawString("HÓA ĐƠN ĐẶT VÉ", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, x, y);
-            y += lineHeight;
-            e.Graphics.DrawString($"Tên phim: {tenPhim}", font, Brushes.Black, x, y);
-            y += lineHeight;
-
-            if (!string.IsNullOrEmpty(_idKH))
-            {
-                e.Graphics.DrawString($"ID khách hàng: {_idKH}", font, Brushes.Black, x, y);
-                y += lineHeight;
-
-            }
-            e.Graphics.DrawString($"Ngày chiếu: {ngayChieu}", font, Brushes.Black, x, y);
-            y += lineHeight;
-            e.Graphics.DrawString($"Phòng chiếu: {phongChieu}", font, Brushes.Black, x, y);
-            y += lineHeight;
-            e.Graphics.DrawString($"Ghế đã chọn: {gheDaChon}", font, Brushes.Black, x, y);
-            y += lineHeight;
-            var cultureInfo = new System.Globalization.CultureInfo("vi-VN");
-            e.Graphics.DrawString($"Tổng tiền: {totalPrice.ToString("C", cultureInfo)}", font, Brushes.Black, x, y);
-
-        }
-
-        private void printPreviewDialog1_Load(object sender, EventArgs e)
-        {
-            printPreviewDialog1.WindowState = FormWindowState.Maximized;
-        }
     }
 
 

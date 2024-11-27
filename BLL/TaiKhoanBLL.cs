@@ -17,7 +17,16 @@ namespace BLL
         {
             return taiKhoanDAL.GetTaiKhoan(userName, password);
         }
+        public bool AddKH(KhachHangDTO khachHang)
+        {
+            int newCustomerId = khachHangDAL.AddKhachHang(khachHang);
+            if (newCustomerId > 0)
+            {
+                return true;
+            }
+            return false;
 
+        }
         public bool Register(KhachHangDTO khachHang, TaiKhoanDTO taiKhoan)
         {
 

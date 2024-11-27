@@ -48,6 +48,9 @@
             lblTongTien = new Label();
             cboIdKH = new ComboBox();
             lbIhKH = new Label();
+            rbtnStudent = new RadioButton();
+            rbtnAdult = new RadioButton();
+            rbtnChild = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)pcPoster).BeginInit();
             pnSelect.SuspendLayout();
             SuspendLayout();
@@ -211,11 +214,9 @@
             printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
             printPreviewDialog1.Name = "printPreviewDialog1";
             printPreviewDialog1.Visible = false;
-            printPreviewDialog1.Load += printPreviewDialog1_Load;
             // 
             // printDocument1
             // 
-            printDocument1.PrintPage += printDocument1_PrintPage;
             // 
             // lblTongTien
             // 
@@ -246,11 +247,50 @@
             lbIhKH.TabIndex = 11;
             lbIhKH.Text = "label1";
             // 
+            // rbtnStudent
+            // 
+            rbtnStudent.AutoSize = true;
+            rbtnStudent.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            rbtnStudent.Location = new Point(823, 23);
+            rbtnStudent.Name = "rbtnStudent";
+            rbtnStudent.Size = new Size(112, 28);
+            rbtnStudent.TabIndex = 12;
+            rbtnStudent.TabStop = true;
+            rbtnStudent.Text = "Sinh viên";
+            rbtnStudent.UseVisualStyleBackColor = true;
+            // 
+            // rbtnAdult
+            // 
+            rbtnAdult.AutoSize = true;
+            rbtnAdult.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            rbtnAdult.Location = new Point(951, 23);
+            rbtnAdult.Name = "rbtnAdult";
+            rbtnAdult.Size = new Size(116, 28);
+            rbtnAdult.TabIndex = 13;
+            rbtnAdult.TabStop = true;
+            rbtnAdult.Text = "Người lớn";
+            rbtnAdult.UseVisualStyleBackColor = true;
+            // 
+            // rbtnChild
+            // 
+            rbtnChild.AutoSize = true;
+            rbtnChild.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            rbtnChild.Location = new Point(1073, 23);
+            rbtnChild.Name = "rbtnChild";
+            rbtnChild.Size = new Size(95, 28);
+            rbtnChild.TabIndex = 14;
+            rbtnChild.TabStop = true;
+            rbtnChild.Text = "Trẻ em";
+            rbtnChild.UseVisualStyleBackColor = true;
+            // 
             // frmSeatMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
+            Controls.Add(rbtnChild);
+            Controls.Add(rbtnAdult);
+            Controls.Add(rbtnStudent);
             Controls.Add(lbIhKH);
             Controls.Add(cboIdKH);
             Controls.Add(lblTongTien);
@@ -292,5 +332,8 @@
         private Label lblTongTien;
         private ComboBox cboIdKH;
         private Label lbIhKH;
+        private RadioButton rbtnStudent;
+        private RadioButton rbtnAdult;
+        private RadioButton rbtnChild;
     }
 }
