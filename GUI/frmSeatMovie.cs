@@ -182,7 +182,7 @@ namespace GUI
 
             flowLayoutPanelSeats.Height = 700;
             flowLayoutPanelSeats.Location = new Point(250, 80);
-            btnConfirm.Location = new Point(381, 716);
+            btnConfirm.Location = new Point(411, 650);
             pcPoster.Location = new Point(5, 250);
             lblThongtin.Location = new Point(65, 390);
             lblThongtin.TextAlign = ContentAlignment.MiddleCenter;
@@ -199,7 +199,7 @@ namespace GUI
 
           rbtnStudent.Location = new Point(30, 630);
             rbtnAdult.Location = new Point(30, 660);
-
+            rbtnAdult.Checked = true;
             // Thêm sự kiện CheckedChanged để cập nhật loại vé
             rbtnChild.CheckedChanged += (s, e) =>
             {
@@ -245,7 +245,23 @@ namespace GUI
         {
             if (selectedSeats.Count > 0)
             {
-                frmConfirm cf= new frmConfirm();
+                List<MuaHangDTO> vps = new List<MuaHangDTO>();
+                foreach (var item in selectedSeats)
+                {
+                    MuaHangDTO vp = new MuaHangDTO
+                    {
+                        TenPhim = lblThongtin.Text,
+                        LoaiVePhimSTR = selectedTicketType.ToString(),
+                        TienVePhim = ticketPrices[selectedTicketType],
+                        MaGheNgoi = item.ToString(),
+                        MaPhong = tenPh.ToString(),
+                        SuatChieu = lc.ThoiGianChieu
+
+                    };
+                    vps.Add(vp);
+                }
+
+                frmConfirm cf = new frmConfirm(vps);
                 DatVeDTO datVeDTO;
                 // Tạo đối tượng DatVeDTO với thông tin cần thiết
                 if (cboIdKH.SelectedIndex > 0)
@@ -259,6 +275,7 @@ namespace GUI
                         TongTien = totalPrice,
                         IdKhachHang = cboIdKH.SelectedValue.ToString(),
                         loaiVP = GetTicketType()
+                        
 
 
                     };
@@ -286,8 +303,40 @@ namespace GUI
 
                 List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
                 cf.seats = seatIds;
-                this.Hide();
-                cf.ShowDialog();
+
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thanh toán không?",
+                                                        "Xác nhận thanh toán",
+                                                        MessageBoxButtons.OKCancel,
+                                                        MessageBoxIcon.Question);
+
+                // Kiểm tra phản hồi của người dùng
+                if (result == DialogResult.OK)
+                {
+                    this.Hide();
+                    // Người dùng chọn "OK", thực hiện thanh toán và mở form cf
+                    cf.ShowDialog();
+                }
+                else
+                {
+                    // Người dùng chọn "Cancel", không làm gì cả (hoặc có thể hiển thị thông báo)
+                    MessageBox.Show("Thanh toán đã bị hủy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    foreach (string seat in selectedSeats)
+                    {
+                        // Find the corresponding button for the seat
+                        Button seatButton = flowLayoutPanelSeats.Controls
+                            .OfType<Button>()
+                            .FirstOrDefault(b => b.Text == seat);
+
+                        if (seatButton != null)
+                        {
+                            seatButton.BackColor = Color.Green; // Change color to blue for booked seats
+                        }
+                    }
+
+                    selectedSeats.Clear();
+                }
+
 
                 //string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
                 //HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds,_userName); // Pass the list of IDs

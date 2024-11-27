@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
+using GUI.Utils;
 namespace GUI
 {
     public partial class FrmLogin : Form
@@ -61,6 +62,7 @@ namespace GUI
                 else
                 {
                     frmSideBar client = new frmSideBar(taiKhoan.UserName);
+                    UserSession.Username= userName;
                     client.Show();
                 }
 

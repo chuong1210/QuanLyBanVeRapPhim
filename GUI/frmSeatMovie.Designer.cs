@@ -59,14 +59,14 @@
             // 
             btnConfirm.BackgroundImage = Properties.Resources.wp7124745;
             btnConfirm.Cursor = Cursors.Hand;
-            btnConfirm.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnConfirm.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             btnConfirm.ForeColor = Color.LightGray;
             btnConfirm.ImageAlign = ContentAlignment.TopCenter;
-            btnConfirm.Location = new Point(251, 667);
+            btnConfirm.Location = new Point(251, 517);
             btnConfirm.Name = "btnConfirm";
-            btnConfirm.Size = new Size(845, 42);
+            btnConfirm.Size = new Size(845, 73);
             btnConfirm.TabIndex = 1;
-            btnConfirm.Text = "Đặt vé";
+            btnConfirm.Text = "Tiến hành thanh toán";
             btnConfirm.UseVisualStyleBackColor = true;
             btnConfirm.Click += btnConfirm_Click_1;
             // 
@@ -214,9 +214,6 @@
             printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
             printPreviewDialog1.Name = "printPreviewDialog1";
             printPreviewDialog1.Visible = false;
-            // 
-            // printDocument1
-            // 
             // 
             // lblTongTien
             // 

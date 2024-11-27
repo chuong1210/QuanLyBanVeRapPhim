@@ -28,85 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            dataGridView1 = new DataGridView();
-            TenPhim = new DataGridViewTextBoxColumn();
-            SL = new DataGridViewTextBoxColumn();
-            DG = new DataGridViewTextBoxColumn();
-            TT = new DataGridViewTextBoxColumn();
+            dtGVDH = new DataGridView();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
-            groupControl1 = new DevExpress.XtraEditors.GroupControl();
             groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            txtTT = new TextBox();
+            label1 = new Label();
+            groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            ((System.ComponentModel.ISupportInitialize)dtGVDH).BeginInit();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)groupControl1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)groupControl2).BeginInit();
+            groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)groupControl1).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dtGVDH
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { TenPhim, SL, DG, TT });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.Dock = DockStyle.Top;
-            dataGridView1.Location = new Point(343, 72);
-            dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(558, 188);
-            dataGridView1.TabIndex = 6;
-            // 
-            // TenPhim
-            // 
-            TenPhim.HeaderText = "Tên Phim";
-            TenPhim.MinimumWidth = 6;
-            TenPhim.Name = "TenPhim";
-            // 
-            // SL
-            // 
-            SL.HeaderText = "Số Lượng";
-            SL.MinimumWidth = 6;
-            SL.Name = "SL";
-            // 
-            // DG
-            // 
-            DG.HeaderText = "Đơn giá";
-            DG.MinimumWidth = 6;
-            DG.Name = "DG";
-            // 
-            // TT
-            // 
-            TT.HeaderText = "Thành tiền";
-            TT.MinimumWidth = 6;
-            TT.Name = "TT";
+            dtGVDH.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dtGVDH.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtGVDH.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtGVDH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtGVDH.DefaultCellStyle = dataGridViewCellStyle2;
+            dtGVDH.Dock = DockStyle.Top;
+            dtGVDH.Location = new Point(373, 72);
+            dtGVDH.Name = "dtGVDH";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtGVDH.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dtGVDH.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            dtGVDH.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dtGVDH.Size = new Size(608, 254);
+            dtGVDH.TabIndex = 6;
             // 
             // button1
             // 
@@ -115,9 +94,9 @@
             button1.Dock = DockStyle.Fill;
             button1.Font = new Font("Bahnschrift Condensed", 24F, FontStyle.Bold, GraphicsUnit.Point, 163);
             button1.ForeColor = Color.FromArgb(192, 192, 255);
-            button1.Location = new Point(908, 4);
+            button1.Location = new Point(988, 4);
             button1.Name = "button1";
-            button1.Size = new Size(220, 61);
+            button1.Size = new Size(241, 61);
             button1.TabIndex = 3;
             button1.Text = "Thanh toán";
             button1.UseVisualStyleBackColor = true;
@@ -130,9 +109,9 @@
             button2.Dock = DockStyle.Fill;
             button2.Font = new Font("Bahnschrift Condensed", 24F, FontStyle.Bold, GraphicsUnit.Point, 163);
             button2.ForeColor = Color.FromArgb(192, 192, 255);
-            button2.Location = new Point(343, 4);
+            button2.Location = new Point(373, 4);
             button2.Name = "button2";
-            button2.Size = new Size(558, 61);
+            button2.Size = new Size(608, 61);
             button2.TabIndex = 4;
             button2.Text = "Đơn hàng";
             button2.UseVisualStyleBackColor = false;
@@ -146,7 +125,7 @@
             button3.ForeColor = Color.FromArgb(192, 192, 255);
             button3.Location = new Point(4, 4);
             button3.Name = "button3";
-            button3.Size = new Size(332, 61);
+            button3.Size = new Size(362, 61);
             button3.TabIndex = 5;
             button3.Text = "Thông tin của khách hàng";
             button3.UseVisualStyleBackColor = true;
@@ -163,62 +142,85 @@
             tableLayoutPanel1.Controls.Add(button3, 0, 0);
             tableLayoutPanel1.Controls.Add(button2, 1, 0);
             tableLayoutPanel1.Controls.Add(button1, 2, 0);
-            tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
+            tableLayoutPanel1.Controls.Add(dtGVDH, 1, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
-            tableLayoutPanel1.Size = new Size(1132, 454);
+            tableLayoutPanel1.Size = new Size(1233, 454);
             tableLayoutPanel1.TabIndex = 0;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
+            // 
+            // groupControl2
+            // 
+            groupControl2.Controls.Add(txtTT);
+            groupControl2.Controls.Add(label1);
+            groupControl2.Dock = DockStyle.Top;
+            groupControl2.Location = new Point(988, 72);
+            groupControl2.Name = "groupControl2";
+            groupControl2.Size = new Size(241, 370);
+            groupControl2.TabIndex = 9;
+            groupControl2.Text = "Quét QR thanh toán(nếu có)";
+            // 
+            // txtTT
+            // 
+            txtTT.Font = new Font("Bahnschrift SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            txtTT.Location = new Point(112, 48);
+            txtTT.Multiline = true;
+            txtTT.Name = "txtTT";
+            txtTT.PlaceholderText = " 0VNĐ";
+            txtTT.ReadOnly = true;
+            txtTT.Size = new Size(166, 28);
+            txtTT.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Bahnschrift", 12F, FontStyle.Regular, GraphicsUnit.Point, 163);
+            label1.Location = new Point(10, 48);
+            label1.Name = "label1";
+            label1.Size = new Size(96, 24);
+            label1.TabIndex = 1;
+            label1.Text = "Tổng tiền:";
             // 
             // groupControl1
             // 
             groupControl1.Dock = DockStyle.Top;
             groupControl1.Location = new Point(4, 72);
             groupControl1.Name = "groupControl1";
-            groupControl1.Size = new Size(332, 125);
+            groupControl1.Size = new Size(362, 125);
             groupControl1.TabIndex = 8;
             groupControl1.Text = "Nhập thông tin(nếu có)";
-            // 
-            // groupControl2
-            // 
-            groupControl2.Dock = DockStyle.Top;
-            groupControl2.Location = new Point(908, 72);
-            groupControl2.Name = "groupControl2";
-            groupControl2.Size = new Size(220, 370);
-            groupControl2.TabIndex = 9;
-            groupControl2.Text = "Quét QR thanh toán(nếu có)";
             // 
             // frmConfirm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1132, 454);
+            ClientSize = new Size(1233, 454);
             Controls.Add(tableLayoutPanel1);
             Name = "frmConfirm";
             Text = "Xác nhận thanh toán";
             Load += frmConfirm_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtGVDH).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)groupControl1).EndInit();
             ((System.ComponentModel.ISupportInitialize)groupControl2).EndInit();
+            groupControl2.ResumeLayout(false);
+            groupControl2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)groupControl1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn TenPhim;
-        private DataGridViewTextBoxColumn SL;
-        private DataGridViewTextBoxColumn DG;
-        private DataGridViewTextBoxColumn TT;
+        private DataGridView dtGVDH;
         private Button button1;
         private Button button2;
         private Button button3;
         private TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
+        private Label label1;
+        private TextBox txtTT;
     }
 }

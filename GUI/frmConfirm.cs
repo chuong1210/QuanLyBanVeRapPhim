@@ -14,6 +14,9 @@ using DevExpress.XtraGrid.Views.Grid;
 using DTO;
 using BLL;
 using System.Drawing.Printing;
+using System.Text.RegularExpressions;
+using GUI.Utils;
+using System.ComponentModel.DataAnnotations;
 namespace GUI
 {
     public partial class frmConfirm : Form
@@ -29,7 +32,7 @@ namespace GUI
         private int textX;
         private int currentY;
         private int lineSpacing;
-
+        private List<MuaHangDTO> _vps;
         private LabelControl lblMemberID;
         private TextEdit txtMemberID;
         private LabelControl lblCustomerName;
@@ -51,9 +54,15 @@ namespace GUI
         private SimpleButton btnCreateUser;
         private SimpleButton btnCreateInvoice;
 
-        public frmConfirm()
+        public frmConfirm(List<MuaHangDTO> vps)
         {
             InitializeComponent();
+
+            _vps = vps;
+
+
+
+
 
         }
 
@@ -75,27 +84,16 @@ namespace GUI
             int lineSpacing = 50; // Khoảng cách giữa các dòng
 
             // Tạo các Label và TextEdit
-             lblMemberID = new LabelControl
-            {
-                Text = "Mã thành viên:",
-                Font = labelFont,
-                Location = new Point(labelX, currentY)
-            };
-             txtMemberID = new TextEdit
-            {
-                Font = textEditFont,
-                Location = new Point(textX, currentY - 3),
-                Width = 300
-            };
+
 
             currentY += lineSpacing; // Cập nhật vị trí Y
-             lblCustomerName = new LabelControl
+            lblCustomerName = new LabelControl
             {
                 Text = "Tên khách hàng:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             txtCustomerName = new TextEdit
+            txtCustomerName = new TextEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -103,13 +101,13 @@ namespace GUI
             };
 
             currentY += lineSpacing;
-             lblCardType = new LabelControl
+            lblCardType = new LabelControl
             {
                 Text = "Hạng thẻ khách hàng:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             txtCardType = new TextEdit
+            txtCardType = new TextEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -117,13 +115,13 @@ namespace GUI
             };
 
             currentY += lineSpacing;
-             lblAvailablePoints = new LabelControl
+            lblAvailablePoints = new LabelControl
             {
                 Text = "Điểm tích lũy khả dụng:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             txtAvailablePoints = new TextEdit
+            txtAvailablePoints = new TextEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -135,13 +133,13 @@ namespace GUI
 
             // Thêm các trường mới
             currentY += lineSpacing;
-             lblBirthDate = new LabelControl
+            lblBirthDate = new LabelControl
             {
                 Text = "Ngày sinh:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             dateBirthDate = new DateEdit
+            dateBirthDate = new DateEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -159,13 +157,13 @@ namespace GUI
             dateBirthDate.Properties.Mask.UseMaskAsDisplayFormat = true;
 
             currentY += lineSpacing;
-             lblAddress = new LabelControl
+            lblAddress = new LabelControl
             {
                 Text = "Địa chỉ:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             txtAddress = new MemoEdit
+            txtAddress = new MemoEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -174,13 +172,13 @@ namespace GUI
             };
 
             currentY += lineSpacing + 20; // Dòng sau MemoEdit cần khoảng cách lớn hơn
-             lblPhone = new LabelControl
+            lblPhone = new LabelControl
             {
                 Text = "Số điện thoại:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             txtPhone = new TextEdit
+            txtPhone = new TextEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -188,13 +186,13 @@ namespace GUI
             };
 
             currentY += lineSpacing;
-             lblEmail = new LabelControl
+            lblEmail = new LabelControl
             {
                 Text = "Email:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             txtEmail = new TextEdit
+            txtEmail = new TextEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -202,13 +200,13 @@ namespace GUI
             };
 
             currentY += lineSpacing;
-             lblGender = new LabelControl
+            lblGender = new LabelControl
             {
                 Text = "Giới tính:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
             };
-             cmbGender = new ComboBoxEdit
+            cmbGender = new ComboBoxEdit
             {
                 Font = textEditFont,
                 Location = new Point(textX, currentY - 3),
@@ -216,13 +214,13 @@ namespace GUI
             };
             cmbGender.Properties.Items.AddRange(new[] { "Nam", "Nữ", "Khác" });
 
-           
+
             // Tạo nút "Tạo người dùng"
-             btnCreateUser = new SimpleButton
+            btnCreateUser = new SimpleButton
             {
                 Text = "Tạo người dùng",
                 Font = new Font("Tahoma", 12, FontStyle.Bold),
-                Location = new Point(labelX+150, currentY+70),
+                Location = new Point(labelX + 150, currentY + 70),
                 Size = new Size(200, 40), // Kích thước nút
                 //ImageOptions =
                 //{
@@ -233,13 +231,13 @@ namespace GUI
                 //}
             };
 
-             btnCreateInvoice = new SimpleButton
+            btnCreateInvoice = new SimpleButton
             {
                 Text = "Thanh toán",
                 Font = new Font("Tahoma", 12, FontStyle.Bold),
                 Location = new Point(labelX + 90, currentY + 70),
                 Size = new Size(200, 40), // Kích thước nút
-            
+
             };
             // Gán sự kiện khi bấm nút
             btnCreateUser.Click += BtnCreateUser_Click;
@@ -279,20 +277,42 @@ namespace GUI
             groupControl1.Controls.Add(lblGender);
             groupControl1.Controls.Add(cmbGender);
 
+            dtGVDH.DataSource = _vps;
+            foreach (DataGridViewColumn column in dtGVDH.Columns)
+            {
+                // Lấy thuộc tính PropertyInfo của đối tượng DTO
+                var propertyInfo = typeof(MuaHangDTO).GetProperty(column.DataPropertyName);
 
+                // Kiểm tra xem có Display attribute hay không
+                var displayAttribute = (DisplayAttribute)Attribute.GetCustomAttribute(propertyInfo, typeof(DisplayAttribute));
 
+                if (displayAttribute != null)
+                {
+                    // Gán tên hiển thị từ Display.Name vào tiêu đề cột
+                    column.HeaderText = displayAttribute.Name;
+                }
+            }
+            // Cập nhật giá trị vào ô cụ thể
+            txtTT.Text=dt.TongTien.ToString()+"VNĐ";
 
         }
         private void BtnCreateUser_Click(object sender, EventArgs e)
         {
+            string email = txtEmail.Text;  // Email
+
             // Tạo đối tượng KhachHangDTO và gán giá trị từ các trường nhập liệu
+            if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Email không hợp lệ. Vui lòng nhập lại.");
+                return;
+            }
 
             // Gọi phương thức InsertKhachHang để thêm khách hàng vào cơ sở dữ liệu
             newCustomer = new KhachHangDTO
             {
                 HoTen = txtCustomerName.Text,  // Tên khách hàng
                 NgaySinh = dateBirthDate.DateTime.ToString("dd/MM/yyyy"),  // Ngày sinh
-                DiemTichLuy =int.Parse( txtAvailablePoints.Text),  // Diem tích lũy mặc định có thể cập nhật sau
+                DiemTichLuy = int.Parse(txtAvailablePoints.Text),  // Diem tích lũy mặc định có thể cập nhật sau
                 DiaChi = txtAddress.Text,  // Địa chỉ
                 SDT = txtPhone.Text,  // Số điện thoại
                 Email = txtEmail.Text,  // Email
@@ -312,7 +332,12 @@ namespace GUI
                 MessageBox.Show("Lỗi khi tạo người dùng. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        private bool IsValidEmail(string email)
+        {
+            // Kiểm tra email với biểu thức chính quy
+            string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+            return Regex.IsMatch(email, emailPattern);
+        }
         private void btnCreateInvoice_Click(object sender, EventArgs e)
         {
 
@@ -321,9 +346,12 @@ namespace GUI
             if (result != null)
             {
                 // Đặt màu xanh cho các ghế đã chọn
-               
 
-                  MessageBox.Show("Đặt vé thành công", "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                MessageBox.Show("Đặt vé thành công", "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                frmSearchMovie search = new frmSearchMovie(UserSession.Username);
+                search.Show();
             }
             else
             {
@@ -336,10 +364,10 @@ namespace GUI
         }
 
 
-        
+
         //private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         //{
-            
+
         //    string tenPhim = dt.TenPhim;
         //    string ngayChieu = dt.IdLichChieuPhim;
         //    string phongChieu = dt.TenPhim;
@@ -358,7 +386,7 @@ namespace GUI
         //    e.Graphics.DrawString($"Tên phim: {tenPhim}", font, Brushes.Black, x, y);
         //    y += lineHeight;
 
-         
+
         //    e.Graphics.DrawString($"Ngày chiếu: {ngayChieu}", font, Brushes.Black, x, y);
         //    y += lineHeight;
         //    e.Graphics.DrawString($"Phòng chiếu: {phongChieu}", font, Brushes.Black, x, y);
