@@ -28,19 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReport));
-            printPreviewDialog1 = new PrintPreviewDialog();
             SuspendLayout();
-            // 
-            // printPreviewDialog1
-            // 
-            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
-            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
-            printPreviewDialog1.ClientSize = new Size(400, 300);
-            printPreviewDialog1.Enabled = true;
-            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
-            printPreviewDialog1.Name = "printPreviewDialog1";
-            printPreviewDialog1.Visible = false;
             // 
             // frmReport
             // 
@@ -53,7 +41,16 @@
         }
 
         #endregion
-
-        private PrintPreviewDialog printPreviewDialog1;
+        private DevExpress.XtraReports.UserDesigner.GroupAndSortDockPanel groupAndSortDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer groupAndSortDockPanel1_Container;
+        private DevExpress.XtraReports.UserDesigner.ErrorListDockPanel errorListDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer errorListDockPanel1_Container;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer1;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer2;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer3;
+        private DevExpress.XtraReports.UserDesigner.PropertyGridDockPanel propertyGridDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer propertyGridDockPanel1_Container;
+        private DevExpress.XtraReports.UserDesigner.ReportGalleryDockPanel reportGalleryDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer reportGalleryDockPanel1_Container;
     }
 }

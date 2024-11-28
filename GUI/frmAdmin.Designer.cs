@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             button1 = new Button();
+            reportGenerator1 = new DevExpress.XtraReports.ReportGeneration.ReportGenerator(components);
             SuspendLayout();
             // 
             // button1
@@ -56,5 +58,6 @@
         #endregion
 
         private Button button1;
+        private DevExpress.XtraReports.ReportGeneration.ReportGenerator reportGenerator1;
     }
 }
