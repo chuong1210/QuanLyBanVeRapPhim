@@ -289,6 +289,7 @@ namespace DAL
             catch (SqlException ex)
             {
                 Console.WriteLine($"Error retrieving movies: {ex.Message}");
+                return DanhSachPhim();
             }
             return movies;
         }

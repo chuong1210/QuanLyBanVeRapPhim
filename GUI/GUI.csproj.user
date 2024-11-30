@@ -43,7 +43,7 @@
     <Compile Update="Report\frmReportHD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Report\frmThongKeDT.cs">
+    <Compile Update="Report\frmReportThongKeDT.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Report\ReportHoaDon.cs">

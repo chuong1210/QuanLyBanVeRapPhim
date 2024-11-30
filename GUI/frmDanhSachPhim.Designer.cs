@@ -46,6 +46,8 @@
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            lbId = new Label();
+            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)layoutControl1).BeginInit();
             layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
@@ -63,10 +65,12 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             SuspendLayout();
             // 
             // layoutControl1
             // 
+            layoutControl1.Controls.Add(lbId);
             layoutControl1.Controls.Add(gridControl1);
             layoutControl1.Controls.Add(btnloadData);
             layoutControl1.Controls.Add(btnPrint);
@@ -85,10 +89,10 @@
             // 
             gridLevelNode1.RelationName = "Level1";
             gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] { gridLevelNode1 });
-            gridControl1.Location = new Point(12, 278);
+            gridControl1.Location = new Point(12, 88);
             gridControl1.MainView = gridView1;
             gridControl1.Name = "gridControl1";
-            gridControl1.Size = new Size(993, 717);
+            gridControl1.Size = new Size(993, 907);
             gridControl1.TabIndex = 4;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
             // 
@@ -96,6 +100,9 @@
             // 
             gridView1.GridControl = gridControl1;
             gridView1.Name = "gridView1";
+            gridView1.CustomRowCellEdit += gridView1_CustomRowCellEdit;
+            gridView1.FocusedRowChanged += gridView1_FocusedRowChanged;
+            gridView1.CellValueChanged += gridView1_CellValueChanged;
             // 
             // btnloadData
             // 
@@ -125,32 +132,32 @@
             // 
             // comboBoxEdit2
             // 
-            comboBoxEdit2.Location = new Point(126, 202);
+            comboBoxEdit2.Location = new Point(292, 12);
             comboBoxEdit2.Name = "comboBoxEdit2";
             comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            comboBoxEdit2.Size = new Size(214, 22);
+            comboBoxEdit2.Size = new Size(62, 22);
             comboBoxEdit2.StyleController = layoutControl1;
             comboBoxEdit2.TabIndex = 0;
             // 
             // dateend
             // 
             dateend.EditValue = null;
-            dateend.Location = new Point(790, 240);
+            dateend.Location = new Point(797, 50);
             dateend.Name = "dateend";
             dateend.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             dateend.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dateend.Size = new Size(203, 22);
+            dateend.Size = new Size(196, 22);
             dateend.StyleController = layoutControl1;
             dateend.TabIndex = 3;
             // 
             // datestart
             // 
             datestart.EditValue = null;
-            datestart.Location = new Point(470, 240);
+            datestart.Location = new Point(484, 50);
             datestart.Name = "datestart";
             datestart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             datestart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            datestart.Size = new Size(202, 22);
+            datestart.Size = new Size(195, 22);
             datestart.StyleController = layoutControl1;
             datestart.TabIndex = 2;
             // 
@@ -158,35 +165,34 @@
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlGroup1, layoutControlItem5, layoutControlItem6, layoutControlItem2 });
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlGroup1, layoutControlItem5, layoutControlItem6, layoutControlItem2, layoutControlItem7 });
             Root.Name = "Root";
-            Root.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 10, 200, 10);
             Root.Size = new Size(1017, 1055);
             Root.TextVisible = false;
             // 
             // layoutControlItem1
             // 
             layoutControlItem1.Control = comboBoxEdit2;
-            layoutControlItem1.Location = new Point(0, 0);
+            layoutControlItem1.Location = new Point(166, 0);
             layoutControlItem1.Name = "layoutControlItem1";
-            layoutControlItem1.Size = new Size(332, 76);
+            layoutControlItem1.Size = new Size(180, 76);
             layoutControlItem1.Text = "  Chọn phim";
             layoutControlItem1.TextSize = new Size(102, 16);
             // 
             // layoutControlGroup1
             // 
             layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem4, layoutControlItem3 });
-            layoutControlGroup1.Location = new Point(332, 0);
+            layoutControlGroup1.Location = new Point(346, 0);
             layoutControlGroup1.Name = "layoutControlGroup1";
-            layoutControlGroup1.Size = new Size(665, 76);
+            layoutControlGroup1.Size = new Size(651, 76);
             layoutControlGroup1.Text = "Chọn thời gian";
             // 
             // layoutControlItem4
             // 
             layoutControlItem4.Control = dateend;
-            layoutControlItem4.Location = new Point(320, 0);
+            layoutControlItem4.Location = new Point(313, 0);
             layoutControlItem4.Name = "layoutControlItem4";
-            layoutControlItem4.Size = new Size(321, 26);
+            layoutControlItem4.Size = new Size(314, 26);
             layoutControlItem4.Text = "Thời gian kết thúc";
             layoutControlItem4.TextSize = new Size(102, 16);
             // 
@@ -195,14 +201,14 @@
             layoutControlItem3.Control = datestart;
             layoutControlItem3.Location = new Point(0, 0);
             layoutControlItem3.Name = "layoutControlItem3";
-            layoutControlItem3.Size = new Size(320, 26);
+            layoutControlItem3.Size = new Size(313, 26);
             layoutControlItem3.Text = "Thời gian bắt đầu";
             layoutControlItem3.TextSize = new Size(102, 16);
             // 
             // layoutControlItem5
             // 
             layoutControlItem5.Control = btnloadData;
-            layoutControlItem5.Location = new Point(0, 797);
+            layoutControlItem5.Location = new Point(0, 987);
             layoutControlItem5.Name = "layoutControlItem5";
             layoutControlItem5.Size = new Size(498, 48);
             layoutControlItem5.TextSize = new Size(0, 0);
@@ -213,27 +219,42 @@
             layoutControlItem6.Control = gridControl1;
             layoutControlItem6.Location = new Point(0, 76);
             layoutControlItem6.Name = "layoutControlItem6";
-            layoutControlItem6.Size = new Size(997, 721);
+            layoutControlItem6.Size = new Size(997, 911);
             layoutControlItem6.TextSize = new Size(0, 0);
             layoutControlItem6.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             layoutControlItem2.Control = btnPrint;
-            layoutControlItem2.Location = new Point(498, 797);
+            layoutControlItem2.Location = new Point(498, 987);
             layoutControlItem2.Name = "layoutControlItem2";
             layoutControlItem2.Size = new Size(499, 48);
             layoutControlItem2.TextSize = new Size(0, 0);
             layoutControlItem2.TextVisible = false;
             // 
+            // lbId
+            // 
+            lbId.Location = new Point(12, 12);
+            lbId.Name = "lbId";
+            lbId.Size = new Size(162, 72);
+            lbId.TabIndex = 7;
+            lbId.Text = "label1";
+            // 
+            // layoutControlItem7
+            // 
+            layoutControlItem7.Control = lbId;
+            layoutControlItem7.Location = new Point(0, 0);
+            layoutControlItem7.Name = "layoutControlItem7";
+            layoutControlItem7.Size = new Size(166, 76);
+            layoutControlItem7.TextSize = new Size(0, 0);
+            layoutControlItem7.TextVisible = false;
+            // 
             // frmDanhSachPhim
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
             ClientSize = new Size(1017, 1055);
             Controls.Add(layoutControl1);
             Name = "frmDanhSachPhim";
             Text = "frmDanhSachPhim";
-            Controls.SetChildIndex(layoutControl1, 0);
             ((System.ComponentModel.ISupportInitialize)layoutControl1).EndInit();
             layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gridControl1).EndInit();
@@ -251,8 +272,8 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -273,5 +294,7 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private Label lbId;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
