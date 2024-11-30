@@ -53,6 +53,8 @@ CREATE TABLE NhanVien
 	idQuanLy INT,
 	SDT VARCHAR(255),
 	CMND INT NOT NULL UNIQUE,
+	CaLam VARCHAR(25) NULL,
+
 	CONSTRAINT PK_NhanVien PRIMARY KEY (id)
 )
 
@@ -152,7 +154,14 @@ CREATE TABLE VePhim
 )
 
 
-
+   SELECT hd.Id, kh.HoTen, phim.TenPhim, hd.NgayMua, hd.TongTien
+   FROM HoaDon hd
+   JOIN KhachHang kh ON hd.idKhachHang = kh.id
+   JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
+   JOIN VePhim vp ON cthd.idVePhim = vp.id
+   JOIN LichChieuPhim lcp ON vp.idLichChieuPhim = lcp.id
+   JOIN Phim phim ON lcp.idPhim = phim.id
+   WHERE hd.Id = '23'
 GO
 -- Tạo bảng KhachHang
 CREATE TABLE KhachHang

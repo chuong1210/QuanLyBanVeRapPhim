@@ -55,10 +55,28 @@ namespace BLL
             //DatVeDTO.IdKhachHang = idKH;
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
+<<<<<<< HEAD
         public DataTable getListMovie()
         {
             return _phimDAL.GetListMovie();
         }
      
+=======
+        public List<PhimDTO> TimPhimTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
+        {
+            return _phimDAL.TimPhimTheoKhoangThoiGian(startDate, endDate);
+
+        }
+        public List<PhimDTO> DanhSachPhim()
+        {
+            return _phimDAL.DanhSachPhim();
+
+        }
+        public bool HuyGheDat(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        {
+            return _phimDAL.HuyGheDat(DatVeDTO, selectedSeats);
+
+        }
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
     }
 }

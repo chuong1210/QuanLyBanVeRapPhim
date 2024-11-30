@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             panel1 = new Panel();
             btnAccount = new Button();
             btnCustomer = new Button();
@@ -132,22 +133,47 @@
             pnBodyAdmin.Name = "pnBodyAdmin";
             pnBodyAdmin.Size = new Size(1807, 665);
             pnBodyAdmin.TabIndex = 1;
+=======
+            components = new System.ComponentModel.Container();
+            button1 = new Button();
+            reportGenerator1 = new DevExpress.XtraReports.ReportGeneration.ReportGenerator(components);
+            SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.BackgroundImage = Properties.Resources.user_icon_png_3;
+            button1.Location = new Point(584, 177);
+            button1.Name = "button1";
+            button1.Size = new Size(158, 58);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
             // 
             // frmAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+<<<<<<< HEAD
             ClientSize = new Size(1810, 821);
             Controls.Add(pnBodyAdmin);
             Controls.Add(panel1);
             Name = "frmAdmin";
             Text = "frmAdmin";
             panel1.ResumeLayout(false);
+=======
+            BackgroundImage = Properties.Resources.user_icon;
+            ClientSize = new Size(800, 450);
+            Controls.Add(button1);
+            Name = "frmAdmin";
+            Text = "frmAdmin";
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
             ResumeLayout(false);
         }
 
         #endregion
 
+<<<<<<< HEAD
         private Panel panel1;
         private Button btnStaff;
         private Button btnData;
@@ -155,5 +181,9 @@
         private Button btnAccount;
         private Button btnCustomer;
         private Panel pnBodyAdmin;
+=======
+        private Button button1;
+        private DevExpress.XtraReports.ReportGeneration.ReportGenerator reportGenerator1;
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
     }
 }

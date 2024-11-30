@@ -233,9 +233,15 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap Untitled_2_0001_Layer_8 {
             get {
                 object obj = ResourceManager.GetObject("Untitled-2_0001_Layer-8", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap user_icon {
+            get {
+                object obj = ResourceManager.GetObject("user_icon", resourceCulture);
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +249,15 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap view_3d_cinema_elements {
             get {
                 object obj = ResourceManager.GetObject("view-3d-cinema-elements", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap user_icon_png_3 {
+            get {
+                object obj = ResourceManager.GetObject("user-icon-png-3", resourceCulture);
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

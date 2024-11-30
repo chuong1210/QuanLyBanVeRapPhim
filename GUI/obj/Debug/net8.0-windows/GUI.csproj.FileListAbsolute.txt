@@ -1,3 +1,88 @@
+<<<<<<< HEAD
+=======
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.deps.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.runtimeconfig.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.deps.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.runtimeconfig.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.deps.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.runtimeconfig.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.exe
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.exe
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.exe
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.exe
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.deps.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.runtimeconfig.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Azure.Core.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Azure.Identity.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Logging.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Tokens.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.SqlServer.Server.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.ClientModel.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Configuration.ConfigurationManager.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Diagnostics.EventLog.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Memory.Data.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\Microsoft.Data.SqlClient.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\Microsoft.Data.SqlClient.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.csproj.AssemblyReference.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmAdmin.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmClient.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.FrmLogin.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmRegister.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmSeatMovie.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Properties.Resources.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.csproj.GenerateResource.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.GeneratedMSBuildEditorConfig.editorconfig
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.AssemblyInfoInputs.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.AssemblyInfo.cs
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.csproj.CoreCompileInputs.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.sourcelink.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.csproj.Up2Date
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\refint\GUI.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.deps.json
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.runtimeconfig.json
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.deps.json
@@ -8,6 +93,10 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.exe
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.exe
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.exe
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\appsettings.json
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.deps.json
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.runtimeconfig.json
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\GUI.dll
@@ -78,9 +167,23 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DevExpress.Xpo.v24.1.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Data.SqlClient.dll
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Json.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.ObjectPool.dll
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Identity.Client.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Microsoft.IdentityModel.Abstractions.dll
@@ -95,12 +198,21 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Diagnostics.EventLog.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.IdentityModel.Tokens.Jwt.dll
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Memory.Data.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Runtime.Caching.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.ServiceModel.Http.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.ServiceModel.NetFramingBase.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.ServiceModel.NetTcp.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.ServiceModel.Primitives.dll
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Text.Encodings.Web.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Text.Json.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\de\Microsoft.Data.SqlClient.resources.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\es\Microsoft.Data.SqlClient.resources.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
@@ -176,6 +288,10 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.dll
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.dll
@@ -183,11 +299,27 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DAL.pdb
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\DTO.pdb
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.csproj.AssemblyReference.cache
+<<<<<<< HEAD
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataAdmin.DataUC.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.GenreUC.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.MovieUC.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.RoomUC.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.ScreenTypeUC.resources
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsCommonObjectModelLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsControllersLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsCubeDefModelLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsDataDefModelLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsDTSAgentLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.PAGEOBJECTMODELLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalPrintControlLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsLocalConnectionMgrLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsObjectFactoryLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.PROMPTINGLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.CrystalReportsReportDefModelLib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\Interop.SAXSERIALIZELib.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.csproj.ResolveComReference.cache
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmAdmin.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmChangePW.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmConfirm.resources
@@ -195,7 +327,10 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.FrmLogin.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmNavBar.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmRegister.resources
+<<<<<<< HEAD
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmReport.resources
+=======
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmSearchMovie.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmSeatMovie.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmSideBar.resources
@@ -213,3 +348,15 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.pdb
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
+<<<<<<< HEAD
+=======
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.frmReportDSKH.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.ReportHoaDon.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.ReportDSNV.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.frmReportHD.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.ReportThongKeDT.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmDanhSachPhim.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.frmReportDSNV.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.frmThongKeDT.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.ReportThongKeDT1.resources
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0

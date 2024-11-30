@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+=======
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.exe
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.deps.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.runtimeconfig.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.GeneratedMSBuildEditorConfig.editorconfig
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.AssemblyInfoInputs.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.AssemblyInfo.cs
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.csproj.CoreCompileInputs.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.sourcelink.json
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\refint\DTO.dll
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.pdb
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\DTO.genruntimeconfig.cache
+E:\.NET\Demo\QuanLyBanVeRapPhim\DTO\obj\Debug\net8.0\ref\DTO.dll
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.exe
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.deps.json
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\DTO\bin\Debug\net8.0\DTO.runtimeconfig.json

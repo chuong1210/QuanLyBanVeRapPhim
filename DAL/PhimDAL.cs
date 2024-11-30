@@ -160,6 +160,142 @@ namespace DAL
             return movies;
         }
 
+        public List<PhimDTO> DanhSachPhim()
+        {
+            List<PhimDTO> movies = new List<PhimDTO>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                          SELECT 
+                              DISTINCT
+                              p.id AS PhimId,
+                              p.TenPhim,
+                              p.PosterPath,
+                              p.ThoiLuong,
+                              p.DaoDien,
+                              p.MoTa,
+                              p.NamSX,
+                              p.DienVien,
+                              p.NgayKhoiChieu,
+                              p.NgayKetThuc
+                          FROM 
+                              Phim p
+                         ";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Thêm tham số cho khoảng thời gian bắt đầu và kết thúc
+             
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                PhimDTO movie = new PhimDTO();
+
+                                movie.Id = reader["PhimId"].ToString();
+                                movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
+                                movie.Poster = reader["PosterPath"].ToString();
+                                movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
+                                movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
+                                movie.MoTa = reader.IsDBNull(reader.GetOrdinal("MoTa")) ? "" : reader.GetString(reader.GetOrdinal("MoTa"));
+                                movie.NamSX = reader.IsDBNull(reader.GetOrdinal("NamSX")) ? 0 : reader.GetInt32(reader.GetOrdinal("NamSX"));
+                                movie.DienVien = reader.IsDBNull(reader.GetOrdinal("DienVien")) ? "" : reader.GetString(reader.GetOrdinal("DienVien"));
+                                movie.NgayKhoiChieu = reader.IsDBNull(reader.GetOrdinal("NgayKhoiChieu"))
+                                 ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                 : reader.GetDateTime(reader.GetOrdinal("NgayKhoiChieu"));
+
+                                movie.NgayKetThuc = reader.IsDBNull(reader.GetOrdinal("NgayKetThuc"))
+                                    ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                    : reader.GetDateTime(reader.GetOrdinal("NgayKetThuc"));
+
+
+                                movies.Add(movie);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error retrieving movies: {ex.Message}");
+            }
+            return movies;
+        }
+
+        public List<PhimDTO> TimPhimTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
+        {
+            List<PhimDTO> movies = new List<PhimDTO>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                          SELECT 
+                              DISTINCT
+                              p.id AS PhimId,
+                              p.TenPhim,
+                              p.PosterPath,
+                              p.ThoiLuong,
+                              p.DaoDien,
+                              p.MoTa,
+                              p.NamSX,
+                              p.DienVien,
+                              p.NgayKhoiChieu,
+                              p.NgayKetThuc
+                          FROM 
+                              Phim p
+                          INNER JOIN 
+                              LichChieuPhim lc ON p.Id = lc.IdPhim
+                          WHERE 
+                              lc.ThoiGianChieu >= @StartDate AND lc.ThoiGianChieu <= @EndDate";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Thêm tham số cho khoảng thời gian bắt đầu và kết thúc
+                        command.Parameters.AddWithValue("@StartDate", startDate.ToUniversalTime());
+                        command.Parameters.AddWithValue("@EndDate", endDate.ToUniversalTime());
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                PhimDTO movie = new PhimDTO();
+
+                                movie.Id = reader["PhimId"].ToString();
+                                movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
+                                movie.Poster = reader["PosterPath"].ToString();
+                                movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
+                                movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
+                                movie.MoTa = reader.IsDBNull(reader.GetOrdinal("MoTa")) ? "" : reader.GetString(reader.GetOrdinal("MoTa"));
+                                movie.NamSX = reader.IsDBNull(reader.GetOrdinal("NamSX")) ? 0 : reader.GetInt32(reader.GetOrdinal("NamSX"));
+                                movie.DienVien = reader.IsDBNull(reader.GetOrdinal("DienVien")) ? "" : reader.GetString(reader.GetOrdinal("DienVien"));
+                                movie.NgayKhoiChieu = reader.IsDBNull(reader.GetOrdinal("NgayKhoiChieu"))
+                                 ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                 : reader.GetDateTime(reader.GetOrdinal("NgayKhoiChieu"));
+
+                                movie.NgayKetThuc = reader.IsDBNull(reader.GetOrdinal("NgayKetThuc"))
+                                    ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                    : reader.GetDateTime(reader.GetOrdinal("NgayKetThuc"));
+
+
+                                movies.Add(movie);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error retrieving movies: {ex.Message}");
+            }
+            return movies;
+        }
+
         public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
         {
             HoaDonDTO hoaDon = null;
@@ -216,7 +352,7 @@ namespace DAL
                         {
                             string queryVePhim = @"
                         UPDATE VePhim 
-                        SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang 
+                        SET TrangThaiVePhim = 1, idKhachHang = @idKhachHang ,LoaiVePhim=@LoaiVePhim
                         OUTPUT INSERTED.id 
                         WHERE MaGheNgoi = @SoGhe AND idLichChieuPhim = @idLichChieuPhim;";
 
@@ -227,6 +363,8 @@ namespace DAL
                                 command.Parameters.AddWithValue("@SoGhe", "Ghe_" + seat);
                                 command.Parameters.AddWithValue("@idKhachHang", DatVeDTO.IdKhachHang ?? (object)DBNull.Value);
                                 command.Parameters.AddWithValue("@idLichChieuPhim", DatVeDTO.IdLichChieuPhim);
+                                command.Parameters.AddWithValue("@LoaiVePhim", DatVeDTO.loaiVP);
+
 
                                 var result = command.ExecuteScalar();
                                 if (result != null)
@@ -358,7 +496,7 @@ namespace DAL
                 {
                     connection.Open();
                     string query = @"
-            SELECT hd.Id, kh.TenKhachHang, phim.TenPhim, hd.NgayMua, hd.TongTien
+            SELECT hd.Id, kh.HoTen, phim.TenPhim, hd.NgayMua, hd.TongTien
             FROM HoaDon hd
             JOIN KhachHang kh ON hd.idKhachHang = kh.id
             JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
@@ -391,6 +529,90 @@ namespace DAL
             }
 
             return hoaDon;
+        }
+
+        public bool HuyGheDat(DatVeDTO DatVeDTO, List<string> selectedSeats)
+        {
+            bool isSuccess = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
+
+                    try
+                    {
+                        // Xóa các chi tiết hóa đơn liên quan đến vé
+                        foreach (var seat in selectedSeats)
+                        {
+                            // Lấy ID của Vé Phim đã đặt
+                            string queryChiTietHoaDon = @"
+                    SELECT cthd.idVePhim 
+                    FROM ChiTietHoaDon cthd
+                    JOIN VePhim vp ON cthd.idVePhim = vp.id
+                    WHERE vp.MaGheNgoi = @SoGhe AND vp.idLichChieuPhim = @idLichChieuPhim";
+
+                            int? idVePhim = null;
+                            using (SqlCommand command = new SqlCommand(queryChiTietHoaDon, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@SoGhe", "Ghe_" + seat);
+                                command.Parameters.AddWithValue("@idLichChieuPhim", DatVeDTO.IdLichChieuPhim);
+                                var result = command.ExecuteScalar();
+
+                                if (result != null)
+                                {
+                                    idVePhim = (int)result;
+                                }
+                            }
+
+                            // Xóa chi tiết hóa đơn nếu tìm thấy ID Vé Phim
+                            if (idVePhim.HasValue)
+                            {
+                                string queryDeleteChiTietHoaDon = @"
+                        DELETE FROM ChiTietHoaDon
+                        WHERE idVePhim = @idVePhim";
+
+                                using (SqlCommand command = new SqlCommand(queryDeleteChiTietHoaDon, connection, transaction))
+                                {
+                                    command.Parameters.AddWithValue("@idVePhim", idVePhim.Value);
+                                    command.ExecuteNonQuery();
+                                }
+                            }
+
+                            // Cập nhật lại trạng thái Vé Phim
+                            string queryVePhim = @"
+                    UPDATE VePhim 
+                    SET TrangThaiVePhim = 0, idKhachHang = NULL 
+                    WHERE MaGheNgoi = @SoGhe AND idLichChieuPhim = @idLichChieuPhim";
+
+                            using (SqlCommand command = new SqlCommand(queryVePhim, connection, transaction))
+                            {
+                                command.Parameters.AddWithValue("@SoGhe", "Ghe_" + seat);
+                                command.Parameters.AddWithValue("@idLichChieuPhim", DatVeDTO.IdLichChieuPhim);
+                                command.ExecuteNonQuery();
+                            }
+                        }
+
+                        // Commit giao dịch
+                        transaction.Commit();
+                        isSuccess = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Nếu có lỗi, rollback lại giao dịch
+                        transaction.Rollback();
+                        Console.WriteLine($"Error during seat cancellation: {ex.Message}");
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Database error during seat cancellation: {ex.Message}");
+            }
+
+            return isSuccess;
         }
 
         public List<string> LayGheDaDat(string idLichChieuPhim)

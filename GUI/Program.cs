@@ -1,3 +1,6 @@
+using GUI.Report;
+using GUI.Utils;
+
 namespace GUI
 {
     internal static class Program
@@ -11,7 +14,8 @@ namespace GUI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmConfirm());
+            Application.Run(new frmSearchMovie(UserSession.Username));
+            //Application.Run(new frmConfirm());
         }
     }
 }

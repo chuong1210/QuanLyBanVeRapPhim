@@ -49,14 +49,12 @@
             // 
             // lbName
             // 
-            lbName.AutoSize = true;
-            lbName.BorderStyle = BorderStyle.Fixed3D;
             lbName.Font = new Font("Bahnschrift SemiBold", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             lbName.ForeColor = Color.Red;
             lbName.Location = new Point(48, 193);
             lbName.MaximumSize = new Size(223, 23);
             lbName.Name = "lbName";
-            lbName.Size = new Size(126, 23);
+            lbName.Size = new Size(124, 23);
             lbName.TabIndex = 1;
             lbName.Text = "Kí sinh trùng";
             lbName.TextAlign = ContentAlignment.MiddleCenter;
@@ -73,7 +71,6 @@
             // 
             // lbDirector
             // 
-            lbDirector.AutoSize = true;
             lbDirector.Font = new Font("Bahnschrift", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
             lbDirector.Location = new Point(15, 222);
             lbDirector.Name = "lbDirector";
