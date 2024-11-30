@@ -4,6 +4,9 @@
     <Compile Update="frmConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmDanhSachPhim.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmNavBar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -14,9 +17,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmDetailMovie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="frmReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmSearchMovie.cs">
@@ -33,6 +33,27 @@
     </Compile>
     <Compile Update="frmSeatMovie.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportDSNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportDSKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmThongKeDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\ReportHoaDon.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Report\ReportThongKeDT.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Report\ReportThongKeDT1.cs">
+      <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Utils\MovieCard.cs">
       <SubType>UserControl</SubType>

@@ -17,6 +17,7 @@ using System.Drawing.Printing;
 using System.Text.RegularExpressions;
 using GUI.Utils;
 using System.ComponentModel.DataAnnotations;
+using GUI.Report;
 namespace GUI
 {
     public partial class frmConfirm : Form
@@ -338,7 +339,7 @@ namespace GUI
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, emailPattern);
         }
-        private void btnCreateInvoice_Click(object sender, EventArgs e)
+        private async void btnCreateInvoice_Click(object sender, EventArgs e)
         {
 
             HoaDonDTO result = phimBll.DatVeXemPhim(dt, seats, ""); // Pass the list of IDs
@@ -350,8 +351,16 @@ namespace GUI
 
                 MessageBox.Show("Đặt vé thành công", "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-                frmSearchMovie search = new frmSearchMovie(UserSession.Username);
-                search.Show();
+                frmReportHD report = new frmReportHD(_vps);
+
+                // Truyền danh sách vào DataSource
+
+                // Hiển thị báo cáo
+                //frmSearchMovie search = new frmSearchMovie(UserSession.Username);
+
+                //search.Show();
+                await Task.Delay(1000);
+                report.ShowDialog();
             }
             else
             {

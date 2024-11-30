@@ -137,6 +137,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Report\ReportDSNV.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

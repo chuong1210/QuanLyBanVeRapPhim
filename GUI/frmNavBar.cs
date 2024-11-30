@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraBars;
+using GUI.Utils;
+using GUI.Report;
 namespace GUI
 {
     public partial class frmNavBar : Form
@@ -21,17 +23,17 @@ namespace GUI
             UserLookAndFeel.Default.SetSkinStyle("Office 2019 Colorful"); // Hoặc theme khác
             this.FormBorderStyle = FormBorderStyle.None;
             // Tạo các Button cho Minimize, Maximize, Close
-          
+
             minimizeButton.ItemClick += (s, e) => this.WindowState = FormWindowState.Minimized;
 
             maximizeButton.ItemClick += (s, e) => this.WindowState = FormWindowState.Maximized;
 
-       
+
 
 
             closeButton.ItemClick += (s, e) => this.Close();
 
-        
+
 
         }
 
@@ -55,14 +57,39 @@ namespace GUI
 
         private void tkHoaDon_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            frmDanhSachPhim frm = new frmDanhSachPhim();
+            frm.Show();
         }
-    
+
         private void frmNavBar_Load(object sender, EventArgs e)
         {
-          
-           
 
+
+
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            frmChangePW lg = new frmChangePW(UserSession.Username);
+            lg.ShowDialog();
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmReportDSKH lg = new frmReportDSKH();
+            lg.ShowDialog();
+        }
+
+        private void btnTimphim_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmReportDSNV lg = new frmReportDSNV();
+            lg.ShowDialog();
         }
     }
 }

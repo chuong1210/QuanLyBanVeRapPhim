@@ -157,6 +157,142 @@ namespace DAL
             return movies;
         }
 
+        public List<PhimDTO> DanhSachPhim()
+        {
+            List<PhimDTO> movies = new List<PhimDTO>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                          SELECT 
+                              DISTINCT
+                              p.id AS PhimId,
+                              p.TenPhim,
+                              p.PosterPath,
+                              p.ThoiLuong,
+                              p.DaoDien,
+                              p.MoTa,
+                              p.NamSX,
+                              p.DienVien,
+                              p.NgayKhoiChieu,
+                              p.NgayKetThuc
+                          FROM 
+                              Phim p
+                         ";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Thêm tham số cho khoảng thời gian bắt đầu và kết thúc
+             
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                PhimDTO movie = new PhimDTO();
+
+                                movie.Id = reader["PhimId"].ToString();
+                                movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
+                                movie.Poster = reader["PosterPath"].ToString();
+                                movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
+                                movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
+                                movie.MoTa = reader.IsDBNull(reader.GetOrdinal("MoTa")) ? "" : reader.GetString(reader.GetOrdinal("MoTa"));
+                                movie.NamSX = reader.IsDBNull(reader.GetOrdinal("NamSX")) ? 0 : reader.GetInt32(reader.GetOrdinal("NamSX"));
+                                movie.DienVien = reader.IsDBNull(reader.GetOrdinal("DienVien")) ? "" : reader.GetString(reader.GetOrdinal("DienVien"));
+                                movie.NgayKhoiChieu = reader.IsDBNull(reader.GetOrdinal("NgayKhoiChieu"))
+                                 ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                 : reader.GetDateTime(reader.GetOrdinal("NgayKhoiChieu"));
+
+                                movie.NgayKetThuc = reader.IsDBNull(reader.GetOrdinal("NgayKetThuc"))
+                                    ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                    : reader.GetDateTime(reader.GetOrdinal("NgayKetThuc"));
+
+
+                                movies.Add(movie);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error retrieving movies: {ex.Message}");
+            }
+            return movies;
+        }
+
+        public List<PhimDTO> TimPhimTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
+        {
+            List<PhimDTO> movies = new List<PhimDTO>();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    string query = @"
+                          SELECT 
+                              DISTINCT
+                              p.id AS PhimId,
+                              p.TenPhim,
+                              p.PosterPath,
+                              p.ThoiLuong,
+                              p.DaoDien,
+                              p.MoTa,
+                              p.NamSX,
+                              p.DienVien,
+                              p.NgayKhoiChieu,
+                              p.NgayKetThuc
+                          FROM 
+                              Phim p
+                          INNER JOIN 
+                              LichChieuPhim lc ON p.Id = lc.IdPhim
+                          WHERE 
+                              lc.ThoiGianChieu >= @StartDate AND lc.ThoiGianChieu <= @EndDate";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        // Thêm tham số cho khoảng thời gian bắt đầu và kết thúc
+                        command.Parameters.AddWithValue("@StartDate", startDate.ToUniversalTime());
+                        command.Parameters.AddWithValue("@EndDate", endDate.ToUniversalTime());
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                PhimDTO movie = new PhimDTO();
+
+                                movie.Id = reader["PhimId"].ToString();
+                                movie.TenPhim = reader.GetString(reader.GetOrdinal("TenPhim"));
+                                movie.Poster = reader["PosterPath"].ToString();
+                                movie.ThoiLuong = int.Parse(reader["ThoiLuong"].ToString());
+                                movie.DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? "" : reader.GetString(reader.GetOrdinal("DaoDien"));
+                                movie.MoTa = reader.IsDBNull(reader.GetOrdinal("MoTa")) ? "" : reader.GetString(reader.GetOrdinal("MoTa"));
+                                movie.NamSX = reader.IsDBNull(reader.GetOrdinal("NamSX")) ? 0 : reader.GetInt32(reader.GetOrdinal("NamSX"));
+                                movie.DienVien = reader.IsDBNull(reader.GetOrdinal("DienVien")) ? "" : reader.GetString(reader.GetOrdinal("DienVien"));
+                                movie.NgayKhoiChieu = reader.IsDBNull(reader.GetOrdinal("NgayKhoiChieu"))
+                                 ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                 : reader.GetDateTime(reader.GetOrdinal("NgayKhoiChieu"));
+
+                                movie.NgayKetThuc = reader.IsDBNull(reader.GetOrdinal("NgayKetThuc"))
+                                    ? DateTime.MinValue  // Giá trị mặc định nếu NULL
+                                    : reader.GetDateTime(reader.GetOrdinal("NgayKetThuc"));
+
+
+                                movies.Add(movie);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine($"Error retrieving movies: {ex.Message}");
+            }
+            return movies;
+        }
+
         public HoaDonDTO DatVeXemPhim(DatVeDTO DatVeDTO, List<string> selectedSeats)
         {
             HoaDonDTO hoaDon = null;

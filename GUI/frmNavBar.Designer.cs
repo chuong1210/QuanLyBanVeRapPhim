@@ -43,6 +43,7 @@
             btnTimphim = new DevExpress.XtraBars.BarButtonItem();
             ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             barButtonItem_out = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem_Login = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem_Info = new DevExpress.XtraBars.BarButtonItem();
             barButtonItem_ChangePassword = new DevExpress.XtraBars.BarButtonItem();
@@ -123,6 +124,7 @@
             barButtonItem4.ItemAppearance.Pressed.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
             barButtonItem4.ItemAppearance.Pressed.Options.UseFont = true;
             barButtonItem4.Name = "barButtonItem4";
+            barButtonItem4.ItemClick += barButtonItem4_ItemClick;
             // 
             // barButtonItem6
             // 
@@ -138,6 +140,7 @@
             barButtonItem6.ItemAppearance.Pressed.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
             barButtonItem6.ItemAppearance.Pressed.Options.UseFont = true;
             barButtonItem6.Name = "barButtonItem6";
+            barButtonItem6.ItemClick += barButtonItem6_ItemClick;
             // 
             // ribonDSKHTT
             // 
@@ -205,10 +208,12 @@
             btnTimphim.ItemAppearance.Pressed.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
             btnTimphim.ItemAppearance.Pressed.Options.UseFont = true;
             btnTimphim.Name = "btnTimphim";
+            btnTimphim.ItemClick += btnTimphim_ItemClick;
             // 
             // ribbonPageGroup6
             // 
             ribbonPageGroup6.ItemLinks.Add(barButtonItem_out);
+            ribbonPageGroup6.ItemLinks.Add(barButtonItem10);
             ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
             // barButtonItem_out
@@ -227,6 +232,22 @@
             barButtonItem_out.ItemAppearance.Pressed.Options.UseFont = true;
             barButtonItem_out.Name = "barButtonItem_out";
             barButtonItem_out.ItemClick += barButtonItem_out_ItemClick;
+            // 
+            // barButtonItem10
+            // 
+            barButtonItem10.Caption = "Đổi mật khẩu";
+            barButtonItem10.Id = 31;
+            barButtonItem10.ImageOptions.LargeImage = (Image)resources.GetObject("barButtonItem10.ImageOptions.LargeImage");
+            barButtonItem10.ItemAppearance.Disabled.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            barButtonItem10.ItemAppearance.Disabled.Options.UseFont = true;
+            barButtonItem10.ItemAppearance.Hovered.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            barButtonItem10.ItemAppearance.Hovered.Options.UseFont = true;
+            barButtonItem10.ItemAppearance.Normal.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            barButtonItem10.ItemAppearance.Normal.Options.UseFont = true;
+            barButtonItem10.ItemAppearance.Pressed.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            barButtonItem10.ItemAppearance.Pressed.Options.UseFont = true;
+            barButtonItem10.Name = "barButtonItem10";
+            barButtonItem10.ItemClick += barButtonItem10_ItemClick;
             // 
             // barButtonItem_Login
             // 
@@ -409,14 +430,14 @@
             // 
             ribbonControl1.EmptyAreaImageOptions.ImagePadding = new Padding(35, 37, 35, 37);
             ribbonControl1.ExpandCollapseItem.Id = 0;
-            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem_Login, barButtonItem_Info, barButtonItem_ChangePassword, barButtonItem_LogOut, barButtonItem_CreateAccount, bar_button_listphim, barButtonItem_listProduct, barButtonItem_donDatHang, barButtonItem_phieuNhap, barButtonItem_phieuXuat, barButtonItem_ListKho, btnTimphim, barButtonItem_HDNV, barButtonItem2, barButtonItem_THNX, barButtonItem_DSVT, barButtonItem_out, barButtonItem_DSNV, barButtonItem_DHCPN, barButtonItem1, barButtonItem4, barButtonItem6, tkHoaDon, barButtonItem7, barButtonItem8, barButtonItem9, maximizeButton, minimizeButton, closeButton });
+            ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbonControl1.ExpandCollapseItem, barButtonItem_Login, barButtonItem_Info, barButtonItem_ChangePassword, barButtonItem_LogOut, barButtonItem_CreateAccount, bar_button_listphim, barButtonItem_listProduct, barButtonItem_donDatHang, barButtonItem_phieuNhap, barButtonItem_phieuXuat, barButtonItem_ListKho, btnTimphim, barButtonItem_HDNV, barButtonItem2, barButtonItem_THNX, barButtonItem_DSVT, barButtonItem_out, barButtonItem_DSNV, barButtonItem_DHCPN, barButtonItem1, barButtonItem4, barButtonItem6, tkHoaDon, barButtonItem7, barButtonItem8, barButtonItem9, maximizeButton, minimizeButton, closeButton, barButtonItem10 });
             ribbonControl1.Location = new Point(0, 0);
             ribbonControl1.Margin = new Padding(4);
-            ribbonControl1.MaxItemId = 31;
+            ribbonControl1.MaxItemId = 32;
             ribbonControl1.Name = "ribbonControl1";
             ribbonControl1.OptionsMenuMinWidth = 385;
             ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { DanhSach, ribbonPage1, ribbonPage2 });
-            ribbonControl1.Size = new Size(800, 185);
+            ribbonControl1.Size = new Size(800, 178);
             // 
             // barButtonItem7
             // 
@@ -442,7 +463,7 @@
             // 
             maximizeButton.Caption = "Minimize";
             maximizeButton.Id = 28;
-            maximizeButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem10.ImageOptions.SvgImage");
+            maximizeButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("maximizeButton.ImageOptions.SvgImage");
             maximizeButton.ItemAppearance.Normal.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
             maximizeButton.ItemAppearance.Normal.Options.UseFont = true;
             maximizeButton.Name = "maximizeButton";
@@ -451,7 +472,7 @@
             // 
             minimizeButton.Caption = "Maximize";
             minimizeButton.Id = 29;
-            minimizeButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem11.ImageOptions.SvgImage");
+            minimizeButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("minimizeButton.ImageOptions.SvgImage");
             minimizeButton.ItemAppearance.Normal.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
             minimizeButton.ItemAppearance.Normal.Options.UseFont = true;
             minimizeButton.Name = "minimizeButton";
@@ -460,7 +481,7 @@
             // 
             closeButton.Caption = "Close";
             closeButton.Id = 30;
-            closeButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem12.ImageOptions.SvgImage");
+            closeButton.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("closeButton.ImageOptions.SvgImage");
             closeButton.ItemAppearance.Normal.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
             closeButton.ItemAppearance.Normal.Options.UseFont = true;
             closeButton.Name = "closeButton";
@@ -569,5 +590,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem closeButton;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem10;
     }
 }
