@@ -77,8 +77,10 @@ namespace GUI
 
         private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
         {
-            frmReportDSKH lg = new frmReportDSKH();
-            lg.ShowDialog();
+           
+
+            frmDanhSachKhachHang frm = new frmDanhSachKhachHang();
+            frm.Show();
         }
 
         private void btnTimphim_ItemClick(object sender, ItemClickEventArgs e)

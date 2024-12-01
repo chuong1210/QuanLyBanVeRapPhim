@@ -164,7 +164,6 @@ namespace GUI
             {
                 bool isChecked = (bool)e.Value;  // Lấy giá trị của checkbox
                 //MessageBox.Show("Checkbox is " + (isChecked ? "Checked (True)" : "Unchecked (False)"));
-                lbId.Text = isChecked.ToString();
             }
         }
     }

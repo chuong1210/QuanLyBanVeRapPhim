@@ -46,8 +46,6 @@
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            lbId = new Label();
-            layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)layoutControl1).BeginInit();
             layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl1).BeginInit();
@@ -65,12 +63,10 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).BeginInit();
             SuspendLayout();
             // 
             // layoutControl1
             // 
-            layoutControl1.Controls.Add(lbId);
             layoutControl1.Controls.Add(gridControl1);
             layoutControl1.Controls.Add(btnloadData);
             layoutControl1.Controls.Add(btnPrint);
@@ -132,10 +128,10 @@
             // 
             // comboBoxEdit2
             // 
-            comboBoxEdit2.Location = new Point(292, 12);
+            comboBoxEdit2.Location = new Point(126, 12);
             comboBoxEdit2.Name = "comboBoxEdit2";
             comboBoxEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            comboBoxEdit2.Size = new Size(62, 22);
+            comboBoxEdit2.Size = new Size(228, 22);
             comboBoxEdit2.StyleController = layoutControl1;
             comboBoxEdit2.TabIndex = 0;
             // 
@@ -165,7 +161,7 @@
             // 
             Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlGroup1, layoutControlItem5, layoutControlItem6, layoutControlItem2, layoutControlItem7 });
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1, layoutControlGroup1, layoutControlItem5, layoutControlItem6, layoutControlItem2 });
             Root.Name = "Root";
             Root.Size = new Size(1017, 1055);
             Root.TextVisible = false;
@@ -173,9 +169,9 @@
             // layoutControlItem1
             // 
             layoutControlItem1.Control = comboBoxEdit2;
-            layoutControlItem1.Location = new Point(166, 0);
+            layoutControlItem1.Location = new Point(0, 0);
             layoutControlItem1.Name = "layoutControlItem1";
-            layoutControlItem1.Size = new Size(180, 76);
+            layoutControlItem1.Size = new Size(346, 76);
             layoutControlItem1.Text = "  Chọn phim";
             layoutControlItem1.TextSize = new Size(102, 16);
             // 
@@ -232,23 +228,6 @@
             layoutControlItem2.TextSize = new Size(0, 0);
             layoutControlItem2.TextVisible = false;
             // 
-            // lbId
-            // 
-            lbId.Location = new Point(12, 12);
-            lbId.Name = "lbId";
-            lbId.Size = new Size(162, 72);
-            lbId.TabIndex = 7;
-            lbId.Text = "label1";
-            // 
-            // layoutControlItem7
-            // 
-            layoutControlItem7.Control = lbId;
-            layoutControlItem7.Location = new Point(0, 0);
-            layoutControlItem7.Name = "layoutControlItem7";
-            layoutControlItem7.Size = new Size(166, 76);
-            layoutControlItem7.TextSize = new Size(0, 0);
-            layoutControlItem7.TextVisible = false;
-            // 
             // frmDanhSachPhim
             // 
             ClientSize = new Size(1017, 1055);
@@ -272,7 +251,6 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem6).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)layoutControlItem7).EndInit();
             ResumeLayout(false);
         }
 
@@ -294,7 +272,5 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private Label lbId;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
