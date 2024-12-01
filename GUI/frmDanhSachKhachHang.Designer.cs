@@ -79,6 +79,7 @@
             gridControl1.Size = new Size(993, 897);
             gridControl1.TabIndex = 4;
             gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridView1 });
+            gridControl1.Click += gridControl1_Click;
             // 
             // gridView1
             // 
@@ -87,6 +88,7 @@
             gridView1.OptionsFind.AlwaysVisible = true;
             gridView1.OptionsFind.FindFilterColumns = "Email";
             gridView1.OptionsFind.FindNullPrompt = "Nhập email khách hàng để tìm kiếm...";
+            gridView1.CellValueChanged += gridView1_CellValueChanged;
             // 
             // layoutControlItem6
             // 
@@ -107,7 +109,8 @@
             btnloadData.Size = new Size(494, 44);
             btnloadData.StyleController = layoutControl1;
             btnloadData.TabIndex = 5;
-            btnloadData.Text = "Hiện thị dữ liệu";
+            btnloadData.Text = "Hiện thị thông tin hóa đơn";
+            btnloadData.Click += btnloadData_Click;
             // 
             // layoutControl1
             // 

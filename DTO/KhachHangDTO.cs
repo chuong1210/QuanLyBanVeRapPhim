@@ -16,8 +16,10 @@ namespace DTO
         public string SDT { get; set; }
         public string Email { get; set; }
         public string GioiTinh { get; set; }
+        //public bool IsSelected { get; set; } = false; // Poster có thể là mảng byte
 
-     
+
+
     }
 
 }

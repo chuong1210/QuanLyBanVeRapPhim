@@ -22,17 +22,13 @@ namespace GUI
         public frmDanhSachKhachHang()
         {
             InitializeComponent();
-            gridView1.OptionsFind.AlwaysVisible = true; // Hiển thị thanh tìm kiếm
-            gridView1.OptionsFind.FindNullPrompt = "Nhập từ khóa để tìm kiếm..."; // Văn bản gợi ý
-            gridView1.CustomUnboundColumnData += (sender, e) =>
-            {
-                if (e.Column.FieldName == "IsSelected" && e.IsGetData)
-                {
-                    e.Value = false; // Giá trị mặc định là không chọn
-                }
-            };
+          
             LoadData();
-   
+       
+            gridView1.OptionsFind.AlwaysVisible = true; // Hiển thị thanh tìm kiếm
+            gridView1.OptionsFind.FindNullPrompt = "Nhập email khách hàng để tìm kiếm..."; // Văn bản gợi ý
+
+
         }
 
 
@@ -54,6 +50,7 @@ namespace GUI
             gridView1.Columns["DiaChi"].Visible = false;
             gridView1.Columns["SDT"].Visible = false;
             // Thêm cột idPhim (đảm bảo idPhim hiển thị trong Grid)
+            gridView1.Columns["Id"].Visible = true; // Giả sử cột IdPhim có tên là "IdPhim"
 
 
 
@@ -66,18 +63,64 @@ namespace GUI
                 column.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center; // Căn giữa tiêu đề
             }
 
+            GridColumn isSelectedColumn = new GridColumn
+            {
+                FieldName = "IsSelected",
+                Caption = "Chọn",
+                Visible = true,
+                UnboundType = DevExpress.Data.UnboundColumnType.Boolean
+            };
+
+            gridView1.CustomUnboundColumnData += (sender, e) =>
+            {
+                if (e.Column.FieldName == "IsSelected" && e.IsGetData)
+                {
+                    e.Value = false; // Giá trị mặc định là không chọn
+                }
+            };
+            gridView1.Columns.Add(isSelectedColumn);
             RepositoryItemCheckEdit checkEdit = new RepositoryItemCheckEdit();
             gridControl1.RepositoryItems.Add(checkEdit);
 
             // Đặt RepositoryItemCheckEdit cho cột IsSelected
-            //gridView1.Columns["IsSelected"].ColumnEdit = checkEdit;
+            gridView1.Columns["IsSelected"].ColumnEdit = checkEdit;
 
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-             frmReportDSKH lg = new frmReportDSKH();
+            frmReportDSKH lg = new frmReportDSKH();
             lg.ShowDialog();
+        }
+
+        private void btnloadData_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gridView1_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
+        {
+            if (e.Column.FieldName == "IsSelected")
+            {
+                bool isChecked = (bool)e.Value; // Giá trị của checkbox vừa thay đổi
+
+                if (isChecked)
+                {
+                    // Nếu checkbox được chọn, bỏ chọn tất cả các checkbox khác
+                    for (int i = 0; i < gridView1.DataRowCount; i++)
+                    {
+                        if (i != e.RowHandle) // Bỏ qua dòng hiện tại
+                        {
+                            gridView1.SetRowCellValue(i, gridView1.Columns["IsSelected"], false);
+                        }
+                    }
+                }
+            }
         }
     }
 }
