@@ -1,6 +1,6 @@
 ﻿namespace GUI.Report
 {
-    partial class frmThongKeDT
+    partial class frmReportThongKeDT
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmThongKeDT));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReportThongKeDT));
             documentViewer1 = new DevExpress.XtraPrinting.Preview.DocumentViewer();
             documentViewerBarManager1 = new DevExpress.XtraPrinting.Preview.DocumentViewerBarManager(components);
             previewBar1 = new DevExpress.XtraPrinting.Preview.PreviewBar();
@@ -78,6 +78,7 @@
             miPageLayoutContinuous = new DevExpress.XtraPrinting.Preview.PrintPreviewBarItem();
             miToolbars = new DevExpress.XtraBars.BarToolbarsListItem();
             miBackground = new DevExpress.XtraPrinting.Preview.PrintPreviewSubItem();
+            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -101,27 +102,20 @@
             printPreviewBarCheckItem17 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             printPreviewBarCheckItem18 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
             printPreviewBarCheckItem19 = new DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem();
-            dtStart = new DevExpress.XtraEditors.DateEdit();
-            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            dtEnd = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)documentViewerBarManager1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)printPreviewRepositoryItemComboBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemProgressBar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemZoomTrackBar1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtStart.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtStart.Properties.CalendarTimeProperties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtEnd.Properties).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dtEnd.Properties.CalendarTimeProperties).BeginInit();
             SuspendLayout();
             // 
             // documentViewer1
             // 
             documentViewer1.Dock = DockStyle.Fill;
             documentViewer1.IsMetric = false;
-            documentViewer1.Location = new Point(0, 65);
+            documentViewer1.Location = new Point(0, 61);
             documentViewer1.Margin = new Padding(4, 4, 4, 4);
             documentViewer1.Name = "documentViewer1";
-            documentViewer1.Size = new Size(800, 359);
+            documentViewer1.Size = new Size(800, 362);
             documentViewer1.TabIndex = 0;
             // 
             // documentViewerBarManager1
@@ -573,37 +567,44 @@
             miBackground.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(bbiFillBackground), new DevExpress.XtraBars.LinkPersistInfo(bbiWatermark) });
             miBackground.Name = "miBackground";
             // 
+            // barButtonItem1
+            // 
+            barButtonItem1.Caption = "barButtonItem1";
+            barButtonItem1.Id = 59;
+            barButtonItem1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
+            barButtonItem1.Name = "barButtonItem1";
+            // 
             // barDockControlTop
             // 
             barDockControlTop.CausesValidation = false;
             barDockControlTop.Dock = DockStyle.Top;
             barDockControlTop.Location = new Point(0, 0);
             barDockControlTop.Manager = documentViewerBarManager1;
-            barDockControlTop.Size = new Size(800, 65);
+            barDockControlTop.Size = new Size(800, 61);
             // 
             // barDockControlBottom
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = DockStyle.Bottom;
-            barDockControlBottom.Location = new Point(0, 424);
+            barDockControlBottom.Location = new Point(0, 423);
             barDockControlBottom.Manager = documentViewerBarManager1;
-            barDockControlBottom.Size = new Size(800, 26);
+            barDockControlBottom.Size = new Size(800, 27);
             // 
             // barDockControlLeft
             // 
             barDockControlLeft.CausesValidation = false;
             barDockControlLeft.Dock = DockStyle.Left;
-            barDockControlLeft.Location = new Point(0, 65);
+            barDockControlLeft.Location = new Point(0, 61);
             barDockControlLeft.Manager = documentViewerBarManager1;
-            barDockControlLeft.Size = new Size(0, 359);
+            barDockControlLeft.Size = new Size(0, 362);
             // 
             // barDockControlRight
             // 
             barDockControlRight.CausesValidation = false;
             barDockControlRight.Dock = DockStyle.Right;
-            barDockControlRight.Location = new Point(800, 65);
+            barDockControlRight.Location = new Point(800, 61);
             barDockControlRight.Manager = documentViewerBarManager1;
-            barDockControlRight.Size = new Size(0, 359);
+            barDockControlRight.Size = new Size(0, 362);
             // 
             // printPreviewBarCheckItem1
             // 
@@ -799,42 +800,11 @@
             printPreviewBarCheckItem19.Id = 58;
             printPreviewBarCheckItem19.Name = "printPreviewBarCheckItem19";
             // 
-            // dtStart
-            // 
-            dtStart.EditValue = null;
-            dtStart.Location = new Point(207, 86);
-            dtStart.MenuManager = documentViewerBarManager1;
-            dtStart.Name = "dtStart";
-            dtStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dtStart.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dtStart.Size = new Size(156, 22);
-            dtStart.TabIndex = 6;
-            // 
-            // barButtonItem1
-            // 
-            barButtonItem1.Caption = "barButtonItem1";
-            barButtonItem1.Id = 59;
-            barButtonItem1.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItem1.ImageOptions.SvgImage");
-            barButtonItem1.Name = "barButtonItem1";
-            // 
-            // dtEnd
-            // 
-            dtEnd.EditValue = null;
-            dtEnd.Location = new Point(435, 86);
-            dtEnd.MenuManager = documentViewerBarManager1;
-            dtEnd.Name = "dtEnd";
-            dtEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dtEnd.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
-            dtEnd.Size = new Size(156, 22);
-            dtEnd.TabIndex = 7;
-            // 
             // frmThongKeDT
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(dtEnd);
-            Controls.Add(dtStart);
             Controls.Add(documentViewer1);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
@@ -846,10 +816,6 @@
             ((System.ComponentModel.ISupportInitialize)printPreviewRepositoryItemComboBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemProgressBar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)repositoryItemZoomTrackBar1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtStart.Properties.CalendarTimeProperties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtStart.Properties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtEnd.Properties.CalendarTimeProperties).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dtEnd.Properties).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -928,7 +894,5 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem18;
         private DevExpress.XtraPrinting.Preview.PrintPreviewBarCheckItem printPreviewBarCheckItem19;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraEditors.DateEdit dtEnd;
-        private DevExpress.XtraEditors.DateEdit dtStart;
     }
 }

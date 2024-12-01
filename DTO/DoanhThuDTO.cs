@@ -11,5 +11,10 @@ namespace DTO
         public string Ngay { get; set; }
         public decimal TongDoanhThu { get; set; }
     }
+    public class DoanhThuTheoPhimDTO
+    {
+        public string TenPhim { get; set; }
+        public decimal TongDoanhThu { get; set; }
+    }
 
 }

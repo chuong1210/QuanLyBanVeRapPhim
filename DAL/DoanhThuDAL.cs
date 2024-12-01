@@ -13,10 +13,10 @@ namespace DAL
   public  class DoanhThuDAL
     {
         private string _connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
-
-        public DataTable LayDoanhThuTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
+        public List<DoanhThuDTO> LayDoanhThuTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
         {
-            DataTable dt = new DataTable();
+            List<DoanhThuDTO> doanhThuList = new List<DoanhThuDTO>();
+
             string query = @"
         SELECT 
             FORMAT(hd.NgayMua, 'yyyy-MM-dd') AS Ngay, 
@@ -33,13 +33,77 @@ namespace DAL
                     command.Parameters.AddWithValue("@StartDate", startDate);
                     command.Parameters.AddWithValue("@EndDate", endDate);
 
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    adapter.Fill(dt);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DoanhThuDTO doanhThu = new DoanhThuDTO
+                            {
+                                Ngay = reader["Ngay"].ToString(),
+                                TongDoanhThu = (decimal)reader["TongDoanhThu"]
+                            };
+                            doanhThuList.Add(doanhThu);
+                        }
+                    }
                 }
             }
 
-            return dt;
+            return doanhThuList;
         }
+
+        public List<DoanhThuTheoPhimDTO> LayDoanhThuTheoPhim(int idPhim, DateTime? startDate = null, DateTime? endDate = null)
+        {
+            List<DoanhThuTheoPhimDTO> doanhThuList = new List<DoanhThuTheoPhimDTO>();
+
+            string query = @"
+       SELECT 
+ phim.TenPhim,     SUM(hd.TongTien) AS TongDoanhThu
+ FROM HoaDon hd
+ JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
+ JOIN VePhim vp ON cthd.idVePhim = vp.id
+ JOIN LichChieuPhim lcp ON vp.idLichChieuPhim = lcp.id
+ JOIN Phim phim ON lcp.idPhim = phim.id
+ WHERE phim.id = @idPhim
+ group by phim.TenPhim";
+
+            // Nếu có khoảng thời gian, thêm điều kiện vào câu truy vấn
+            if (startDate.HasValue && endDate.HasValue)
+            {
+                query += " AND hd.NgayMua BETWEEN @StartDate AND @EndDate";
+            }
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Thêm tham số vào câu truy vấn
+                    command.Parameters.AddWithValue("@idPhim", idPhim);
+                    if (startDate.HasValue && endDate.HasValue)
+                    {
+                        command.Parameters.AddWithValue("@StartDate", startDate.Value);
+                        command.Parameters.AddWithValue("@EndDate", endDate.Value);
+                    }
+
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            DoanhThuTheoPhimDTO doanhThu = new DoanhThuTheoPhimDTO
+                            {
+                                TenPhim = reader["TenPhim"].ToString(),
+                                TongDoanhThu = (decimal)reader["TongDoanhThu"]
+                            };
+                            doanhThuList.Add(doanhThu);
+                        }
+                    }
+                }
+            }
+
+            return doanhThuList;
+        }
+
 
     }
 }
