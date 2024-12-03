@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnShowScreenType = new Button();
             btnUpdateScreenType = new Button();
             btnDeleteScreenType = new Button();
             btnInsertScreenType = new Button();
@@ -46,7 +45,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnShowScreenType);
             panel1.Controls.Add(btnUpdateScreenType);
             panel1.Controls.Add(btnDeleteScreenType);
             panel1.Controls.Add(btnInsertScreenType);
@@ -55,32 +53,25 @@
             panel1.Size = new Size(1328, 64);
             panel1.TabIndex = 0;
             // 
-            // btnShowScreenType
-            // 
-            btnShowScreenType.Location = new Point(564, 0);
-            btnShowScreenType.Name = "btnShowScreenType";
-            btnShowScreenType.Size = new Size(94, 63);
-            btnShowScreenType.TabIndex = 7;
-            btnShowScreenType.Text = "Xem";
-            btnShowScreenType.UseVisualStyleBackColor = true;
-            // 
             // btnUpdateScreenType
             // 
-            btnUpdateScreenType.Location = new Point(376, 0);
+            btnUpdateScreenType.Location = new Point(574, 3);
             btnUpdateScreenType.Name = "btnUpdateScreenType";
             btnUpdateScreenType.Size = new Size(94, 63);
             btnUpdateScreenType.TabIndex = 6;
             btnUpdateScreenType.Text = "Sửa";
             btnUpdateScreenType.UseVisualStyleBackColor = true;
+            btnUpdateScreenType.Click += btnUpdateScreenType_Click;
             // 
             // btnDeleteScreenType
             // 
-            btnDeleteScreenType.Location = new Point(188, 0);
+            btnDeleteScreenType.Location = new Point(295, 3);
             btnDeleteScreenType.Name = "btnDeleteScreenType";
             btnDeleteScreenType.Size = new Size(94, 63);
             btnDeleteScreenType.TabIndex = 5;
             btnDeleteScreenType.Text = "Xoá";
             btnDeleteScreenType.UseVisualStyleBackColor = true;
+            btnDeleteScreenType.Click += btnDeleteScreenType_Click;
             // 
             // btnInsertScreenType
             // 
@@ -90,6 +81,7 @@
             btnInsertScreenType.TabIndex = 4;
             btnInsertScreenType.Text = "Thêm";
             btnInsertScreenType.UseVisualStyleBackColor = true;
+            btnInsertScreenType.Click += btnInsertScreenType_Click;
             // 
             // panel2
             // 
@@ -141,8 +133,10 @@
             dtgvScreenType.Location = new Point(3, 63);
             dtgvScreenType.Name = "dtgvScreenType";
             dtgvScreenType.RowHeadersWidth = 51;
+            dtgvScreenType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvScreenType.Size = new Size(708, 611);
             dtgvScreenType.TabIndex = 2;
+            dtgvScreenType.CellContentClick += dtgvScreenType_CellContentClick;
             // 
             // ScreenTypeUC
             // 
@@ -165,7 +159,6 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView dtgvScreenType;
-        private Button btnShowScreenType;
         private Button btnUpdateScreenType;
         private Button btnDeleteScreenType;
         private Button btnInsertScreenType;

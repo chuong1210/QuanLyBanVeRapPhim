@@ -16,6 +16,9 @@
     <Compile Update="DataControl\DataUser\ScreenTypeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="DataControl\DataUser\ShowTimeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="frmAdmin.cs">
       <SubType>Form</SubType>
     </Compile>

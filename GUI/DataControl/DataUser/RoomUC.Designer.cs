@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnShowRoom = new Button();
             btnDeleteRoom = new Button();
             btnUpdateRoom = new Button();
             btnInsertRoom = new Button();
             panel3 = new Panel();
+            cboTrangThaiChoNgoi = new ComboBox();
             cboScreen = new ComboBox();
             txtSeatsPerRow = new TextBox();
             txtNumberOfRows = new TextBox();
-            txtState = new TextBox();
             txtRoomSeats = new TextBox();
             txtRoomName = new TextBox();
             txtRoomID = new TextBox();
@@ -58,7 +57,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnShowRoom);
             panel1.Controls.Add(btnDeleteRoom);
             panel1.Controls.Add(btnUpdateRoom);
             panel1.Controls.Add(btnInsertRoom);
@@ -68,32 +66,25 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // btnShowRoom
-            // 
-            btnShowRoom.Location = new Point(558, 0);
-            btnShowRoom.Name = "btnShowRoom";
-            btnShowRoom.Size = new Size(94, 63);
-            btnShowRoom.TabIndex = 3;
-            btnShowRoom.Text = "Xem";
-            btnShowRoom.UseVisualStyleBackColor = true;
-            // 
             // btnDeleteRoom
             // 
-            btnDeleteRoom.Location = new Point(380, 0);
+            btnDeleteRoom.Location = new Point(690, -1);
             btnDeleteRoom.Name = "btnDeleteRoom";
             btnDeleteRoom.Size = new Size(94, 63);
             btnDeleteRoom.TabIndex = 2;
-            btnDeleteRoom.Text = "Sửa";
+            btnDeleteRoom.Text = "Xoá";
             btnDeleteRoom.UseVisualStyleBackColor = true;
+            btnDeleteRoom.Click += btnDeleteRoom_Click;
             // 
             // btnUpdateRoom
             // 
-            btnUpdateRoom.Location = new Point(198, 0);
+            btnUpdateRoom.Location = new Point(349, 0);
             btnUpdateRoom.Name = "btnUpdateRoom";
             btnUpdateRoom.Size = new Size(94, 63);
             btnUpdateRoom.TabIndex = 1;
-            btnUpdateRoom.Text = "Xoá";
+            btnUpdateRoom.Text = "Sửa";
             btnUpdateRoom.UseVisualStyleBackColor = true;
+            btnUpdateRoom.Click += btnUpdateRoom_Click;
             // 
             // btnInsertRoom
             // 
@@ -103,13 +94,14 @@
             btnInsertRoom.TabIndex = 0;
             btnInsertRoom.Text = "Thêm";
             btnInsertRoom.UseVisualStyleBackColor = true;
+            btnInsertRoom.Click += btnInsertRoom_Click;
             // 
             // panel3
             // 
+            panel3.Controls.Add(cboTrangThaiChoNgoi);
             panel3.Controls.Add(cboScreen);
             panel3.Controls.Add(txtSeatsPerRow);
             panel3.Controls.Add(txtNumberOfRows);
-            panel3.Controls.Add(txtState);
             panel3.Controls.Add(txtRoomSeats);
             panel3.Controls.Add(txtRoomName);
             panel3.Controls.Add(txtRoomID);
@@ -124,6 +116,14 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(414, 562);
             panel3.TabIndex = 3;
+            // 
+            // cboTrangThaiChoNgoi
+            // 
+            cboTrangThaiChoNgoi.FormattingEnabled = true;
+            cboTrangThaiChoNgoi.Location = new Point(195, 347);
+            cboTrangThaiChoNgoi.Name = "cboTrangThaiChoNgoi";
+            cboTrangThaiChoNgoi.Size = new Size(172, 28);
+            cboTrangThaiChoNgoi.TabIndex = 15;
             // 
             // cboScreen
             // 
@@ -146,13 +146,6 @@
             txtNumberOfRows.Name = "txtNumberOfRows";
             txtNumberOfRows.Size = new Size(174, 27);
             txtNumberOfRows.TabIndex = 12;
-            // 
-            // txtState
-            // 
-            txtState.Location = new Point(196, 339);
-            txtState.Name = "txtState";
-            txtState.Size = new Size(174, 27);
-            txtState.TabIndex = 11;
             // 
             // txtRoomSeats
             // 
@@ -274,6 +267,7 @@
             Controls.Add(panel1);
             Name = "RoomUC";
             Size = new Size(1326, 629);
+            Load += RoomUC_Load;
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
@@ -285,7 +279,6 @@
         #endregion
 
         private Panel panel1;
-        private Button btnShowRoom;
         private Button btnDeleteRoom;
         private Button btnUpdateRoom;
         private Button btnInsertRoom;
@@ -293,7 +286,6 @@
         private Panel panel3;
         private TextBox txtSeatsPerRow;
         private TextBox txtNumberOfRows;
-        private TextBox txtState;
         private TextBox txtRoomSeats;
         private TextBox txtRoomName;
         private TextBox txtRoomID;
@@ -306,5 +298,6 @@
         private Label label1;
         private ComboBox cboScreen;
         private DataGridView dtgvRoom;
+        private ComboBox cboTrangThaiChoNgoi;
     }
 }

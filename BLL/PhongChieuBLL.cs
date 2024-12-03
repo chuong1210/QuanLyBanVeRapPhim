@@ -20,5 +20,28 @@ namespace BLL
         {
             return pcDAL.GetListScreen();
         }
+        public bool ThemPhongChieu(PhongChieuDTO phongChieu)
+        {
+            PhongChieuDAL dal = new PhongChieuDAL();
+            return dal.ThemPhongChieu(phongChieu);
+        }
+        public bool SuaPhongChieu(PhongChieuDTO phongChieu)
+        {
+            PhongChieuDAL dal = new PhongChieuDAL();
+            return dal.SuaPhongChieu(phongChieu);
+        }
+        public bool XoaPhongChieu(int id)
+        {
+            try
+            {
+                return pcDAL.DeletePhongChieu(id);
+            }
+            catch (Exception ex)
+            {
+                // Có thể ghi log hoặc ném lại ngoại lệ cho UI xử lý
+                throw new Exception("Xóa phòng chiếu thất bại: " + ex.Message);
+            }
+        }
+
     }
 }

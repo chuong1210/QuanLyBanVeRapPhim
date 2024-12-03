@@ -16,5 +16,18 @@ namespace BLL
         {
             return lmhDAL.GetListScreen();
         }
+        public bool ThemLoaiManHinh(LoaiManHinhDTO loaiManHinh)
+        {
+            LoaiManHinhDAL loaiManHinhDAL = new LoaiManHinhDAL();
+            return loaiManHinhDAL.ThemLoaiManHinh(loaiManHinh);
+        }
+        public bool SuaLoaiManHinh(LoaiManHinhDTO loaiManHinh)
+        {
+            return lmhDAL.UpdateLoaiManHinh(loaiManHinh);
+        }
+        public bool XoaLoaiManHinh(int id)
+        {
+            return lmhDAL.DeleteLoaiManHinh(id);
+        }
     }
 }

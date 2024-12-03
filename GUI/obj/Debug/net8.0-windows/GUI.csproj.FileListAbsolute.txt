@@ -167,3 +167,4 @@ E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfi
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.GenreUC.resources
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.MovieUC.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.ShowTimeUC.resources

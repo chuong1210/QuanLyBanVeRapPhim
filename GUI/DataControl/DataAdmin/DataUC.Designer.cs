@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataUC));
             panel1 = new Panel();
             btnTicket = new Button();
             btnDate = new Button();
-            btnFormat = new Button();
             btnFilm = new Button();
             btnGenre = new Button();
             btnRoom = new Button();
@@ -45,7 +45,6 @@
             panel1.BackColor = Color.FromArgb(64, 64, 64);
             panel1.Controls.Add(btnTicket);
             panel1.Controls.Add(btnDate);
-            panel1.Controls.Add(btnFormat);
             panel1.Controls.Add(btnFilm);
             panel1.Controls.Add(btnGenre);
             panel1.Controls.Add(btnRoom);
@@ -63,7 +62,7 @@
             btnTicket.FlatStyle = FlatStyle.Flat;
             btnTicket.Font = new Font("Calibri", 10.8F);
             btnTicket.ForeColor = SystemColors.Control;
-            btnTicket.Image = Properties.Resources.Untitled_2_0001_Layer_8;
+            btnTicket.Image = (Image)resources.GetObject("btnTicket.Image");
             btnTicket.ImageAlign = ContentAlignment.MiddleLeft;
             btnTicket.Location = new Point(43, 517);
             btnTicket.Name = "btnTicket";
@@ -78,29 +77,15 @@
             btnDate.FlatStyle = FlatStyle.Flat;
             btnDate.Font = new Font("Calibri", 10.8F);
             btnDate.ForeColor = SystemColors.Control;
-            btnDate.Image = Properties.Resources.Untitled_2_0001_Layer_8;
+            btnDate.Image = (Image)resources.GetObject("btnDate.Image");
             btnDate.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDate.Location = new Point(43, 437);
+            btnDate.Location = new Point(43, 419);
             btnDate.Name = "btnDate";
             btnDate.Size = new Size(194, 59);
             btnDate.TabIndex = 5;
             btnDate.Text = "     Lịch chiếu";
             btnDate.UseVisualStyleBackColor = false;
-            // 
-            // btnFormat
-            // 
-            btnFormat.BackColor = Color.Black;
-            btnFormat.FlatStyle = FlatStyle.Flat;
-            btnFormat.Font = new Font("Calibri", 10.8F);
-            btnFormat.ForeColor = SystemColors.Control;
-            btnFormat.Image = Properties.Resources.Untitled_2_0001_Layer_8;
-            btnFormat.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFormat.Location = new Point(43, 361);
-            btnFormat.Name = "btnFormat";
-            btnFormat.Size = new Size(194, 59);
-            btnFormat.TabIndex = 4;
-            btnFormat.Text = "     Định dạng";
-            btnFormat.UseVisualStyleBackColor = false;
+            btnDate.Click += btnDate_Click;
             // 
             // btnFilm
             // 
@@ -108,9 +93,9 @@
             btnFilm.FlatStyle = FlatStyle.Flat;
             btnFilm.Font = new Font("Calibri", 10.8F);
             btnFilm.ForeColor = SystemColors.Control;
-            btnFilm.Image = Properties.Resources.Untitled_2_0001_Layer_8;
+            btnFilm.Image = (Image)resources.GetObject("btnFilm.Image");
             btnFilm.ImageAlign = ContentAlignment.MiddleLeft;
-            btnFilm.Location = new Point(43, 273);
+            btnFilm.Location = new Point(43, 321);
             btnFilm.Name = "btnFilm";
             btnFilm.Size = new Size(194, 59);
             btnFilm.TabIndex = 3;
@@ -124,9 +109,9 @@
             btnGenre.FlatStyle = FlatStyle.Flat;
             btnGenre.Font = new Font("Calibri", 10.8F);
             btnGenre.ForeColor = SystemColors.Control;
-            btnGenre.Image = Properties.Resources.Untitled_2_0001_Layer_8;
+            btnGenre.Image = (Image)resources.GetObject("btnGenre.Image");
             btnGenre.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGenre.Location = new Point(43, 191);
+            btnGenre.Location = new Point(43, 223);
             btnGenre.Name = "btnGenre";
             btnGenre.Size = new Size(194, 59);
             btnGenre.TabIndex = 2;
@@ -140,9 +125,9 @@
             btnRoom.FlatStyle = FlatStyle.Flat;
             btnRoom.Font = new Font("Calibri", 10.8F);
             btnRoom.ForeColor = SystemColors.Control;
-            btnRoom.Image = Properties.Resources.Untitled_2_0001_Layer_8;
+            btnRoom.Image = (Image)resources.GetObject("btnRoom.Image");
             btnRoom.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRoom.Location = new Point(43, 109);
+            btnRoom.Location = new Point(43, 125);
             btnRoom.Name = "btnRoom";
             btnRoom.Size = new Size(194, 59);
             btnRoom.TabIndex = 1;
@@ -190,7 +175,6 @@
         private Panel panel1;
         private Button btnTicket;
         private Button btnDate;
-        private Button btnFormat;
         private Button btnFilm;
         private Button btnGenre;
         private Button btnRoom;
