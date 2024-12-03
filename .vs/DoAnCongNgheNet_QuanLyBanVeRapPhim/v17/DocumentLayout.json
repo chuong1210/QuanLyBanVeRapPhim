@@ -101,17 +101,8 @@
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TheLoaiDAL.cs",
-              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\TheLoaiDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\TheLoaiDAL.cs",
-              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\TheLoaiDAL.cs",
-              "RelativeToolTip": "DAL\\TheLoaiDAL.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAnwDgAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:14:31.533Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
             },
             {
               "$type": "Document",
@@ -123,8 +114,7 @@
               "RelativeToolTip": "BLL\\LichChieuPhimBLL.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:12:09.049Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:12:09.049Z"
             },
             {
               "$type": "Document",
@@ -136,8 +126,7 @@
               "RelativeToolTip": "BLL\\DoanhThuBLL.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:11:32.834Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:11:32.834Z"
             },
             {
               "$type": "Document",
@@ -149,8 +138,7 @@
               "RelativeToolTip": "GUI\\Report\\ReportThongKeDT1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:11:38.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:11:38.117Z"
             },
             {
               "$type": "Document",
@@ -162,8 +150,7 @@
               "RelativeToolTip": "BLL\\PhimBLL.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAIA2wFAAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:04:41.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:04:41.701Z"
             },
             {
               "$type": "Document",
@@ -173,10 +160,26 @@
               "RelativeDocumentMoniker": "DAL\\PhimDAL.cs",
               "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\PhimDAL.cs",
               "RelativeToolTip": "DAL\\PhimDAL.cs",
-              "ViewState": "AgIAAN0BAAAAAAAAAAAuwOoBAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAPUBAAAAAAAAAAAuwPQBAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-03T19:05:17.526Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TheLoaiDAL.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\TheLoaiDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\TheLoaiDAL.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\TheLoaiDAL.cs",
+              "RelativeToolTip": "DAL\\TheLoaiDAL.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAnwDgAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T19:14:31.533Z"
             },
             {
               "$type": "Document",
@@ -188,8 +191,7 @@
               "RelativeToolTip": "GUI\\DataControl\\DataUser\\MovieUC.cs",
               "ViewState": "AgIAAJUAAAAAAAAAAAAjwKMAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:15:00.815Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:15:00.815Z"
             },
             {
               "$type": "Document",
@@ -201,16 +203,7 @@
               "RelativeToolTip": "GUI\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:19:01.227Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2024-12-03T19:19:01.227Z"
             },
             {
               "$type": "Document",
@@ -222,8 +215,7 @@
               "RelativeToolTip": "GUI\\frmAdmin.Designer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAKQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:09:56.751Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:09:56.751Z"
             },
             {
               "$type": "Document",
@@ -235,8 +227,7 @@
               "RelativeToolTip": "DTO\\TheLoaiDTO.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAuwAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:07:03.294Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:07:03.294Z"
             },
             {
               "$type": "Document",
@@ -248,8 +239,7 @@
               "RelativeToolTip": "DTO\\PhimDTO.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:05:55.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:05:55.814Z"
             },
             {
               "$type": "Document",
@@ -261,8 +251,7 @@
               "RelativeToolTip": "DTO\\NhanVienDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-03T19:05:37.332Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-03T19:05:37.332Z"
             },
             {
               "$type": "Document",
@@ -274,8 +263,7 @@
               "RelativeToolTip": "GUI\\Properties\\Resources.resx",
               "ViewState": "AgIAAAQAAAAAAAAAAAAqwLIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-11-26T15:39:24.057Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T15:39:24.057Z"
             },
             {
               "$type": "Document",
@@ -287,8 +275,7 @@
               "RelativeToolTip": "GUI\\DataControl\\DataUser\\GenreUC.cs",
               "ViewState": "AgIAAHQAAAAAAAAAAAAswIsAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T15:47:04.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T15:47:04.78Z"
             },
             {
               "$type": "Document",
@@ -300,8 +287,7 @@
               "RelativeToolTip": "GUI\\DataControl\\DataAdmin\\DataUC.resx",
               "ViewState": "AgIAAAwAAAAAAAAAAABBwA4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001005|",
-              "WhenOpened": "2024-11-26T15:43:24.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T15:43:24.376Z"
             },
             {
               "$type": "Document",
@@ -313,8 +299,7 @@
               "RelativeToolTip": "GUI\\frmDetailMovie.Designer.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAAhwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T15:40:20.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T15:40:20.962Z"
             },
             {
               "$type": "Document",
@@ -326,8 +311,7 @@
               "RelativeToolTip": "GUI\\GUI.csproj.user",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003464|",
-              "WhenOpened": "2024-11-26T15:37:08.807Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T15:37:08.807Z"
             }
           ]
         }
