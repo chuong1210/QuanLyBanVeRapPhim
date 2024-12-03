@@ -83,6 +83,7 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap _8432 {
             get {
                 object obj = ResourceManager.GetObject("8432", resourceCulture);
@@ -96,6 +97,11 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap employee_office_staff_3d735bc691173bb5_256x256 {
             get {
                 object obj = ResourceManager.GetObject("employee-office-staff-3d735bc691173bb5-256x256", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap _803737_gorgerous_your_name_wallpapers_1920x1080 {
+            get {
+                object obj = ResourceManager.GetObject("803737-gorgerous-your-name-wallpapers-1920x1080", resourceCulture);
+>>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +119,15 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap login_user_profile_account_logout_people_man_human_512 {
             get {
                 object obj = ResourceManager.GetObject("login_user_profile_account_logout_people_man_human-512", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap icon_back_0 {
+            get {
+                object obj = ResourceManager.GetObject("icon-back-0", resourceCulture);
+>>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

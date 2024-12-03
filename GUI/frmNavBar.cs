@@ -51,7 +51,7 @@ namespace GUI
         {
             this.Hide();
 
-            FrmLogin lg = new FrmLogin();
+            frmGunaLogin lg = new frmGunaLogin();
             lg.ShowDialog();
         }
 

@@ -27,6 +27,9 @@
     <Compile Update="frmDanhSachPhim.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmGunaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmNavBar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,7 +83,13 @@
     <Compile Update="Report\frmReportThongKeDT.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Report\frmReportThongKeHoaDonKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Report\ReportHoaDon.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Report\ReportThongKeHDKH.cs">
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Report\ReportThongKeDT.cs">

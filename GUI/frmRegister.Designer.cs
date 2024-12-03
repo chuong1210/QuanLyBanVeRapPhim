@@ -28,9 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegister));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
+            guna2GradientButton2 = new Guna.UI2.WinForms.Guna2GradientButton();
+            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             pt2 = new PictureBox();
             pt1 = new PictureBox();
             lblEmailError = new Label();
@@ -52,7 +57,6 @@
             txtConfirmPW = new TextBox();
             label4 = new Label();
             label3 = new Label();
-            btnRegister = new Button();
             label2 = new Label();
             label1 = new Label();
             txtPassword = new TextBox();
@@ -82,6 +86,8 @@
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(128, 128, 255);
+            panel2.Controls.Add(guna2GradientButton2);
+            panel2.Controls.Add(guna2GradientButton1);
             panel2.Controls.Add(pt2);
             panel2.Controls.Add(pt1);
             panel2.Controls.Add(lblEmailError);
@@ -103,15 +109,67 @@
             panel2.Controls.Add(txtConfirmPW);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(btnRegister);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(txtPassword);
             panel2.Controls.Add(txtUsername);
             panel2.Location = new Point(58, 62);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1218, 565);
+            panel2.Size = new Size(1304, 565);
             panel2.TabIndex = 4;
+            // 
+            // guna2GradientButton2
+            // 
+            guna2GradientButton2.BorderColor = Color.FromArgb(0, 192, 192);
+            guna2GradientButton2.BorderRadius = 7;
+            guna2GradientButton2.CheckedState.FillColor = Color.FromArgb(59, 82, 132);
+            guna2GradientButton2.CheckedState.FillColor2 = Color.FromArgb(91, 168, 160);
+            guna2GradientButton2.Cursor = Cursors.Hand;
+            guna2GradientButton2.CustomizableEdges = customizableEdges9;
+            guna2GradientButton2.DisabledState.BorderColor = Color.DarkGray;
+            guna2GradientButton2.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2GradientButton2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2GradientButton2.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            guna2GradientButton2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2GradientButton2.FillColor = Color.FromArgb(59, 82, 132);
+            guna2GradientButton2.FillColor2 = Color.FromArgb(91, 168, 160);
+            guna2GradientButton2.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            guna2GradientButton2.ForeColor = Color.White;
+            guna2GradientButton2.HoverState.FillColor = Color.FromArgb(91, 168, 160);
+            guna2GradientButton2.HoverState.FillColor2 = Color.FromArgb(203, 229, 174);
+            guna2GradientButton2.Location = new Point(357, 384);
+            guna2GradientButton2.Name = "guna2GradientButton2";
+            guna2GradientButton2.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            guna2GradientButton2.Size = new Size(485, 71);
+            guna2GradientButton2.TabIndex = 29;
+            guna2GradientButton2.Text = "Đăng ký";
+            guna2GradientButton2.Click += guna2GradientButton2_Click;
+            // 
+            // guna2GradientButton1
+            // 
+            guna2GradientButton1.BorderColor = Color.FromArgb(0, 192, 192);
+            guna2GradientButton1.BorderRadius = 7;
+            guna2GradientButton1.CheckedState.FillColor = Color.FromArgb(59, 82, 132);
+            guna2GradientButton1.CheckedState.FillColor2 = Color.FromArgb(91, 168, 160);
+            guna2GradientButton1.Cursor = Cursors.Hand;
+            guna2GradientButton1.CustomizableEdges = customizableEdges11;
+            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2GradientButton1.FillColor = Color.FromArgb(59, 82, 132);
+            guna2GradientButton1.FillColor2 = Color.FromArgb(91, 168, 160);
+            guna2GradientButton1.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            guna2GradientButton1.ForeColor = Color.White;
+            guna2GradientButton1.HoverState.FillColor = Color.FromArgb(91, 168, 160);
+            guna2GradientButton1.HoverState.FillColor2 = Color.FromArgb(203, 229, 174);
+            guna2GradientButton1.Location = new Point(428, 388);
+            guna2GradientButton1.Name = "guna2GradientButton1";
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2GradientButton1.Size = new Size(210, 68);
+            guna2GradientButton1.TabIndex = 28;
+            guna2GradientButton1.Text = "Đăng nhập";
             // 
             // pt2
             // 
@@ -309,11 +367,11 @@
             label4.AutoSize = true;
             label4.BorderStyle = BorderStyle.Fixed3D;
             label4.Cursor = Cursors.Hand;
-            label4.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.Blue;
+            label4.Font = new Font("Tahoma", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.FromArgb(0, 192, 192);
             label4.Location = new Point(624, 493);
             label4.Name = "label4";
-            label4.Size = new Size(116, 32);
+            label4.Size = new Size(121, 33);
             label4.TabIndex = 6;
             label4.Text = "Đăng nhập";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -330,21 +388,6 @@
             label3.Size = new Size(139, 23);
             label3.TabIndex = 5;
             label3.Text = "Đã có tài khoản?";
-            // 
-            // btnRegister
-            // 
-            btnRegister.BackgroundImage = (Image)resources.GetObject("btnRegister.BackgroundImage");
-            btnRegister.BackgroundImageLayout = ImageLayout.Stretch;
-            btnRegister.Cursor = Cursors.Hand;
-            btnRegister.Font = new Font("Verdana", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            btnRegister.ForeColor = Color.Violet;
-            btnRegister.Location = new Point(203, 415);
-            btnRegister.Name = "btnRegister";
-            btnRegister.Size = new Size(772, 65);
-            btnRegister.TabIndex = 4;
-            btnRegister.Text = "Đăng ký";
-            btnRegister.UseVisualStyleBackColor = true;
-            btnRegister.Click += btnRegister_Click;
             // 
             // label2
             // 
@@ -409,7 +452,6 @@
         private Panel panel2;
         private Label label4;
         private Label label3;
-        private Button btnRegister;
         private Label label2;
         private Label label1;
         private TextBox txtPassword;
@@ -433,5 +475,7 @@
         private Label lblEmailError;
         private PictureBox pt1;
         private PictureBox pt2;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton2;
     }
 }

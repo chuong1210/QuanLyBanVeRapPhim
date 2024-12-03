@@ -88,7 +88,10 @@ namespace GUI
             }
             else
             {
-                return Path.Combine(Application.StartupPath, "images", poster);
+                string projectPath = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.FullName;
+                projectPath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\.."));
+                return Path.Combine(projectPath, "", poster);
+
             }
         }
         private void DisplayMovies(List<DsPhimDTO> movies)

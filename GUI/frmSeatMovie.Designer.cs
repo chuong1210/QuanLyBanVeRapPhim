@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeatMovie));
-            btnConfirm = new Button();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             linkLabel2 = new LinkLabel();
             flowLayoutPanelSeats = new FlowLayoutPanel();
             lblThongtin = new Label();
@@ -51,24 +52,10 @@
             rbtnStudent = new RadioButton();
             rbtnAdult = new RadioButton();
             rbtnChild = new RadioButton();
+            btnConfirm = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)pcPoster).BeginInit();
             pnSelect.SuspendLayout();
             SuspendLayout();
-            // 
-            // btnConfirm
-            // 
-            btnConfirm.BackgroundImage = Properties.Resources.wp7124745;
-            btnConfirm.Cursor = Cursors.Hand;
-            btnConfirm.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            btnConfirm.ForeColor = Color.LightGray;
-            btnConfirm.ImageAlign = ContentAlignment.TopCenter;
-            btnConfirm.Location = new Point(251, 517);
-            btnConfirm.Name = "btnConfirm";
-            btnConfirm.Size = new Size(845, 73);
-            btnConfirm.TabIndex = 1;
-            btnConfirm.Text = "Tiến hành thanh toán";
-            btnConfirm.UseVisualStyleBackColor = true;
-            btnConfirm.Click += btnConfirm_Click_1;
             // 
             // linkLabel2
             // 
@@ -280,11 +267,37 @@
             rbtnChild.Text = "Trẻ em";
             rbtnChild.UseVisualStyleBackColor = true;
             // 
+            // btnConfirm
+            // 
+            btnConfirm.Animated = true;
+            btnConfirm.AutoRoundedCorners = true;
+            btnConfirm.BackColor = Color.LightGray;
+            btnConfirm.BorderColor = Color.FromArgb(203, 229, 174);
+            btnConfirm.BorderRadius = 35;
+            btnConfirm.BorderThickness = 2;
+            btnConfirm.Cursor = Cursors.Hand;
+            btnConfirm.CustomizableEdges = customizableEdges1;
+            btnConfirm.DisabledState.BorderColor = Color.DarkGray;
+            btnConfirm.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnConfirm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnConfirm.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnConfirm.FillColor = Color.FromArgb(91, 168, 160);
+            btnConfirm.Font = new Font("Tahoma", 16.2F, FontStyle.Bold);
+            btnConfirm.ForeColor = Color.White;
+            btnConfirm.Location = new Point(270, 534);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnConfirm.Size = new Size(845, 73);
+            btnConfirm.TabIndex = 15;
+            btnConfirm.Text = "Tiến hành thanh toán";
+            btnConfirm.Click += guna2Button1_Click;
+            // 
             // frmSeatMovie
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1348, 721);
+            Controls.Add(btnConfirm);
             Controls.Add(rbtnChild);
             Controls.Add(rbtnAdult);
             Controls.Add(rbtnStudent);
@@ -295,7 +308,6 @@
             Controls.Add(lbPhong);
             Controls.Add(lblLich);
             Controls.Add(pcPoster);
-            Controls.Add(btnConfirm);
             Controls.Add(linkLabel2);
             Controls.Add(lblThongtin);
             Controls.Add(flowLayoutPanelSeats);
@@ -310,7 +322,6 @@
         }
 
         #endregion
-        private Button btnConfirm;
         private LinkLabel linkLabel2;
         private FlowLayoutPanel flowLayoutPanelSeats;
         private Label lblThongtin;
@@ -332,5 +343,6 @@
         private RadioButton rbtnStudent;
         private RadioButton rbtnAdult;
         private RadioButton rbtnChild;
+        private Guna.UI2.WinForms.Guna2Button btnConfirm;
     }
 }

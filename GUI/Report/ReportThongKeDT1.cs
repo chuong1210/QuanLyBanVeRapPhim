@@ -35,27 +35,45 @@ namespace GUI.Report
                 return;
             }
 
+
             // Cấu hình nguồn dữ liệu cho biểu đồ
             xrChart1.DataSource = data;
 
-            // Kiểm tra xem Series[0] đã tồn tại chưa, nếu chưa thì tạo mới
-            if (xrChart1.Series.Count == 0)
-            {
-                xrChart1.Series.Add(new DevExpress.XtraCharts.Series("Doanh thu", DevExpress.XtraCharts.ViewType.Line));
-            }
+            xrChart1.Series.Clear();
 
-            // Thiết lập trục X và Y
-            xrChart1.Series[0].ArgumentDataMember = "Ngay"; // Trục X là ngày
-            xrChart1.Series[0].ValueDataMembers[0] = "TongDoanhThu"; // Trục Y là doanh thu
+            // Tạo Series 1 - Line Chart
+            var lineSeries = new DevExpress.XtraCharts.Series("Doanh thu (Line)", DevExpress.XtraCharts.ViewType.Line);
+            lineSeries.ArgumentDataMember = "Ngay"; // Trục X là ngày
+            lineSeries.ValueDataMembers.AddRange(new string[] { "TongDoanhThu" }); // Trục Y là tổng doanh thu
+            lineSeries.View = new DevExpress.XtraCharts.LineSeriesView(); // Giao diện là Line Chart
+            xrChart1.Series.Add(lineSeries);
 
-            // Tùy chỉnh lại Series
-            xrChart1.Series[0].Name = "Doanh thu";
-            xrChart1.Series[0].View = new DevExpress.XtraCharts.LineSeriesView();
+            // Tạo Series 2 - Bar Chart
+            var barSeries = new DevExpress.XtraCharts.Series("Doanh thu (Bar)", DevExpress.XtraCharts.ViewType.Bar);
+            barSeries.ArgumentDataMember = "Ngay"; // Trục X là ngày
+            barSeries.ValueDataMembers.AddRange(new string[] { "TongDoanhThu" }); // Trục Y là tổng doanh thu
+            xrChart1.Series.Add(barSeries);
+
+            // Tùy chỉnh View cho Bar Series (có thể không cần vì ViewType đã là Bar)
+            DevExpress.XtraCharts.BarSeriesView barView = (DevExpress.XtraCharts.BarSeriesView)barSeries.View;
+            barView.Color = Color.LightBlue; // Đổi màu cột nếu cần
+
+            // Hiển thị nhãn trên cả hai Series
+            lineSeries.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            barSeries.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+
+
+
         }
 
         private void ReportThongKeDT1_ParametersRequestSubmit(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e)
         {
+            string idPhim = PidPhim.Value.ToString(); // Ví dụ: lấy id phim
+            DateTime nbd = Convert.ToDateTime(PtgBd.Value); // Ví dụ: lấy ngày bắt đầu
+            DateTime nkt = Convert.ToDateTime(PtgKT.Value); // Ví dụ: lấy ngày kết thúc
 
+            // Gọi lại phương thức initData để cập nhật lại biểu đồ và dữ liệu
+            initData(idPhim, nbd, nkt);
         }
     }
 }

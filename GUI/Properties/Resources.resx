@@ -233,11 +233,20 @@
   <data name="th (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\th (2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="wallpapersden.com_gradient-landscape-4k-illustration_3840x2160" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wallpapersden.com_gradient-landscape-4k-illustration_3840x2160.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="803737-gorgerous-your-name-wallpapers-1920x1080" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\803737-gorgerous-your-name-wallpapers-1920x1080.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user-icon-png-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-icon-png-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+<<<<<<< HEAD
 >>>>>>> c89ecca88763a5849a0b70a4eba31e5852b63836
+=======
+  <data name="wallpapersden.com_gradient-landscape-4k-illustration_3840x2160" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wallpapersden.com_gradient-landscape-4k-illustration_3840x2160.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon-back-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon-back-0.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+>>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
 </root>

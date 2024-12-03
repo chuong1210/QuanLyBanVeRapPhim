@@ -16,6 +16,47 @@ namespace DAL
        // private string connectionString = ConfigurationManager.ConnectionStrings["CinemaDB"].ConnectionString;
         private string connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
 
+        public KhachHangDTO GetChiTietKhachHang(string id)
+        {
+            KhachHangDTO customer = new KhachHangDTO();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT * FROM KhachHang kh where kh.id=@id ";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@id", id);
+
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if(reader.Read())
+                    {
+                        customer  = new KhachHangDTO()
+                        {
+                            Id = reader["id"].ToString(),
+                            HoTen = reader["HoTen"].ToString(),
+                            NgaySinh = (reader["NgaySinh"].ToString()),
+                            DiaChi = reader["DiaChi"].ToString(),
+                            SDT = reader["SDT"].ToString(),
+                            Email = reader["EMAIL"].ToString(),
+                            GioiTinh = reader["GioiTinh"].ToString(),
+                            DiemTichLuy = int.Parse(reader["DiemTichLuy"].ToString())
+                        };
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Xử lý ngoại lệ
+                    Console.WriteLine("Error: " + ex.Message);
+                    return customer;
+                }
+            }
+            return customer;
+        }
         // Lấy danh sách tất cả khách hàng
         public List<KhachHangDTO> GetAllKhachHang()
         {

@@ -297,14 +297,14 @@ VALUES
 
 GO
 -- Thêm dữ liệu vào bảng Phim
-INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX)
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX,PosterPath)
 VALUES
-('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2025-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
-('Avengers', N'Phim siêu anh hùng.', 180, '2019-04-26', '2025-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
-('Spider-Man', N'Phim siêu anh hùng.', 130, '2021-12-17', '2025-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
-('The Batman', N'Phim hành động.', 160, '2022-03-03', '2025-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022),
-('Top Gun', 'Phim hành động.', 130, '2022-05-27', '2025-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022),
-('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2025-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014);
+('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2025-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022,"Images\1.png"),
+('Avengers', N'Phim siêu anh hùng.', 180, '2019-04-26', '2025-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019,"Images\2.png"),
+('Spider-Man', N'Phim siêu anh hùng.', 130, '2021-12-17', '2025-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021,"Images\3.png"),
+('The Batman', N'Phim hành động.', 160, '2022-03-03', '2025-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022,"Images\4.png"),
+('Top Gun', 'Phim hành động.', 130, '2022-05-27', '2025-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022,"Images\5.png"),
+('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2025-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014,"Images\6.png");
 -- Thêm dữ liệu vào bảng TheLoai
 INSERT INTO TheLoai (TenTheLoai, MoTa) VALUES
 (N'Hành động', N'Thể loại hành động, phiêu lưu.'),
@@ -854,3 +854,82 @@ BEGIN
     DEALLOCATE cur;
 END
 GO
+
+------------------------
+
+-- Đổi chế độ phục hồi cho cơ sở dữ liệu
+ALTER DATABASE QLRP SET RECOVERY FULL;
+
+-- FULL BACKUP
+BACKUP DATABASE QLRP
+TO DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_FULLBACKUP.bak'
+WITH INIT, DESCRIPTION = 'Backup db QLRP at 7:00 PM';
+
+-- Thêm dữ liệu vào bảng phim
+-- Thêm phim Inception
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX, PosterPath)
+VALUES
+('Inception', N'Phim khoa học viễn tưởng về giấc mơ.', 148, '2010-07-16', '2025-12-01', 'Warner Bros.', 'Christopher Nolan', 'Leonardo DiCaprio', 2010, 'Images\6.png');
+
+-- DIFFERENTIAL BACKUP
+BACKUP DATABASE QLRP
+TO DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_DIFFBACKUP.bak'
+WITH DIFFERENTIAL;
+
+-- Thêm dữ liệu vào bảng phim
+
+-- Thêm phim The Matrix
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX, PosterPath)
+VALUES
+('The Matrix', N'Phim hành động khoa học viễn tưởng.', 136, '1999-03-31', '2025-08-01', 'Warner Bros.', 'Wachowski Sisters', 'Keanu Reeves', 1999, 'Images\7.png');
+
+-- LOG BACKUP
+BACKUP LOG QLRP
+TO DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_LOGBACKUP.trn'
+WITH DESCRIPTION = 'QLRP log backup';
+
+-- Thêm dữ liệu vào bảng phim
+
+-- Thêm phim Jurassic Park
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX, PosterPath)
+VALUES
+('Jurassic Park', N'Phim phiêu lưu về khủng long.', 127, '1993-06-11', '2025-07-15', 'Universal Pictures', 'Steven Spielberg', 'Sam Neill', 1993, 'Images\8.png');
+
+-- LOG BACKUP
+BACKUP LOG QLRP
+TO DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_LOGBACKUP.trn'
+WITH DESCRIPTION = 'QLRP log backup';
+
+-- Thêm dữ liệu vào bảng phim
+
+-- Thêm phim The Lion King
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX, PosterPath)
+VALUES
+('The Lion King', N'Phim hoạt hình về cuộc sống hoang dã.', 88, '1994-06-15', '2025-05-20', 'Disney', 'Roger Allers, Rob Minkoff', 'Matthew Broderick', 1994, 'Images\9.png');
+
+-- TAIL LOG BACKUP
+BACKUP LOG QLRP
+TO DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_TAILLOG.trn'
+WITH NORECOVERY;
+
+-- Sau khi xảy ra sự cố, phục hồi cơ sở dữ liệu
+-- Phục hồi file FULL BACKUP
+RESTORE DATABASE QLRP
+FROM DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_FULLBACKUP.bak'
+WITH NORECOVERY;
+
+-- Phục hồi file DIFFERENTIAL BACKUP
+RESTORE DATABASE QLRP
+FROM DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_DIFFBACKUP.bak'
+WITH NORECOVERY;
+
+-- Phục hồi LOG BACKUP
+RESTORE DATABASE QLRP
+FROM DISK = 'C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_LOGBACKUP.trn'
+WITH NORECOVERY;
+
+-- Phục hồi TAIL LOG BACKUP
+restore database QL_BANSACH
+from disk='C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\Database\QLRP_TAILLOG.trn'
+with recovery
+

@@ -16,6 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e57ef09fe22a4cbd900306ad48c30118b69c745")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e65fc6d20ff120b7db4c8d103addd6a21690ae3")]
@@ -23,6 +24,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2b5133a9fc3660265b434364a1f97c412117dab")]
 >>>>>>> 331a1c64f6ee99cf481cfffbf47a4ccf3a5dc359
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2f98536287980d4dee6fb470630aaad2c044560")]
+>>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
 [assembly: System.Reflection.AssemblyProductAttribute("DTO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DTO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
