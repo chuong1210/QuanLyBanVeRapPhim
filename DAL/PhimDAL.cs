@@ -503,6 +503,15 @@ namespace DAL
             JOIN Phim phim ON lcp.idPhim = phim.id
             WHERE hd.Id = @idHoaDon";
 
+                    string query2 = @" SELECT hd.Id, phim.TenPhim, hd.NgayMua, hd.TongTien
+ FROM HoaDon hd
+
+ JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
+ JOIN VePhim vp ON cthd.idVePhim = vp.id
+ JOIN LichChieuPhim lcp ON vp.idLichChieuPhim = lcp.id
+ JOIN Phim phim ON lcp.idPhim = phim.id
+ WHERE hd.Id = @idHoaDon";
+
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@idHoaDon", idHoaDon);
