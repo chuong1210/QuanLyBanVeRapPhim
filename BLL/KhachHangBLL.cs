@@ -21,5 +21,19 @@ namespace BLL
             return khachHangDAL.GetChiTietKhachHang(id);
 
         }
+
+        public bool UpdateKhachHang(KhachHangDTO kh)
+        {
+            return khachHangDAL.UpdateKhachHang(kh);
+
+
+        }
+
+        public bool DeleteKhachHang(string id)
+        {
+            return khachHangDAL.DeleteKhachHang(id);
+
+        }
+
     }
 }

@@ -146,6 +146,52 @@ namespace GUI
                 pt2.BackgroundImage = Properties.Resources.hide; // Đổi biểu tượng thành mắt đóng
             }
         }
+
+        private void guna2GradientButton2_Click(object sender, EventArgs e)
+        {
+            KhachHangDTO khachHang = new KhachHangDTO
+            {
+                HoTen = txtFullName.Text,
+                DiaChi = txtDiaChi.Text,
+                SDT = txtSDT.Text,
+                Email = txtEmail.Text,
+                DiemTichLuy = 0,
+                GioiTinh = rdoNam.Checked ? "Nam" : "Nữ",
+                NgaySinh = dtKH.Value.ToString("dd/MM/yyyy"),
+
+            };
+
+            TaiKhoanDTO taiKhoan = new TaiKhoanDTO
+            {
+                UserName = txtUsername.Text,
+                PassWord = txtPassword.Text
+            };
+
+            // Gọi BLL để xử lý đăng ký
+            bool result = taiKhoanBLL.Register(khachHang, taiKhoan);
+            if (result)
+            {
+                DialogResult dialogResult = MessageBox.Show("Đăng ký thành công! Bạn có muốn quay lại trang đăng nhập?",
+              "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    // Mở lại màn hình đăng nhập và tự động nhập tên đăng nhập và mật khẩu
+                    //FrmLogin loginForm = new FrmLogin();
+                    //loginForm.SetUserCredentials(taiKhoan.UserName, taiKhoan.PassWord);
+                    //loginForm.Show();   
+                    frmGunaLogin loginForm = new frmGunaLogin();
+                    loginForm.SetUserCredentials(taiKhoan.UserName, taiKhoan.PassWord);
+                    loginForm.Show();
+
+                    this.Hide(); // Ẩn form đăng ký
+                }
+            }
+            else
+            {
+                MessageBox.Show("Đăng ký thất bại!");
+            }
+        }
     }
 }
 

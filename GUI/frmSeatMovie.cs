@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using BLL;
 using DTO;
 using GUI.Utils;
+using static DevExpress.Skins.SolidColorHelper;
 
 namespace GUI
 {
@@ -56,7 +57,9 @@ namespace GUI
         public void LoadMovie(string idLichChieu, string tenPhim, string posterPath, string ngayChieu, string userName)
         {
             lblThongtin.Text = tenPhim;
-            //pbPoster.ImageLocation = posterPath;
+            pcPoster.ImageLocation = posterPath;
+            pcPoster.BackgroundImage = Image.FromFile(posterPath);
+            pcPoster.BackgroundImageLayout = ImageLayout.Stretch;
             idLichCP = idLichChieu;
             lc = phimBll.LayChiTietLichChieuPhim(idLichCP);
             lblLich.Text = lc.ThoiGianChieu.ToString();
@@ -323,15 +326,16 @@ namespace GUI
                 // Kiểm tra phản hồi của người dùng
                 if (result == DialogResult.OK)
                 {
-                    this.Hide();
                     KhachHangDTO kh = (KhachHangDTO)cboIdKH.SelectedItem;
                     //  cf.idKh = cboIdKH.SelectedValue.ToString();
                     if (kh != null)
                     {
                         cf.idKh = kh.Id;
                     }
-                    // Người dùng chọn "OK", thực hiện thanh toán và mở form cf
-                    cf.ShowDialog();
+                    this.Close();
+                    // Người dùng chọn
+                    // "OK", thực hiện thanh toán và mở form cf
+                    cf.Show();
                 }
                 else
                 {
@@ -478,13 +482,13 @@ namespace GUI
                 // Kiểm tra phản hồi của người dùng
                 if (result == DialogResult.OK)
                 {
-                    this.Hide();
                     KhachHangDTO kh = (KhachHangDTO)cboIdKH.SelectedItem;
                     //  cf.idKh = cboIdKH.SelectedValue.ToString();
                     if (kh != null)
                     {
                         cf.idKh = kh.Id;
                     }
+                    //cf.LoadMovieCF(idLichCP, tenPh, pcPoster.ImageLocation, lc.ThoiGianChieu.ToString(), _userName);
                     // Người dùng chọn "OK", thực hiện thanh toán và mở form cf
                     cf.ShowDialog();
                 }

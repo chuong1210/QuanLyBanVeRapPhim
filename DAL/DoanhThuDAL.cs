@@ -18,12 +18,12 @@ namespace DAL
   
 
 
-        public List<DoanhThuMuaVeDTO> GetMuaVeThongKe(int customerId)
+        public List<DoanhThuMuaVeDTO> GetMuaVeThongKe(string customerId)
         {
             List<DoanhThuMuaVeDTO> muaVeList = new List<DoanhThuMuaVeDTO>();
 
             string query = @"
-            SELECT phim.TenPhim, hd.NgayMua, cthd.SoLuong, vp.TienVePhim
+            SELECT phim.TenPhim, hd.NgayMua, cthd.SoLuong, hd.TongTien
             FROM HoaDon hd
             JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
             JOIN VePhim vp ON cthd.idVePhim = vp.id
@@ -46,7 +46,7 @@ namespace DAL
                         TenPhim = reader["TenPhim"].ToString(),
                         NgayMua = Convert.ToDateTime(reader["NgayMua"]),
                         SoLuong = Convert.ToInt32(reader["SoLuong"]),
-                        GiaVePhim = Convert.ToDecimal(reader["TienVePhim"])
+                        GiaVePhim = Convert.ToDecimal(reader["TongTien"])
                     };
                     muaVeList.Add(muaVe);
                 }

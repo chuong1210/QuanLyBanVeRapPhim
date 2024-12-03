@@ -55,7 +55,7 @@ namespace GUI
                 }
                 else
                 {
-                    frmSideBar client = new frmSideBar(taiKhoan.UserName);
+                    frmSearchMovie client = new frmSearchMovie(taiKhoan.UserName);
                     UserSession.Username = userName;
                     client.Show();
                 }

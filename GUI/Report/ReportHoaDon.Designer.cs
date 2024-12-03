@@ -239,12 +239,14 @@
             this.xrLabel13 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel16 = new DevExpress.XtraReports.UI.XRLabel();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // TopMargin
             // 
             this.TopMargin.BackColor = System.Drawing.Color.IndianRed;
             this.TopMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel16,
             this.xrLine1,
             this.xrLabel1,
             this.label1});
@@ -283,7 +285,7 @@
             // 
             this.label1.Font = new DevExpress.Drawing.DXFont("Arial", 20F, DevExpress.Drawing.DXFontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.LocationFloat = new DevExpress.Utils.PointFloat(66.66666F, 22.19697F);
+            this.label1.LocationFloat = new DevExpress.Utils.PointFloat(63.33333F, 38.03031F);
             this.label1.Name = "label1";
             this.label1.SizeF = new System.Drawing.SizeF(190F, 31.87877F);
             this.label1.StylePriority.UseFont = false;
@@ -929,6 +931,19 @@
             this.xrLabel11.StylePriority.UseFont = false;
             this.xrLabel11.Text = "- Credit Card Visa";
             // 
+            // xrLabel16
+            // 
+            this.xrLabel16.BackColor = System.Drawing.Color.Transparent;
+            this.xrLabel16.Font = new DevExpress.Drawing.DXFont("Tahoma", 8F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Italic))));
+            this.xrLabel16.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrLabel16.Multiline = true;
+            this.xrLabel16.Name = "xrLabel16";
+            this.xrLabel16.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel16.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrLabel16.StylePriority.UseBackColor = false;
+            this.xrLabel16.StylePriority.UseFont = false;
+            this.xrLabel16.Text = "HUIT CINEMA";
+            // 
             // ReportHoaDon
             // 
             this.BackColor = System.Drawing.Color.IndianRed;
@@ -980,5 +995,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel15;
         private DevExpress.XtraReports.UI.XRLine xrLine3;
         private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel16;
     }
 }

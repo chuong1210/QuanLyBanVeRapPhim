@@ -29,6 +29,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.Charts.Native;
 namespace GUI
 {
     public partial class frmConfirm : Form
@@ -120,7 +121,7 @@ namespace GUI
             int startY = lkBank.Bottom + 100; // Vị trí dưới lkBank
             int textBoxWidth = 300;
 
-  
+
             //// Tạo TextEdit cho STK (Số tài khoản)
             //txtSTK = new TextEdit
             //{
@@ -194,11 +195,11 @@ namespace GUI
             //apiRequest.accountNo = long.Parse(txtSTK.Text);
             apiRequest.accountNo = long.MinValue;
             apiRequest.accountName = txtTenTaiKhoan.Text;
-            string input =txtSoTien.Text;
+            string input = txtSoTien.Text;
 
             // Lấy phần trước "VNĐ"
-            string numberString = input.Substring(0, input.Length - 3).Trim(); // Cắt 3 ký tự "VNĐ"
-          //  string numberString = input.Replace("VNĐ", "").Trim();
+            //   string numberString = input.Substring(0, input.Length - 3).Trim(); // Cắt 3 ký tự "VNĐ"
+            string numberString = input.Replace("VNĐ", "").Trim();
             // Chuyển đổi thành kiểu số (int, decimal...)
             int result;
             if (int.TryParse(numberString, out result))
@@ -213,14 +214,14 @@ namespace GUI
             apiRequest.amount = Convert.ToInt32(_vps.Count);
             apiRequest.format = "text";
             apiRequest.template = cb_template.Text;
-             apiRequest = new ApiRequest
+            apiRequest = new ApiRequest
             {
                 acqId = Convert.ToInt32(lkBank.EditValue.ToString()),
                 accountNo = long.Parse("204242"),  // Đảm bảo txtSTK có giá trị hợp lệ
                 accountName = txtTenTaiKhoan.Text,
                 amount = result,  // Gán giá trị số tiền
                 format = "text",
-                template ="compact"
+                template = "compact"
             };
 
             var jsonRequest = JsonConvert.SerializeObject(apiRequest);
@@ -251,10 +252,10 @@ namespace GUI
 
         private void frmConfirm_Load(object sender, EventArgs e)
         {
-          
+
             this.WindowState = FormWindowState.Maximized; // Phóng to toàn màn hình
-            groupControl1.Height = 600;
-            groupControl2.Height = 600;
+            groupControl1.Height = 900;
+            groupControl2.Height = 900;
 
             // Định nghĩa font chữ lớn hơn
 
@@ -397,6 +398,7 @@ namespace GUI
                 Width = 300
             };
             cmbGender.Properties.Items.AddRange(new[] { "Nam", "Nữ", "Khác" });
+            CreateTextBoxesBelowLookUpEdit();
 
             if (!string.IsNullOrEmpty(idKh))
             {
@@ -404,6 +406,8 @@ namespace GUI
 
                 if (customer != null)
                 {
+                    txtTenTaiKhoan.Text = customer.HoTen;
+
                     // Gán giá trị cho các trường
                     txtCustomerName.Text = customer.HoTen;
                     txtCardType.Text = customer.DiemTichLuy >= 1000 ? "VIP" : "Thường"; // Ví dụ logic hạng thẻ
@@ -414,7 +418,6 @@ namespace GUI
                     txtEmail.Text = customer.Email;
                     cmbGender.SelectedItem = customer.GioiTinh;
 
-                    txtTenTaiKhoan.Text = customer.HoTen; 
                     // Đặt các trường thành readonly
                     txtCustomerName.Properties.ReadOnly = true;
                     txtCardType.Properties.ReadOnly = true;
@@ -456,12 +459,16 @@ namespace GUI
                 //}
             };
 
+            int startY = pc1.Bottom + 50; // Vị trí dưới lkBank
+            int textBoxWidth = 300;
+            guna2Button1.Location = new Point(labelX + 140, currentY + 125);
+
 
             btnCreateInvoice = new SimpleButton
             {
                 Text = "Thanh toán",
                 Font = new Font("Tahoma", 12, FontStyle.Bold),
-                Location = new Point(labelX + 90, currentY + 70),
+                Location = new Point(labelX + 90, startY),
                 Size = new Size(200, 40), // Kích thước nút
 
             };
@@ -504,7 +511,7 @@ namespace GUI
             groupControl1.Controls.Add(cmbGender);
 
 
-            
+
 
 
             dtGVDH.DataSource = _vps;
@@ -523,8 +530,7 @@ namespace GUI
                 }
             }
             // Cập nhật giá trị vào ô cụ thể
-            txtTT.Text=dt.TongTien.ToString()+"VNĐ";
-            CreateTextBoxesBelowLookUpEdit();
+            txtTT.Text = dt.TongTien.ToString() + "VNĐ";
 
             ThanhToanQR();
 
@@ -565,6 +571,31 @@ namespace GUI
                 MessageBox.Show("Lỗi khi tạo người dùng. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private string _idlc;
+        private string _tenPhim;
+        private string _posterPath;
+        private string _ngayChieu;
+        private string _userName;
+        public void LoadMovieCF(string idLichChieu, string tenPhim, string posterPath, string ngayChieu, string userName)
+        {
+            _idlc = idLichChieu;
+            _tenPhim = tenPhim;
+            _posterPath = posterPath;
+            _ngayChieu = ngayChieu;
+            _userName = userName;
+
+
+
+
+        }
+
+        private void BtnBackSeat(object sender, EventArgs e)
+        {
+            frmSeatMovie seatMovieForm = new frmSeatMovie();
+
+            seatMovieForm.LoadMovie(_idlc, _tenPhim, _posterPath, _ngayChieu, _userName);
+        }
         private bool IsValidEmail(string email)
         {
             // Kiểm tra email với biểu thức chính quy
@@ -572,7 +603,7 @@ namespace GUI
             return Regex.IsMatch(email, emailPattern);
         }
 
-   
+
         private async void btnCreateInvoice_Click(object sender, EventArgs e)
         {
 
@@ -604,6 +635,20 @@ namespace GUI
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void pc1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            //frmSeatMovie seatMovieForm = new frmSeatMovie();
+
+            //seatMovieForm.LoadMovie(_idlc, _tenPhim, _posterPath, _ngayChieu, _userName);
+            //seatMovieForm.Show();
         }
 
 

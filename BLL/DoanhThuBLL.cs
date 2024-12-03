@@ -19,5 +19,12 @@ namespace BLL
         {
             return doanhThuDAL.LayDoanhThuTheoPhim(idPhim, startDate, endDate); 
         }
+
+        public List<DoanhThuMuaVeDTO> GetMuaVeThongKe(string customerId)
+        {
+            return doanhThuDAL.GetMuaVeThongKe(customerId);
+
         }
+    }
+
 }
