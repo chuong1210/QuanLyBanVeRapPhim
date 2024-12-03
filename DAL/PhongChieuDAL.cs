@@ -32,7 +32,39 @@ namespace DAL
             }
             return dataTable; // Trả về DataTable chứa danh sách rạp
         }
+        public List<PhongChieuDTO> GetListPhongChieu()
+        {
+            string query = "SELECT * FROM PhongChieu"; // Query để lấy danh sách phòng chiếu
+            List<PhongChieuDTO> listPhongChieu = new List<PhongChieuDTO>();
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PhongChieuDTO phongChieu = new PhongChieuDTO
+                            {
+                                id = (int)reader["Id"], // ID của phòng chiếu
+                                TenPhong = reader["TenPhong"].ToString(), // Tên phòng chiếu
+                                idManHinh = reader["idManHinh"].ToString(), // ID màn hình
+                                SoGheNgoi = reader.IsDBNull(reader.GetOrdinal("SoGheNgoi")) ? 0 : (int)reader["SoGheNgoi"], // Số ghế ngồi
+                                TrangThaiChoNgoi = reader.IsDBNull(reader.GetOrdinal("TrangThaiChoNgoi")) ? 1 : (int)reader["TrangThaiChoNgoi"], // Trạng thái chỗ ngồi
+                                SoHangGhe = reader.IsDBNull(reader.GetOrdinal("SoHangGhe")) ? 0 : (int)reader["SoHangGhe"], // Số hàng ghế
+                                SoGheMotHang = reader.IsDBNull(reader.GetOrdinal("SoGheMotHang")) ? 0 : (int)reader["SoGheMotHang"] // Số ghế mỗi hàng
+                            };
+                            listPhongChieu.Add(phongChieu);
+                        }
+                    }
+                }
+            }
+
+            return listPhongChieu;
+        }
         public DataTable GetListScreen()
         {
             string query = "SELECT * FROM LoaiManHinh"; // Truy vấn để lấy danh sách màn hình

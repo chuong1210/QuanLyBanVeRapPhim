@@ -16,6 +16,11 @@ namespace BLL
         {
             return phimDAL.GetListMovie();
         }
+
+        public List<PhimDTO> GetListMovieList()
+        {
+            return phimDAL.GetListMovieList(); // Gọi hàm từ DAL để lấy danh sách phim
+        }
         public bool AddMovie(PhimDTO phim)
         {
             return phimDAL.AddMovie(phim); 
