@@ -20,6 +20,10 @@ namespace BLL
         {
             return pcDAL.GetListScreen();
         }
+        public List<PhongChieuDTO> GetListPhongChieu()
+        {
+            return pcDAL.GetListPhongChieu();
+        }
         public bool ThemPhongChieu(PhongChieuDTO phongChieu)
         {
             PhongChieuDAL dal = new PhongChieuDAL();

@@ -20,5 +20,19 @@ namespace BLL
         {
             return lcpDAL.GetListShowTime();
         }
+        public bool InsertLichChieu(LichChieuPhimDTO lichChieu)
+        {
+            return lcpDAL.InsertLichChieu(lichChieu);
+        }
+        public bool DeleteLichChieu(int id)
+        {
+            LichChieuPhimDAL dal = new LichChieuPhimDAL();
+            return dal.DeleteLichChieu(id);
+        }
+        public bool UpdateLichChieu(LichChieuPhimDTO lichChieu)
+        {
+            LichChieuPhimDAL dal = new LichChieuPhimDAL();
+            return dal.UpdateLichChieu(lichChieu);
+        }
     }
 }

@@ -671,6 +671,44 @@ namespace DAL
             }
             return dataTable;
         }
+        public List<PhimDTO> GetListMovieList()
+        {
+            string query = "SELECT * FROM Phim"; // Truy vấn để lấy danh sách phim
+            List<PhimDTO> listPhim = new List<PhimDTO>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            PhimDTO phim = new PhimDTO
+                            {
+                                Id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : (int)reader["Id"], // Kiểm tra DBNull
+                                TenPhim = reader.IsDBNull(reader.GetOrdinal("TenPhim")) ? string.Empty : reader["TenPhim"].ToString(),
+                                MoTa = reader.IsDBNull(reader.GetOrdinal("MoTa")) ? string.Empty : reader["MoTa"].ToString(),
+                                ThoiLuong = reader.IsDBNull(reader.GetOrdinal("ThoiLuong")) ? 0 : Convert.ToSingle(reader["ThoiLuong"]),
+                                NgayKhoiChieu = reader.IsDBNull(reader.GetOrdinal("NgayKhoiChieu")) ? DateTime.MinValue : (DateTime)reader["NgayKhoiChieu"],
+                                NgayKetThuc = reader.IsDBNull(reader.GetOrdinal("NgayKetThuc")) ? DateTime.MinValue : (DateTime)reader["NgayKetThuc"],
+                                SanXuat = reader.IsDBNull(reader.GetOrdinal("SanXuat")) ? string.Empty : reader["SanXuat"].ToString(),
+                                DaoDien = reader.IsDBNull(reader.GetOrdinal("DaoDien")) ? string.Empty : reader["DaoDien"].ToString(),
+                                DienVien = reader.IsDBNull(reader.GetOrdinal("DienVien")) ? string.Empty : reader["DienVien"].ToString(),
+                                NamSX = reader.IsDBNull(reader.GetOrdinal("NamSX")) ? 0 : (int)reader["NamSX"],
+                                // Kiểm tra nếu cột Poster là DBNull hoặc null
+                                Poster = reader.IsDBNull(reader.GetOrdinal("PosterPath")) ? null : reader["PosterPath"] as byte[]
+                            };
+                            listPhim.Add(phim);
+                        }
+                    }
+                }
+            }
+            return listPhim;
+        }
+
         public DataTable GetListMovieById(string movieId = null)
         {
             // Khởi tạo chuỗi truy vấn
