@@ -54,7 +54,7 @@ namespace DAL
                         {
                             TheLoaiDTO theLoai = new TheLoaiDTO
                             {
-                                Id = reader["id"] != DBNull.Value ? int.Parse(reader["id"].ToString()) : 0, // Kiểm tra null trước khi ép kiểu
+                                Id = reader["id"] != DBNull.Value ? reader["id"].ToString() :"0", // Kiểm tra null trước khi ép kiểu
                                 TenTheLoai = reader["TenTheLoai"].ToString(),
                                 MoTa = reader["MoTa"].ToString() ?? string.Empty  // Kiểm tra null
                             };

@@ -55,14 +55,11 @@ namespace BLL
             //DatVeDTO.IdKhachHang = idKH;
             return _phimDAL.DatVeXemPhim(DatVeDTO, selectedSeats);
         }
-<<<<<<< HEAD
         public DataTable getListMovie()
         {
             return _phimDAL.GetListMovie();
         }
-<<<<<<< HEAD
-     
-=======
+
         public List<PhimDTO> TimPhimTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
         {
             return _phimDAL.TimPhimTheoKhoangThoiGian(startDate, endDate);
@@ -78,11 +75,10 @@ namespace BLL
             return _phimDAL.HuyGheDat(DatVeDTO, selectedSeats);
 
         }
->>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
-=======
+
         public bool AddMovie(PhimDTO phim)
         {
-            return phimDAL.AddMovie(phim); 
+            return _phimDAL.AddMovie(phim); 
         }
         public bool UpdateMovie(PhimDTO phim)
         {
@@ -110,6 +106,5 @@ namespace BLL
                 return false;
             }
         }
->>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4
     }
 }

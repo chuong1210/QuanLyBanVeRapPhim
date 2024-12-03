@@ -118,7 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-<<<<<<< HEAD
 
   <data name="show" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\show.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -127,9 +126,7 @@
     <value>..\Resources\th (2).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 
-  <data name="th" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\th.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
+  
   <data name="th" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\th.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -138,7 +135,6 @@
   </data>
   <data name="wp7124690" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wp7124690.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
   </data>
   <data name="739671" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\739671.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -161,19 +157,15 @@
   <data name="th (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\th (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
   <data name="openfolder_4896" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openfolder_4896.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="oip1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\oip1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-=======
+ 
   <data name="user_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
   </data>
   <data name="wp7124745" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wp7124745.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,14 +173,12 @@
   <data name="oip1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\oip1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
   <data name="wp7124690" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wp7124690.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 
-=======
   <data name="th (2)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\th (2)1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
->>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
   </data>
 
 	<data name="wallpapersden.com_gradient-landscape-4k-illustration_3840x2160" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -239,14 +229,11 @@
   <data name="user-icon-png-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-icon-png-3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-<<<<<<< HEAD
->>>>>>> c89ecca88763a5849a0b70a4eba31e5852b63836
-=======
+
   <data name="wallpapersden.com_gradient-landscape-4k-illustration_3840x2160" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wallpapersden.com_gradient-landscape-4k-illustration_3840x2160.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icon-back-0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\icon-back-0.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
->>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
 </root>

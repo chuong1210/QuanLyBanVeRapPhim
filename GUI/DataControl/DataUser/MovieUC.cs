@@ -12,7 +12,7 @@ using DTO;
 using DAL;
 using Microsoft.VisualBasic.Devices;
 using static Azure.Core.HttpHeader;
-
+using System.IO;
 namespace GUI.DataControl.DataUser
 {
     public partial class MovieUC : UserControl
@@ -142,7 +142,7 @@ namespace GUI.DataControl.DataUser
                 DaoDien = txtMovieDirector.Text,
                 DienVien = txtActor.Text,
                 NamSX = int.TryParse(txtMovieYear.Text, out int year) ? year : 0,
-                Poster = ptrMovie.Image != null ? ImageToByteArray(ptrMovie.Image) : null
+                Poster = ptrMovie.Image.ToString()
             };
 
             PhimDAL phimDAL = new PhimDAL();
@@ -187,7 +187,7 @@ namespace GUI.DataControl.DataUser
         {
             PhimDTO phim = new PhimDTO()
             {
-                Id = int.Parse(txtMovieID.Text), // Giả sử có trường ID phim để tìm kiếm
+                Id =txtMovieID.Text, // Giả sử có trường ID phim để tìm kiếm
                 TenPhim = txtMovieName.Text,
                 MoTa = txtMovieDescription.Text,
                 ThoiLuong = float.Parse(txtMovieLength.Text),

@@ -14,23 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e57ef09fe22a4cbd900306ad48c30118b69c745")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e65fc6d20ff120b7db4c8d103addd6a21690ae3")]
->>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2b5133a9fc3660265b434364a1f97c412117dab")]
->>>>>>> 331a1c64f6ee99cf481cfffbf47a4ccf3a5dc359
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2f98536287980d4dee6fb470630aaad2c044560")]
->>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de909eefb8d25218138fce9ecd55245b3b21bd1c")]
->>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b669415f53028419d0d1a20a0a35e22082360372")]
 [assembly: System.Reflection.AssemblyProductAttribute("BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

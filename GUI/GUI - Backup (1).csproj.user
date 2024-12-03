@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="DataControl\DataAdmin\DataUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DataControl\DataUser\GenreUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DataControl\DataUser\MovieUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DataControl\DataUser\RoomUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="DataControl\DataUser\ScreenTypeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+<<<<<<< HEAD
+ 
+    <Compile Update="frmConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDanhSachKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDanhSachPhim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmGunaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmNavBar.cs">
+      <SubType>Form</SubType>
+=======
+    <Compile Update="DataControl\DataUser\ShowTimeUC.cs">
+      <SubType>UserControl</SubType>
+>>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4
+    </Compile>
+    <Compile Update="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmChangePW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmDetailMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Update="frmSearchMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSideBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
+    <Compile Update="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSearchMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmSeatMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Update="frmSideBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+=======
+    <Compile Update="Report\frmReportDSNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportDSKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportThongKeDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\frmReportThongKeHoaDonKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Report\ReportHoaDon.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Report\ReportThongKeHDKH.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Report\ReportThongKeDT.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Report\ReportThongKeDT1.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+>>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
+    <Compile Update="Utils\MovieCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="DataControl\DataAdmin\DataUC.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FrmLogin.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

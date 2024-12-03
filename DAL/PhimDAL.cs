@@ -704,14 +704,12 @@ namespace DAL
 
             return dataTable;
         }
-<<<<<<< HEAD
 
-=======
         public bool AddMovie(PhimDTO phim)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     string query = @"INSERT INTO Phim 
                                  (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX, PosterPath)
@@ -759,7 +757,7 @@ namespace DAL
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     // Câu lệnh SQL để cập nhật phim (không bao gồm ảnh)
                     string query = @"UPDATE Phim
@@ -794,7 +792,7 @@ namespace DAL
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     // Câu lệnh SQL để xóa phim
                     string query = @"DELETE FROM Phim WHERE ID = @ID"; // Xóa phim theo ID
@@ -814,7 +812,6 @@ namespace DAL
             }
         }
     }
->>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4
-}
+
 }
 

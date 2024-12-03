@@ -8,7 +8,7 @@ namespace DTO
 {
     public class PhimDTO
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TenPhim { get; set; }
         public string MoTa { get; set; }
         public float ThoiLuong { get; set; }

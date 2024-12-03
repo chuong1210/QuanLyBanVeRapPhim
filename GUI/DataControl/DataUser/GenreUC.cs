@@ -137,7 +137,7 @@ namespace GUI.DataControl.DataUser
 
                 TheLoaiDTO updatedTheLoai = new TheLoaiDTO
                 {
-                    Id = id,
+                    Id = id.ToString(),
                     TenTheLoai = tenTheLoai,
                     MoTa = moTa
                 };
