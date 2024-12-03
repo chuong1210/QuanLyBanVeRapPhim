@@ -16,6 +16,10 @@ namespace BLL
         {
             return khachHangDAL.GetAllKhachHang();
         }
+        public KhachHangDTO GetChiTietKhachHang(string id)
+        {
+            return khachHangDAL.GetChiTietKhachHang(id);
 
         }
+    }
 }

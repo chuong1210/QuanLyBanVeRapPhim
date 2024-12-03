@@ -297,14 +297,14 @@ VALUES
 
 GO
 -- Thêm dữ liệu vào bảng Phim
-INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX)
+INSERT INTO Phim (TenPhim, MoTa, ThoiLuong, NgayKhoiChieu, NgayKetThuc, SanXuat, DaoDien, DienVien, NamSX,PosterPath)
 VALUES
-('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2025-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022),
-('Avengers', N'Phim siêu anh hùng.', 180, '2019-04-26', '2025-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019),
-('Spider-Man', N'Phim siêu anh hùng.', 130, '2021-12-17', '2025-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021),
-('The Batman', N'Phim hành động.', 160, '2022-03-03', '2025-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022),
-('Top Gun', 'Phim hành động.', 130, '2022-05-27', '2025-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022),
-('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2025-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014);
+('Avatar', N'Phim hành động khoa học viễn tưởng.', 160, '2023-10-27', '2025-01-10', '20th Century Studios', 'James Cameron', 'Sam Worthington', 2022,"Images\1.png"),
+('Avengers', N'Phim siêu anh hùng.', 180, '2019-04-26', '2025-05-03', 'Marvel Studios', 'Anthony Russo, Joe Russo', 'Robert Downey Jr', 2019,"Images\2.png"),
+('Spider-Man', N'Phim siêu anh hùng.', 130, '2021-12-17', '2025-01-07', 'Sony Pictures', 'Jon Watts', 'Tom Holland', 2021,"Images\3.png"),
+('The Batman', N'Phim hành động.', 160, '2022-03-03', '2025-03-10', 'Warner Bros.', 'Matt Reeves', 'Robert Pattinson', 2022,"Images\4.png"),
+('Top Gun', 'Phim hành động.', 130, '2022-05-27', '2025-06-03', 'Paramount Pictures', 'Joseph Kosinski', 'Tom Cruise, Miles Teller', 2022,"Images\5.png"),
+('Interstellar', 'Phim khoa học viễn tưởng.', 169, '2014-11-07', '2025-11-14', 'Paramount Pictures', 'Christopher Nolan', 'Matthew McConaughey, Anne Hathaway', 2014,"Images\6.png");
 -- Thêm dữ liệu vào bảng TheLoai
 INSERT INTO TheLoai (TenTheLoai, MoTa) VALUES
 (N'Hành động', N'Thể loại hành động, phiêu lưu.'),

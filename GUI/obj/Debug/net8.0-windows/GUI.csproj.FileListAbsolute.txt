@@ -325,3 +325,9 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.ReportThongKeDT1.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.frmReportThongKeDT.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmDanhSachKhachHang.resources
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\RestSharp.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\Guna.UI2.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\System.Management.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.frmGunaLogin.resources

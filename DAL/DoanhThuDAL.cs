@@ -13,7 +13,50 @@ namespace DAL
   public  class DoanhThuDAL
     {
         private string _connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
-        public List<DoanhThuDTO> LayDoanhThuTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
+
+
+  
+
+
+        public List<DoanhThuMuaVeDTO> GetMuaVeThongKe(int customerId)
+        {
+            List<DoanhThuMuaVeDTO> muaVeList = new List<DoanhThuMuaVeDTO>();
+
+            string query = @"
+            SELECT phim.TenPhim, hd.NgayMua, cthd.SoLuong, vp.TienVePhim
+            FROM HoaDon hd
+            JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
+            JOIN VePhim vp ON cthd.idVePhim = vp.id
+            JOIN LichChieuPhim lcp ON vp.idLichChieuPhim = lcp.id
+            JOIN Phim phim ON lcp.idPhim = phim.id
+            WHERE hd.idKhachHang = @CustomerId";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@CustomerId", customerId);
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    DoanhThuMuaVeDTO muaVe = new DoanhThuMuaVeDTO
+                    {
+                        TenPhim = reader["TenPhim"].ToString(),
+                        NgayMua = Convert.ToDateTime(reader["NgayMua"]),
+                        SoLuong = Convert.ToInt32(reader["SoLuong"]),
+                        GiaVePhim = Convert.ToDecimal(reader["TienVePhim"])
+                    };
+                    muaVeList.Add(muaVe);
+                }
+                reader.Close();
+            }
+
+            return muaVeList;
+    }
+
+    public List<DoanhThuDTO> LayDoanhThuTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
         {
             List<DoanhThuDTO> doanhThuList = new List<DoanhThuDTO>();
 

@@ -139,7 +139,7 @@
             this.tableCell4.StylePriority.UseBorderWidth = false;
             this.tableCell4.StylePriority.UseFont = false;
             this.tableCell4.StylePriority.UseTextAlignment = false;
-            this.tableCell4.Text = "Địa Chỉ";
+            this.tableCell4.Text = "Email";
             this.tableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell4.Weight = 0.14468087041730116D;
             // 
@@ -152,7 +152,7 @@
             this.tableCell5.StylePriority.UseBorderWidth = false;
             this.tableCell5.StylePriority.UseFont = false;
             this.tableCell5.StylePriority.UseTextAlignment = false;
-            this.tableCell5.Text = "Email\r\n";
+            this.tableCell5.Text = "Điểm tích lũy thành viên";
             this.tableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell5.Weight = 0.28521725987240809D;
             // 
@@ -293,7 +293,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.tableCell14.BorderWidth = 1F;
             this.tableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DiaChi]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EMAIL]")});
             this.tableCell14.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
             this.tableCell14.Name = "tableCell14";
             this.tableCell14.StylePriority.UseBorderColor = false;
@@ -315,7 +315,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell1.BorderWidth = 1F;
             this.xrTableCell1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EMAIL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DiemTichLuy]")});
             this.xrTableCell1.Font = new DevExpress.Drawing.DXFont("Arial", 9F);
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";

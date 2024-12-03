@@ -10,6 +10,9 @@
     <Compile Update="frmDanhSachPhim.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmGunaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmNavBar.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -18,14 +18,27 @@ using System.Text.RegularExpressions;
 using GUI.Utils;
 using System.ComponentModel.DataAnnotations;
 using GUI.Report;
+using Newtonsoft.Json;
+using RestSharp;
+using System;
+using System.Collections.Generic;
+
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 namespace GUI
 {
     public partial class frmConfirm : Form
     {
         public DatVeDTO dt { get; set; }
+        public string idKh { get; set; } = string.Empty;
         public List<string> seats { get; set; }
         PhimBLL phimBll = new PhimBLL();
         TaiKhoanBLL khBLL = new TaiKhoanBLL();
+        KhachHangBLL kh = new KhachHangBLL();
         KhachHangDTO newCustomer;
         private Font labelFont;
         private Font textEditFont;
@@ -54,21 +67,191 @@ namespace GUI
         private ComboBoxEdit cmbGender;
         private SimpleButton btnCreateUser;
         private SimpleButton btnCreateInvoice;
+        private TextEdit txtSTK;
+        private TextEdit txtTenTaiKhoan;
+        private TextEdit txtSoTien;
+        private ComboBoxEdit cb_template;
 
         public frmConfirm(List<MuaHangDTO> vps)
         {
             InitializeComponent();
 
             _vps = vps;
+            lkBank = new LookUpEdit
+            {
+                Font = textEditFont,
+                Width = 300
+            };
+
+            groupControl2.Controls.Add(lkBank);
+
+            using (WebClient client = new WebClient())
+            {
+                var htmlData = client.DownloadData("https://api.vietqr.io/v2/banks");
+                var bankRawJson = Encoding.UTF8.GetString(htmlData);
+                var listBankData = JsonConvert.DeserializeObject<Bank>(bankRawJson);
+
+                lkBank.Properties.DataSource = listBankData.data;
+                // list banks
+                lkBank.Properties.DisplayMember = "name";
+                lkBank.Properties.ValueMember = "bin";
+                lkBank.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Tên ngân hàng"));
+                lkBank.Properties.Columns.Add(new DevExpress.XtraEditors.Controls.LookUpColumnInfo("bin", "Code Bank", 20));
+                // Ẩn cột CMND khi hiển thị
+                //lkBank.Properties.Columns["id"].Visible = false;
+                //lkBank.Properties.Columns["code"].Visible = false;
+                //lkBank.Properties.Columns["shortName"].Visible = false;
+                //lkBank.Properties.Columns["logo"].Visible = false;
+                //lkBank.Properties.Columns["transferSupported"].Visible = false;
+                //lkBank.Properties.Columns["short_name"].Visible = false;
+                //lkBank.Properties.Columns["lookupSupported"].Visible = false;
+                //lkBank.Properties.Columns["support"].Visible = false;
+                //lkBank.Properties.Columns["isTransfer"].Visible = false;
+                //lkBank.Properties.Columns["swift_code"].Visible = false;
+
+                lkBank.EditValue = listBankData.data.FirstOrDefault().bin;
+                lkBank.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.AutoSearch;
+                lkBank.Properties.AutoSearchColumnIndex = 0;  // Chọn cột nào để tìm kiếm
+            }
+
+        }
+        private void CreateTextBoxesBelowLookUpEdit()
+        {
+            int startY = lkBank.Bottom + 100; // Vị trí dưới lkBank
+            int textBoxWidth = 300;
+
+  
+            //// Tạo TextEdit cho STK (Số tài khoản)
+            //txtSTK = new TextEdit
+            //{
+            //    Font = textEditFont,
+            //    Location = new Point(textX, currentY + 50),  // Đặt vị trí sau lbtongtien và txtTT
+            //    Width = textBoxWidth,
+            //    Name = "txtSTK",
+            //    Properties = { NullText = "Nhập số tài khoản" } // Thêm placeholder
+            //};
+            //groupControl2.Controls.Add(txtSTK);
+            //currentY += txtSTK.Height + 10; // Cập nhật vị trí currentY
+
+            // Tạo TextEdit cho Tên tài khoản
+            txtTenTaiKhoan = new TextEdit
+            {
+                Font = textEditFont,
+                Location = new Point(textX, currentY),
+                Width = textBoxWidth,
+                Name = "txtTenTaiKhoan",
+                Properties = { NullText = "Nhập tên tài khoản" } // Thêm placeholder
+            };
+            groupControl2.Controls.Add(txtTenTaiKhoan);
+            currentY += txtTenTaiKhoan.Height + 10;
+            txtTenTaiKhoan.Visible = false;
+
+            // Tạo TextEdit cho Số tiền
+            txtSoTien = new TextEdit
+            {
+                Font = textEditFont,
+                Location = new Point(textX, currentY),
+                Width = textBoxWidth,
+                Name = "txtSoTien",
+                Properties = { NullText = "Nhập số tiền" } // Thêm placeholder
+            };
+            groupControl2.Controls.Add(txtSoTien);
+            currentY += txtSoTien.Height + 10;
+            txtSoTien.Visible = false;
+            txtSoTien.Text = txtTT.Text;
 
 
+            // Tạo ComboBoxEdit cho template
+            cb_template = new ComboBoxEdit
+            {
+                Font = textEditFont,
+                Location = new Point(textX, currentY),
+                Width = textBoxWidth,
+                Name = "cb_template"
+            };
+            cb_template.Visible = false;
+            // Cần thêm các template vào ComboBox
+            //
+            //
+            // Edit (ví dụ: Text, QR Code...)
+            cb_template.Properties.Items.AddRange(new string[] { "template 1", "template 2", "template 3" });
+            groupControl2.Controls.Add(cb_template);
+            currentY += cb_template.Height + 20; // Cập nhật lại vị trí currentY sau khi thêm cb_template
+        }
 
+        public Image Base64ToImage(string base64String)
+        {
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
+            return image;
+        }
+        public void ThanhToanQR()
+        {
+            var apiRequest = new ApiRequest();
+            apiRequest.acqId = Convert.ToInt32(lkBank.EditValue.ToString());
+            //apiRequest.accountNo = long.Parse(txtSTK.Text);
+            apiRequest.accountNo = long.MinValue;
+            apiRequest.accountName = txtTenTaiKhoan.Text;
+            string input =txtSoTien.Text;
 
+            // Lấy phần trước "VNĐ"
+            string numberString = input.Substring(0, input.Length - 3).Trim(); // Cắt 3 ký tự "VNĐ"
+          //  string numberString = input.Replace("VNĐ", "").Trim();
+            // Chuyển đổi thành kiểu số (int, decimal...)
+            int result;
+            if (int.TryParse(numberString, out result))
+            {
+                Console.WriteLine("Số tiền là: " + result);
+            }
+            else
+            {
+                Console.WriteLine("Lỗi định dạng số!");
+            }
+
+            apiRequest.amount = Convert.ToInt32(_vps.Count);
+            apiRequest.format = "text";
+            apiRequest.template = cb_template.Text;
+             apiRequest = new ApiRequest
+            {
+                acqId = Convert.ToInt32(lkBank.EditValue.ToString()),
+                accountNo = long.Parse("204242"),  // Đảm bảo txtSTK có giá trị hợp lệ
+                accountName = txtTenTaiKhoan.Text,
+                amount = result,  // Gán giá trị số tiền
+                format = "text",
+                template ="compact"
+            };
+
+            var jsonRequest = JsonConvert.SerializeObject(apiRequest);
+            // use restsharp for request api.
+            var client = new RestClient("https://api.vietqr.io/v2/generate");
+            var request = new RestRequest();
+
+            request.Method = Method.Post;
+            request.AddHeader("Accept", "application/json");
+            request.AddParameter("application/json", jsonRequest, ParameterType.RequestBody);
+
+            // Gửi yêu cầu
+            var response = client.Execute(request);
+            var content = response.Content;
+
+            if (response.IsSuccessful)
+            {
+                var dataResult = JsonConvert.DeserializeObject<ApiResponse>(content);
+                var image = Base64ToImage(dataResult.Data.qrDataURL.Replace("data:image/png;base64,", ""));
+                pc1.Image = image;
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi tạo QR code: " + response.ErrorMessage, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
         private void frmConfirm_Load(object sender, EventArgs e)
         {
+          
             this.WindowState = FormWindowState.Maximized; // Phóng to toàn màn hình
             groupControl1.Height = 600;
             groupControl2.Height = 600;
@@ -215,7 +398,48 @@ namespace GUI
             };
             cmbGender.Properties.Items.AddRange(new[] { "Nam", "Nữ", "Khác" });
 
+            if (!string.IsNullOrEmpty(idKh))
+            {
+                KhachHangDTO customer = kh.GetChiTietKhachHang(idKh);
 
+                if (customer != null)
+                {
+                    // Gán giá trị cho các trường
+                    txtCustomerName.Text = customer.HoTen;
+                    txtCardType.Text = customer.DiemTichLuy >= 1000 ? "VIP" : "Thường"; // Ví dụ logic hạng thẻ
+                    txtAvailablePoints.Text = customer.DiemTichLuy.ToString();
+                    dateBirthDate.DateTime = DateTime.TryParse(customer.NgaySinh, out var birthDate) ? birthDate : DateTime.MinValue;
+                    txtAddress.Text = customer.DiaChi;
+                    txtPhone.Text = customer.SDT;
+                    txtEmail.Text = customer.Email;
+                    cmbGender.SelectedItem = customer.GioiTinh;
+
+                    txtTenTaiKhoan.Text = customer.HoTen; 
+                    // Đặt các trường thành readonly
+                    txtCustomerName.Properties.ReadOnly = true;
+                    txtCardType.Properties.ReadOnly = true;
+                    txtAvailablePoints.Properties.ReadOnly = true;
+                    dateBirthDate.Properties.ReadOnly = true;
+                    txtAddress.Properties.ReadOnly = true;
+                    txtPhone.Properties.ReadOnly = true;
+                    txtEmail.Properties.ReadOnly = true;
+                    cmbGender.Properties.ReadOnly = true;
+
+                    // Đổi màu nền để dễ nhận biết
+                    txtCustomerName.BackColor = Color.LightGray;
+                    txtCardType.BackColor = Color.LightGray;
+                    txtAvailablePoints.BackColor = Color.LightGray;
+                    dateBirthDate.BackColor = Color.LightGray;
+                    txtAddress.BackColor = Color.LightGray;
+                    txtPhone.BackColor = Color.LightGray;
+                    txtEmail.BackColor = Color.LightGray;
+                    cmbGender.BackColor = Color.LightGray;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy thông tin khách hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
             // Tạo nút "Tạo người dùng"
             btnCreateUser = new SimpleButton
             {
@@ -231,6 +455,7 @@ namespace GUI
                 //    ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter,
                 //}
             };
+
 
             btnCreateInvoice = new SimpleButton
             {
@@ -278,6 +503,10 @@ namespace GUI
             groupControl1.Controls.Add(lblGender);
             groupControl1.Controls.Add(cmbGender);
 
+
+            
+
+
             dtGVDH.DataSource = _vps;
             foreach (DataGridViewColumn column in dtGVDH.Columns)
             {
@@ -295,6 +524,9 @@ namespace GUI
             }
             // Cập nhật giá trị vào ô cụ thể
             txtTT.Text=dt.TongTien.ToString()+"VNĐ";
+            CreateTextBoxesBelowLookUpEdit();
+
+            ThanhToanQR();
 
         }
         private void BtnCreateUser_Click(object sender, EventArgs e)
@@ -339,6 +571,8 @@ namespace GUI
             string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, emailPattern);
         }
+
+   
         private async void btnCreateInvoice_Click(object sender, EventArgs e)
         {
 

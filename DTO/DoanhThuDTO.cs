@@ -17,4 +17,13 @@ namespace DTO
         public decimal TongDoanhThu { get; set; }
     }
 
+    public class DoanhThuMuaVeDTO
+    {
+        public string TenPhim { get; set; }
+        public DateTime NgayMua { get; set; }
+        public int SoLuong { get; set; }
+        public decimal GiaVePhim { get; set; }
+    }
+
+
 }

@@ -3,8 +3,84 @@
   "WorkspaceRootPath": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dal\\doanhthudal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|solutionrelative:dal\\doanhthudal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dto\\doanhthudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|solutionrelative:dto\\doanhthudto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmdanhsachkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmdanhsachkhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmseatmovie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmseatmovie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dto\\webclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|solutionrelative:dto\\webclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dto\\datvedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|solutionrelative:dto\\datvedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmseatmovie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmseatmovie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmseatmovie.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmseatmovie.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\gui\\frmsearchmovie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmsearchmovie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmnavbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmnavbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmchangepw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmchangepw.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmregister.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\gui\\frmgunalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmgunalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmgunalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmgunalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmnavbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmnavbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{903554D9-DC1C-4C0A-B7A0-0727F13E2B2E}|GUI\\GUI.csproj|solutionrelative:gui\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dto\\vietqrdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|solutionrelative:dto\\vietqrdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dal\\khachhangdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0E34D2EB-AC7D-431C-9B90-B5EF7AAD5BC4}|DAL\\DAL.csproj|solutionrelative:dal\\khachhangdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39325101-7947-4400-A52C-3D54E06F6634}|BLL\\BLL.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\bll\\khachhangbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39325101-7947-4400-A52C-3D54E06F6634}|BLL\\BLL.csproj|solutionrelative:bll\\khachhangbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{452D7BD6-2615-4FFA-BBF2-8755F6E87E7B}|DTO\\DTO.csproj|c:\\users\\chuon\\source\\repos\\doancongnghenet_quanlybanverapphim\\dto\\khachhangdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -49,16 +125,271 @@
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DoanhThuDTO.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\DoanhThuDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\DoanhThuDTO.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\DoanhThuDTO.cs",
+              "RelativeToolTip": "DTO\\DoanhThuDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T14:19:59.074Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "DoanhThuDAL.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\DoanhThuDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\DoanhThuDAL.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\DoanhThuDAL.cs",
+              "RelativeToolTip": "DAL\\DoanhThuDAL.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAwCsAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T14:17:33.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmDanhSachKhachHang.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmDanhSachKhachHang.cs",
+              "RelativeDocumentMoniker": "GUI\\frmDanhSachKhachHang.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmDanhSachKhachHang.cs",
+              "RelativeToolTip": "GUI\\frmDanhSachKhachHang.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAgwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T14:07:36.121Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "frmSeatMovie.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSeatMovie.cs",
+              "RelativeDocumentMoniker": "GUI\\frmSeatMovie.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSeatMovie.cs",
+              "RelativeToolTip": "GUI\\frmSeatMovie.cs",
+              "ViewState": "AgIAANgBAAAAAAAAAAAlwOgBAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:20:58.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DatVeDTO.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\DatVeDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\DatVeDTO.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\DatVeDTO.cs",
+              "RelativeToolTip": "DTO\\DatVeDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T15:55:08.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WebClient.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\WebClient.cs",
+              "RelativeDocumentMoniker": "DTO\\WebClient.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\WebClient.cs",
+              "RelativeToolTip": "DTO\\WebClient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T16:48:20.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "frmSeatMovie.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSeatMovie.cs",
+              "RelativeDocumentMoniker": "GUI\\frmSeatMovie.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSeatMovie.cs [Design]",
+              "RelativeToolTip": "GUI\\frmSeatMovie.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T12:15:12.561Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmSeatMovie.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSeatMovie.Designer.cs",
+              "RelativeDocumentMoniker": "GUI\\frmSeatMovie.Designer.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSeatMovie.Designer.cs",
+              "RelativeToolTip": "GUI\\frmSeatMovie.Designer.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAAACIAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T12:35:03.093Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\FrmLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs [Design]",
+              "RelativeToolTip": "GUI\\FrmLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T09:43:01.731Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "frmSearchMovie.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSearchMovie.cs",
+              "RelativeDocumentMoniker": "GUI\\frmSearchMovie.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmSearchMovie.cs [Design]",
+              "RelativeToolTip": "GUI\\frmSearchMovie.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T09:43:00.517Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "frmNavBar.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmNavBar.cs",
+              "RelativeDocumentMoniker": "GUI\\frmNavBar.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmNavBar.cs [Design]",
+              "RelativeToolTip": "GUI\\frmNavBar.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T12:06:22.772Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "frmNavBar.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmNavBar.cs",
+              "RelativeDocumentMoniker": "GUI\\frmNavBar.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmNavBar.cs",
+              "RelativeToolTip": "GUI\\frmNavBar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:10:49.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "frmChangePW.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmChangePW.cs",
+              "RelativeDocumentMoniker": "GUI\\frmChangePW.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmChangePW.cs",
+              "RelativeToolTip": "GUI\\frmChangePW.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAA+wBgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:25:53.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "frmRegister.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmRegister.cs",
+              "RelativeDocumentMoniker": "GUI\\frmRegister.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmRegister.cs",
+              "RelativeToolTip": "GUI\\frmRegister.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAjwBgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T11:07:04.155Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "frmGunaLogin.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmGunaLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\frmGunaLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmGunaLogin.cs",
+              "RelativeToolTip": "GUI\\frmGunaLogin.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAD4vzoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T10:31:41.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "FrmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\FrmLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\FrmLogin.cs",
+              "RelativeToolTip": "GUI\\FrmLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T10:03:13.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "frmGunaLogin.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmGunaLogin.cs",
+              "RelativeDocumentMoniker": "GUI\\frmGunaLogin.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmGunaLogin.cs [Design]",
+              "RelativeToolTip": "GUI\\frmGunaLogin.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T10:05:17.239Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "VietQRDTO.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\VietQRDTO.cs",
+              "RelativeDocumentMoniker": "DTO\\VietQRDTO.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\VietQRDTO.cs",
+              "RelativeToolTip": "DTO\\VietQRDTO.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAmwBgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T15:57:33.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "KhachHangBLL.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\BLL\\KhachHangBLL.cs",
+              "RelativeDocumentMoniker": "BLL\\KhachHangBLL.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\BLL\\KhachHangBLL.cs",
+              "RelativeToolTip": "BLL\\KhachHangBLL.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBQAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T14:47:09.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "KhachHangDAL.cs",
+              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\KhachHangDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\KhachHangDAL.cs",
+              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DAL\\KhachHangDAL.cs",
+              "RelativeToolTip": "DAL\\KhachHangDAL.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAuwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T14:35:33.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "KhachHangDTO.cs",
               "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\KhachHangDTO.cs",
               "RelativeDocumentMoniker": "DTO\\KhachHangDTO.cs",
@@ -71,41 +402,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 21,
               "Title": "PhimDTO.cs",
               "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\PhimDTO.cs",
               "RelativeDocumentMoniker": "DTO\\PhimDTO.cs",
               "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\DTO\\PhimDTO.cs",
               "RelativeToolTip": "DTO\\PhimDTO.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA5wBUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAzwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T12:41:51.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 22,
               "Title": "frmReportDSKH.cs",
               "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\Report\\frmReportDSKH.cs",
               "RelativeDocumentMoniker": "GUI\\Report\\frmReportDSKH.cs",
               "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\Report\\frmReportDSKH.cs",
               "RelativeToolTip": "GUI\\Report\\frmReportDSKH.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T12:31:32.09Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmDanhSachKhachHang.cs",
-              "DocumentMoniker": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmDanhSachKhachHang.cs",
-              "RelativeDocumentMoniker": "GUI\\frmDanhSachKhachHang.cs",
-              "ToolTip": "C:\\Users\\chuon\\source\\repos\\DoAnCongNgheNet_QuanLyBanVeRapPhim\\GUI\\frmDanhSachKhachHang.cs",
-              "RelativeToolTip": "GUI\\frmDanhSachKhachHang.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAowGoAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T07:58:12.4Z",
               "EditorCaption": ""
             }
           ]

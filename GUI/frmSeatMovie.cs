@@ -81,12 +81,14 @@ namespace GUI
 
                 for (int col = 0; col < cols; col++)
                 {
+
                     Button seatButton = new Button();
                     seatButton.Width = buttonSeatSize;
                     seatButton.Height = buttonSeatSize;
                     //seatButton.Text = $"{row + 1}-{col + 1}"; // Số hàng và số ghế
                     string seatLabel = $"{(char)('A' + row)}{col + 1}";
                     seatButton.Text = seatLabel;
+           
 
                     int seatId = row * cols + col + 1; // Assuming IDs are numeric and start from 0
                     seatMapping[seatLabel] = seatId;
@@ -94,7 +96,7 @@ namespace GUI
                     bool val = false;
                     foreach (var item in gheDaDat)
                     {
-                        if (item.Equals("Ghe_"+seatId.ToString()))
+                        if (item.Equals("Ghe_" + seatId.ToString()))
                         {
                             // Vô hiệu hóa ghế đã đặt
                             val = true;
@@ -118,6 +120,7 @@ namespace GUI
                         seatButton.Click += SeatButton_Click;
                     }
 
+
                     seatButton.Margin = new Padding(5);
 
                     seatButton.Cursor = Cursors.Hand;
@@ -139,11 +142,13 @@ namespace GUI
             seatButton.FlatStyle = FlatStyle.Flat;
             seatButton.FlatAppearance.BorderSize = 2;
             seatButton.FlatAppearance.BorderColor = Color.SkyBlue;
-            seatButton.FlatAppearance.MouseOverBackColor = Color.LightGreen;
+            seatButton.FlatAppearance.MouseOverBackColor = Color.LightCyan; // Màu nền khi hover
+            seatButton.FlatAppearance.MouseDownBackColor = Color.LightYellow; // Màu khi click
 
-            //Crucially, apply rounded corners *after* other properties.
-            seatButton.Region = new Region(Helpers.GetRoundedRectangle(seatButton.Width, seatButton.Height));
+            // Áp dụng bo góc cho ghế
+            seatButton.Region = new Region(Helpers.GetRoundedRectangle(seatButton.Width, seatButton.Height, 15)); // Bo góc 15px
         }
+
         private void SeatButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -154,6 +159,12 @@ namespace GUI
                 clickedButton.BackColor = Color.Yellow; // Ghế đã đặt
                 selectedSeats.Add(seatNumber);  // Thêm ghế vào danh sách đã đặt
             }
+            else if (clickedButton.BackColor == Color.Yellow)
+            {
+                clickedButton.BackColor = Color.Green; // Đổi lại sang màu xanh
+                selectedSeats.Remove(seatNumber); // Xóa ghế khỏi danh sách đã chọn
+            }
+
             else if (clickedButton.BackColor == Color.Red)
             {
                 clickedButton.BackColor = Color.Green; // Hủy đặt ghế
@@ -191,14 +202,13 @@ namespace GUI
             lblTongTien.Location = new Point(30, 430);
             lbIhKH.Location = new Point(30, 500);
             lbIhKH.Text = "Chọn Id Khách Hàng";
-            cboIdKH.Location = new Point(30, 550);
 
 
             // RadioButtons cho các loại vé
-            rbtnChild.Location = new Point(30, 600);
+            rbtnChild.Location = new Point(30, 550);
 
-          rbtnStudent.Location = new Point(30, 630);
-            rbtnAdult.Location = new Point(30, 660);
+            rbtnStudent.Location = new Point(30, 580);
+            rbtnAdult.Location = new Point(30, 610);
             rbtnAdult.Checked = true;
             // Thêm sự kiện CheckedChanged để cập nhật loại vé
             rbtnChild.CheckedChanged += (s, e) =>
@@ -222,7 +232,7 @@ namespace GUI
                 UpdateTotalPrice();
             };
 
-        
+            cboIdKH.Location = new Point(30, 650);
 
 
         }
@@ -275,7 +285,7 @@ namespace GUI
                         TongTien = totalPrice,
                         IdKhachHang = cboIdKH.SelectedValue.ToString(),
                         loaiVP = GetTicketType()
-                        
+
 
 
                     };
@@ -314,6 +324,12 @@ namespace GUI
                 if (result == DialogResult.OK)
                 {
                     this.Hide();
+                    KhachHangDTO kh = (KhachHangDTO)cboIdKH.SelectedItem;
+                    //  cf.idKh = cboIdKH.SelectedValue.ToString();
+                    if (kh != null)
+                    {
+                        cf.idKh = kh.Id;
+                    }
                     // Người dùng chọn "OK", thực hiện thanh toán và mở form cf
                     cf.ShowDialog();
                 }
@@ -383,13 +399,150 @@ namespace GUI
             seats = new Button[rows, cols];
             AdjustFlowLayoutPanelSize();
             flowLayoutPanelSeats.BackColor = Color.LightGray;
-            List<KhachHangDTO> khs= khachHangBLL.GetAllKhachHang();
-            cboIdKH.DataSource= khs;
+            List<KhachHangDTO> khs = khachHangBLL.GetAllKhachHang();
+            cboIdKH.DataSource = khs;
             cboIdKH.ValueMember = "Id";
             cboIdKH.DisplayMember = "Id";
             cboIdKH.SelectedIndex = -1;
         }
 
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            if (selectedSeats.Count > 0)
+            {
+                List<MuaHangDTO> vps = new List<MuaHangDTO>();
+                foreach (var item in selectedSeats)
+                {
+                    MuaHangDTO vp = new MuaHangDTO
+                    {
+                        TenPhim = lblThongtin.Text,
+                        LoaiVePhimSTR = selectedTicketType.ToString(),
+                        TienVePhim = ticketPrices[selectedTicketType],
+                        MaGheNgoi = item.ToString(),
+                        MaPhong = tenPh.ToString(),
+                        SuatChieu = lc.ThoiGianChieu
+
+                    };
+                    vps.Add(vp);
+                }
+
+                frmConfirm cf = new frmConfirm(vps);
+                DatVeDTO datVeDTO;
+                // Tạo đối tượng DatVeDTO với thông tin cần thiết
+                if (cboIdKH.SelectedIndex > 0)
+                {
+                    _idKH = cboIdKH.SelectedValue.ToString();
+                    datVeDTO = new DatVeDTO
+                    {
+                        //IdKhachHang = _userName, 
+                        IdLichChieuPhim = idLichCP,
+                        GiaVePhim = lc.GiaVePhim,
+                        TongTien = totalPrice,
+                        IdKhachHang = cboIdKH.SelectedValue.ToString(),
+                        loaiVP = GetTicketType()
+
+
+
+                    };
+
+                    cf.dt = datVeDTO;
+
+
+
+                }
+                else
+                {
+                    datVeDTO = new DatVeDTO
+                    {
+                        //IdKhachHang = _userName, 
+                        IdLichChieuPhim = idLichCP,
+                        GiaVePhim = lc.GiaVePhim,
+                        TongTien = totalPrice,
+                        loaiVP = GetTicketType()
+
+
+                    };
+                    cf.dt = datVeDTO;
+
+                }
+
+                List<string> seatIds = selectedSeats.Select(seat => seatMapping[seat].ToString()).ToList();
+                cf.seats = seatIds;
+
+
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn thanh toán không?",
+                                                        "Xác nhận thanh toán",
+                                                        MessageBoxButtons.OKCancel,
+                                                        MessageBoxIcon.Question);
+
+                // Kiểm tra phản hồi của người dùng
+                if (result == DialogResult.OK)
+                {
+                    this.Hide();
+                    KhachHangDTO kh = (KhachHangDTO)cboIdKH.SelectedItem;
+                    //  cf.idKh = cboIdKH.SelectedValue.ToString();
+                    if (kh != null)
+                    {
+                        cf.idKh = kh.Id;
+                    }
+                    // Người dùng chọn "OK", thực hiện thanh toán và mở form cf
+                    cf.ShowDialog();
+                }
+                else
+                {
+                    // Người dùng chọn "Cancel", không làm gì cả (hoặc có thể hiển thị thông báo)
+                    MessageBox.Show("Thanh toán đã bị hủy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    foreach (string seat in selectedSeats)
+                    {
+                        // Find the corresponding button for the seat
+                        Button seatButton = flowLayoutPanelSeats.Controls
+                            .OfType<Button>()
+                            .FirstOrDefault(b => b.Text == seat);
+
+                        if (seatButton != null)
+                        {
+                            seatButton.BackColor = Color.Green; // Change color to blue for booked seats
+                        }
+                    }
+
+                    selectedSeats.Clear();
+                }
+
+
+                //string message = "Bạn đã chọn các ghế: " + string.Join(", ", selectedSeats);
+                //HoaDonDTO result = phimBll.DatVeXemPhim(datVeDTO, seatIds,_userName); // Pass the list of IDs
+
+                //if (result != null)
+                //{
+                //    // Đặt màu xanh cho các ghế đã chọn
+                //    foreach (string seat in selectedSeats)
+                //    {
+                //        // Find the corresponding button for the seat
+                //        Button seatButton = flowLayoutPanelSeats.Controls
+                //            .OfType<Button>()
+                //            .FirstOrDefault(b => b.Text == seat);
+
+                //        if (seatButton != null)
+                //        {
+                //            seatButton.BackColor = Color.Blue; // Change color to blue for booked seats
+                //        }
+                //    }
+                //    this.Close();
+                //    printPreviewDialog1.Document = printDocument1;
+                //    printPreviewDialog1.ShowDialog();
+
+                //    //   MessageBox.Show(message, "Xác nhận đặt vé", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Đặt vé không thành công. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //}
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất một ghế.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 
 

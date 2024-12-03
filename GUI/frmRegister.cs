@@ -22,7 +22,8 @@ namespace GUI
 
         private void label4_DoubleClick(object sender, EventArgs e)
         {
-            FrmLogin login = new FrmLogin();
+            //FrmLogin login = new FrmLogin();
+            frmGunaLogin login = new frmGunaLogin();
             login.Show();
 
             this.Hide();
@@ -58,7 +59,10 @@ namespace GUI
                 if (dialogResult == DialogResult.Yes)
                 {
                     // Mở lại màn hình đăng nhập và tự động nhập tên đăng nhập và mật khẩu
-                    FrmLogin loginForm = new FrmLogin();
+                    //FrmLogin loginForm = new FrmLogin();
+                    //loginForm.SetUserCredentials(taiKhoan.UserName, taiKhoan.PassWord);
+                    //loginForm.Show();   
+                    frmGunaLogin loginForm = new frmGunaLogin();
                     loginForm.SetUserCredentials(taiKhoan.UserName, taiKhoan.PassWord);
                     loginForm.Show();
 
