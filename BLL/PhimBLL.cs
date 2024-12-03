@@ -60,7 +60,6 @@ namespace BLL
             return _phimDAL.GetListMovie();
         }
 
-<<<<<<< HEAD
         public List<PhimDTO> TimPhimTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
         {
             return _phimDAL.TimPhimTheoKhoangThoiGian(startDate, endDate);
@@ -77,12 +76,10 @@ namespace BLL
 
         }
 
-=======
         public List<PhimDTO> GetListMovieList()
         {
-            return phimDAL.GetListMovieList(); // Gọi hàm từ DAL để lấy danh sách phim
+            return _phimDAL.GetListMovieList(); // Gọi hàm từ DAL để lấy danh sách phim
         }
->>>>>>> ba3e5735ec50aa78d57eb9a1a4a2aefb09d84f69
         public bool AddMovie(PhimDTO phim)
         {
             return _phimDAL.AddMovie(phim); 

@@ -8,7 +8,7 @@ namespace DTO
 {
     public class HoaDonDTO
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string TenKH { get; set; }
         public string TenPhim { get; set; }
 

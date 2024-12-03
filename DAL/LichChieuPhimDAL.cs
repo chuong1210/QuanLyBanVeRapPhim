@@ -42,7 +42,7 @@ namespace DAL
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@ThoiGianChieu", lichChieu.ThoiGianChieu);
-                        command.Parameters.AddWithValue("@IdPhong", lichChieu.IdPhong);
+                        command.Parameters.AddWithValue("@IdPhong", lichChieu.idPhong);
                         command.Parameters.AddWithValue("@GiaVePhim", lichChieu.GiaVePhim);
                         command.Parameters.AddWithValue("@idPhim", lichChieu.IdPhim);
                         command.Parameters.AddWithValue("@TrangThaiChieu", lichChieu.TrangThaiChieu);
@@ -98,7 +98,7 @@ namespace DAL
                 {
                     command.Parameters.AddWithValue("@Id", lichChieu.Id);
                     command.Parameters.AddWithValue("@ThoiGianChieu", lichChieu.ThoiGianChieu);
-                    command.Parameters.AddWithValue("@IdPhong", lichChieu.IdPhong);
+                    command.Parameters.AddWithValue("@IdPhong", lichChieu.idPhong);
                     command.Parameters.AddWithValue("@GiaVePhim", lichChieu.GiaVePhim);
                     command.Parameters.AddWithValue("@idPhim", lichChieu.IdPhim);
                     command.Parameters.AddWithValue("@TrangThaiChieu", lichChieu.TrangThaiChieu);

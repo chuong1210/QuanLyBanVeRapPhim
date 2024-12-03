@@ -109,7 +109,7 @@ namespace GUI.DataControl.DataUser
             {
                 ThoiGianChieu = dtmThoiGianChieu.Value,
                 IdPhim = int.Parse(cboPhim.SelectedValue.ToString()),
-                IdPhong = int.Parse(cboPhong.SelectedValue.ToString()),
+                idPhong = cboPhong.SelectedValue.ToString(),
                 GiaVePhim = decimal.Parse(txtGiaVe.Text),
                 TrangThaiChieu = int.Parse(txtTrangThaiChoNgoi.Text)
             };
@@ -156,9 +156,9 @@ namespace GUI.DataControl.DataUser
                 // Lấy thông tin lịch chiếu từ các điều khiển trên form
                 LichChieuPhimDTO lichChieu = new LichChieuPhimDTO
                 {
-                    Id = int.Parse(txtMaLichChieu.Text),  // ID lịch chiếu cần sửa
+                    Id = txtMaLichChieu.Text,  // ID lịch chiếu cần sửa
                     ThoiGianChieu = dtmThoiGianChieu.Value,  // Thời gian chiếu mới
-                    IdPhong = int.Parse(cboPhong.SelectedValue.ToString()),  // Phòng chiếu
+                    idPhong = cboPhong.SelectedValue.ToString(),  // Phòng chiếu
                     GiaVePhim = decimal.Parse(txtGiaVe.Text),  // Giá vé
                     IdPhim = int.Parse(cboPhim.SelectedValue.ToString()),  // Phim
                     TrangThaiChieu = int.Parse(txtTrangThaiChoNgoi.Text)  // Trạng thái chiếu

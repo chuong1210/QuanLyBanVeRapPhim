@@ -487,7 +487,6 @@ namespace DAL
 
             return (soHangGhe, soCotGhe,tenPhong);
         }
-
         public HoaDonDTO LayThongTinHoaDon(int idHoaDon)
         {
             HoaDonDTO hoaDon = new HoaDonDTO();
@@ -507,6 +506,15 @@ namespace DAL
             JOIN Phim phim ON lcp.idPhim = phim.id
             WHERE hd.Id = @idHoaDon";
 
+                    string query2 = @" SELECT hd.Id, phim.TenPhim, hd.NgayMua, hd.TongTien
+ FROM HoaDon hd
+
+ JOIN ChiTietHoaDon cthd ON hd.Id = cthd.idHoaDon
+ JOIN VePhim vp ON cthd.idVePhim = vp.id
+ JOIN LichChieuPhim lcp ON vp.idLichChieuPhim = lcp.id
+ JOIN Phim phim ON lcp.idPhim = phim.id
+ WHERE hd.Id = @idHoaDon";
+
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@idHoaDon", idHoaDon);
@@ -515,7 +523,7 @@ namespace DAL
                         {
                             if (reader.Read())
                             {
-                                hoaDon.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                                hoaDon.Id = reader.GetOrdinal("Id").ToString();
                                 hoaDon.TenKH = reader["TenKhachHang"].ToString();
                                 hoaDon.TenPhim = reader["TenPhim"].ToString();
                                 hoaDon.NgayMua = reader.GetDateTime(reader.GetOrdinal("NgayMua"));
@@ -676,7 +684,7 @@ namespace DAL
             string query = "SELECT * FROM Phim"; // Truy vấn để lấy danh sách phim
             List<PhimDTO> listPhim = new List<PhimDTO>();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -688,7 +696,7 @@ namespace DAL
                         {
                             PhimDTO phim = new PhimDTO
                             {
-                                Id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : (int)reader["Id"], // Kiểm tra DBNull
+                                Id =  reader["Id"].ToString(), // Kiểm tra DBNull
                                 TenPhim = reader.IsDBNull(reader.GetOrdinal("TenPhim")) ? string.Empty : reader["TenPhim"].ToString(),
                                 MoTa = reader.IsDBNull(reader.GetOrdinal("MoTa")) ? string.Empty : reader["MoTa"].ToString(),
                                 ThoiLuong = reader.IsDBNull(reader.GetOrdinal("ThoiLuong")) ? 0 : Convert.ToSingle(reader["ThoiLuong"]),
@@ -699,7 +707,7 @@ namespace DAL
                                 DienVien = reader.IsDBNull(reader.GetOrdinal("DienVien")) ? string.Empty : reader["DienVien"].ToString(),
                                 NamSX = reader.IsDBNull(reader.GetOrdinal("NamSX")) ? 0 : (int)reader["NamSX"],
                                 // Kiểm tra nếu cột Poster là DBNull hoặc null
-                                Poster = reader.IsDBNull(reader.GetOrdinal("PosterPath")) ? null : reader["PosterPath"] as byte[]
+                                Poster = reader.IsDBNull(reader.GetOrdinal("PosterPath")) ? string.Empty : reader["PosterPath"].ToString()
                             };
                             listPhim.Add(phim);
                         }
