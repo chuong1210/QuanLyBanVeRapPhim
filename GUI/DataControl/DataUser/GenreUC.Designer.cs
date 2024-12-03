@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnShowGenre = new Button();
             btnDeleteGenre = new Button();
             btnUpdateGenre = new Button();
             btnInsertGenre = new Button();
@@ -48,7 +47,6 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnShowGenre);
             panel1.Controls.Add(btnDeleteGenre);
             panel1.Controls.Add(btnUpdateGenre);
             panel1.Controls.Add(btnInsertGenre);
@@ -57,32 +55,25 @@
             panel1.Size = new Size(1354, 65);
             panel1.TabIndex = 0;
             // 
-            // btnShowGenre
-            // 
-            btnShowGenre.Location = new Point(558, 0);
-            btnShowGenre.Name = "btnShowGenre";
-            btnShowGenre.Size = new Size(94, 63);
-            btnShowGenre.TabIndex = 7;
-            btnShowGenre.Text = "Xem";
-            btnShowGenre.UseVisualStyleBackColor = true;
-            // 
             // btnDeleteGenre
             // 
-            btnDeleteGenre.Location = new Point(373, 0);
+            btnDeleteGenre.Location = new Point(590, -1);
             btnDeleteGenre.Name = "btnDeleteGenre";
             btnDeleteGenre.Size = new Size(94, 63);
             btnDeleteGenre.TabIndex = 6;
-            btnDeleteGenre.Text = "Sửa";
+            btnDeleteGenre.Text = "Xoá";
             btnDeleteGenre.UseVisualStyleBackColor = true;
+            btnDeleteGenre.Click += btnDeleteGenre_Click;
             // 
             // btnUpdateGenre
             // 
-            btnUpdateGenre.Location = new Point(188, 0);
+            btnUpdateGenre.Location = new Point(315, 0);
             btnUpdateGenre.Name = "btnUpdateGenre";
             btnUpdateGenre.Size = new Size(94, 63);
             btnUpdateGenre.TabIndex = 5;
-            btnUpdateGenre.Text = "Xoá";
+            btnUpdateGenre.Text = "Sửa";
             btnUpdateGenre.UseVisualStyleBackColor = true;
+            btnUpdateGenre.Click += btnUpdateGenre_Click;
             // 
             // btnInsertGenre
             // 
@@ -92,6 +83,7 @@
             btnInsertGenre.TabIndex = 4;
             btnInsertGenre.Text = "Thêm";
             btnInsertGenre.UseVisualStyleBackColor = true;
+            btnInsertGenre.Click += btnInsertGenre_Click;
             // 
             // panel2
             // 
@@ -108,7 +100,7 @@
             // 
             // txtDescriptionGenre
             // 
-            txtDescriptionGenre.Location = new Point(181, 387);
+            txtDescriptionGenre.Location = new Point(178, 358);
             txtDescriptionGenre.Multiline = true;
             txtDescriptionGenre.Name = "txtDescriptionGenre";
             txtDescriptionGenre.Size = new Size(272, 202);
@@ -117,7 +109,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label3.Location = new Point(15, 386);
+            label3.Location = new Point(15, 358);
             label3.Name = "label3";
             label3.Size = new Size(122, 38);
             label3.TabIndex = 17;
@@ -132,7 +124,7 @@
             // 
             // txtGenreID
             // 
-            txtGenreID.Location = new Point(181, 77);
+            txtGenreID.Location = new Point(178, 107);
             txtGenreID.Name = "txtGenreID";
             txtGenreID.Size = new Size(275, 27);
             txtGenreID.TabIndex = 15;
@@ -149,7 +141,7 @@
             // label1
             // 
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label1.Location = new Point(15, 76);
+            label1.Location = new Point(15, 107);
             label1.Name = "label1";
             label1.Size = new Size(200, 36);
             label1.TabIndex = 13;
@@ -163,7 +155,7 @@
             dgtvGenre.Name = "dgtvGenre";
             dgtvGenre.RowHeadersWidth = 51;
             dgtvGenre.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgtvGenre.Size = new Size(863, 637);
+            dgtvGenre.Size = new Size(860, 637);
             dgtvGenre.TabIndex = 2;
             // 
             // GenreUC
@@ -187,7 +179,6 @@
         private Panel panel1;
         private Panel panel2;
         private DataGridView dgtvGenre;
-        private Button btnShowGenre;
         private Button btnDeleteGenre;
         private Button btnUpdateGenre;
         private Button btnInsertGenre;

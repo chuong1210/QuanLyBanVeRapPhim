@@ -8,7 +8,7 @@ namespace DTO
 {
     public class PhongChieuDTO
     {
-        public string id { get; set; }
+        public int id { get; set; }
         public string TenPhong { get; set; }
         public string idManHinh { get; set; }
         public int SoGheNgoi { get; set; }

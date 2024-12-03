@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            textBox1 = new TextBox();
+            lblactor = new Label();
+            txtActor = new TextBox();
+            txtGenre = new TextBox();
             dtmMovieEnd = new DateTimePicker();
             dtmMovieStart = new DateTimePicker();
             txtMovieYear = new TextBox();
@@ -65,7 +67,9 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(lblactor);
+            panel1.Controls.Add(txtActor);
+            panel1.Controls.Add(txtGenre);
             panel1.Controls.Add(dtmMovieEnd);
             panel1.Controls.Add(dtmMovieStart);
             panel1.Controls.Add(txtMovieYear);
@@ -93,13 +97,31 @@
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
-            // textBox1
+            // lblactor
             // 
-            textBox1.Location = new Point(140, 150);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 78);
-            textBox1.TabIndex = 54;
+            lblactor.AutoSize = true;
+            lblactor.BorderStyle = BorderStyle.FixedSingle;
+            lblactor.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblactor.Location = new Point(10, 197);
+            lblactor.Name = "lblactor";
+            lblactor.Size = new Size(102, 27);
+            lblactor.TabIndex = 58;
+            lblactor.Text = "Diễn viên:";
+            lblactor.Click += label11_Click;
+            // 
+            // txtActor
+            // 
+            txtActor.Location = new Point(138, 197);
+            txtActor.Name = "txtActor";
+            txtActor.Size = new Size(237, 27);
+            txtActor.TabIndex = 57;
+            // 
+            // txtGenre
+            // 
+            txtGenre.Location = new Point(138, 96);
+            txtGenre.Name = "txtGenre";
+            txtGenre.Size = new Size(241, 27);
+            txtGenre.TabIndex = 56;
             // 
             // dtmMovieEnd
             // 
@@ -145,7 +167,7 @@
             // 
             // txtMovieDescription
             // 
-            txtMovieDescription.Location = new Point(138, 99);
+            txtMovieDescription.Location = new Point(138, 144);
             txtMovieDescription.Name = "txtMovieDescription";
             txtMovieDescription.Size = new Size(241, 27);
             txtMovieDescription.TabIndex = 44;
@@ -172,6 +194,7 @@
             btnUpLoadPtr.TabIndex = 41;
             btnUpLoadPtr.Text = "Chọn hình ảnh";
             btnUpLoadPtr.UseVisualStyleBackColor = true;
+            btnUpLoadPtr.Click += btnUpLoadPtr_Click;
             // 
             // ptrMovie
             // 
@@ -206,7 +229,7 @@
             label5.Name = "label5";
             label5.Size = new Size(122, 38);
             label5.TabIndex = 37;
-            label5.Text = "Sản xuất:";
+            label5.Text = "Sản xuất";
             // 
             // label6
             // 
@@ -238,7 +261,7 @@
             // label4
             // 
             label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label4.Location = new Point(10, 142);
+            label4.Location = new Point(10, 98);
             label4.Name = "label4";
             label4.Size = new Size(122, 38);
             label4.TabIndex = 33;
@@ -247,7 +270,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label3.Location = new Point(10, 98);
+            label3.Location = new Point(10, 143);
             label3.Name = "label3";
             label3.Size = new Size(122, 38);
             label3.TabIndex = 32;
@@ -299,6 +322,7 @@
             btnUpdateMovie.TabIndex = 10;
             btnUpdateMovie.Text = "Sửa";
             btnUpdateMovie.UseVisualStyleBackColor = true;
+            btnUpdateMovie.Click += btnUpdateMovie_Click;
             // 
             // btnDeleteMovie
             // 
@@ -308,6 +332,7 @@
             btnDeleteMovie.TabIndex = 9;
             btnDeleteMovie.Text = "Xoá";
             btnDeleteMovie.UseVisualStyleBackColor = true;
+            btnDeleteMovie.Click += btnDeleteMovie_Click;
             // 
             // btnInsertMovie
             // 
@@ -317,6 +342,7 @@
             btnInsertMovie.TabIndex = 8;
             btnInsertMovie.Text = "Thêm";
             btnInsertMovie.UseVisualStyleBackColor = true;
+            btnInsertMovie.Click += btnInsertMovie_Click;
             // 
             // dtgvMovie
             // 
@@ -324,6 +350,7 @@
             dtgvMovie.Location = new Point(-4, 415);
             dtgvMovie.Name = "dtgvMovie";
             dtgvMovie.RowHeadersWidth = 51;
+            dtgvMovie.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvMovie.Size = new Size(1408, 311);
             dtgvMovie.TabIndex = 2;
             // 
@@ -336,6 +363,7 @@
             Controls.Add(panel1);
             Name = "MovieUC";
             Size = new Size(1410, 726);
+            Load += MovieUC_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptrMovie).EndInit();
@@ -374,6 +402,8 @@
         private TextBox txtMovieDescription;
         private TextBox txtMovieName;
         private TextBox txtMovieID;
-        private TextBox textBox1;
+        private TextBox txtGenre;
+        private Label lblactor;
+        private TextBox txtActor;
     }
 }

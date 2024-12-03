@@ -17,6 +17,7 @@ using System.Reflection;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e57ef09fe22a4cbd900306ad48c30118b69c745")]
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e65fc6d20ff120b7db4c8d103addd6a21690ae3")]
@@ -27,6 +28,9 @@ using System.Reflection;
 =======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e2f98536287980d4dee6fb470630aaad2c044560")]
 >>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de909eefb8d25218138fce9ecd55245b3b21bd1c")]
+>>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4
 [assembly: System.Reflection.AssemblyProductAttribute("DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

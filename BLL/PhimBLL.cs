@@ -60,6 +60,7 @@ namespace BLL
         {
             return _phimDAL.GetListMovie();
         }
+<<<<<<< HEAD
      
 =======
         public List<PhimDTO> TimPhimTheoKhoangThoiGian(DateTime startDate, DateTime endDate)
@@ -78,5 +79,37 @@ namespace BLL
 
         }
 >>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
+=======
+        public bool AddMovie(PhimDTO phim)
+        {
+            return phimDAL.AddMovie(phim); 
+        }
+        public bool UpdateMovie(PhimDTO phim)
+        {
+            try
+            {
+                // Gọi DAL để cập nhật phim vào cơ sở dữ liệu
+                PhimDAL phimDAL = new PhimDAL();
+                return phimDAL.UpdateMovie(phim); // Chỉ cập nhật thông tin phim, không bao gồm ảnh
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool DeleteMovie(int movieID)
+        {
+            try
+            {
+                // Gọi DAL để xóa phim trong cơ sở dữ liệu
+                PhimDAL phimDAL = new PhimDAL();
+                return phimDAL.DeleteMovie(movieID); // Truyền ID phim cần xóa
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+>>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4
     }
 }

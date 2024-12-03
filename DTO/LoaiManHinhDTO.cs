@@ -8,7 +8,7 @@ namespace DTO
 {
     public class LoaiManHinhDTO
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string TenMH { get; set; }
         public int KichThuoc { get; set; } = 20; // Giá trị mặc định
     }

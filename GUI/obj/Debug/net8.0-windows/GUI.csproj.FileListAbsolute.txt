@@ -82,6 +82,7 @@ E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\refint\GUI.dll
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.pdb
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.genruntimeconfig.cache
 E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\ref\GUI.dll
+<<<<<<< HEAD
 >>>>>>> 1a806ffb046067e01861cf97755ce9a583888bd0
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.deps.json
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\bin\Debug\net8.0-windows\BLL.runtimeconfig.json
@@ -375,3 +376,8 @@ C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.frmReportThongKeHoaDonKH.resources
 C:\Users\chuon\source\repos\DoAnCongNgheNet_QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.Report.ReportThongKeHDKH.resources
 >>>>>>> 2a9215deb1179e9f12a97dc817b54fd6039d7fbd
+=======
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.GenreUC.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.MovieUC.resources
+E:\.NET\Demo\QuanLyBanVeRapPhim\GUI\obj\Debug\net8.0-windows\GUI.DataControl.DataUser.ShowTimeUC.resources
+>>>>>>> 6683445631f7c1d1cb20305a48718913491dc7d4

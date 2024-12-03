@@ -32,39 +32,116 @@ namespace DAL
             }
             return dataTable; // Trả về DataTable chứa danh sách rạp
         }
-        public List<TheLoaiDTO> GetListGenreL()
+        public List<TheLoaiDTO> GetListGenreList()
         {
-            List<TheLoaiDTO> genreList = new List<TheLoaiDTO>();
+            List<TheLoaiDTO> theLoaiList = new List<TheLoaiDTO>();
 
-            // Thay đổi chuỗi kết nối cho phù hợp với cơ sở dữ liệu của bạn
-            string connectionString = "your_connection_string_here"; // Cập nhật chuỗi kết nối
-            string query = "SELECT * FROM theloai";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(query, connection);
-
-                try
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    connection.Open();
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable data = new DataTable();
-                    adapter.Fill(data);
+                    conn.Open();
 
-                    foreach (DataRow item in data.Rows)
+                    // Câu truy vấn SQL để lấy danh sách thể loại
+                    string query = "SELECT id, TenTheLoai, MoTa FROM TheLoai"; // Thay đổi tên bảng nếu cần
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        TheLoaiDTO genre = new TheLoaiDTO(item);
-                        genreList.Add(genre);
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        // Đọc dữ liệu và chuyển sang danh sách các đối tượng DTO
+                        while (reader.Read())
+                        {
+                            TheLoaiDTO theLoai = new TheLoaiDTO
+                            {
+                                Id = reader["id"] != DBNull.Value ? int.Parse(reader["id"].ToString()) : 0, // Kiểm tra null trước khi ép kiểu
+                                TenTheLoai = reader["TenTheLoai"].ToString(),
+                                MoTa = reader["MoTa"].ToString() ?? string.Empty  // Kiểm tra null
+                            };
+
+                            theLoaiList.Add(theLoai);
+                        }
                     }
                 }
-                catch (SqlException ex)
-                {
-                    // Xử lý lỗi nếu cần thiết
-                    Console.WriteLine($"An error occurred: {ex.Message}");
-                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy danh sách thể loại: " + ex.Message);
             }
 
-            return genreList;
+            return theLoaiList;
+        }
+        public bool ThemTheLoai(TheLoaiDTO theLoai)
+        {
+            try
+            {
+                string query = "INSERT INTO TheLoai (TenTheLoai, MoTa) VALUES (@TenTheLoai, @MoTa)";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TenTheLoai", theLoai.TenTheLoai);
+                        cmd.Parameters.AddWithValue("@MoTa", theLoai.MoTa);
+                        int result = cmd.ExecuteNonQuery();
+                        return result > 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Xử lý lỗi nếu có
+                return false;
+            }
+        }
+        public bool SuaTheLoai(TheLoaiDTO theLoai)
+        {
+            try
+            {
+                string query = "UPDATE TheLoai SET TenTheLoai = @TenTheLoai, MoTa = @MoTa WHERE id = @Id";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TenTheLoai", theLoai.TenTheLoai);
+                        cmd.Parameters.AddWithValue("@MoTa", theLoai.MoTa);
+                        cmd.Parameters.AddWithValue("@Id", theLoai.Id);
+                        int result = cmd.ExecuteNonQuery();
+                        return result > 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Xử lý lỗi nếu có
+                return false;
+            }
+        }
+        public bool XoaTheLoai(string id)
+        {
+            try
+            {
+                string query = "DELETE FROM TheLoai WHERE id = @Id";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        int result = cmd.ExecuteNonQuery();
+                        return result > 0;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                // Xử lý lỗi nếu có
+                return false;
+            }
         }
     }
 }

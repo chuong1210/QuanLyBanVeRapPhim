@@ -51,5 +51,13 @@ namespace GUI.DataControl.DataAdmin
             movieUC.Dock = DockStyle.Fill;
             pnDataUC.Controls.Add(movieUC);
         }
+
+        private void btnDate_Click(object sender, EventArgs e)
+        {
+            pnDataUC.Controls.Clear();
+            ShowTimeUC showtimeUC = new ShowTimeUC();
+            showtimeUC.Dock = DockStyle.Fill;
+            pnDataUC.Controls.Add(showtimeUC);
+        }
     }
 }

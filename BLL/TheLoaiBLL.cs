@@ -16,9 +16,22 @@ namespace BLL
         {
             return tlDAL.GetListGenre();
         }
-        public List<TheLoaiDTO> GetListGenreL()
+        public List<TheLoaiDTO> GetListGenreList()
         {
-            return tlDAL.GetListGenreL();
+            // Gọi phương thức từ DAL để lấy dữ liệu
+            return tlDAL.GetListGenreList();
+        }
+        public bool ThemTheLoai(TheLoaiDTO theLoai)
+        {
+            return tlDAL.ThemTheLoai(theLoai);
+        }
+        public bool SuaTheLoai(TheLoaiDTO theLoai)
+        {
+            return tlDAL.SuaTheLoai(theLoai);
+        }
+        public bool XoaTheLoai(string id)
+        {
+            return tlDAL.XoaTheLoai(id);
         }
     }
 }
