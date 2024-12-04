@@ -55,7 +55,7 @@ namespace DAL
                                 SoGheNgoi = reader.IsDBNull(reader.GetOrdinal("SoGheNgoi")) ? 0 : (int)reader["SoGheNgoi"], // Số ghế ngồi
                                 TrangThaiChoNgoi = reader.IsDBNull(reader.GetOrdinal("TrangThaiChoNgoi")) ? 1 : (int)reader["TrangThaiChoNgoi"], // Trạng thái chỗ ngồi
                                 SoHangGhe = reader.IsDBNull(reader.GetOrdinal("SoHangGhe")) ? 0 : (int)reader["SoHangGhe"], // Số hàng ghế
-                                SoGheMotHang = reader.IsDBNull(reader.GetOrdinal("SoGheMotHang")) ? 0 : (int)reader["SoGheMotHang"] // Số ghế mỗi hàng
+                                SoGheMotHang = reader.IsDBNull(reader.GetOrdinal("SoCotGhe")) ? 0 : (int)reader["SoCotGhe"] // Số ghế mỗi hàng
                             };
                             listPhongChieu.Add(phongChieu);
                         }
@@ -88,7 +88,7 @@ namespace DAL
         {
             try
             {
-                string query = @"INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, TrangThaiChoNgoi, SoHangGhe, SoGheMotHang) 
+                string query = @"INSERT INTO PhongChieu (TenPhong, idManHinh, SoGheNgoi, TrangThaiChoNgoi, SoHangGhe, SoCotGhe) 
                          VALUES (@TenPhong, @idManHinh, @SoGheNgoi, @TrangThaiChoNgoi, @SoHangGhe, @SoGheMotHang)";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -101,7 +101,7 @@ namespace DAL
                         cmd.Parameters.AddWithValue("@SoGheNgoi", phongChieu.SoGheNgoi);
                         cmd.Parameters.AddWithValue("@TrangThaiChoNgoi", phongChieu.TrangThaiChoNgoi);
                         cmd.Parameters.AddWithValue("@SoHangGhe", phongChieu.SoHangGhe);
-                        cmd.Parameters.AddWithValue("@SoGheMotHang", phongChieu.SoGheMotHang);
+                        cmd.Parameters.AddWithValue("@SoCotGhe", phongChieu.SoGheMotHang);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
@@ -124,7 +124,7 @@ namespace DAL
                              SoGheNgoi = @SoGheNgoi, 
                              TrangThaiChoNgoi = @TrangThaiChoNgoi, 
                              SoHangGhe = @SoHangGhe, 
-                             SoGheMotHang = @SoGheMotHang
+                             SoCotGhe = @SoGheMotHang
                          WHERE id = @id";
 
                 using (SqlConnection conn = new SqlConnection(connectionString))

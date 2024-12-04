@@ -11,7 +11,8 @@ namespace DAL
 {
     public class LichChieuPhimDAL
     {
-        private static string connectionString = "Data Source=LAPTOP-DTCNUEFC\\SQLEXPRESS;Initial Catalog=QLRP;Integrated Security=True;";
+        private string connectionString = "Data Source=USER\\MSSQLSERVER01;Initial Catalog=QLRP;Persist Security Info=True;User ID=sa;Password=101204";
+
         public DataTable GetListShowTime()
         {
             string query = "SELECT * FROM LichChieuPhim"; // Truy vấn để lấy danh sách màn hình

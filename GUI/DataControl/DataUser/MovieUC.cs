@@ -13,10 +13,12 @@ using DAL;
 using Microsoft.VisualBasic.Devices;
 using static Azure.Core.HttpHeader;
 using System.IO;
+using Microsoft.IdentityModel.Tokens;
 namespace GUI.DataControl.DataUser
 {
     public partial class MovieUC : UserControl
     {
+        private string selectedImagePath = null;
         public MovieUC()
         {
             InitializeComponent();
@@ -130,6 +132,10 @@ namespace GUI.DataControl.DataUser
             //    return;
             //}
 
+            // Kiểm tra nếu người dùng đã chọn ảnh
+            string posterPath = SaveImageToProjectFolder(selectedImagePath);
+
+            MessageBox.Show(posterPath);
             // Tạo đối tượng PhimDTO
             PhimDTO phim = new PhimDTO()
             {
@@ -173,10 +179,38 @@ namespace GUI.DataControl.DataUser
             openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.gif;*.bmp";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                selectedImagePath = openFileDialog.FileName; // Lưu đường dẫn ảnh được chọn
+
                 // Đặt ảnh lên PictureBox
-                ptrMovie.Image = System.Drawing.Image.FromFile(openFileDialog.FileName);
+                ptrMovie.Image = System.Drawing.Image.FromFile(selectedImagePath);
             }
         }
+
+
+        private string SaveImageToProjectFolder(string originalPath)
+        {
+            string projectDirectory = Application.StartupPath; // Thư mục gốc của ứng dụng
+            string imagesFolder = Path.Combine(projectDirectory, "Images"); // Thư mục Images
+
+            // Tạo thư mục nếu chưa tồn tại
+            if (!Directory.Exists(imagesFolder))
+            {
+                Directory.CreateDirectory(imagesFolder);
+            }
+
+            // Đặt tên file ảnh (có thể dùng tên gốc hoặc tạo tên mới)
+            string fileName = Path.GetFileName(originalPath);
+            string newFilePath = Path.Combine(imagesFolder, fileName);
+
+            // Sao chép ảnh vào thư mục Images (tránh ghi đè nếu file đã tồn tại)
+            if (!File.Exists(newFilePath))
+            {
+                File.Copy(originalPath, newFilePath);
+            }
+
+            return $"Images\\{fileName}"; // Trả về đường dẫn tương đối
+        }
+
 
         private void label11_Click(object sender, EventArgs e)
         {
