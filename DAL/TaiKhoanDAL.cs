@@ -78,6 +78,58 @@ namespace DAL
             }
         }
 
+        public bool RegisterEmployee(NhanVienDTO nhanVien, TaiKhoanDTO taiKhoan)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // 1. Thêm nhân viên vào bảng NhanVien
+                    string insertNhanVienQuery = @"INSERT INTO NhanVien 
+                                           (HoTen, NgaySinh, DiaChi, idQuanLy, SDT, CMND, CaLam) 
+                                           OUTPUT INSERTED.id 
+                                           VALUES 
+                                           (@HoTen, @NgaySinh, @DiaChi, @idQuanLy, @SDT, @CMND, @CaLam)";
+                    SqlCommand cmdNhanVien = new SqlCommand(insertNhanVienQuery, connection, transaction);
+                    cmdNhanVien.Parameters.AddWithValue("@HoTen", nhanVien.HoTen);
+                    cmdNhanVien.Parameters.AddWithValue("@NgaySinh", nhanVien.NgaySinh);
+                    cmdNhanVien.Parameters.AddWithValue("@DiaChi", nhanVien.DiaChi ?? (object)DBNull.Value);
+                    cmdNhanVien.Parameters.AddWithValue("@idQuanLy", (object)DBNull.Value);
+                    cmdNhanVien.Parameters.AddWithValue("@SDT", nhanVien.SDT ?? (object)DBNull.Value);
+                    cmdNhanVien.Parameters.AddWithValue("@CMND", nhanVien.CMND);
+                    cmdNhanVien.Parameters.AddWithValue("@CaLam", nhanVien.CaLam );
+
+                    int newEmployeeId = (int)cmdNhanVien.ExecuteScalar(); // Lấy ID nhân viên vừa được thêm
+
+                    // 2. Tạo tài khoản cho nhân viên
+                    string insertTaiKhoanQuery = @"INSERT INTO TaiKhoan 
+                                           (UserName, PassWord, idRole, GhiNhoTK, idNV) 
+                                           VALUES 
+                                           (@UserName, @PassWord, @idRole, @GhiNhoTK, @idNV)";
+                    SqlCommand cmdTaiKhoan = new SqlCommand(insertTaiKhoanQuery, connection, transaction);
+                    cmdTaiKhoan.Parameters.AddWithValue("@UserName", taiKhoan.UserName);
+                    cmdTaiKhoan.Parameters.AddWithValue("@PassWord", taiKhoan.PassWord); // Mã hóa mật khẩu trước khi lưu
+                    cmdTaiKhoan.Parameters.AddWithValue("@idRole", 2); // idRole = 2 (Nhân viên)
+                    cmdTaiKhoan.Parameters.AddWithValue("@GhiNhoTK", 0);
+                    cmdTaiKhoan.Parameters.AddWithValue("@idNV", newEmployeeId);
+
+                    cmdTaiKhoan.ExecuteNonQuery();
+
+                    // Commit transaction nếu mọi thứ thành công
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    // Rollback transaction nếu có lỗi
+                    transaction.Rollback();
+                    return false;
+                }
+            }
+        }
 
         // ... in your TaiKhoanBLL class
         public bool CheckOldPassword(string userName, string oldPassword)

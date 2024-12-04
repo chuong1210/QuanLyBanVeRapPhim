@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeatMovie));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             linkLabel2 = new LinkLabel();
             flowLayoutPanelSeats = new FlowLayoutPanel();
             lblThongtin = new Label();
@@ -64,10 +64,10 @@
             linkLabel2.LinkColor = Color.BlueViolet;
             linkLabel2.Location = new Point(162, 12);
             linkLabel2.Name = "linkLabel2";
-            linkLabel2.Size = new Size(316, 48);
+            linkLabel2.Size = new Size(315, 48);
             linkLabel2.TabIndex = 3;
             linkLabel2.TabStop = true;
-            linkLabel2.Text = "CHỌN CHỖ NGỒI";
+            linkLabel2.Text = "CHỌN GHẾ NGỒI";
             linkLabel2.TextAlign = ContentAlignment.TopCenter;
             // 
             // flowLayoutPanelSeats
@@ -276,7 +276,7 @@
             btnConfirm.BorderRadius = 35;
             btnConfirm.BorderThickness = 2;
             btnConfirm.Cursor = Cursors.Hand;
-            btnConfirm.CustomizableEdges = customizableEdges1;
+            btnConfirm.CustomizableEdges = customizableEdges3;
             btnConfirm.DisabledState.BorderColor = Color.DarkGray;
             btnConfirm.DisabledState.CustomBorderColor = Color.DarkGray;
             btnConfirm.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -286,7 +286,7 @@
             btnConfirm.ForeColor = Color.White;
             btnConfirm.Location = new Point(270, 534);
             btnConfirm.Name = "btnConfirm";
-            btnConfirm.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            btnConfirm.ShadowDecoration.CustomizableEdges = customizableEdges4;
             btnConfirm.Size = new Size(845, 73);
             btnConfirm.TabIndex = 15;
             btnConfirm.Text = "Tiến hành thanh toán";
@@ -312,7 +312,7 @@
             Controls.Add(lblThongtin);
             Controls.Add(flowLayoutPanelSeats);
             Name = "frmSeatMovie";
-            Text = "frmSeatMovie";
+            Text = "Chọn ghế ngồi";
             Load += frmSeatMovie_Load;
             ((System.ComponentModel.ISupportInitialize)pcPoster).EndInit();
             pnSelect.ResumeLayout(false);

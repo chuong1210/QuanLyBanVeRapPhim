@@ -305,6 +305,7 @@ namespace GUI
                 Text = "Điểm tích lũy khả dụng:",
                 Font = labelFont,
                 Location = new Point(labelX, currentY)
+                
             };
             txtAvailablePoints = new TextEdit
             {
@@ -545,6 +546,7 @@ namespace GUI
                 MessageBox.Show("Email không hợp lệ. Vui lòng nhập lại.");
                 return;
             }
+            txtAvailablePoints.Text = "20";
 
             // Gọi phương thức InsertKhachHang để thêm khách hàng vào cơ sở dữ liệu
             newCustomer = new KhachHangDTO
