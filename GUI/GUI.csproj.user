@@ -35,6 +35,24 @@
     <Compile Update="frmDanhSachPhim.cs">
       <SubType>Form</SubType>
     </Compile>
+<<<<<<< HEAD
+=======
+    <Compile Update="frmGunaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmNavBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmChangePW.cs">
+      <SubType>Form</SubType>
+    </Compile>
+>>>>>>> 0d86c20aa4b7f593c241be1a1874daf3d4eb035e
     <Compile Update="frmDetailMovie.cs">
       <SubType>Form</SubType>
     </Compile>

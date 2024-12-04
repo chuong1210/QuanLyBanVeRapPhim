@@ -37,16 +37,30 @@ namespace GUI
 
         }
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        private async  void guna2GradientButton1_Click(object sender, EventArgs e)
         {
             string userName = txtUsername.Text;
             string password = txtPassword.Text;
 
+       
             var taiKhoan = taiKhoanBLL.Login(userName, password);
+
             if (taiKhoan != null)
             {
-                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                frmLoading loadingForm = new frmLoading();
+                loadingForm.Show();
+                this.Enabled = false; // Vô hiệu hóa form đăng nhập
+
+                await Task.Run(() =>
+                {
+                    // Xử lý đăng nhập (mô phỏng thời gian xử lý)
+                    System.Threading.Thread.Sleep(3000); // Thời gian giả lập
+                });
+
+                // Đóng form loading
+                loadingForm.Close();
+                this.Enabled = true; // Kích hoạt lại form đăng nhập
                 if (taiKhoan.IdRole == 1)
                 {
                     frmAdmin amin = new frmAdmin();
